@@ -31,6 +31,13 @@ message:str=" io sono il primo Re di Roma"
 
 print(f"{famous_person} disse {message}")
 
+#2.8 file extension
+
+filename: str = "python_notes.txt"
+extension_to_remove: str = ".txt"
+filename_wo_extension: str = filename.removesuffix(extension_to_remove)
+
+print(filename_wo_extension)
 
 
 
