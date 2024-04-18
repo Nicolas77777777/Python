@@ -67,6 +67,13 @@ message_invited: list =["Maestro parlami del conosci te stesso davanti un ottima
 for i in range(len(person_invited)):
     print (f"{person_invited[i]}, {message_invited[i]} ")
 
+#3-5. Changing Guest List
+
+# print Guest can’t make the dinner
+print(f"{person_invited[0]} Conosci Te Stesso e Conoscerai gli Dei, ma purtroppo
+       alla tua cena non potro partecipare.")
+
+
 
 
 
