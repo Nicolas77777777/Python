@@ -51,7 +51,7 @@ for i in names:
 
 lista = [" lamborhe"]
 
-for i in range(len(lista1)):
+for i in range(len(lista)):
     print (f"")
 
 
