@@ -51,13 +51,27 @@ for i in names:
 
 
 # 3-3. Your Own List
-
 transportation= ["Ferrari","Mustang","Ducati","Lamborghini"]
 statements=["comprerò una","mi piace molto il simbolo della","la mia moto preferita è",
             "potrei accontentarmi anche di una"]
 
 for i in range(len(transportation)):
     print (f"{statements[i]} {transportation[i]} ")
+
+# 3-4. Guest List
+person_invited: list =["Socrate","William Shakespeare","Rocky Marciano"]
+message_invited: list =["Maestro parlami del conosci te stesso davanti un ottima cena!"
+                        ,"Maestro parlami dell'Arte del teatro davanti un ottima cena!",
+                       "Maestro parlami della nobile arte davanti un ottima cena!"]
+
+for i in range(len(person_invited)):
+    print (f"{person_invited[i]}, {message_invited[i]} ")
+
+
+
+
+
+
 
 
 
