@@ -3,7 +3,7 @@
 
 print ("Hello World!")
 
-
+#
 # this variable contains var name
 name: str= "Cesare"
 
@@ -24,6 +24,12 @@ capitalize_case:str= name.capitalize()
 
 print(f"{lower_case} {upper_case} {capitalize_case}")
 
+
+#2.6 Famous quote 2
+famous_person:str= "Romolo"
+message:str=" io sono il primo Re di Roma"
+
+print(f"{famous_person} disse {message}")
 
 
 
