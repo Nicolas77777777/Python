@@ -44,13 +44,15 @@ print(filename_wo_extension)
 names:list=("Romolo","Remo","Numa Pompilio","Tulio Ostilio")
 message:str=" Ave"
 for i in names:
-    frasi= (i)+ message
+    frasi: str = (i)+ message
     print(frasi)
 
 
 
+lista = [" lamborhe"]
 
-
+for i in range(len(lista1)):
+    print (f"")
 
 
 
