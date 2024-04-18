@@ -39,6 +39,15 @@ filename_wo_extension: str = filename.removesuffix(extension_to_remove)
 
 print(filename_wo_extension)
 
+# 3.1 Names
+
+names:list=("Romolo","Remo","Numa Pompilio","Tulio Ostilio")
+
+for i in names:
+    print(i)
+
+
+
 
 
 
