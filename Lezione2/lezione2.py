@@ -39,12 +39,16 @@ filename_wo_extension: str = filename.removesuffix(extension_to_remove)
 
 print(filename_wo_extension)
 
-# 3.1 Names
+# 3.1 Names / 3.2 Greetings
 
 names:list=("Romolo","Remo","Numa Pompilio","Tulio Ostilio")
-
+message:str=" Ave"
 for i in names:
-    print(i)
+    frasi= (i)+ message
+    print(frasi)
+
+
+
 
 
 
