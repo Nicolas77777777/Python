@@ -3,36 +3,39 @@
 
 print ("Hello World!")
 
-#
-# this variable contains var name
-name: str= "Cesare"
+# 2-3. Personal Message
+eric_name: str = "Hello Eric, would you like to learn some Python today?"
+print(eric_name)
 
-print (f"Ave{name}, etc.......")
+# 2-4. Name Cases
 
-# message 
-message:str=("Moritori tua te salutan")
+# this variable contains var name_cases
+name_cases: str = "caesar"
 
+# lowercase, uppercase, and title case method
+lower_case: str = name_cases.lower()
+upper_case: str = name_cases.upper()
+title_case: str = name_cases.capitalize()
 
-# use method print(f"{name variabele}"")
-print(f"{name}, {message}")
+print(f"{lower_case} {upper_case} {title_case}")
 
-# upper , lower, capitalazie method
+# 2-5. Famous Quote / 
+print (f"{title_case} quando varco il Rubicone disse: Il dado è tratto.")
 
-lower_case: str= name.lower()
-upper_case: str= name.upper()
-capitalize_case:str= name.capitalize()
+# 2-6. Famous Quote 2
+famous_person: str = "Gaius Iulius Caesar"
+message: str = " Alea iacta est."
 
-print(f"{lower_case} {upper_case} {capitalize_case}")
+# use method print(f"{name_cases variabele}"")
+print(f"{famous_person} quando varco il Rubicone disse: {message}")
 
+# example 2
+famous_person2: str = "Romolo"
+message2: str =" io sono il primo Re di Roma"
 
-#2.6 Famous quote 2
-famous_person:str= "Romolo"
-message:str=" io sono il primo Re di Roma"
-
-print(f"{famous_person} disse {message}")
+print(f"{famous_person2} disse {message2}")
 
 #2.8 file extension
-
 filename: str = "python_notes.txt"
 extension_to_remove: str = ".txt"
 filename_wo_extension: str = filename.removesuffix(extension_to_remove)
@@ -40,19 +43,21 @@ filename_wo_extension: str = filename.removesuffix(extension_to_remove)
 print(filename_wo_extension)
 
 # 3.1 Names / 3.2 Greetings
-
-names:list=("Romolo","Remo","Numa Pompilio","Tulio Ostilio")
-message:str=" Ave"
+names: list =["Romolo","Remo","Numa Pompilio","Tulio Ostilio"]
+message: str =" Ave"
 for i in names:
-    frasi: str = (i)+ message
-    print(frasi)
+    phrases: str = (i)+ message
+    print(phrases)
 
 
+# 3-3. Your Own List
 
-lista = [" lamborhe"]
+transportation= ["Ferrari","Mustang","Ducati","Lamborghini"]
+statements=["comprerò una","mi piace molto il simbolo della","la mia moto preferita è",
+            "potrei accontentarmi anche di una"]
 
-for i in range(len(lista)):
-    print (f"")
+for i in range(len(transportation)):
+    print (f"{statements[i]} {transportation[i]} ")
 
 
 
