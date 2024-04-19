@@ -43,8 +43,8 @@ filename_wo_extension: str = filename.removesuffix(extension_to_remove)
 print(filename_wo_extension)
 
 # 3.1 Names / 3.2 Greetings
-names: list =["Romolo","Remo","Numa Pompilio","Tulio Ostilio"]
-message: str =" Ave"
+names: list = ["Romolo","Remo","Numa Pompilio","Tulio Ostilio"]
+message: str = " Ave"
 for i in names:
     phrases: str = (i)+ message
     print(phrases)
@@ -75,7 +75,7 @@ print((person_invited[0]),"Conosci Te Stesso e Conoscerai gli Dei, ma purtroppo 
 # replacing the name of the guest who can’t make it with the name of the new person
 person_invited.remove("Socrate")
 person_invited.append("Cleopatra")
-new_guest: list =person_invited
+new_guest: list = person_invited
 print(new_guest)
 
 # print(f"{person_invited[0]} Conosci Te Stesso e Conoscerai gli Dei, ma purtroppo
