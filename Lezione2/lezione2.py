@@ -70,8 +70,21 @@ for i in range(len(person_invited)):
 #3-5. Changing Guest List
 
 # print Guest can’t make the dinner
-print(f"{person_invited[0]} Conosci Te Stesso e Conoscerai gli Dei, ma purtroppo
-       alla tua cena non potro partecipare.")
+print((person_invited[0]),"Conosci Te Stesso e Conoscerai gli Dei, ma purtroppo alla tua cena non potro partecipare.")
+
+# replacing the name of the guest who can’t make it with the name of the new person
+person_invited.remove("Socrate")
+person_invited.append("Cleopatra")
+new_guest=person_invited
+print(new_guest)
+
+# print(f"{person_invited[0]} Conosci Te Stesso e Conoscerai gli Dei, ma purtroppo
+#        alla tua cena non potro partecipare.")
+
+# for i in range(len(person_invited)):
+#     if person_invited[0]== person_invited["Socrate"]:
+#         print (True)
+
 
 
 
