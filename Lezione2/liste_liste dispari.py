@@ -17,7 +17,7 @@
 
 ################################ un altra funzione dove prendo la diffrenza cum
 
-def diff_cum(l: list [float]) -> float
+#def diff_cum(l: list [float]) -> float:
 
 l:float = [1,2,3,4,5,6]
 
