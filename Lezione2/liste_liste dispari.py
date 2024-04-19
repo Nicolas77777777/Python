@@ -19,10 +19,13 @@
 
 #def diff_cum(l: list [float]) -> float:
 
-l:float = [1,2,3,4,5,6]
+#l:float = [1,2,3,4,5,6]
 
-cont=[]
-for i in len(l):
-    detrazione= i-i 
 
-print(detrazione)
+
+def diff_cum(1: list[float], index: int ) -> :
+
+
+
+
+
