@@ -16,4 +16,8 @@ else: # pari
 return mediana
 
 
+ff
+
+
+
 
