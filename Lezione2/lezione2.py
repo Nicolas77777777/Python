@@ -82,14 +82,26 @@ message_invited[0]="Maestra vieni a cena con un attore e un pugile?"
 for i in range(len(person_invited)):
     print (f"{person_invited[i]}, {message_invited[i]} ")
 
-
-def CiclaListe (l1: list, l2: list): #-> due liste
-    for i in range(len(l1)):
-        return (f"{l1[i]}, {l2[i]} ")
+# definisco una funzione per cilcare le liste 
+# def CiclaListe (l1: list, l2: list): #-> due liste
+#     for i in range(len(l1)):
+#         return (f"{l1[i]}, {l2[i]} ")
     
-print(CiclaListe(person_invited,message_invited))
+# print(CiclaListe(person_invited,message_invited))
 
+# 3-6. More Guests
+# informing people that you found a bigger table.
+print("Cari amici si sono aggiunti altri 3 amici, per fortuna"
+      "ho trovato questo tavolo piu grande")
 
+# new guest to the beginning /to the middle/ to the end/ in the list
+person_invited.insert(0,"Platone")
+person_invited.insert(2,"Scipione l'Africano")
+person_invited.append("Gigi Proietti")
+
+print(person_invited)
+
+new_messagge_guest:list =message_invited
 
 
 
