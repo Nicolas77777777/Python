@@ -73,22 +73,15 @@ for i in range(len(person_invited)):
 print((person_invited[0]),"Conosci Te Stesso e Conoscerai gli Dei, ma purtroppo alla tua cena non potro partecipare.")
 
 # replacing the name of the guest who can’t make it with the name of the new person
-person_invited.remove("Socrate")
-person_invited.append("Cleopatra")
-new_guest: list = person_invited
-print(new_guest)
+person_invited[0]="Diotima"
 
-for i in range(len(new_guest)):
-    if i ==i["Socrate"]:
-        print("vai ")
-    else :
-        print ("false")
-# print(f"{person_invited[0]} Conosci Te Stesso e Conoscerai gli Dei, ma purtroppo
-#        alla tua cena non potro partecipare.")
+# replacing the message of Cleopatra guest 
+message_invited[0]="Maestra vieni a cena con un attore e un pugile?"
 
-# for i in range(len(person_invited)):
-#     if person_invited[0]== person_invited["Socrate"]:
-#         print (True)
+for i in range(len(person_invited)):
+    print (f"{person_invited[i]}, {message_invited[i]} ")
+
+
 
 
 
