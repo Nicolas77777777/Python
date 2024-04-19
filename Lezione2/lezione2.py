@@ -78,6 +78,11 @@ person_invited.append("Cleopatra")
 new_guest: list = person_invited
 print(new_guest)
 
+for i in range(len(new_guest)):
+    if i ==i["Socrate"]:
+        print("vai ")
+    else :
+        print ("false")
 # print(f"{person_invited[0]} Conosci Te Stesso e Conoscerai gli Dei, ma purtroppo
 #        alla tua cena non potro partecipare.")
 
