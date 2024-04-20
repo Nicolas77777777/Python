@@ -90,9 +90,11 @@ for i in range(len(person_invited)):
 # print(CiclaListe(person_invited,message_invited))
 
 # 3-6. More Guests
+# definisco una funzione per cilcare le liste 
+    
 # informing people that you found a bigger table.
 print("Cari amici si sono aggiunti altri 3 amici, per fortuna"
-      "ho trovato questo tavolo piu grande")
+      " ho trovato questo tavolo piu grande")
 
 # new guest to the beginning /to the middle/ to the end/ in the list
 person_invited.insert(0,"Platone")
@@ -101,7 +103,15 @@ person_invited.append("Gigi Proietti")
 
 print(person_invited)
 
-new_messagge_guest:list =message_invited
+# Print a new set of invitation messages
+message_invited.insert(0, "Benvenuto")
+message_invited.insert(2, "Ave Scipione")
+message_invited.append("è un piacere averti tra noi")
+
+for i in range(len(person_invited)):
+    print (f"{person_invited[i]}, {message_invited[i]} ")
+
+# 3-7. Shrinking Guest List:
 
 
 
