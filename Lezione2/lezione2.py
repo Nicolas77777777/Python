@@ -112,6 +112,16 @@ for i in range(len(person_invited)):
     print (f"{person_invited[i]}, {message_invited[i]} ")
 
 # 3-7. Shrinking Guest List:
+#prints a message saying that you can invite only two people for dinner.
+print(" Mi dispiace amici,hanno  ma il tavolo piu grande" 
+      " non arriverà in tempo, mi trovo costretto a disdire la cena per alcuni di voi ")
+
+new_message =  "mi spiace ma sei fuori"
+for i in person_invited:
+        frase: str = i + new_message
+print(frase)
+    #if person_invited[i]== person_invited[2]:
+
 
 
 
