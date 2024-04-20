@@ -135,7 +135,18 @@ for message in range(len(person_invited)):
 del person_invited
 
 # 3-8. Seeing the World:
+# Store the locations in a list. Make sure the list is not in alphabetical order.
+locations: list =["Tokio","Napoli","Valcamonica","Finesterre","Himalaya"]
 
+#Print your list in its original order
+print(locations)
+
+#Use sorted() to print your list in alphabetical order without modifying the actual list..
+new_list_locations: list =sorted(locations)
+print(new_list_locations)
+
+print(sorted(locations))
+print(locations)
 
 
 
