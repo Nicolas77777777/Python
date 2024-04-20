@@ -113,21 +113,17 @@ for i in range(len(person_invited)):
 
 # 3-7. Shrinking Guest List:
 #prints a message saying that you can invite only two people for dinner.
-print(" Mi dispiace amici,hanno  ma il tavolo piu grande" 
-      " non arriverà in tempo, mi trovo costretto a disdire la cena per alcuni di voi ")
-print(person_invited)
+print(" Mi dispiace amici,ma il tavolo piu grande non arriverà in tempo,"
+      "mi trovo costretto a disdire la cena per alcuni di voi ")
 
-new_guest=person_invited.copy()
+new_message =  "sei fuori!!"
 
-print(f"{new_guest}questa è la nuova lista")
+# Remove guests one at a time until only two names remain
+while len(person_invited) > 2:
+    removed_guest = person_invited.pop()
+    print(f"Scusa {removed_guest},{new_message}")
 
 
-new_message =  " mi spiace ma sei fuori"
-
-for i in person_invited:
-        frase: str = (i) + new_message
-print(frase)
-    #if person_invited[i]== person_invited[2]:
 
 
 
