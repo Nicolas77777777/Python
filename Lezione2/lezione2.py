@@ -116,12 +116,30 @@ for i in range(len(person_invited)):
 print(" Mi dispiace amici,ma il tavolo piu grande non arriverà in tempo,"
       "mi trovo costretto a disdire la cena per alcuni di voi ")
 
-new_message =  "sei fuori!!"
+new_message_out: str =  "sei fuori!!"
+
 
 # Remove guests one at a time until only two names remain
 while len(person_invited) > 2:
-    removed_guest = person_invited.pop()
-    print(f"Scusa {removed_guest},{new_message}")
+    remove_guest = person_invited.pop()
+    print(f"Scusa {remove_guest},{new_message_out}")
+
+#Print a message to each of the two people still on your list, letting them know they’re still invited.
+print(person_invited)
+
+for message in range(len(person_invited)):
+    print(f"{person_invited[message]} sei dentro")
+
+#Use del to remove the last two names from your list, so you have an empty list.
+# Print your list to make sure you actually have an empty list at the end of your program.
+del person_invited
+
+# 3-8. Seeing the World:
+
+
+
+
+
 
 
 
