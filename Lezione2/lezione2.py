@@ -181,6 +181,28 @@ print("Ho invitato a cena",len(names),"persone")
 
 montains: list =["Everest","Tevere","Italia","Roma","Latino"]
 
+print(len(montains))
+
+def funzioni(lista: list ,stringa1 : str="",stringa2 : str=""):
+    lista.append(stringa1)
+    print(lista)
+    lista.sort()
+    print(lista)
+    lista.insert(4,stringa2)
+    print(lista)
+
+    
+
+
+print(funzioni(montains,"Tokio","èrova"))
+
+    
+
+
+    
+
+
+
 
 
 
