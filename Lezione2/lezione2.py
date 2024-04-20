@@ -173,10 +173,13 @@ print(locations)
 locations.sort(reverse=True)
 print(locations)
 
-#3-9. Dinner Guests:
+#3-9. Dinner Guests
+print("Ho invitato a cena",len(names),"persone")
 
+#3-10. Every Function
+# make a list of mountains, rivers, countries, cities
 
-
+montains: list =["Everest","Tevere","Italia","Roma","Latino"]
 
 
 
