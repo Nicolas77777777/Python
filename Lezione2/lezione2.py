@@ -115,10 +115,17 @@ for i in range(len(person_invited)):
 #prints a message saying that you can invite only two people for dinner.
 print(" Mi dispiace amici,hanno  ma il tavolo piu grande" 
       " non arriverà in tempo, mi trovo costretto a disdire la cena per alcuni di voi ")
+print(person_invited)
 
-new_message =  "mi spiace ma sei fuori"
+new_guest=person_invited.copy()
+
+print(f"{new_guest}questa è la nuova lista")
+
+
+new_message =  " mi spiace ma sei fuori"
+
 for i in person_invited:
-        frase: str = i + new_message
+        frase: str = (i) + new_message
 print(frase)
     #if person_invited[i]== person_invited[2]:
 
