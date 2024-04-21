@@ -248,12 +248,18 @@ for i in glossary:
 
 #6-7. People
 diz1 : dict = diz.copy()
-diz2 : dict = {'first_name': 'Maestro do Santos', 'last_name': 'Da lima', 'age': 66, 'city': 'Napoli'}
-diz3 : dict = {'first_name': 'Giraldi', 'last_name': 'Nico', 'age': 33, 'city': 'Roma'}
+diz2 : dict = {"first_name": 'Maestro do Santos', 'last_name': 'Da lima', 'age': 66, 'city': 'Napoli'}
+diz3 : dict = {"first_name": 'Giraldi', 'last_name': 'Nico', 'age': 33, 'city': 'Roma'}
 
-people: dict = {diz1:"diz1",diz2:"diz2",diz3:"diz3"}
+people = [diz1,diz2,diz3] 
+print(type(people))
 
-print(people)
+# Stampare informazioni su ciascuna persona
+for pe in people:
+    print(f"Nome: {pe["first_name"]}")
+
+
+
 
     
 
