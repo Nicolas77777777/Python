@@ -179,23 +179,32 @@ print("Ho invitato a cena",len(names),"persone")
 #3-10. Every Function
 # make a list of mountains, rivers, countries, cities
 
-montains: list =["Tevere","Everest","Italia","Roma","Latino","Greco"]
+l: list =["Tevere","Everest","Italia","Roma","Latino","Greco","Gange"]
 
-print(len(montains))
-
-def funzioni(lista: list ,stringa1:str=input(),stringa2 : str=""):
-    print(len(lista))
-    lista.append(stringa1(""))
-    print(lista)
+def funzioni(lista: list ,stringa1 : str ="",stringa2 : str=""):
+    print("funzione len",(len(lista)))
+    lista.append(stringa1)
+    print("funzione append",(lista))
     lista.sort()
-    print(lista)
+    print("funzione sort",(lista))
     lista.insert(4,stringa2)
-    print(lista)
+    print("funzione insert index 4",(lista))
+    lista.pop()
+    print("funzione pop",(lista))
+    lista.reverse()
+    print("funzione reverse",(lista))
+    nuova_lista= sorted(lista,reverse=True)
+    print("funzione sorted",(nuova_lista))
 
-    
+    return ("questo è il programma con tutte le funzioni elencate in questo capitolo")
 
 
-print(funzioni(montains,"Tokio","èrova"))
+print(funzioni(l,"Tokio","Zanzibar"))
+
+#6-1. Person
+diz: dict ={"first_name": "Minkia","last_name":"Franco","age":69,"city":"Cazzmandu"}
+
+print(diz)
 
     
 
