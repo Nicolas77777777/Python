@@ -246,6 +246,10 @@ glossary: dict = {"reverse() ":"change the order of your list",
 for i in glossary:
     print(f"{i} : {glossary[i]}\n")
 
+#6-7. People
+diz1 : dict = diz.copy()
+diz2 : dict = {'first_name': 'Maestro do Santos', 'last_name': 'Da lima', 'age': 66, 'city': 'Napoli'}
+diz3 : dict = {'first_name': 'Giraldi', 'last_name': 'Nico', 'age': 33, 'city': 'Roma'}
 
 
     
