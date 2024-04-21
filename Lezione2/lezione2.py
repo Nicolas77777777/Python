@@ -206,6 +206,8 @@ diz: dict ={"first_name": "Minkia","last_name":"Franco","age":69,"city":"Cazzman
 
 print(diz)
 
+# 6-2. Favorite Numbers:
+
     
 
 
