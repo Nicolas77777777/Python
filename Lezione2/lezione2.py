@@ -214,11 +214,10 @@ print(diz)
 
 favorite_numbers: dict = {"Nicolas":7,"Plauto":3,"Francesco":9,"Rocco":33,"Ermenegilda":46}
 
-print(favorite_numbers)
 
-for i in range (len (favorite_numbers)):
-    x=favorite_numbers.keys()
-    y=favorite_numbers.values()
+for i in favorite_numbers:
+    print(f"il numero preferito di {i} è {favorite_numbers[i]}")
+
 
 
 it= favorite_numbers.items()
