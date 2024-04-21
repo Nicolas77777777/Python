@@ -28,3 +28,8 @@ values: list = list(menu.values())
 
 print( keys,values)
 
+i=0
+while i < len(keys):
+    print(f"chiave = {keys[i]} {values[i]}")
+    i+=1
+

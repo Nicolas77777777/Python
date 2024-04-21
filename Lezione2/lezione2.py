@@ -218,11 +218,6 @@ favorite_numbers: dict = {"Nicolas":7,"Plauto":3,"Francesco":9,"Rocco":33,"Ermen
 for i in favorite_numbers:
     print(f"il numero preferito di {i} è {favorite_numbers[i]}")
 
-
-
-it= favorite_numbers.items()
-
-print(it)
     
 
 
