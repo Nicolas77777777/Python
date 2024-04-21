@@ -247,6 +247,8 @@ for i in glossary:
     print(f"{i} : {glossary[i]}\n")
 
 #6-7. People
+#Start with the program you wrote for Exercise 6-1. Make two new dictionaries representing 
+#different people, and store all three dictionaries in a list called people
 diz1 : dict = diz.copy()
 diz2 : dict = {"first_name": 'Maestro do Santos', 'last_name': 'Da lima', 'age': 66, 'city': 'Napoli'}
 diz3 : dict = {"first_name": 'Giraldi', 'last_name': 'Nico', 'age': 33, 'city': 'Roma'}
@@ -254,9 +256,17 @@ diz3 : dict = {"first_name": 'Giraldi', 'last_name': 'Nico', 'age': 33, 'city': 
 people = [diz1,diz2,diz3] 
 print(type(people))
 
-# Stampare informazioni su ciascuna persona
-for pe in people:
-    print(f" {pe["first_name"]} {pe['last_name']}")
+#Loop through your list of people. As you loop through the list, print everything you know about each person.
+for x in people:
+    print(f" {x['last_name']} {x["first_name"]} age {x['age']} città {x['city']}")
+
+#6-8. Pets
+
+
+    
+    
+    
+
 
 
 
