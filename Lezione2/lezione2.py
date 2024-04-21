@@ -261,6 +261,23 @@ for x in people:
     print(f" {x['last_name']} {x["first_name"]} age {x['age']} città {x['city']}")
 
 #6-8. Pets
+#Make several dictionaries, where each dictionary represents a different pet.
+# In each dictionary, include the kind of animal and the owner’s name.
+pet1: dict  = { "kind": "Dog","owner": "Spike"}
+pet2: dict = { "kind": "Cat","owner": "Nerina"}
+pet3: dict = { "kind": "horse","owner": "Charlie"}
+
+#Store these dictionaries in a list called pets. Next, loop through your list and as
+#you do, print everything you know about each pet. 
+
+pets =[pet1,pet2,pet3]
+for x in pets:
+    print(f" Kind : {x["kind"]} - Name : {x["owner"]}")
+
+
+#6-9. Favorite Places
+
+
 
 
     
