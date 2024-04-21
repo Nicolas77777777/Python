@@ -208,6 +208,8 @@ print(diz)
 
 # 6-2. Favorite Numbers:
 
+rrr
+
     
 
 
