@@ -251,6 +251,9 @@ diz1 : dict = diz.copy()
 diz2 : dict = {'first_name': 'Maestro do Santos', 'last_name': 'Da lima', 'age': 66, 'city': 'Napoli'}
 diz3 : dict = {'first_name': 'Giraldi', 'last_name': 'Nico', 'age': 33, 'city': 'Roma'}
 
+people: dict = {diz1:"diz1",diz2:"diz2",diz3:"diz3"}
+
+print(people)
 
     
 
