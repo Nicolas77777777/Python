@@ -256,7 +256,7 @@ print(type(people))
 
 # Stampare informazioni su ciascuna persona
 for pe in people:
-    print(f"Nome: {pe["first_name"]}")
+    print(f" {pe["first_name"]} {pe['last_name']}")
 
 
 
