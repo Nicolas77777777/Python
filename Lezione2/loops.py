@@ -21,3 +21,10 @@ menu: dict = {"pasta": 10.50, "pizza": 9.00, "salad": 6.50,
 for key in menu:
     print(f"chiave = {key} valore {menu[key]}")
 
+#trasforma tutte le Key set in una lista/ idem per valori 
+
+keys: list = list(menu.keys())
+values: list = list(menu.values())
+
+print( keys,values)
+
