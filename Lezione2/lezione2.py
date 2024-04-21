@@ -207,9 +207,23 @@ diz: dict ={"first_name": "Minkia","last_name":"Franco","age":69,"city":"Cazzman
 print(diz)
 
 # 6-2. Favorite Numbers:
+#Use a dictionary to store people’s favorite numbers. 
+#Think of five names, and use them as keys in your dictionary.
+# Think of a favorite number for each person, and store
+# each as a value in your dictionary.
 
-rrr
+favorite_numbers: dict = {"Nicolas":7,"Plauto":3,"Francesco":9,"Rocco":33,"Ermenegilda":46}
 
+print(favorite_numbers)
+
+for i in range (len (favorite_numbers)):
+    x=favorite_numbers.keys()
+    y=favorite_numbers.values()
+
+
+it= favorite_numbers.items()
+
+print(it)
     
 
 
