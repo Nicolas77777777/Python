@@ -293,11 +293,13 @@ user_name_favorite_place["name"]= user_name
 user_name_favorite_place["best_town"]= user_best_town
 user_name_favorite_place["best_bay"]=user_best_bay
 
-people_best_place ={"mario_favorite_place":1,"franco_favorite_place":2,}
-print(people_best_place)
-
+#Loop through the dictionary, and print each person’s name and their favorite places.
 for u in mario_favorite_place,franco_favorite_place,demetrio_favorite_place,user_name_favorite_place:
-    print(f"{u["name"]}")
+    print(f"La città preferita di {u["name"]} é {u["best_town"]} invece la sua spiaggia preferita è {u["best_bay"]}")
+
+# 6-10. Favorite Numbers
+
+
 
 
 
