@@ -179,12 +179,13 @@ print("Ho invitato a cena",len(names),"persone")
 #3-10. Every Function
 # make a list of mountains, rivers, countries, cities
 
-montains: list =["Everest","Tevere","Italia","Roma","Latino"]
+montains: list =["Tevere","Everest","Italia","Roma","Latino","Greco"]
 
 print(len(montains))
 
-def funzioni(lista: list ,stringa1 : str="",stringa2 : str=""):
-    lista.append(stringa1)
+def funzioni(lista: list ,stringa1:str=input(),stringa2 : str=""):
+    print(len(lista))
+    lista.append(stringa1(""))
     print(lista)
     lista.sort()
     print(lista)
