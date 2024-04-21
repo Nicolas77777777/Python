@@ -218,6 +218,15 @@ favorite_numbers: dict = {"Nicolas":7,"Plauto":3,"Francesco":9,"Rocco":33,"Ermen
 for i in favorite_numbers:
     print(f"il numero preferito di {i} è {favorite_numbers[i]}")
 
+name_user = input("Ciao, come ti chiami?")
+print(f"Ciao{name_user} sto facendo un sondaggio")
+
+number_user = input("quale è il tuo numero preferito ? ")
+
+favorite_numbers[name_user]= number_user
+
+print (favorite_numbers)
+
     
 
 
