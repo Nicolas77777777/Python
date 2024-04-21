@@ -276,6 +276,29 @@ for x in pets:
 
 
 #6-9. Favorite Places
+franco_favorite_place:dict = { "name":"Franco","best_town": "Abudabi","best_bay": "Ostia"}
+mario_favorite_place: dict  = { "name":"Mario","best_town": "Roma","best_bay": "Coccio de Morto"}
+demetrio_favorite_place: dict = { "name":"Demetrio","best_town": "Lima","best_bay": "Capracotta"}
+
+#To make this exercise a bit more interesting, ask some friends to name a few of their favorite places. 
+
+user_name= input("come ti chiami?")
+user_best_town= input("scrivi la tua citta preferita e sbrigate pure, perche è tardi " )
+user_best_bay= input ("scrivi la tua spiaggia preferita ")
+
+user_name_favorite_place= dict()
+
+
+user_name_favorite_place["name"]= user_name
+user_name_favorite_place["best_town"]= user_best_town
+user_name_favorite_place["best_bay"]=user_best_bay
+
+people_best_place ={"mario_favorite_place":1,"franco_favorite_place":2,}
+print(people_best_place)
+
+for u in mario_favorite_place,franco_favorite_place,demetrio_favorite_place,user_name_favorite_place:
+    print(f"{u["name"]}")
+
 
 
 
