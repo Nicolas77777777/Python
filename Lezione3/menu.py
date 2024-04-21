@@ -23,3 +23,9 @@ print(menu)
 menu.pop("salad")
 
 print(menu)
+
+#want to lower the pizza price to 8.00
+
+menu["pizza"]=8.00
+
+print(menu)
