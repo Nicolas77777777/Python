@@ -18,3 +18,8 @@ print(f"{pasta_price} {wine_price} {water_price} {salad_price}")
 menu["cake"]= 3.50
 
 print(menu)
+
+#Dictionaries: removing elements
+menu.pop("salad")
+
+print(menu)
