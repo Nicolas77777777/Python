@@ -214,20 +214,38 @@ print(diz)
 
 favorite_numbers: dict = {"Nicolas":7,"Plauto":3,"Francesco":9,"Rocco":33,"Ermenegilda":46}
 
-
+# print name and number 
 for i in favorite_numbers:
     print(f"il numero preferito di {i} è {favorite_numbers[i]}")
 
+# create survey for friend with input for fun
 name_user = input("Ciao, come ti chiami?")
 print(f"Ciao{name_user} sto facendo un sondaggio")
 
 number_user = input("quale è il tuo numero preferito ? ")
 
+# create a new key and value with the input 
 favorite_numbers[name_user]= number_user
 
-print (favorite_numbers)
+print (f" Da un attenta indagine si è constato che {name_user} ha come numero preferito il {number_user} qui di seguto il nuovo dizinario aggiornato{favorite_numbers}")
 
-    
+#6-3. Glossary
+#Think of five programming words you’ve learned about in the previous chapters. 
+#Use these words as the keys in your glossary, and store their meanings as values.
+
+glossary: dict = {"reverse() ":"change the order of your list",
+                  "sorted()":"print your list in alphabetical order",
+                  "sort()":"change your list so it’s stored in alphabetical order",
+                  "dict[namekeys]=values":"add new element for dictionary",
+                  "insert(3)":"insert in the index 3 new element in the list "}
+
+#Print each word and its meaning as neatly formatted output. You might print the word followed 
+# by a colon and then its meaning, or print the word on one line and then print its meaning 
+# indented on a second line. Use the newline character (\n) to insert a blank line between
+#  each word-meaning pair in your output.
+for i in glossary:
+    print(f"{i} : {glossary[i]}\n")
+
 
 
     
