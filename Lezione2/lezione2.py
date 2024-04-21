@@ -299,6 +299,17 @@ for u in mario_favorite_place,franco_favorite_place,demetrio_favorite_place,user
 
 # 6-10. Favorite Numbers
 
+favorite_numbers_plus : dict = {"Nicolas":"7 e 9","Plauto":"3 e 45","Francesco":"9 e 66","Rocco":"33 e 77","Ermenegilda":"46 e 53"}
+
+# Favorite Numbers: Modify your program from Exercise 6-2 so each person can have more than one favorite number.
+# Then print each person’s name along with their favorite numbers.
+
+for i in favorite_numbers_plus:
+    print(f"i numeri preferiti di {i} sono {favorite_numbers_plus[i]}")
+
+
+#6-11
+
 
 
 
