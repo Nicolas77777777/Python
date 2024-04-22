@@ -307,11 +307,47 @@ favorite_numbers_plus : dict = {"Nicolas":"7 e 9","Plauto":"3 e 45","Francesco":
 for i in favorite_numbers_plus:
     print(f"i numeri preferiti di {i} sono {favorite_numbers_plus[i]}")
 
-
 #6-11
+#Use the names of three cities as keys in your dictionary. Create a dictionary of information about each city
+# and include the country that the city is in, its approximate population, and one fact 
+cities = {
+    "Rome": {
+        "country": "Italy",
+        "population": "2.8 million",
+        "fact": "Rome is the city in the world."
+    },
+    "Alessandria": {
+        "country": "Persia",
+        "population": "94,531",
+        "fact": "Alessandria is Alessandria."
+    },
+    "Athens": {
+        "country": "Greece",
+        "population": "3.15 million",
+        "fact": "Athens its no good for Grece."
+    }
+}
+
+# Print information about each city
+for city, info in cities.items():
+    print(f"City: {city}")
+    print(f"Country: {info['country']}")
+    print(f"Population: {info['population']}")
+    print(f"Fact: {info['fact']}\n")
+
+# 6-12. Extensions: We’re now working with examples that are complex enough that they
+# can be extended in any number of ways. Use one of the example programs from
+# this chapter, and extend it by adding new keys and values, changing 
+# the context of the program, or improving the formatting of the output.
 
 
+pet1: dict  = { "kind": "Dog","owner": "Spike"}
+pet2: dict = { "kind": "Cat","owner": "Nerina"}
+pet3: dict = { "kind": "horse","owner": "Charlie"}
 
+pet1,pet2,pet3["propetario"]="Umano ","umano","umano"
+
+print(pet1,pet3,pet2)
 
 
 
