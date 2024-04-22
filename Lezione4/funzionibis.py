@@ -9,8 +9,8 @@ def subtract_all (x : list[float], y: float) -> list[float]:
 
     return res
 
-x=[1,2,3,4,5]
-y= 5
+list=[1.4,2.4,3.5,4.6,5.7]
+y= 5.3
 out= subtract_all(x,y)
 
 print(out)
