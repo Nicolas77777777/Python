@@ -348,9 +348,8 @@ pet3: dict = { "kind": "horse","owner": "Charlie"}
 #pet1,pet2,pet3["propetario"]= "Umano"
 
 for keyplus in pet1,pet3,pet2:
-    x=keyplus["prova"]="ee"
-
-    print(x)
+  pet1,pet2,pet3.update({"color": "red"}) 
+print(pet2)
 
     
     
