@@ -345,12 +345,12 @@ pet1: dict  = { "kind": "Dog","owner": "Spike"}
 pet2: dict = { "kind": "Cat","owner": "Nerina"}
 pet3: dict = { "kind": "horse","owner": "Charlie"}
 
-pet1,pet2,pet3["propetario"]="Umano ","umano","umano"
+#pet1,pet2,pet3["propetario"]= "Umano"
 
-print(pet1,pet3,pet2)
+for keyplus in pet1,pet3,pet2:
+    x=keyplus["prova"]="ee"
 
-
-
+    print(x)
 
     
     
