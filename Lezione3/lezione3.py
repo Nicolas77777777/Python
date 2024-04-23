@@ -28,6 +28,7 @@ print(my_list)
 
 piazza_margherita: str = "Con la mozzarella e pomodoro\n oppure con la bufala\n e altre cose"
 pizza_4formaggi: str = " Con tutti i formaggi\n bianca \n e molto croccante"
+pizza_Zucca_guanciale: str = "veramente buona con la zucca\n con il guanciale che si scioglie\n e il pecorino"
 
 
 print(piazza_margherita)

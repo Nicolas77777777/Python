@@ -55,14 +55,23 @@ transportation= ["Ferrari","Mustang","Ducati","Lamborghini"]
 statements=["comprerò una","mi piace molto il simbolo della","la mia moto preferita è",
             "potrei accontentarmi anche di una"]
 
-for i in range(len(transportation)):
-    print (f"{statements[i]} {transportation[i]} ")
+# I define a function to improve the code # 6-12.
+def CiclaListe (l1: list, l2: list): #-> due liste
+     new_list=[]
+     for i in range(len(l1)):
+         print (f"{l1[i]} {l2[i]} ")
+
+out=(CiclaListe(statements,transportation))
+print(out)
 
 # 3-4. Guest List
 person_invited: list =["Socrate","William Shakespeare","Rocky Marciano"]
 message_invited: list =["Maestro parlami del conosci te stesso davanti un ottima cena!"
                         ,"Maestro parlami dell'Arte del teatro davanti un ottima cena!",
                        "Maestro parlami della nobile arte davanti un ottima cena!"]
+
+# use the function Ciclaliste # 6-12.
+print(CiclaListe(person_invited,message_invited))
 
 for i in range(len(person_invited)):
     print (f"{person_invited[i]}, {message_invited[i]} ")
@@ -283,7 +292,7 @@ demetrio_favorite_place: dict = { "name":"Demetrio","best_town": "Lima","best_ba
 #To make this exercise a bit more interesting, ask some friends to name a few of their favorite places. 
 
 user_name= input("come ti chiami?")
-user_best_town= input("scrivi la tua citta preferita e sbrigate pure, perche è tardi " )
+user_best_town= input("scrivi la tua citta preferita " )
 user_best_bay= input ("scrivi la tua spiaggia preferita ")
 
 user_name_favorite_place= dict()
