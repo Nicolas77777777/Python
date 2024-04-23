@@ -1,5 +1,3 @@
-import time
-a: float= time.time()
 
 #4-1. Pizzas
 #Think of at least three kinds of your favorite pizza. Store these pizza
@@ -34,24 +32,6 @@ pizza_4formaggi: str = " Con tutti i formaggi\n bianca \n e molto croccante"
 
 print(piazza_margherita)
 
-
-def fibonacci (numero:int) :
-    if numero <= 2:
-        return 1
-    else:
-        return fibonacci(numero-1)+ fibonacci(numero-2)
-    
-fibonacci(10)
-
-
-def fibonacci_for(numero: int):
-    memoria: list = [1,1]
-    for i in range(1,numero):
-        risultato: int = memoria[i-1]+memoria[i]
-        memoria.append(risultato)
-    return memoria[-1]
-
-print(fibonacci_for(60))
     
 
 
