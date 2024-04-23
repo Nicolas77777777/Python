@@ -2,7 +2,8 @@
 def CiclaListe (l1: list, l2: list): #-> due liste
      new_list=[]
      for i in range(len(l1)):
-         print (f"{l1[i]} {l2[i]} ")
+        x= (f"{l1[i]} {l2[i]} ")
+        return    
     
 
 transportation= ["Ferrari","Mustang","Ducati","Lamborghini"]
