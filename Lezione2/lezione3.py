@@ -13,24 +13,16 @@ for i in list_pizza:
 # Modify your for loop to print a sentence using the name of the pizza,
 # instead of printing just the name of the pizza. For each pizza, you should have
 #one line of output containing a simple statement like I like pepperoni pizza.
-    
+my_list: list = []
+
 for i in list_pizza:
     i_like_pizza : str = "Mi piace la pizza " +(i)
+    my_list.append(i_like_pizza + (i))
     print(i_like_pizza)
+print(my_list)
+# Add a line at the end of your program, outside the for loop, that states
+# how much you like pizza. The output should consist of three or more lines 
+# about the kinds of pizza you like and then an additional sentence,
+# such as I really love pizza!
 
-# #list comprenshion
-# my_list: list = [index for index in range(100)]
-
-# my_list2: list = [index for index in range(100) if index %2==0]
-
-# my_list4: list = [index for index  % 2==0 in else (100) if index %2==0]
-
-# my_list3: list = ["ciao", "MI","CHIAMO","FLAVIO"]
-
-# mydict: dict {"key":1,"key2":1}
-
-# mydict3={}
-
-
-# print(my_list,my_list2)
 
