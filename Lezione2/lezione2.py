@@ -73,9 +73,6 @@ message_invited: list =["Maestro parlami del conosci te stesso davanti un ottima
 # use the function Ciclaliste # 6-12.
 print(CiclaListe(person_invited,message_invited))
 
-for i in range(len(person_invited)):
-    print (f"{person_invited[i]}, {message_invited[i]} ")
-
 #3-5. Changing Guest List
 
 # print Guest can’t make the dinner
@@ -87,20 +84,10 @@ person_invited[0]="Diotima"
 # replacing the message of Cleopatra guest 
 message_invited[0]="Maestra vieni a cena con un attore e un pugile?"
 
-# Print a second set of invitation messages, one for each person who is still in your list
-for i in range(len(person_invited)):
-    print (f"{person_invited[i]}, {message_invited[i]} ")
+# use the function Ciclaliste # 6-12.
+print(CiclaListe(person_invited,message_invited))
 
-# definisco una funzione per cilcare le liste 
-# def CiclaListe (l1: list, l2: list): #-> due liste
-#     for i in range(len(l1)):
-#         return (f"{l1[i]}, {l2[i]} ")
-    
-# print(CiclaListe(person_invited,message_invited))
-
-# 3-6. More Guests
-# definisco una funzione per cilcare le liste 
-    
+# 3-6. More Guests    
 # informing people that you found a bigger table.
 print("Cari amici si sono aggiunti altri 3 amici, per fortuna"
       " ho trovato questo tavolo piu grande")
