@@ -258,7 +258,7 @@ print(type(people))
 
 #Loop through your list of people. As you loop through the list, print everything you know about each person.
 for x in people:
-    print(f" {x['last_name']} {x["first_name"]} age {x['age']} città {x['city']}")
+    print(f" {x['last_name']} {x['first_name']} age {x['age']} città {x['city']}")
 
 #6-8. Pets
 #Make several dictionaries, where each dictionary represents a different pet.
@@ -272,7 +272,7 @@ pet3: dict = { "kind": "horse","owner": "Charlie"}
 
 pets =[pet1,pet2,pet3]
 for x in pets:
-    print(f" Kind : {x["kind"]} - Name : {x["owner"]}")
+    print(f" Kind  : {x['kind']} - Name : {x['owner']}")
 
 
 #6-9. Favorite Places
@@ -289,13 +289,13 @@ user_best_bay= input ("scrivi la tua spiaggia preferita ")
 user_name_favorite_place= dict()
 
 
-user_name_favorite_place["name"]= user_name
+user_name_favorite_place['name']= user_name
 user_name_favorite_place["best_town"]= user_best_town
 user_name_favorite_place["best_bay"]=user_best_bay
 
 #Loop through the dictionary, and print each person’s name and their favorite places.
 for u in mario_favorite_place,franco_favorite_place,demetrio_favorite_place,user_name_favorite_place:
-    print(f"La città preferita di {u["name"]} é {u["best_town"]} invece la sua spiaggia preferita è {u["best_bay"]}")
+    print(f'La città preferita di {u["name"]} é {u["best_town"]} invece la sua spiaggia preferita è {u["best_bay"]}')
 
 # 6-10. Favorite Numbers
 
@@ -347,9 +347,9 @@ pet3: dict = { "kind": "horse","owner": "Charlie"}
 
 #pet1,pet2,pet3["propetario"]= "Umano"
 
-for keyplus in pet1,pet3,pet2:
-  pet1,pet2,pet3.update({"color": "red"}) 
-print(pet2)
+for keyplus in [pet1,pet3,pet2]:
+    keyplus["color"] = "red"
+    print(keyplus)
 
     
     
