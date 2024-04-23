@@ -74,7 +74,6 @@ message_invited: list =["Maestro parlami del conosci te stesso davanti un ottima
 print(CiclaListe(person_invited,message_invited))
 
 #3-5. Changing Guest List
-
 # print Guest can’t make the dinner
 print((person_invited[0]),"Conosci Te Stesso e Conoscerai gli Dei, ma purtroppo alla tua cena non potro partecipare.")
 
@@ -104,8 +103,8 @@ message_invited.insert(0, "Benvenuto")
 message_invited.insert(2, "Ave Scipione")
 message_invited.append("è un piacere averti tra noi")
 
-for i in range(len(person_invited)):
-    print (f"{person_invited[i]}, {message_invited[i]} ")
+# define a function to improve the code # 6-12.
+print(CiclaListe(person_invited,message_invited))
 
 # 3-7. Shrinking Guest List:
 #prints a message saying that you can invite only two people for dinner.
@@ -337,11 +336,12 @@ for city, info in cities.items():
 # the context of the program, or improving the formatting of the output.
 
 
+# look # 3-3. Your Own List / # 3-4. Guest List / #3-5. Changing Guest List/
+
 pet1: dict  = { "kind": "Dog","owner": "Spike"}
 pet2: dict = { "kind": "Cat","owner": "Nerina"}
 pet3: dict = { "kind": "horse","owner": "Charlie"}
 
-#pet1,pet2,pet3["propetario"]= "Umano"
 
 for keyplus in [pet1,pet3,pet2]:
     keyplus["color"] = "red"
