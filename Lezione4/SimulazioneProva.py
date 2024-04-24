@@ -27,15 +27,18 @@ def somma_elementi1(x: list[int], y: list[int]) -> list[int]:
             r:list=x[i]+y[i]
             res.append(r)
         return res
-    elif len(x) !> len(y) :
-        g: list = len
-        print("elif, elif ")
+    elif len(x) != len(y) :
+        g: list = min(x) + min(y)
+        res.append(g)
+        return res
 
 
 
 
 print(somma_elementi1([1,],[1,2]))
 print(somma_elementi1([1,1,1],[1,1,1]))
+
+
 
 
 
