@@ -8,12 +8,11 @@ for i in l:
 for j in range(len(l)):
     print(l[j])
 
-
-i=0
-
-while i < len(l): #-> l=[0,1,2,3]
-    print(l[i])
-    i += 1
+#prova con il while 
+i=0 # counter esterno 
+while i < len(l): #-> l=[0,1,2,3] #finche i è minore alla lunghezza della lista 
+    print(l[i]) # scrivendo solo questo il ciclo è infinito 
+    i += 1 # questo blocca il ciclo while perche la richiesta è stata soddisfatta
 
 ## scansione con dict
 
@@ -40,14 +39,19 @@ while i < len(keys):
 # costruire una lista di numeri casuali lunga 100 e
 # stampare la somma di tutti i suoi numeri
 
-lnc1 = []
-lnc = []
-for i in range(100):
-    lnc.append(random.randint(1, 10))
-    lnc1.append(random.randint(1,100))
+def list_numeri_random (num_max: float,num_start: float, num_end: float):
+    lnc = []
+    for i in range(num_max):
+        lnc.append(random.randint(num_start,num_end))
+    return f"{lnc} {len(lnc)}"
+   
 
-print(lnc)
-print(lnc1)
+print(list_numeri_random(60,-100,100))
+
+print(list_numeri_random(100,-100,100))
+
+
+
 
 
 def prova_if_else (x: float,y: float):
