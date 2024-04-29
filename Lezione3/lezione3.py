@@ -76,6 +76,65 @@ for i in range(1,21,2):
 for i in range(3,31,3):
     print(i)
 
+#4-8. Cubes: 
+#A number raised to the third power is called a cube. For example, 
+#the cube of 2 is written as 2**3 in Python. Make a list of the first 10 cubes
+# (that is, the cube of each integer from 1 through 10), 
+# and use a for loop to print out the value of each cube.
+
+#create a list with numeber from 1 trough 10 
+list_cube: list =[]
+for i in range(1,11):
+    list_cube.append(i)
+
+list_cube_com=[x for x in range(1,11)]
+print(list_cube_com)
+
+for z in  list_cube:
+    x=z**3
+    print(f"The cube of numner{z} is: {x}")
+
+#4-9. Cube Comprehension:
+# Use a list comprehension to generate a list of the first 10 cubes.
+list_comprehension_cube=[x **3 for x in list_cube ]
+print(list_comprehension_cube)
+
+#4-10. Slices: 
+#Using one of the programs you wrote in this chapter, add several lines to the end 
+#of the program that do the following:
+# Print the message The first three items in the list are:.
+# Then use a slice to print the first three items from that program’s list.
+# Print the message Three items from the middle of the list are:
+# • Print the message The last three items in the list are:. Then use a slice to print the last three items in the list.
+
+print(f"The first three items in the list are:{list_comprehension_cube[:3]}")
+print(f"Three items from the middle of the list are:{list_comprehension_cube[4:7]}")
+print(f"The last three items in the list are:{list_comprehension_cube[7:10]}")
+
+# 4-11. My Pizzas, Your Pizzas:
+# My Pizzas, Your Pizzas: Start with your program from Exercise 4-1. Make a copy of the list of pizzas, 
+# and call it friend_pizzas.
+friends_pizza: list = list_pizza.copy()
+
+# Add a new pizza to the original list.
+list_pizza.append("Napoletana")
+
+# Add a different pizza to the list friend_pizzas.
+friends_pizza.insert(4,"4 Stagioni")
+
+# Prove that you have two separate lists.
+print(f"{list_pizza} {friends_pizza}")
+
+# Print the message My favorite pizzas are:, and then use a for 
+#loop to print the first list.
+
+for i in list_pizza:
+    print(f"My favorite pizzas are{i}")
+# Print the message My friend’s favorite pizzas are:,
+# and then use a for loop to print the second list. Make sure each new pizza is stored in the appropriate list.
+
+
+
 
 
 
