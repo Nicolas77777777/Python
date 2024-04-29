@@ -1,5 +1,5 @@
 
-#4-1. Pizzas
+# 4-1. Pizzas
 #Think of at least three kinds of your favorite pizza. Store these pizza
 # names in a list,and then use a for loop to print the name of each pizza.
 list_pizza : list =["Margherita","4 Formaggi","Zucca e Guanciale"]
@@ -27,7 +27,7 @@ print(my_list)
 # such as I really love pizza!
 print(f"La pizza {list_pizza[0]} è davvero buona con la bufala\nanche la pizza {list_pizza[1]} non scherza\ninfine la pizza {list_pizza[2]} è la mia preferita\nAdoro la pizza.")
 
-#4-2. Animals
+# 4-2. Animals
 #Think of at least three different animals that have a common characteristic. 
 #Store the names of these animals in a list,
 #and then use a for loop to print out the name of each animal.
@@ -40,11 +40,46 @@ for i in animals:
 # Add a line at the end of your program, indicating what these animals have in common. 
 #You could print a phrase, such as Any of these animals would make a great pet!
 #These animals are part of the canidae family
-statements_animals=["it is a totemic animal."," is man's best friend","is clever"]
+statements_animals: list =["it is a totemic animal."," is man's best friend","is clever"]
 
 for i in range(len(animals)):
     print(f"{animals[i]} {statements_animals[i]} \nThese animals are part of the canidae family")
 
+# 4-3. 
+#Counting to Twenty: Use a for loop to print the numbers from 1 to 20, inclusive.
+for i in range(1,21):
+    print(i)
+
+# 4-4.One Million:
+#  Make a list of the numbers from one to one million, and then use a for loop to print the numbers. 
+million: list =[]
+for i in range(1,100001):
+    million.append(i)
+
+print(million)
+
+# 4-5.  Summing a Million:
+# Make a list of the numbers from one to one million, 
+#and then use min() and max() to make sure your list actually starts at one and ends at one million. 
+#Also, use the sum() function to see how quickly Python can add a million numbers.
+
+print(f"use min()= {min(million)} and max()= {max(million)} use the sum() = {sum(million)}")
+
+# 4-6. Odd Numbers: 
+# Use the third argument of the range() function to make a list of 
+# the odd numbers from 1 to 20. Use a for loop to print each number.
+for i in range(1,21,2):
+    print(i)
+
+# 4-7. Threes: Make a list of the multiples of 3, from 3 to 30. 
+#Use a for loop to print the numbers in your list.
+for i in range(3,31,3):
+    print(i)
+
+
+
+
+    
 
     
 
