@@ -28,9 +28,25 @@ print(my_list)
 print(f"La pizza {list_pizza[0]} è davvero buona con la bufala\nanche la pizza {list_pizza[1]} non scherza\ninfine la pizza {list_pizza[2]} è la mia preferita\nAdoro la pizza.")
 
 #4-2. Animals
+#Think of at least three different animals that have a common characteristic. 
+#Store the names of these animals in a list,
+#and then use a for loop to print out the name of each animal.
+animals: list =["Wolf","Dog","Fox"]
+
+for i in animals:
+    print(i)
+
+#Modify the program to print a statement about each animal, such as A dog would make a great pet.
+# Add a line at the end of your program, indicating what these animals have in common. 
+#You could print a phrase, such as Any of these animals would make a great pet!
+#These animals are part of the canidae family
+statements_animals=["it is a totemic animal."," is man's best friend","is clever"]
+
+for i in range(len(animals)):
+    print(f"{animals[i]} {statements_animals[i]} \nThese animals are part of the canidae family")
 
 
-
+    
 
     
 
