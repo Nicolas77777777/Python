@@ -40,6 +40,18 @@ print(out)
 #  a message that reads I love Python. Make a large shirt and a medium shirt with
 #  the default message, and a shirt of any size with a different message.
 
+def make_shirt_large(x = ""):
+    x = input("Scegli la taglia tra small medium e large ")
+    if x == "medium":
+        return(f'size of your shirt is: {x} and your messagge is: I love Python')
+    elif x == "large":
+        return(f'size of your shirt is: {x} and your messagge is: I love Python')
+    else:
+        return(f'size of your shirt is: {x} and your messagge is: I love Java')
+
+print(make_shirt_large())
+
+
 
 
 
