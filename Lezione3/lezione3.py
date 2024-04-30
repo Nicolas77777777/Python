@@ -408,8 +408,6 @@ for i in new_users:
         i is not current_users
         print(f"{i} that the username is available.")
 
-
-
 # 5-11.
 #  Ordinal numbers indicate their position in a list, such as 1st or 2nd. Most ordinal numbers end in th, except 1, 2, and 3.
 #  Store the numbers 1 through 9 in a list. Loop through the list.
