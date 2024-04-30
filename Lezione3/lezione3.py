@@ -367,7 +367,65 @@ for i in user_name:
     else:
         print(f' Hello {i}, thank you for logging in again.')
 
+# 5-9. No Users:
+#  Add an if test to hello_admin.py to make sure the list of users is not empty.
+#  If the list is empty, print the message We need to find some users!
+#  Remove all of the usernames from your list, and make sure the correct message is printed.
 
+current_users: list = user_name.copy()
+user_name.clear()
+
+if user_name:
+    for i in user_name:
+        print("thank you for logging in again.'")
+else :
+    print("We need to find some users!")
+
+# 5-10. Checking Usernames:
+#  do the following to create a program that simulates how websites ensure that everyone has a unique username.
+#  Make a list of five or more usernames called current_users.
+#  Make another list of five usernames called new_users. Make sure one or two of 
+#  the new usernames are also in the current_users list.
+#  Loop through the new_users list to see if each new username has already been used. 
+#  If it has, print a message that the person will need to enter a new username. If a username has not been used, 
+#  print a message saying that the username is available.
+#  Make sure your comparison is case insensitive. If 'John' has been used, 'JOHN' should not be accepted.
+# (To do this, you’ll need to make a copy of current_users containing the lowercase versions of all existing users.)
+    
+
+current_users[4]="franco"
+
+new_users: list = ["mario", 
+                   "giulia", 
+                   "dino",
+                   "mimmo",
+                   "demetrio"]
+
+for i in new_users:
+    if i in current_users:
+        print(f'{i} will need to enter a new username')
+    else: 
+        i is not current_users
+        print(f"{i} that the username is available.")
+
+
+
+# 5-11.
+#  Ordinal numbers indicate their position in a list, such as 1st or 2nd. Most ordinal numbers end in th, except 1, 2, and 3.
+#  Store the numbers 1 through 9 in a list. Loop through the list.
+#  Use an if-elif-else chain inside the loop to print the proper ordinal ending for each number. 
+#  Your output should read "1st 2nd 3rd 4th 5th 6th 7th 8th 9th", and each result should be on a separate line
+
+numbers: list = list(range(1, 10))
+for numbers in numbers:
+    if numbers == 1:
+        print(f"{numbers}st")
+    elif numbers == 2:
+        print(f"{numbers}nd")
+    elif numbers == 3:
+        print(f"{numbers}rd")
+    else:
+        print(f"{numbers}th")
 
 
 
