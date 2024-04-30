@@ -40,7 +40,7 @@ print(out)
 #  a message that reads I love Python. Make a large shirt and a medium shirt with
 #  the default message, and a shirt of any size with a different message.
 
-def make_shirt_large(x = ""):
+def make_shirt_large(x:str = ""):
     x = input("Scegli la taglia tra small medium e large ")
     if x == "medium":
         return(f'size of your shirt is: {x} and your messagge is: I love Python')
@@ -51,10 +51,6 @@ def make_shirt_large(x = ""):
 
 print(make_shirt_large())
 
-
-
-
-
 # 8-5. Cities: 
 #  Write a function called describe_city() that accepts the name of a city
 #  and its country. The function should print a simple sentence, such as 
@@ -62,6 +58,13 @@ print(make_shirt_large())
 #  Call your function for three different cities, at least one of which is not 
 #  in the default country.
 
+def describe_city(name_city:str ="",name_country:str = "Italy"):
+
+    return (f'{name_city} is in {name_country}')
+
+print(describe_city("Roma"))
+print(describe_city("Firenze"))
+print(describe_city("Lima"))
 
 
 # 8-6. City Names:
