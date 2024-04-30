@@ -326,6 +326,50 @@ print(f'the person {age} years old, {function_age(age)}')
 print(f'the person {age} years old, {function_age(age)}')
 
 # 5-7. Favorite Fruit:
+#  Make a list of your favorite fruits, and then write a series of independent if statements 
+#  that check for certain fruits in your list.
+#  Make a list of your three favorite fruits and call it favorite_fruits.
+#  Write five if statements. Each should check whether a certain kind of fruit is in your list. 
+#  If the fruit is in your list, the if block should print a statement, such as You really like Apples!
+
+favorite_fruits = ["strawberry",
+                    "banana", 
+                    "peach"
+]
+
+if "strawberry" in favorite_fruits:
+    print ("such as You really like strawberry !")
+if "banana" in favorite_fruits:
+    print ("such as You really like banana !")
+if "peach" in favorite_fruits:
+    print ("such as You really like peach !")
+if "anguria" is not  favorite_fruits:
+    print ("anguria its not present !")
+if "apple" is not  favorite_fruits:
+    print ("apple its not present !")
+
+
+# 5-8. Hello Admin:
+#  Make a list of five or more usernames, including the name 'admin'. Imagine you are writing code that will 
+#  print a greeting to each user after they log in to a website. Loop through the list, and print a greeting to each user.
+#  If the username is 'admin', print a special greeting, such as Hello admin, would you like to see a status report?
+#  Otherwise, print a generic greeting, such as Hello Jaden, thank you for logging in again.
+user_name: list = ["mario", 
+                   "giulia", 
+                   "francesco", 
+                   "laura", 
+                   "admin"
+                   ]
+
+for i in user_name:
+    if i == "admin":
+        print("Hello admin, would you like to see a status report?")
+    else:
+        print(f' Hello {i}, thank you for logging in again.')
+
+
+
+
 
 
 
