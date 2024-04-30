@@ -1,3 +1,5 @@
+import random
+
 
 # 4-1. Pizzas
 #  Think of at least three kinds of your favorite pizza. Store these pizza
@@ -215,16 +217,120 @@ print(x>11)
 # 5-2. More Conditional Tests:
 # Have at least one True and one False result for each of the following:
 
-# Tests for equality and inequality with strings
+# Tests for equality and inequality with strings/ Test using the e keyword and the o keyword
 
 string_one: str = "Ama l'amicizia"
 string_two: str = "Preferisci ciò che è sacro"
 
-if string_one == "Ama l'amicizia" and string_one != string_two :
+if string_one == "Ama l'amicizia" or string_one != string_two :
     print(f"Ama l'amicizia == {string_one}, I predict True ")
     print(string_one == "Ama l'amicizia")
     print(f"if {string_one} is == a {string_two},I predict False")
     print(string_one == string_two)
+
+# Tests using the lower() method Test using the e keyword and the o keyword
+if string_one.lower() == "ama l'amicizia" and string_one.lower != "Ama l'amicizia":
+     print(f" if{string_one.lower()}, is == 'ama l'amicizia' I predict True")
+     print(string_one.lower() == "ama l'amicizia")
+     print(f"{string_one.lower()} is == 'Ama l'amicizia',I predict False")
+     print(string_one.lower == "Ama l'amicizia")
+
+# Numerical tests involving equality and inequality, greater than and less
+# than, greater than or equal to, and less than or equal to
+
+# look at exercise number: 5-1
+
+# Test whether an item is in a list or is not in a list
+print(f'27 is in list_comprehension_cube, I predict True  {27 in list_comprehension_cube}')
+print(f'28 is in list_comprehension_cube, I predict True  {28 is not list_comprehension_cube}')
+
+# 5-3. Alien Colors 
+#  Imagine an alien has just been shot down during a game. Create a variable called alien_color
+#  and assign it the value "green", "yellow", or "red".
+
+alien_color_list: list = ["green",
+                          "yellow",
+                          "red"
+                          ]
+
+alien_color= alien_color_list[0]
+
+# Write an if statement to test whether the alien's color is green. If it is, 
+# it prints a message that the player has just earned 5 points.
+# Write a version of this program that passes the if test and another that fails.
+# (The version that fails will have no output.)
+if alien_color == "green":
+    print("you earned 5 points")
+
+# 5-4. Alien Colors #2:
+#  If the alien's color is green, print a statement that the player just earned 5 points for shooting the alien.
+#  If the alien's color isn't green, print a statement that the player just earned 10 points.
+#  Write one version of this program that runs the if block and another that runs the else block.
+
+alien_color= alien_color_list[1]
+
+if alien_color == "green":
+    print("you earned 5 points")
+else : 
+    alien_color != "green"
+    print("you earned 10 points")
+
+# 5-5. Alien Colors #3:
+#  If the alien is green, print a message that the player earned 5 points.
+#  If the alien is yellow, print a message that the player earned 10 points.
+#  If the alien is red, print a message that the player earned 15 points.
+#  Write three versions of this program, making sure each message is printed for the appropriate alien color.
+
+alien_color= alien_color_list[2]
+
+if alien_color == "green":
+    print("you earned 5 points")
+elif alien_color == "yellow":
+    print("you earned 10 points")
+else:
+ alien_color == "red"
+print("you earned 15 points")
+
+# 5-6. Stages of Life: 
+#  Write an if-elif-else chain that determines a person’s stage of life. Set a value for the variable age, and then:
+#  If the person is less than 2 years old, print a message that the person is a baby.
+#  If the person is at least 2 years old but less than 4, print a message that the person is a toddler.
+#  If the person is at least 4 years old but less than 13, print a message that the person is a kid.
+#  If the person is at least 13 years old but less than 20, print a message that the person is a teenager.
+#  If the person is at least 20 years old but less than 65, print a message that the person is an adult.
+#  If the person is age 65 or older, print a message that the person is an elder.
+
+
+def age (x):
+    if x < 2:
+        return ("You are a baby")
+    elif x < 4 and x >= 2:
+        print("You are a toddler")
+    elif x >= 4 and x < 13:
+        print("You are a kid")
+    elif x >= 13 and x < 20:
+        print("You are a teenager")
+    elif x >= 20 and x < 65:
+        print("You are adult")
+    else: 
+        x >= 65 and x < 200
+        print("You are adult")
+
+
+
+print(age(1))
+print(age(2))
+print(age(3))
+print(age(4))
+print(age(13))
+print(age(59))
+
+
+
+
+
+
+
 
 
 
