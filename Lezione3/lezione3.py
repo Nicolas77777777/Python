@@ -300,30 +300,38 @@ print("you earned 15 points")
 #  If the person is at least 20 years old but less than 65, print a message that the person is an adult.
 #  If the person is age 65 or older, print a message that the person is an elder.
 
-
-def age (x):
+# create a function
+def function_age (x):
     if x < 2:
         return ("You are a baby")
     elif x < 4 and x >= 2:
-        print("You are a toddler")
+        return ("You are a toddler")
     elif x >= 4 and x < 13:
-        print("You are a kid")
+        return ("You are a kid")
     elif x >= 13 and x < 20:
-        print("You are a teenager")
+        return ("You are a teenager")
     elif x >= 20 and x < 65:
-        print("You are adult")
+        return ("You are adult")
     else: 
-        x >= 65 and x < 200
-        print("You are adult")
+        x >= 65 and x < 120
+        return ("You are elder")
+
+# I define a variable that generates a random number. 
+#this variable will be the argument in the function
+age: int= random.randint(1,120)
+
+print(f'the person {age} years old, {function_age(age)}')
+print(f'the person {age} years old, {function_age(age)}')
+print(f'the person {age} years old, {function_age(age)}')
+print(f'the person {age} years old, {function_age(age)}')
+
+# 5-7. Favorite Fruit:
 
 
 
-print(age(1))
-print(age(2))
-print(age(3))
-print(age(4))
-print(age(13))
-print(age(59))
+
+
+
 
 
 
