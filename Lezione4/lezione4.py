@@ -114,8 +114,8 @@ print(f'{album_one} {albums_two} {albums_three} {albums_four}')
 #  with the user’s input and print the dictionary that’s created. 
 #  Be sure to include a quit value in the while loop.
 
-user_artist_name=None
-user_album_name
+user_artist_name=""
+user_album_name=""
 while user_artist_name == None and user_album_name ==None:
      user_artist_name == input (" scrivi il nome artista")
      user_album_name=input (" scrivi il nome album")
@@ -135,7 +135,7 @@ def show_messages( messages : list =[]):
     for i in messages:
         print(i) 
     
-    print(show_messages(text_messages))
+print(show_messages(text_messages))
 
 # 8-10. Sending Messages:
 #  Start with a copy of your program from Exercise 8-9. 
@@ -143,11 +143,22 @@ def show_messages( messages : list =[]):
 #  and moves each message to a new list called sent_messages as it’s printed.
 #  After calling the function, print both of your lists to make sure the messages were moved correctly.
 
+def send_messages( messages : list =[]):
+    sent_messages: list =[]
+    for i in messages:
+        print(i) 
+    for x in messages:
+        sent_messages.append(x)
+    return(sent_messages)
+    
+print(send_messages(text_messages))
 
 
 # 8-11. Archived Messages: Start with your work from Exercise 8-10. Call the function send_messages() 
 #  with a copy of the list of messages. After calling the function, print both of your lists to show that 
 #  the original list has retained its messages.
+
+
 
 # 8-12. Sandwiches: Write a function that accepts a list of items a person wants on a sandwich. 
 #  The function should have one parameter that collects as many items as the function call provides, 
