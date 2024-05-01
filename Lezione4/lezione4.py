@@ -105,7 +105,7 @@ albums_two = make_album("Pink floid"," The Wall")
 albums_three = make_album("Vasco Rossi","C'è ci dice no")
 albums_four= make_album("De Andre","Anime perse",number_song=10)
 
-print(f'{album_one} {albums_two} {albums_three}{albums_four}')
+print(f'{album_one} {albums_two} {albums_three} {albums_four}')
 
 
 # 8-8. User Albums:
@@ -115,7 +115,7 @@ print(f'{album_one} {albums_two} {albums_three}{albums_four}')
 #  Be sure to include a quit value in the while loop.
 
 user_artist_name=None
-user_album_name=None
+user_album_name
 while user_artist_name == None and user_album_name ==None:
      user_artist_name == input (" scrivi il nome artista")
      user_album_name=input (" scrivi il nome album")
@@ -131,17 +131,19 @@ text_messages: list =["ciao",
                       "come stai?",
                       "spero tutto bene"]
 
-def show_messages(messages:list =[]):
+def show_messages( messages : list =[]):
     for i in messages:
-      return messages[i]
-
-print(show_messages(text_messages))
+        print(i) 
+    
+    print(show_messages(text_messages))
 
 # 8-10. Sending Messages:
 #  Start with a copy of your program from Exercise 8-9. 
 #  Write a function called send_messages() that prints each text message
 #  and moves each message to a new list called sent_messages as it’s printed.
 #  After calling the function, print both of your lists to make sure the messages were moved correctly.
+
+
 
 # 8-11. Archived Messages: Start with your work from Exercise 8-10. Call the function send_messages() 
 #  with a copy of the list of messages. After calling the function, print both of your lists to show that 
