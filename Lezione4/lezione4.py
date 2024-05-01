@@ -211,6 +211,17 @@ print(build_profile("Mario", "Rossi", "45", "via castagneto", "Roma" ))
 #  car = make_car('subaru', 'outback', color='blue', tow_package=True) Print the dictionary that’s
 #  returned to make sure all the information was stored correctly. 
 
+def make_car ( manufacturer, model, arg* ):
+
+    profile: dict = {
+                   "marca":manufacturer,
+                   "model":model,
+                   }
+    
+    list_profile: list =list(profile.values())
+    str_list_profile=", ".join(list_profile)
+
+    return  str_list_profile
 
 
 # 8-15. Printing Models: 
