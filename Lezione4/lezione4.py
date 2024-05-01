@@ -195,9 +195,10 @@ def build_profile ( name, surname, age, adress, city ):
                     "city":city 
 
                    }
-    
+    list_profile: list =list(profile.values())
+    str_list_profile=", ".join(list_profile)
 
-    return profile
+    return list_profile, str_list_profile
 
 print(build_profile("Mario", "Rossi", 45, "via castagneto", "Roma" ))
 
