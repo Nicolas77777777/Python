@@ -149,21 +149,33 @@ def send_messages( messages : list =[]):
         print(i) 
     for x in messages:
         sent_messages.append(x)
+       
     return(sent_messages)
     
 print(send_messages(text_messages))
 
 
-# 8-11. Archived Messages: Start with your work from Exercise 8-10. Call the function send_messages() 
+# 8-11. Archived Messages:
+#  Start with your work from Exercise 8-10. Call the function send_messages() 
 #  with a copy of the list of messages. After calling the function, print both of your lists to show that 
 #  the original list has retained its messages.
 
+def send_messages2( messages : list =[]):
+    sent_messages: list =[]
+    for i in messages:
+        print(i) 
+    for x in messages:
+        sent_messages.append(x)
+        archived_messagessent = sent_messages.copy()
+    return sent_messages, archived_messagessent
+    
+print(send_messages2(text_messages))
 
 
 
 
-
-# 8-12. Sandwiches: Write a function that accepts a list of items a person wants on a sandwich. 
+# 8-12. Sandwiches:
+#  Write a function that accepts a list of items a person wants on a sandwich. 
 #  The function should have one parameter that collects as many items as the function call provides, 
 #  and it should print a summary of the sandwich that’s being ordered. Call the function three times,
 #  using a different number of arguments each time.
@@ -211,18 +223,18 @@ print(build_profile("Mario", "Rossi", "45", "via castagneto", "Roma" ))
 #  car = make_car('subaru', 'outback', color='blue', tow_package=True) Print the dictionary that’s
 #  returned to make sure all the information was stored correctly. 
 
-def make_car ( manufacturer, model, arg* ):
+def make_car (manufacturer, model, **kwargs ):
 
-    profile: dict = {
+    car_dict: dict = {
                    "marca":manufacturer,
                    "model":model,
+                   "kwargs":kwargs
+                
                    }
-    
-    list_profile: list =list(profile.values())
-    str_list_profile=", ".join(list_profile)
+    return  car_dict
 
-    return  str_list_profile
-
+car= make_car(manufacturer="Fiat",model="panda",color="blu", titt=True)
+print(car)
 
 # 8-15. Printing Models: 
 #  Put the functions for the example printing_models.py in a separate file called printing_functions.py.
