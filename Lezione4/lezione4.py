@@ -193,17 +193,14 @@ def build_profile ( name, surname, age, adress, city ):
                    "age":age,
                    "adress":adress,
                     "city":city 
-
                    }
+    
     list_profile: list =list(profile.values())
     str_list_profile=", ".join(list_profile)
 
-    return list_profile, str_list_profile
+    return  str_list_profile
 
-print(build_profile("Mario", "Rossi", 45, "via castagneto", "Roma" ))
-
-
-
+print(build_profile("Mario", "Rossi", "45", "via castagneto", "Roma" ))
 
 # 8-14. Cars:
 #  Write a function that stores information about a car in a dictionary.
@@ -213,6 +210,8 @@ print(build_profile("Mario", "Rossi", 45, "via castagneto", "Roma" ))
 #  such as a color or an optional feature. Your function should work for a call like this one:
 #  car = make_car('subaru', 'outback', color='blue', tow_package=True) Print the dictionary that’s
 #  returned to make sure all the information was stored correctly. 
+
+
 
 # 8-15. Printing Models: 
 #  Put the functions for the example printing_models.py in a separate file called printing_functions.py.
