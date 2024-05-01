@@ -184,6 +184,24 @@ make_sandwich("jam", "cheese", "salad", "egg", "mayonnaise")
 #  All the values must be passed to the function as parameters.
 #  The function then must return a string such as "Eric Crow, age 45, hair brown, weight 67"
 
+
+def build_profile ( name, surname, age, adress, city ):
+
+    profile: dict = {
+                   "name":name,
+                   "surname":surname,
+                   "age":age,
+                   "adress":adress,
+                    "city":city 
+
+                   }
+    
+
+    return profile
+
+
+
+
 # 8-14. Cars:
 #  Write a function that stores information about a car in a dictionary.
 #  The function should always receive a manufacturer and a model name. 
