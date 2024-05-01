@@ -106,8 +106,8 @@ print(f'{album_one} {albums_two} {albums_three}')
 #  with the user’s input and print the dictionary that’s created. 
 #  Be sure to include a quit value in the while loop.
 
-user_artist_name=""
-user_album_name=""
+user_artist_name=None
+user_album_name=None
 while user_artist_name == None and user_album_name ==None:
      user_artist_name == input(" scrivi il nome artista")
      user_album_name=input("scrivi il nome album")
