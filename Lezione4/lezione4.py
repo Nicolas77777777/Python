@@ -88,16 +88,24 @@ print(describe_city1("Lima","Peru"))
 #  on an album. If the calling line includes a value for the number of songs, add that value to the album’s 
 #  dictionary. Make at least one new function call that includes the number of songs on an album.
 
-def make_album(artist_name : str="",album_title : str = "",number_song = None ):
-    music: dict={artist_name:album_title,number_song:None}
+def make_album( artist_name , album_title , number_song = 0 ):
+
+    music: dict = {
+                   'artist_name': artist_name,
+                   'album":album':album_title,
+                   }
+    
+    if number_song:
+        music[ "number_song"] = number_song
+
     return music
 
-album_one = (make_album("Prince","Purple Rain"))
-albums_two = (make_album("Pink floid"," The Wall"))
-albums_three = (make_album("Vasco Rossi","C'è ci dice no"))
-albums_four= (make_album("Vasco Rossi","C'è ci dice no",12))
+album_one = make_album("Prince","Purple Rain")
+albums_two = make_album("Pink floid"," The Wall")
+albums_three = make_album("Vasco Rossi","C'è ci dice no")
+albums_four= make_album("De Andre","Anime perse",number_song=10)
 
-print(f'{album_one} {albums_two} {albums_three}')
+print(f'{album_one} {albums_two} {albums_three}{albums_four}')
 
 
 # 8-8. User Albums:
@@ -109,8 +117,8 @@ print(f'{album_one} {albums_two} {albums_three}')
 user_artist_name=None
 user_album_name=None
 while user_artist_name == None and user_album_name ==None:
-     user_artist_name == input(" scrivi il nome artista")
-     user_album_name=input("scrivi il nome album")
+     user_artist_name == input (" scrivi il nome artista")
+     user_album_name=input (" scrivi il nome album")
 
 print(make_album(user_artist_name,user_album_name))
 
