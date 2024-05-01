@@ -199,6 +199,8 @@ def build_profile ( name, surname, age, adress, city ):
 
     return profile
 
+print(build_profile("Mario", "Rossi", 45, "via castagneto", "Roma" ))
+
 
 
 
