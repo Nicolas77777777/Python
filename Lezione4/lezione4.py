@@ -167,12 +167,9 @@ def send_messages2( messages : list =[]):
     for x in messages:
         sent_messages.append(x)
         archived_messagessent = sent_messages.copy()
-    return sent_messages, archived_messagessent
+    return f'\nmessaggi inviati {sent_messages}\nmessaggi archiaviati {archived_messagessent}'
     
 print(send_messages2(text_messages))
-
-
-
 
 # 8-12. Sandwiches:
 #  Write a function that accepts a list of items a person wants on a sandwich. 
