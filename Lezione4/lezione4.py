@@ -158,12 +158,34 @@ print(send_messages(text_messages))
 #  with a copy of the list of messages. After calling the function, print both of your lists to show that 
 #  the original list has retained its messages.
 
+def make_sandwich(*items):
+    """Make a sandwich with the given items."""
+    print("\nI'll make you a great sandwich:")
+    for item in items:
+        print(f"  ...adding {item} to your sandwich.")
+    print("Your sandwich is ready!")
+
+make_sandwich('roast beef', 'cheddar cheese', 'lettuce', 'honey dijon')
+make_sandwich('turkey', 'apple slices', 'honey mustard')
+make_sandwich('peanut butter', 'strawberry jam')
+
+
 
 
 # 8-12. Sandwiches: Write a function that accepts a list of items a person wants on a sandwich. 
 #  The function should have one parameter that collects as many items as the function call provides, 
 #  and it should print a summary of the sandwich that’s being ordered. Call the function three times,
 #  using a different number of arguments each time.
+
+def make_sandwich(*items):
+    print("\n What do you want in your sandwich?:")
+    for item in items:
+        print(f'I like {item} in my sandwich.')
+    print("Il tuo panino è pronto")
+
+make_sandwich("tomatos", "cheese", "beaf")
+make_sandwich("egg", "tomatos")
+make_sandwich("jam", "cheese", "salad", "egg", "mayonnaise")
 
 # 8-13. User Profile:
 #  Build a profile of yourself by calling build_profile(), 
