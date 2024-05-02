@@ -69,5 +69,8 @@ print(check_combination(True, False, True))
 # Se una chiave è presente in entrambi, somma i loro valori.
 
 def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
-   for i in dict1:
-      if i
+   dict3={}
+   for key in dict1.keys:
+      if key == dict2.keys:
+    
+    
