@@ -72,5 +72,3 @@ def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
    dict3={}
    for key in dict1.keys:
       if key == dict2.keys:
-    
-    
