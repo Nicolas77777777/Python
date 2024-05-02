@@ -59,3 +59,15 @@ def check_combination(conditionA: bool, conditionB: bool, conditionC: bool) -> s
     
     
 print(check_combination(True, False, True))
+
+
+
+
+#print(merge_dictionaries({'x': 5}, {'x': -5}))
+
+# Scrivi una funzione che unisce due dizionari. 
+# Se una chiave è presente in entrambi, somma i loro valori.
+
+def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
+   for i in dict1:
+      if i
