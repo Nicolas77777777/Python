@@ -21,26 +21,27 @@ print(is_magic_number(123))
 # di una lista che sono maggiori di un dato
 # valore intero definito threshold.
 
-#def sum_above_threshold(numbers: list[int]):
+def sum_above_threshold(numbers: list[int],x: int):
+    tot=0
+    for i  in numbers:
+       if i > x:
+          tot= tot+i
+    return tot
+          
    
 
+print(sum_above_threshold([15, 5, 25], 20))
 
-#print(sum_above_threshold([15, 5, 25], 20))
-
-# lista =(15, 5, 25)
-# x= 20 
-# count=[]
-# for i in lista:
-#    if x < lista[i]:
-      
-#       lista(min(x))
-
-   
-
-# numbers: list[int] = [1, 2; 3, 4, 5)
-
-# for i in range(numbers):
-#     #print('Number:, i)
+lista =(15, 5, 25)
+x= 20 
+tot=0
+for i in lista:
+      if i > x :
+         tot= tot+i
+print(tot)
+        
+         
+         
    
 # Scrivi una funzione che verifica se una combinazione di condizioni (A, B, e C) 
 # è soddisfatta per procedere con un'operazione. L'operazione può procedere solo 
