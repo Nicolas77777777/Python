@@ -47,3 +47,14 @@ print(is_magic_number(123))
 # se la condizione A è vera o se entrambe le condizioni B e C sono vere.
 # La funzione deve ritornare "Operazione permessa" oppure "Operazione negata" 
 # a seconda delle condizioni che sono soddisfatte.
+
+def check_combination(conditionA: bool, conditionB: bool, conditionC: bool) -> str:
+    # cancella pass e scrivi il tuo codice
+    if conditionA == True or conditionB and conditionC ==True:
+       return "Operazione permessa"
+    else:
+       return  "Operazione negata"
+    
+    
+    
+print(check_combination(True, False, True))
