@@ -27,6 +27,23 @@ print(is_magic_number(123))
 
 #print(sum_above_threshold([15, 5, 25], 20))
 
-lista: list =([15, 5, 25], 20)
-for i in lista:
-   print(i)
+# lista =(15, 5, 25)
+# x= 20 
+# count=[]
+# for i in lista:
+#    if x < lista[i]:
+      
+#       lista(min(x))
+
+   
+
+# numbers: list[int] = [1, 2; 3, 4, 5)
+
+# for i in range(numbers):
+#     #print('Number:, i)
+   
+# Scrivi una funzione che verifica se una combinazione di condizioni (A, B, e C) 
+# è soddisfatta per procedere con un'operazione. L'operazione può procedere solo 
+# se la condizione A è vera o se entrambe le condizioni B e C sono vere.
+# La funzione deve ritornare "Operazione permessa" oppure "Operazione negata" 
+# a seconda delle condizioni che sono soddisfatte.
