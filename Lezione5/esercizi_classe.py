@@ -1,4 +1,4 @@
-# set insieme
+# Esericizi in classe 02/05/2024
 
 # Scrivi una funzione che, dato un numero intero,
 # determina se è un "numero magico".
@@ -13,7 +13,6 @@ def is_magic_number(num: int) -> bool:
   else:
     return False
   
-
 print(is_magic_number(70))
 print(is_magic_number(123))
 
@@ -28,8 +27,6 @@ def sum_above_threshold(numbers: list[int],x: int):
           tot= tot+i
     return tot
           
-   
-
 print(sum_above_threshold([15, 5, 25], 20))
 
 lista =(15, 5, 25)
@@ -40,9 +37,6 @@ for i in lista:
          tot= tot+i
 print(tot)
         
-         
-         
-   
 # Scrivi una funzione che verifica se una combinazione di condizioni (A, B, e C) 
 # è soddisfatta per procedere con un'operazione. L'operazione può procedere solo 
 # se la condizione A è vera o se entrambe le condizioni B e C sono vere.
@@ -50,15 +44,24 @@ print(tot)
 # a seconda delle condizioni che sono soddisfatte.
 
 def check_combination(conditionA: bool, conditionB: bool, conditionC: bool) -> str:
-    # cancella pass e scrivi il tuo codice
     if conditionA == True or conditionB and conditionC ==True:
        return "Operazione permessa"
     else:
        return  "Operazione negata"
     
     
-    
 print(check_combination(True, False, True))
+
+
+# Scrivi una funzione che, data una lista, ritorni un dictionary 
+# che mappa ogni elemento alla sua frequenza nella lista.
+
+# print(frequency_dict(['mela', 'banana', 'mela']))
+# {'mela': 2, 'banana': 1}
+
+lista=['mela', 'banana', 'mela']
+
+
 
 
 
