@@ -4,8 +4,51 @@
 # che calcola la somma elemento per elemento di due liste x e y e restituisce il risultato.
 
 def somma_elementi(x: list[int], y: list[int]) -> list[int]:
+    res: list = []
+    if len(x)  == len(y):
+        for i in range(len(y)):
+            som=x[i]+y[i]
+            res.append(som)
+        return res
+    else:
+        len(x) != len(y)
+        z: list = x[0]+y[0]
+        res.append(z)
+    return res
+
+print(somma_elementi([-18,2,4,5,1,10,12,45,-1,0,45,0,0,0,0,0],[-18,92,91,0,12,-1,48,53,0,0,0,0,-1,7]))
 
 
+# Scrivi una funzione prime_factors(n: int) -> list[int] che trova 
+# i fattori primi di un numero n dato in input
+
+def prime_factors(n: int):
+    numeriprimi=[]
+    while n > 1 :
+        if n % 2:
+            n1= n %2
+            numeriprimi.append(n1)
+        pass
+
+print(prime_factors(4))
+
+
+# Nel gioco del blackjack, il valore di una mano è determinato dalla somma dei valori delle carte. 
+# Ogni carta ha un valore compreso tra 2 e 11 compresi. Tuttavia, se una mano contiene un asso,
+# il valore dell'asso può essere 1 o 11, a seconda di quale sia più favorevole al giocatore in 
+# quel momento. Dato un elenco di valori delle carte che 
+# rappresentano una mano di blackjack, scrivi una funzione per determinare il valore totale della mano.
+
+def blackjack_hand_total(cards: list[int]) -> int:
+    somma=[]
+    for i in list:
+        somma= somma+i
+    return somma
+
+
+print(blackjack_hand_total([2, 3, 5]))
+
+#[-36, 94, 95, 5, 13, 9, 60, 98, -1, 0, 45, 0, -1, 7]
 # def const (area: float):
 #     l: int = area/2
 #     w: int = area/2
@@ -39,9 +82,6 @@ def somma_elementi1(x: list[int], y: list[int]) -> list[int]:
         g: list = min(x) + min(y)
         res.append(g)
         return res
-
-
-
 
 print(somma_elementi1([1,],[1,2]))
 print(somma_elementi1([1,1,1],[1,1,1]))
