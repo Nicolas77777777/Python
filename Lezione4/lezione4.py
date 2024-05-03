@@ -9,7 +9,7 @@
 #  and make sure the message displays correctly.
 
 def display_message(): 
-    return "sto imparando le funzioni"
+    return "\nsto imparando le funzioni"
 
 print(display_message())
 
@@ -20,7 +20,7 @@ print(display_message())
 #  making sure to include a book title as an argument in the function call.
 
 def favorite_book(name_book: str =""):
-    return (f'One of my favorite books is {name_book}')
+    return (f'\nOne of my favorite books is {name_book}')
 
 print(favorite_book("The Mahābhārata"))
 
@@ -45,7 +45,7 @@ print(out)
 #  the default message, and a shirt of any size with a different message.
 
 def make_shirt_large(x:str = ""):
-    x = input("Scegli la taglia tra small medium e large ")
+    x = input("\nScegli la taglia tra small medium e large ")
     if x == "medium":
         return(f'size of your shirt is: {x} and your messagge is: I love Python')
     elif x == "large":
@@ -245,6 +245,8 @@ print(car)
 #  from module_name import function_name as fn
 #  import module_name as mn
 #  from module_name import *
+
+# this exercise is in the file priiting_functions.py
 
 # 8-17. Styling Functions: 
 #  Choose any three programs you wrote for this chapter, and make sure 

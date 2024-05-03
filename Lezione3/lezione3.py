@@ -1,3 +1,6 @@
+# Nicola Oliveri
+# 29/04/2024
+
 import random
 
 
@@ -259,6 +262,7 @@ alien_color= alien_color_list[0]
 # it prints a message that the player has just earned 5 points.
 # Write a version of this program that passes the if test and another that fails.
 # (The version that fails will have no output.)
+
 if alien_color == "green":
     print("you earned 5 points")
 
