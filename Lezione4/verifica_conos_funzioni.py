@@ -1,3 +1,11 @@
+#Verifica conoscenze sulle funzioni
+
+# Scrivi una funzione somma_elementi(x: list[int], y: list[int]) -> list[int] 
+# che calcola la somma elemento per elemento di due liste x e y e restituisce il risultato.
+
+def somma_elementi(x: list[int], y: list[int]) -> list[int]:
+
+
 # def const (area: float):
 #     l: int = area/2
 #     w: int = area/2
