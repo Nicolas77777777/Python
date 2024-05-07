@@ -1,7 +1,18 @@
-# class Person:
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
+#  using unit
+
+class Mahābhārata:
+    def __init__(self,name: str, family: str,) -> None:
+        self.name = name
+        self.family = family
+
+
+Pandu = Mahābhārata("Pāṇḍu","Pāṇḍava")
+Dhṛtarāṣṭra = Mahābhārata("Dhṛtarāṣṭra","Karuwa")
+
+
+
+
+        
 
 
 # alice = Person("Alice W.", 45)
@@ -57,32 +68,19 @@ re.printIn()
 # 6. Add a method named printInfo that prints all attributes of the Animal
 
 
-class Animal:
-    def _init_ (self, name: str, legs:str):
-        self.name = name
-        self.legs =legs
+# class Animal:
+#     def _init_ (self, name: str, legs:str):
+#         self.name = name
+#         self.legs =legs
 
-    def get_legs (self):
-        return self.legs
+#     def get_legs (self):
+#         return self.legs
     
-    def set_legs (self, x:int):
+#     def set_legs (self, x:int):
         
 
-    # def __str__(self) -> str:
+#     # def __str__(self) -> str:
     
-    #     pass
+#     #     pass
 
-
-
-
-
-
-
-
-
-
-
-
-
-        
 
