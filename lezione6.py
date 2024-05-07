@@ -68,8 +68,9 @@ class Animal:
     def set_legs (self, x:int):
         
 
-    def __str__(self) -> str:
-        pass
+    # def __str__(self) -> str:
+    
+    #     pass
 
 
 
