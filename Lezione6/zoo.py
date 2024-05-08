@@ -21,11 +21,21 @@
 class Animals:
     def __init__(self, name: str, specie: str, age: float):
         self.name: str = name
-        self.specie: float = specie
-        self.age: str = age
+        self.specie: str = specie
+        self.age: float = age
 
     def __str__(self) -> str:
-        return f'{self.name.capitalize()}(price={self.specie}, descr={self.age})'
+        return f'{self.name.capitalize()}(specie={self.specie}, age ={self.age})'
+    
+
+class Recinto :
+    def __init__(self, dimension, temperature: float, habitat: str):
+        self.dimension = dimension
+        self.temperature: float = temperature
+        self.habitat: str = habitat
+
+    def __str__(self) -> str:
+        return f'{self.dimension()}(temperature={self.temperature}, habitat ={self.habitat})'
 
 class Menu:
     def __init__(self, foods: list[Food] = []):
