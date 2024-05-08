@@ -29,7 +29,10 @@ class Zoo:
 
 
 class Animals:
-    def __init__(self, name : str, species : str, age : float, height : float, width : float, preferred_habitat: str):
+    def __init__(self, name : str, species : str,
+                age : float, height : float,
+                width : float, preferred_habitat: str,
+                healt: float):
 
         self.name: str = name
         self.species: str = species
@@ -37,12 +40,13 @@ class Animals:
         self.height: float = height
         self.width: float = width
         self.preferred_habitat = preferred_habitat
+        self.healt = healt (100 * (1 / age))
 
-        
+
 
     def __str__(self) -> str:
         return f'{self.name.capitalize()}(species ={self.species}, age ={self.age} height = {self.height}\
-           width ={self.width} preferred habitat = {self.preferred_habitat})'
+           width ={self.width} preferred habitat = {self.preferred_habitat} health)'
     
 
     
