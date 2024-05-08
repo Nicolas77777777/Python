@@ -23,16 +23,23 @@
 # Essi possono nutrire gli animali, pulire i recinti e
 # svolgere altri compiti nel nostro zoo virtuale.
 
+class Zoo:
+    def __init__(self) -> None:
+        pass
 
 
 class Animals:
-    def __init__(self, name: str, specie: str, age: float):
+    def __init__(self, name : str, species : str, age : float, height : float, width : float):
+
         self.name: str = name
-        self.specie: str = specie
+        self.species: str = species
         self.age: float = age
+        self.height: float = height
+        self.width: float = width
 
     def __str__(self) -> str:
-        return f'{self.name.capitalize()}(specie={self.specie}, age ={self.age})'
+        return f'{self.name.capitalize()}(species ={self.species}, age ={self.age} height = {self.height}\
+           width ={self.width} )'
     
 
 class Recinto :
