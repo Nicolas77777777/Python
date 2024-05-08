@@ -29,17 +29,22 @@ class Zoo:
 
 
 class Animals:
-    def __init__(self, name : str, species : str, age : float, height : float, width : float):
+    def __init__(self, name : str, species : str, age : float, height : float, width : float, preferred_habitat: str):
 
         self.name: str = name
         self.species: str = species
         self.age: float = age
         self.height: float = height
         self.width: float = width
+        self.preferred_habitat = preferred_habitat
+
+        
 
     def __str__(self) -> str:
         return f'{self.name.capitalize()}(species ={self.species}, age ={self.age} height = {self.height}\
-           width ={self.width} )'
+           width ={self.width} preferred habitat = {self.preferred_habitat})'
+    
+
     
 
 class Recinto :
