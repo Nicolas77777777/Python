@@ -46,8 +46,7 @@ class Animals:
     def __str__(self) -> str:
         return f'{self.name.capitalize()}(species ={self.species}, age ={self.age} height = {self.height}\
            width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health})'
-    
-lupo= Animals("Fenfir","lupus",7,30,20,"Foresta")    
+        
 
 class Recinto :
     def __init__(self, dimension, temperature: float, habitat: str):
@@ -60,3 +59,12 @@ class Recinto :
 
 
 class ZooKeeper :
+
+    def __init__(self) -> None:
+        pass
+
+
+
+lupo= Animals("Fenfir","lupus",7,30,20,"Foresta")
+
+print(lupo.__str__())
