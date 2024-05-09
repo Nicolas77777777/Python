@@ -44,8 +44,8 @@ class Animals:
 
 
     def __str__(self) -> str:
-        return f'{self.name.capitalize()}(species ={self.species}, age ={self.age} height = {self.height}\
-           width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health})'
+        return (f'{self.name.capitalize()} species ={self.species}, age ={self.age} height = {self.height}\n'
+                f'width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health}')
         
 
 class Fence : 
@@ -56,7 +56,7 @@ class Fence :
         self.habitat : str = habitat
 
     def __str__(self) -> str:
-        return f'area = {self.area()} temperature={self.temperature}, habitat ={self.habitat})'
+        return f'area = {self.area()} temperature={self.temperature}, habitat ={self.habitat}'
 
 
 class ZooKeeper :
@@ -72,8 +72,11 @@ class ZooKeeper :
 
 
 
-lupo= Animals("Lupo","lupus",7,30,20,"Foresta")
+lupo = Animals("Lupo","lupus",7,30,20,"Foresta")
 
-gatto_pallas=Animals("Gatto Pallas","Felide",4,15,10,"Steppa")
+gatto_pallas = Animals("Gatto Pallas","Felide",4,15,10,"Steppa")
 
-print(lupo.__str__())
+fence1 = Fence(100,25,"Steppa")
+
+
+print(f'{lupo.__str__()}\n{gatto_pallas.__str__()}\n{fence1}')
