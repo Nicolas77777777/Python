@@ -41,17 +41,16 @@ class Animal:
         self.height: float = height
         self.width: float = width
         self.preferred_habitat = preferred_habitat
-        self.health=  100 * (1 / age)
+        self.health= round( 100 * (1 / age),3)
 
 
     def __str__(self) -> str:
-        return (f'{self.name.capitalize()} (species = {self.species}, age = {self.age} height = {self.height}\n'
-                f'width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health})')
+        return (f'{self.name.capitalize()} (species = {self.species}, age = {self.age} height = {self.height}'
+                + f'width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health})')
     
    
        
 class Fence:
-
     def __init__(self, area : float, temperature : float, habitat : str):
 
         self.area : float = area
@@ -63,7 +62,6 @@ class Fence:
 
 
 class ZooKeeper:
-
     def __init__(self, nome : str, cognome : str, id: float):
          
         self.nome : float = nome

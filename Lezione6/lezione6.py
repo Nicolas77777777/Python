@@ -61,7 +61,7 @@ class Person2(Person):
     def __str__(self) -> str:
         return f'perona {self.name} {self.age}'
 
-
+# 1:39
 
 # ############################
 
