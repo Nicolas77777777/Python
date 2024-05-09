@@ -21,6 +21,9 @@
 # Essi possono nutrire gli animali, pulire i recinti e
 # svolgere altri compiti nel nostro zoo virtuale.
 
+from typing import Any
+
+
 class Zoo:
     def __init__(self) -> None:
         pass
@@ -68,6 +71,10 @@ class ZooKeeper :
 
 
 
+
+
 lupo= Animals("Fenfir","lupus",7,30,20,"Foresta")
 
 print(lupo.__str__())
+
+
