@@ -74,10 +74,12 @@ class ZooKeeper:
         return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id}'
 
 
-# prove argomenti 
+# prove argomenti
+ 
 lupo = Animal("Lupo","lupus",7,30,20,"Foresta")
 gatto_pallas = Animal("Gatto Pallas","Felide",4,15,10,"Steppa")
 fence1 = Fence(100,25,"Steppa")
 franco = ZooKeeper("Franco","Minkia",333333)
 print(f'{lupo.__str__()}\n{gatto_pallas.__str__()}\n{fence1}\n{franco.__str__()}')
+
 # prove argomenti fine 
