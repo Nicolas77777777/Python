@@ -48,23 +48,32 @@ class Animals:
            width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health})'
         
 
-class Recinto :
-    def __init__(self, dimension, temperature: float, habitat: str):
-        self.dimension = dimension
-        self.temperature: float = temperature
-        self.habitat: str = habitat
+class Fence : 
+    def __init__(self, area : float, temperature : float, habitat : str):
+
+        self.area : float = area
+        self.temperature : float = temperature
+        self.habitat : str = habitat
 
     def __str__(self) -> str:
-        return f'{self.dimension()}(temperature={self.temperature}, habitat ={self.habitat})'
+        return f'area = {self.area()} temperature={self.temperature}, habitat ={self.habitat})'
 
 
 class ZooKeeper :
 
-    def __init__(self) -> None:
-        pass
+    def __init__(self, nome : str, cognome : str, id: float):
+         
+        self.nome : float = nome
+        self.cognome : float = cognome
+        self.id : str = id
+
+    def __str__(self) -> str:
+        return f'nome = {self.nome()} cognome = {self.cognome}, id ={self.id})'
 
 
 
-lupo= Animals("Fenfir","lupus",7,30,20,"Foresta")
+lupo= Animals("Lupo","lupus",7,30,20,"Foresta")
+
+gatto_pallas=Animals("Gatto Pallas","Felide",4,15,10,"Steppa")
 
 print(lupo.__str__())
