@@ -1,23 +1,65 @@
 # Exercise 1 
+# definisco una classe con argomeneti \ Self è importante per atribuire argomenti alla classe
 
 class Person:
 
-    def __init__(self, name, age):
+    def __init__(self, name, age, height, weight):
 
         self.name = name
         self.age = age
+        self.height = height
+        self.weight = weight
     
+# creo le persone con la funzione init
+alice = Person("Alice W.", 45,187,60)
+bob = Person("Bob M.", 36, 190, 120)
 
-alice = Person("Alice W.", 45)
-bob = Person("Bob M.", 36)
-
+#stampo nome ed eta di bob 
 print(bob.name, bob.age)
 
+# stampo la persona piu giovane tra bob e Alice 
 if alice.age > bob.age:
      print(alice.name,alice.age)
 else:
     print(bob.name,bob.age) 
 
+
+# creo una lista con l'utilizzo della classe 
+persone = [alice,
+            bob, 
+            Person("davide",19,161,67), 
+            Person("Flavio",29,160,49),
+            Person("Simone",22,180,67)
+            ]
+
+# stampo la persona piu giovane nella lista con un ciclo 
+min_age: int = float('inf') # numero infinito 
+index_min_age: int = 0
+# la funzione enumerate restituisce l'indice e l'oggetto 
+for i, persona in enumerate(persone):
+    if persona.age < min_age:
+        min_age = persona.age
+        index_min_age = i 
+
+print(f'il nome della persona piu giovane è {persone[index_min_age].name}')
+
+for i in range(len(persone)):
+    if persone[i].age < min_age:
+        min_age = persone[i].age
+        index_min_age = i
+
+print(f'il nome della persona piu giovane è {persone[index_min_age].name}'\
+      + f' con eta {persone[index_min_age].age} altezza {persona.height} '\
+        + f' peso {persona.weight}')
+
+
+class Person2(Person):
+
+    def __init__(self, name, age, height, weight):
+        super().__init__(name, age, height, weight)
+
+    def __str__(self) -> str:
+        return f'perona {self.name} {self.age}'
 
 
 
