@@ -25,10 +25,11 @@
 
 class Zoo:
     def __init__(self) -> None:
+
         pass
 
 
-class Animals:
+class Animal:
     def __init__(self, name : str, species : str,
                 age : float, height : float,
                 width : float, preferred_habitat: str,
@@ -47,9 +48,10 @@ class Animals:
         return (f'{self.name.capitalize()} (species = {self.species}, age = {self.age} height = {self.height}\n'
                 f'width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health})')
     
-        
+   
+       
+class Fence:
 
-class Fence : 
     def __init__(self, area : float, temperature : float, habitat : str):
 
         self.area : float = area
@@ -60,7 +62,7 @@ class Fence :
         return f'area = {self.area} temperature = {self.temperature}, habitat = {self.habitat}'
 
 
-class ZooKeeper :
+class ZooKeeper:
 
     def __init__(self, nome : str, cognome : str, id: float):
          
@@ -73,16 +75,9 @@ class ZooKeeper :
 
 
 # prove argomenti 
-
-lupo = Animals("Lupo","lupus",7,30,20,"Foresta")
-
-gatto_pallas = Animals("Gatto Pallas","Felide",4,15,10,"Steppa")
-
+lupo = Animal("Lupo","lupus",7,30,20,"Foresta")
+gatto_pallas = Animal("Gatto Pallas","Felide",4,15,10,"Steppa")
 fence1 = Fence(100,25,"Steppa")
-
 franco = ZooKeeper("Franco","Minkia",333333)
-
-
 print(f'{lupo.__str__()}\n{gatto_pallas.__str__()}\n{fence1}\n{franco.__str__()}')
-
 # prove argomenti fine 
