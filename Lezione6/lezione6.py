@@ -9,6 +9,7 @@ class Person:
         self.age = age
         self.height = height
         self.weight = weight
+        self.hobby: list[str]= []
     
 # creo le persone con la funzione init
 alice = Person("Alice W.", 45,187,60)
@@ -58,8 +59,23 @@ class Person2(Person):
     def __init__(self, name, age, height, weight):
         super().__init__(name, age, height, weight)
 
+
+    def set_hobby(self, new_hobby: str):
+        self.hobby.append(new_hobby)
+
     def __str__(self) -> str:
-        return f'perona {self.name} {self.age}'
+        return f'persona {self.name} {self.age} {self.height} {self.weight} {self.hobby}'
+    
+
+Eugenia= Person2('lorenzo',45,167,67)
+Eugenia.set_hobby("suchiarecazzi")
+Eugenia.set_hobby("e bocchini")
+
+
+
+print(Eugenia)
+
+
 
 # 1:39
 

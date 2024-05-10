@@ -23,7 +23,8 @@ print(remove_elements({5, 6, 7}, [7, 8, 9])) #result {5,6}
 
 def numero_magico(num: int) -> bool:
     # cancella pass e scrivi il tuo codice
-    if num % 4 ==0 and num %6 !=0:
+    if num % 4 == 0 and num %6 !=0:
+    
         return True
     
     else:
@@ -31,6 +32,16 @@ def numero_magico(num: int) -> bool:
     
 
 print(numero_magico(44))
+print(numero_magico(10)," questa è la segunte operzaione")
+print(numero_magico(66)," 66 questa è la segunte operzaione")
+print(numero_magico(33)," 33 questa è la segunte operzaione")
+print(numero_magico(8)," 8 questa è la segunte operzaione")
+print(numero_magico(12)," 12 questa è la segunte operzaione")
+
+
+
+
+
 
 def aggrega_voti (voti:list[dict]) :
 

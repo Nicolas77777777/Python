@@ -23,11 +23,6 @@
 # Essi possono nutrire gli animali, pulire i recinti e
 # svolgere altri compiti nel nostro zoo virtuale.
 
-class Zoo:
-    def __init__(self) -> None:
-
-        pass
-
 
 class Animal:
     def __init__(self, name : str, species : str,
@@ -42,6 +37,7 @@ class Animal:
         self.width: float = width
         self.preferred_habitat = preferred_habitat
         self.health= round( 100 * (1 / age),3)
+        
 
 
     def __str__(self) -> str:
@@ -68,8 +64,31 @@ class ZooKeeper:
         self.cognome : float = cognome
         self.id : str = id
 
+
+    def add_animal(animal: Animal, fence: Fence):
+        fence_list=[]
+        
+        pass
+
+    def remove_animal(animal: Animal, fence: Fence):
+        pass
+
+
+    def feed (self, animal: Animal):
+
+        animal_area: float = animal.height * animal.width
+
+        return animal_area
+
+
     def __str__(self) -> str:
         return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id}'
+    
+
+
+class Zoo:
+    def __init__(self) -> None:
+        pass
 
 
 # prove argomenti
@@ -79,5 +98,7 @@ gatto_pallas = Animal("Gatto Pallas","Felide",4,15,10,"Steppa")
 fence1 = Fence(100,25,"Steppa")
 franco = ZooKeeper("Franco","Minkia",333333)
 print(f'{lupo.__str__()}\n{gatto_pallas.__str__()}\n{fence1}\n{franco.__str__()}')
+
+
 
 # prove argomenti fine 
