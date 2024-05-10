@@ -39,7 +39,6 @@ class Animal:
         self.health= round( 100 * (1 / age),3)
         
 
-
     def __str__(self) -> str:
         return (f'{self.name.capitalize()} (species = {self.species}, age = {self.age} height = {self.height}'
                 + f'width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health})')
@@ -67,29 +66,35 @@ class ZooKeeper:
 
     def add_animal(animal: Animal, fence: Fence):
         fence_list=[]
-        
+
         pass
+
 
     def remove_animal(animal: Animal, fence: Fence):
         pass
 
 
-    def feed (self, animal: Animal):
+    def feed (self, animal : Animal):
 
-        animal_area: float = animal.height * animal.width
+        self.animal_area : float = animal.height * animal.width
 
-        return animal_area
+        return self.animal_area
 
 
     def __str__(self) -> str:
-        return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id}'
+        return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id} '
     
 
 
-class Zoo:
-    def __init__(self) -> None:
-        pass
 
+class Zoo:
+
+    def __init__(self):
+
+    def describe_zoo_keepers(guardiani= ZooKeeper):
+
+    pass
+    
 
 # prove argomenti
  
@@ -97,8 +102,13 @@ lupo = Animal("Lupo","lupus",7,30,20,"Foresta")
 gatto_pallas = Animal("Gatto Pallas","Felide",4,15,10,"Steppa")
 fence1 = Fence(100,25,"Steppa")
 franco = ZooKeeper("Franco","Minkia",333333)
+
+
 print(f'{lupo.__str__()}\n{gatto_pallas.__str__()}\n{fence1}\n{franco.__str__()}')
 
+franco.feed(gatto_pallas)
+
+print 
 
 
 # prove argomenti fine 
