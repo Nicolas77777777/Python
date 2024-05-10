@@ -71,8 +71,6 @@ class ZooKeeper :
 
 
 
-
-
 lupo= Animals("Fenfir","lupus",7,30,20,"Foresta")
 
 print(lupo.__str__())
