@@ -41,10 +41,30 @@ def aggrega_voti (voti:list[dict]) :
 
         if nome in risultato:
 
+            risultato[nome].append(voto)
+
+        else:
             risultato[nome] = [voto]
+
+
     return risultato 
 
 
 # test case
 aggrega_voti
 
+# esercizio n6 
+
+#scrivi una funzione create contact 
+
+def create_contact(nome, email, telefono: int = 333):
+    contact= {'profile': nome,  'email':email, 'telefono':telefono}
+
+    
+    return contact
+
+def update_conctat(concact: dict, nome:str, email:str = None, telefono: int= None):
+    if concact['profile']== nome:
+        concact['email']= email
+        concact['telefono']= telefono
+        
