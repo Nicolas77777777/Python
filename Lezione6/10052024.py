@@ -86,6 +86,16 @@ def filtra_e_mappa(prodotti: dict[str:float]):
     return scontati 
 
 
+# lezione precedente muovere gli elementi di una lista
+#verso sinistra di una per
+# 
 
+def rotate_left(elements: list[list],k: int) -> list [int]:
+    n: int = len(elements)
+    if k > n: 
+        k = k % n 
 
+    rotated = elements[k:] + elements[:k]
+
+    return rotated
 
