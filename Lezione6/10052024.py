@@ -18,14 +18,6 @@ def remove_elements(original_set: set[int], elements_to_remove: list[int]) -> se
 print(remove_elements({5, 6, 7}, [7, 8, 9])) #result {5,6}
 
 
-    
-    
-
-
-# result {5,6}
-
-
-
 # Scrivi una funzione che determina se un numero è 'magico'. 
 # Un numero è considerato magico se è divisibile per 4 ma non per 6
 
@@ -39,3 +31,20 @@ def numero_magico(num: int) -> bool:
     
 
 print(numero_magico(44))
+
+def aggrega_voti (voti:list[dict]) :
+
+    risultato:dict = {}
+    for studente in voti :
+        nome = studente['name']
+        voto = studente ['voto']
+
+        if nome in risultato:
+
+            risultato[nome] = [voto]
+    return risultato 
+
+
+# test case
+aggrega_voti
+
