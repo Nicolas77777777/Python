@@ -2,15 +2,47 @@
 # ritorni un nuovo insieme senza i numeri specificati nella lista
 
 
-
-
 def remove_elements(original_set: set[int], elements_to_remove: list[int]) -> set[int]:
     # cancella pass e scrivi il tuo codice
+    # for i in enumerate(original_set):
+    elements_to_remove_set= set(elements_to_remove)
+    return type(elements_to_remove,elements_to_remove)
+
+
+
+
+
+
+#print(remove_elements({5, 6, 7}, [7, 8, 9])) result {5,6}
+
+se=[5, 6, 7]
+
+li=[7, 8, 9]
+
+set_new={}
+z=[]
+for i in se:
+    if se == li:
+        z.append(i)
+    print(i)
     
-    pass
-
-
-print(remove_elements({5, 6, 7}, [7, 8, 9]))
+    
 
 
 # result {5,6}
+
+
+
+# Scrivi una funzione che determina se un numero è 'magico'. 
+# Un numero è considerato magico se è divisibile per 4 ma non per 6
+
+def numero_magico(num: int) -> bool:
+    # cancella pass e scrivi il tuo codice
+    if num % 4 ==0 and num %6 !=0:
+        return True
+    
+    else:
+        return False
+    
+
+print(numero_magico(44))
