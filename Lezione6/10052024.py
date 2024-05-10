@@ -65,6 +65,27 @@ def create_contact(nome, email, telefono: int = 333):
 
 def update_conctat(concact: dict, nome:str, email:str = None, telefono: int= None):
     if concact['profile']== nome:
-        concact['email']= email
-        concact['telefono']= telefono
-        
+        if email:
+            concact['email']= email
+        if telefono:
+            concact ['telefono'] = telefono
+
+    return concact
+
+
+
+# dizionario della percentuale 
+# scrivi una funzione che accetta 
+def filtra_e_mappa(prodotti: dict[str:float]):
+    scontati: dict [str:float]= {}
+
+    for prodotto, prezzo in prodotti.items():
+        if prezzo > 20.0:
+            prezzo = prezzo * 0.9
+            scontati[prodotto]= prezzo
+    return scontati 
+
+
+
+
+
