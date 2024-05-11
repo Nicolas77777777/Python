@@ -1,29 +1,3 @@
-
-
-# Creaiamo un sistema di gestione di uno zoo virtuale
-
-# Sistema di gestione dello zoo virtuale
-
-# Classi:
-
-# 1. Zoo: questa classe rappresenta uno zoo. 
-# Lo zoo ha dei recinti fences e dei guardiani dello zoo, zoo_keepers.
-
-# 2. Animal: questa classe rappresenta un animale nello zoo.
-#   Ogni animale ha questi attributi: name, species, 
-# age, height, width, preferred_habitat, health che è uguale a 100 * (1 / age).
-
-# 3. Fence: questa classe rappresenta un recinto dello zoo in 
-# cui sono tenuti gli animali. I recinti possono contenere uno o 
-# più animali. I recinti possono hanno gli attributi area, temperature e habitat.
-
-# 4. ZooKeeper: questa classe rappresenta un guardiano dello 
-# zoo responsabile della gestione dello zoo. 
-# I guardiani dello zoo hanno un nome, un cognome, e un id. 
-# Essi possono nutrire gli animali, pulire i recinti e
-# svolgere altri compiti nel nostro zoo virtuale.
-
-
 class Animal:
     def __init__(self, name : str, species : str,
                 age : float, height : float,
@@ -37,7 +11,7 @@ class Animal:
         self.width: float = width
         self.preferred_habitat = preferred_habitat
         self.health= round( 100 * (1 / age),3)
-        self.animal_area : float = height * width
+        self.animal_area : float = height * width #area animale 
         
 
     def __str__(self) -> str:
@@ -62,10 +36,10 @@ class ZooKeeper:
         self.nome : float = nome
         self.cognome : float = cognome
         self.id : str = id
-        self.lista_recinto: list= [Animal]
-        self.area_recinto= Fence
-        self.new_area_recinto= float
-       
+        self.lista_recinto: list= []
+        self.area_recinto= None
+        self.area_fence_animal_plus= 0
+        self.area_fence_animal_minus= 0
     
     def feed (self, animal : Animal):
        # self.animal_area : float = animal.height * animal.width
@@ -75,51 +49,47 @@ class ZooKeeper:
         if animal.animal_area < fence.area:
             if animal.preferred_habitat == fence.habitat:
                 self.lista_recinto.append(animal.name)
-                self.new_area_recinto = animal.animal_area + fence.area
+                self.area_fence_animal_plus = animal.animal_area + fence.area
         else:
             print("non è possibile aggiungere l'animale poiche l'animale è troppo grande")
         
     
     def remove_animal(self, animal: Animal, fence : Fence):
-          if self.lista_recinto.remove(animal.name):
-              self.new_area_recinto = fence.area - animal.animal_area 
+          if animal.name in self.lista_recinto:
+              self.lista_recinto.remove(animal.name)
+              self.area_fence_animal_minus= self.area_fence_animal_plus - animal.animal_area 
+              print("L'animale è stato rimosso !")
+          else:
+              print("L'animale non è presente nel recinto.")
              
 
     def __str__(self) -> str:
         return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id} '
-    
-class Zoo:
-
-    def __init__(self) -> None:
-        pass
-
-    def _str_():
-        return
-        pass
-    
 
 # prove argomenti 
 lupo = Animal("Lupo","lupus",7,30,20,"Foresta")
 gatto_pallas = Animal("Gatto Pallas","Felide",4,15,10,"Steppa")
 fence1 = Fence(300,25,"Steppa")
-fence2 = Fence(1000,25,"Foresta")
-
+# fence2 = Fence(1000,25,"Foresta")
 franco = ZooKeeper("Franco","Minkia",333333)
 print(f'{lupo.__str__()}\n{gatto_pallas.__str__()}\n{fence1}\n{franco.__str__()}')
 # prove argomenti fine 
 
-#prove funzioni 
+# prove funzioni 
 
-franco.add_animal(lupo,fence1)
-franco.add_animal(lupo,fence2)
+franco.add_animal(lupo, fence1)
+# franco.add_animal(lupo,fence2)
 
-franco.add_animal(gatto_pallas,fence1)
+franco.add_animal(gatto_pallas, fence1)
 
-print(franco.lista_recinto,franco.new_area_recinto)
+print(franco.lista_recinto, franco.area_fence_animal_plus, " aggiungo animale")
 
-franco.remove_animal(gatto_pallas,fence1)
+franco.remove_animal(gatto_pallas, fence1)
 
-print(franco.lista_recinto,franco.new_area_recinto)
+r = franco.lista_recinto
+
+print(franco.lista_recinto, franco.area_fence_animal_minus, "rimuovo animale")
+print(r)
 
 
 
