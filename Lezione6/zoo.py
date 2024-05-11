@@ -57,11 +57,14 @@ class Fence:
 
 
 class ZooKeeper:
+
     def __init__(self, nome : str, cognome : str, id: float):
          
         self.nome : float = nome
         self.cognome : float = cognome
         self.id : str = id
+        self.animali: list = [] 
+    
 
 
     def add_animal(animal: Animal, fence: Fence):
@@ -79,21 +82,18 @@ class ZooKeeper:
         self.animal_area : float = animal.height * animal.width
 
         return self.animal_area
-
-
+    
     def __str__(self) -> str:
         return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id} '
     
-
-
-
 class Zoo:
 
-    def __init__(self):
+    def __init__(self) -> None:
+        pass
 
-    def describe_zoo_keepers(guardiani= ZooKeeper):
-
-    pass
+    def _str_():
+        return
+        pass
     
 
 # prove argomenti
