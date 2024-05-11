@@ -37,11 +37,13 @@ class Animal:
         self.width: float = width
         self.preferred_habitat = preferred_habitat
         self.health= round( 100 * (1 / age),3)
+        self.animal_area : float = height * width
         
 
     def __str__(self) -> str:
         return (f'{self.name.capitalize()} (species = {self.species}, age = {self.age} height = {self.height}'
-                + f'width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health})')
+                + f'width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health}'
+                +f' area animale {self.animal_area}') 
     
    
        
@@ -63,26 +65,30 @@ class ZooKeeper:
         self.nome : float = nome
         self.cognome : float = cognome
         self.id : str = id
-        self.animali: list = [] 
+        self.lista_recinto: list= [Animal]
+        self.area_recinto= Fence
+       
     
-
-
-    def add_animal(animal: Animal, fence: Fence):
-        fence_list=[]
-
-        pass
-
-
-    def remove_animal(animal: Animal, fence: Fence):
-        pass
-
-
     def feed (self, animal : Animal):
+       # self.animal_area : float = animal.height * animal.width
+        return None
 
-        self.animal_area : float = animal.height * animal.width
-
-        return self.animal_area
+    def add_animal(self, animal : Animal, fence: Fence) : 
+        if animal.animal_area < fence.area:
+            if animal.preferred_habitat == fence.habitat:
+                self.lista_recinto.append(animal.name)
+        else:
+            print("non è possibile aggiungere l'animale poiche l'animale è troppo grande")
+        
     
+
+    def remove_animal(self, animal: Animal):
+        self.lista_recinto.remove(animal.name)
+
+
+    
+    
+
     def __str__(self) -> str:
         return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id} '
     
@@ -96,19 +102,26 @@ class Zoo:
         pass
     
 
-# prove argomenti
- 
+# prove argomenti 
 lupo = Animal("Lupo","lupus",7,30,20,"Foresta")
 gatto_pallas = Animal("Gatto Pallas","Felide",4,15,10,"Steppa")
-fence1 = Fence(100,25,"Steppa")
+fence1 = Fence(200,25,"Steppa")
 franco = ZooKeeper("Franco","Minkia",333333)
-
-
 print(f'{lupo.__str__()}\n{gatto_pallas.__str__()}\n{fence1}\n{franco.__str__()}')
+# prove argomenti fine 
+
+#prove funzioni 
+
+franco.add_animal(lupo,fence1)
+franco.add_animal(gatto_pallas,fence1)
+
+print(franco.lista_recinto)
 
 franco.feed(gatto_pallas)
+# print(franco.animal_area)
 
-print 
 
 
-# prove argomenti fine 
+
+
+
