@@ -40,10 +40,6 @@ class ZooKeeper:
         self.area_recinto= None
         self.area_fence_animal_plus= 0
         self.area_fence_animal_minus= 0
-    
-    def feed (self, animal : Animal):
-       # self.animal_area : float = animal.height * animal.width
-        return None
 
     def add_animal(self, animal : Animal, fence: Fence) : 
         if animal.animal_area < fence.area:
@@ -61,6 +57,14 @@ class ZooKeeper:
               print("L'animale è stato rimosso !")
           else:
               print("L'animale non è presente nel recinto.")
+
+    def feed (self, animal : Animal):
+         for i in animal:
+            #if self.has_space():
+                animal.health += 1
+                animal.height *= 1.02
+                animal.width *= 1.02
+     
              
 
     def __str__(self) -> str:
@@ -70,7 +74,7 @@ class ZooKeeper:
 lupo = Animal("Lupo","lupus",7,30,20,"Foresta")
 gatto_pallas = Animal("Gatto Pallas","Felide",4,15,10,"Steppa")
 fence1 = Fence(300,25,"Steppa")
-# fence2 = Fence(1000,25,"Foresta")
+fence2 = Fence(1000,25,"Foresta")
 franco = ZooKeeper("Franco","Minkia",333333)
 print(f'{lupo.__str__()}\n{gatto_pallas.__str__()}\n{fence1}\n{franco.__str__()}')
 # prove argomenti fine 
@@ -78,7 +82,7 @@ print(f'{lupo.__str__()}\n{gatto_pallas.__str__()}\n{fence1}\n{franco.__str__()}
 # prove funzioni 
 
 franco.add_animal(lupo, fence1)
-# franco.add_animal(lupo,fence2)
+franco.add_animal(lupo,fence2)
 
 franco.add_animal(gatto_pallas, fence1)
 
@@ -90,12 +94,6 @@ r = franco.lista_recinto
 
 print(franco.lista_recinto, franco.area_fence_animal_minus, "rimuovo animale")
 print(r)
+x=franco.feed(lupo)
 
-
-
-
-
-
-
-
-
+print(x)
