@@ -64,9 +64,12 @@ class ZooKeeper:
                 animal.health += 1
                 animal.height *= 1.02
                 animal.width *= 1.02
-     
-             
 
+    def clean(fence: Fence) :
+        for i in Fence:
+        
+            pass
+     
     def __str__(self) -> str:
         return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id} '
 
