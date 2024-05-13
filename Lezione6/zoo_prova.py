@@ -124,4 +124,3 @@ print(fence2.lista_animali_recinto)
 
 
 
-
