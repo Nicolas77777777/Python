@@ -13,36 +13,36 @@ class Animal:
         self.health= round( 100 * (1 / age),3)
         self.animal_area : float = height * width #area animale 
 
-    def setWidth (self, width) -> float:
+    def set_Width (self, width) -> float:
         self.width = width    
 
-    def getWidth (self) -> float:
+    def get_Width (self) -> float:
         return self.width    
 
-    def setHeight (self, height) -> float:
+    def set_Height (self, height) -> float:
         self.height = height    
 
-    def getHheight (self) -> float:
+    def get_height (self) -> float:
         return self.height   
 
-    def setHealth (self, health) -> float:
+    def set_health (self, health) -> float:
         self.health = health
 
-    def getHealth (self) -> float:
+    def get_health (self) -> float:
         return self.health   
     
-    def getArea (self) -> float:
-        return self.getWidth() * self.getHheight()
+    def get_Area_Animal (self) -> float:
+        return self.get_Width() * self.getHheight()
 
     def feed (self) -> float:
-        self.setHealth(self.getHealth() / 100 * 101) 
-        self.setWidth(self.getWidth() / 100 * 102)      
-        self.setHeight(self.getHheight() / 100 * 102)   
+        self.set_health(self.get_health() / 100 * 101) 
+        self.set_Width(self.get_Width() / 100 * 102)      
+        self.set_Height(self.get_height() / 100 * 102)   
 
     
     def __str__(self) -> str:
         return (f'{self.name.capitalize()} (species = {self.species}, age = {self.age} height = {self.height}'
-                + f'width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health}'
+                + f' width = {self.width} preferred habitat = {self.preferred_habitat} health ={self.health}'
                 +f' area animale {self.animal_area}')   
        
 class Fence:
@@ -52,7 +52,10 @@ class Fence:
         self.temperature : float = temperature
         self.habitat : str = habitat
         self.lista_animali_recinto: list= []
-        chek_area: float = chek_area
+        
+
+    def chek_area (self):
+        pass
 
     def __str__(self) -> str:
         return f'area = {self.area} temperature = {self.temperature}, habitat = {self.habitat}'
@@ -64,19 +67,22 @@ class ZooKeeper:
         self.nome : float = nome
         self.cognome : float = cognome
         self.id : str = id
-        self.area_recinto= None
         self.area_fence_animal_plus= 0
         self.area_fence_animal_minus= 0
 
     def add_animal(self, animal : Animal, fence: Fence) : 
-        if animal.animal_area < fence.area and animal.preferred_habitat == fence.habitat:
+        if animal.get_Area_Animal < fence.area and animal.preferred_habitat == fence.habitat:
             fence.lista_animali_recinto.append(animal.name)
-            self.area_fence_animal_plus = animal.animal_area + fence.area
+            self.area_fence_animal_plus = animal.get_Area_Animal + fence.area
             print (f"{animal.name} è stato aggiunto alla gabbia")
-        elif animal.animal_area > fence.area and animal.preferred_habitat == fence.habitat:
+        elif animal.get_Area_Animal > fence.area and animal.preferred_habitat == fence.habitat:
                  print (f"{animal.name} l'animale è troppo grande per questa gabbia")
-        elif animal.animal_area < fence.area and animal.preferred_habitat != fence.habitat:
+        elif animal.get_Area_Animal < fence.area and animal.preferred_habitat != fence.habitat:
                   print(f"{animal.name} l'habitat del animale non è adeguato a questa gabbia")
+
+    # def add_animal(self, animal : Animal, fence: Fence) : 
+    #     if animal.get_Area_Animal < fence.area and animal.preferred_habitat == fence.habitat:
+    # #         fence.lista_animali_recinto.append(animal.name
         
     
     def remove_animal(self, animal: Animal, fence : Fence):
@@ -140,6 +146,8 @@ print(fence2.lista_animali_recinto)
 franco.add_animal(aquila,fence2)
 franco.add_animal(cervo,fence2)
 
+franco.feed(cervo)
+print(cervo)
 
 print(fence2.lista_animali_recinto)
 
