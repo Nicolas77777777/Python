@@ -59,11 +59,10 @@ class ZooKeeper:
               print("L'animale non è presente nel recinto.")
 
     def feed (self, animal : Animal):
-         for i in animal:
-            #if self.has_space():
-                animal.health += 1
-                animal.height *= 1.02
-                animal.width *= 1.02
+            #if animal.animal_area < 
+                    animal.health += 1
+                    animal.height *= 1.02
+                    animal.width *= 1.02
 
     def clean(fence: Fence) :
         for i in Fence:
@@ -76,6 +75,10 @@ class ZooKeeper:
 # prove argomenti 
 lupo = Animal("Lupo","lupus",7,30,20,"Foresta")
 gatto_pallas = Animal("Gatto Pallas","Felide",4,15,10,"Steppa")
+aquila = Animal("Aquila Reale","volatile",2,8,3,"Foresta")
+orso = Animal("orso","orside",4,30,11,"Steppa")
+
+
 fence1 = Fence(300,25,"Steppa")
 fence2 = Fence(1000,25,"Foresta")
 franco = ZooKeeper("Franco","Minkia",333333)
@@ -86,6 +89,13 @@ print(f'{lupo.__str__()}\n{gatto_pallas.__str__()}\n{fence1}\n{franco.__str__()}
 
 franco.add_animal(lupo, fence1)
 franco.add_animal(lupo,fence2)
+franco.add_animal(aquila,fence2)
+franco.add_animal(orso,fence2)
+
+
+
+
+
 
 franco.add_animal(gatto_pallas, fence1)
 
@@ -97,6 +107,6 @@ r = franco.lista_recinto
 
 print(franco.lista_recinto, franco.area_fence_animal_minus, "rimuovo animale")
 print(r)
-x=franco.feed(lupo)
+# x=franco.feed(lupo)
 
-print(x)
+#print(x)
