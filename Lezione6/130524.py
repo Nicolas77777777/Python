@@ -14,6 +14,6 @@ class Animal:
     
 
 class Zoo:
-     def __init__(self, fencesé=[],-> None:
+     def __init__(self, fencesé=[])-> None:
           pass
 

@@ -111,9 +111,6 @@ class ZooKeeper:
         animal.feed()
 
 
-
-
-
 cervo= Animal("cervo","cervide",4,30,11,"Foresta")
 orso = Animal("orso","orside",4,300,3,"Foresta")
 franco = ZooKeeper("Franco","Minkia",333333)
