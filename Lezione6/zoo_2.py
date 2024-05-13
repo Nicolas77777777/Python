@@ -63,8 +63,6 @@ class Fence:
 
 
 
-
-
 class ZooKeeper:
 
     def __init__(self, nome : str, cognome : str, id: float):
