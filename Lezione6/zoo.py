@@ -12,8 +12,12 @@ class Animal:
         self.preferred_habitat = preferred_habitat
         self.health= round( 100 * (1 / age),3)
         self.animal_area : float = height * width #area animale 
-        
 
+    def animal_area():
+        animal_area = Animal.height * Animal.height
+        return animal_area
+
+    
     def __str__(self) -> str:
         return (f'{self.name.capitalize()} (species = {self.species}, age = {self.age} height = {self.height}'
                 + f'width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health}'
@@ -26,6 +30,9 @@ class Fence:
         self.temperature : float = temperature
         self.habitat : str = habitat
         self.lista_animali_recinto: list= []
+        chek_area: float = chek_area
+
+
 
     def __str__(self) -> str:
         return f'area = {self.area} temperature = {self.temperature}, habitat = {self.habitat}'
@@ -61,7 +68,7 @@ class ZooKeeper:
               print("L'animale non è presente nel recinto.")
 
     def feed (self, animal : Animal):
-            #if animal.animal_area < 
+            
                     animal.health += 1
                     animal.height *= 1.02
                     animal.width *= 1.02

@@ -18,7 +18,38 @@ class Animal:
         return (f'{self.name.capitalize()} (species = {self.species}, age = {self.age} height = {self.height}'
                 + f'width ={self.width} preferred habitat = {self.preferred_habitat} health ={self.health}'
                 +f' area animale {self.animal_area}')   
-       
+
+    def setWidth (self, width) -> float:
+        self.width = width    
+
+    def getWidth (self) -> float:
+        return self.width    
+
+    def setHeight (self, height) -> float:
+        self.height = height    
+
+    def getHheight (self) -> float:
+        return self.height   
+
+    def setHealth (self, health) -> float:
+        self.health = health
+
+    def getHealth (self) -> float:
+        return self.health   
+
+
+#####################
+
+    def getArea (self) -> float:
+        return self.getWidth() * self.getHheight()
+
+    def feed (self) -> float:
+        self.setHealth(self.getHealth() / 100 * 101)
+        self.setWidth(self.getWidth() / 100 * 102)
+        self.setHeight(self.getHheight() / 100 * 102)
+
+
+
 class Fence:
     def __init__(self, area : float, temperature : float, habitat : str):
 
@@ -29,6 +60,10 @@ class Fence:
 
     def __str__(self) -> str:
         return f'area = {self.area} temperature = {self.temperature}, habitat = {self.habitat}'
+
+
+
+
 
 class ZooKeeper:
 
@@ -60,11 +95,11 @@ class ZooKeeper:
           else:
               print("L'animale non è presente nel recinto.")
 
-    def feed (self, animal : Animal):
-            #if animal.animal_area < 
-                    animal.health += 1
-                    animal.height *= 1.02
-                    animal.width *= 1.02
+#    def feed (self, animal : Animal):
+#            #if animal.animal_area < 
+#                    animal.health += 1
+#                    animal.height *= 1.02
+#                    animal.width *= 1.02
 
     def clean(fence: Fence) :
         for i in Fence:
@@ -74,50 +109,26 @@ class ZooKeeper:
     def __str__(self) -> str:
         return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id} '
 
-# prove argomenti 
-#animali
-lupo = Animal("Lupo","lupus",7,30,20,"Foresta")
-gatto_pallas = Animal("Gatto Pallas","Felide",4,15,10,"Steppa")
-aquila = Animal("Aquila Reale","volatile",2,8,3,"Foresta")
+    def feed(self, animal: Animal): 
+        animal.feed()
+
+
+
+
+
 cervo= Animal("cervo","cervide",4,30,11,"Foresta")
 orso = Animal("orso","orside",4,300,3,"Foresta")
-
-# fine animali
-
-#fence
-fence1 = Fence(300,25,"Steppa")
-fence2 = Fence(1000,25,"Foresta")
-# fine fence
-
-#guardiani
 franco = ZooKeeper("Franco","Minkia",333333)
-# fine guardini 
 
-print(f'{lupo.__str__()}\n{gatto_pallas.__str__()}\n{fence1}\n{franco.__str__()}')
-# prove argomenti fine 
+print(cervo)
 
-# prove funzioni 
-
-franco.add_animal(lupo, fence1)
-franco.add_animal(lupo,fence2)
-franco.add_animal(aquila,fence2)
-franco.add_animal(orso,fence2)
-
-franco.add_animal(gatto_pallas, fence1)
-franco.add_animal(gatto_pallas, fence2)
-
-print(fence1.lista_animali_recinto)
-print(fence2.lista_animali_recinto)
-
-franco.add_animal(orso,fence2)
-
-print(fence2.lista_animali_recinto)
-
-franco.add_animal(aquila,fence2)
-franco.add_animal(cervo,fence2)
+franco.feed(cervo)
 
 
-print(fence2.lista_animali_recinto)
+print(cervo)
+
+
+
 
 
 
