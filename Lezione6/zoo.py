@@ -13,13 +13,13 @@ class Animal:
         self.health= round( 100 * (1 / age),3)
         self.animal_area : float = height * width #area animale 
 
-    def set_Width (self, width) -> float:
+    def set_width (self, width) -> float:
         self.width = width    
 
-    def get_Width (self) -> float:
+    def get_width (self) -> float:
         return self.width    
 
-    def set_Height (self, height) -> float:
+    def set_height (self, height) -> float:
         self.height = height    
 
     def get_height (self) -> float:
@@ -31,13 +31,13 @@ class Animal:
     def get_health (self) -> float:
         return self.health   
     
-    def get_Area_Animal (self) -> float:
-        return self.get_Width() * self.getHheight()
+    def get_area_animal (self) -> float:
+        return self.get_width() * self.get_height()
 
     def feed (self) -> float:
         self.set_health(self.get_health() / 100 * 101) 
-        self.set_Width(self.get_Width() / 100 * 102)      
-        self.set_Height(self.get_height() / 100 * 102)   
+        self.set_width(self.get_width() / 100 * 102)      
+        self.set_height(self.get_height() / 100 * 102)   
 
     
     def __str__(self) -> str:
@@ -71,14 +71,14 @@ class ZooKeeper:
         self.area_fence_animal_minus= 0
 
     def add_animal(self, animal : Animal, fence: Fence) : 
-        if animal.get_Area_Animal < fence.area and animal.preferred_habitat == fence.habitat:
+        if animal.get_area_animal() < fence.area and animal.preferred_habitat == fence.habitat:
             fence.lista_animali_recinto.append(animal.name)
-            self.area_fence_animal_plus = animal.get_Area_Animal + fence.area
+            self.area_fence_animal_plus = animal.get_area_animal() + fence.area
             print (f"{animal.name} è stato aggiunto alla gabbia")
-        elif animal.get_Area_Animal > fence.area and animal.preferred_habitat == fence.habitat:
-                 print (f"{animal.name} l'animale è troppo grande per questa gabbia")
-        elif animal.get_Area_Animal < fence.area and animal.preferred_habitat != fence.habitat:
-                  print(f"{animal.name} l'habitat del animale non è adeguato a questa gabbia")
+        elif animal.get_area_animal() > fence.area and animal.preferred_habitat == fence.habitat:
+            print (f"{animal.name} l'animale è troppo grande per questa gabbia")
+        elif animal.get_area_animal() < fence.area and animal.preferred_habitat != fence.habitat:
+            print(f"{animal.name} l'habitat del animale non è adeguato a questa gabbia")
 
     # def add_animal(self, animal : Animal, fence: Fence) : 
     #     if animal.get_Area_Animal < fence.area and animal.preferred_habitat == fence.habitat:
