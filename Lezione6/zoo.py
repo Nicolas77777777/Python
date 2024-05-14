@@ -72,23 +72,25 @@ class ZooKeeper:
         self.id : str = id
 
     def add_animal(self, animal : Animal, fence: Fence) : 
+
         area_libera = fence.get_area_free()
+
         if animal.get_area_animal() <= area_libera and animal.preferred_habitat == fence.habitat:
             fence.lista_animali_recinto.append(animal)
             print(f"{animal.name} è stato aggiunto alla gabbia")
 
         elif animal.get_area_animal() > fence.area:
             print(f"{animal.name} l'animale è troppo grande per questa gabbia")
+
         elif animal.preferred_habitat != fence.habitat:
             print(f"{animal.name} l'habitat del animale non è adeguato a questa gabbia")
-        elif area_libera < 0:
-            print(f"Non c'è abbastanza spazio libero nel recinto per aggiungere {animal.name}")
         
-    
+
     def remove_animal(self, animal: Animal, fence : Fence):
-          if animal.name in fence.lista_animali_recinto:
+          
+          if animal in fence.lista_animali_recinto:
               fence.lista_animali_recinto.remove(animal.name)
-              self.area_fence_animal_minus= self.area_fence_animal_plus - animal.animal_area 
+        
               print("L'animale è stato rimosso !")
           else:
               print("L'animale non è presente nel recinto.")
@@ -142,8 +144,15 @@ franco.add_animal(aquila,fence2)
 
 print(fence2.get_area_free())
 
-print(fence2.lista_animali_recinto)
 franco.add_animal(orso,fence2)
-print(fence1.get_animal_names())
 
 print(fence2.get_animal_names())
+
+franco.remove_animal(aquila,fence2)
+
+print(fence2.get_animal_names())
+
+
+
+
+
