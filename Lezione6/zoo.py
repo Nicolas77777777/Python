@@ -77,7 +77,7 @@ class ZooKeeper:
     def add_animal(self, animal : Animal, fence: Fence) : 
         if animal.get_area_animal() < fence.area and animal.preferred_habitat == fence.habitat:
             fence.lista_animali_recinto.append(animal)
-            self.area_fence_animal_plus = animal.get_area_animal() + fence.area
+            #self.area_fence_animal_plus = animal.get_area_animal() + fence.area
             print (f"{animal.name} è stato aggiunto alla gabbia")
         elif animal.get_area_animal() > fence.area and animal.preferred_habitat == fence.habitat:
             print (f"{animal.name} l'animale è troppo grande per questa gabbia")
@@ -115,7 +115,6 @@ gatto_pallas = Animal("Gatto Pallas","Felide",4,15,10,"Steppa")
 aquila = Animal("Aquila Reale","volatile",2,8,3,"Foresta")
 cervo= Animal("cervo","cervide",4,30,11,"Foresta")
 orso = Animal("orso","orside",4,300,3,"Foresta")
-
 # fine animali
 
 #fence
@@ -133,20 +132,23 @@ print(f'{lupo}\n{gatto_pallas}\n{fence1}\n{franco}')
 # prove funzioni 
 
 franco.add_animal(lupo, fence1)
-franco.add_animal(lupo,fence2)
-franco.add_animal(aquila,fence2)
-franco.add_animal(orso,fence2)
 
-franco.add_animal(gatto_pallas, fence1)
-franco.add_animal(gatto_pallas, fence2)
+print(fence1.lista_animali_recinto)
 
-franco.add_animal(orso,fence2)
+# franco.add_animal(lupo,fence2)
+# franco.add_animal(aquila,fence2)
+# franco.add_animal(orso,fence2)
 
-franco.add_animal(aquila,fence2)
-franco.add_animal(cervo,fence2)
+# franco.add_animal(gatto_pallas, fence1)
+# franco.add_animal(gatto_pallas, fence2)
 
-franco.feed(cervo)
+# franco.add_animal(orso,fence2)
 
-area=fence2.chek_area()
+# franco.add_animal(aquila,fence2)
+# franco.add_animal(cervo,fence2)
 
-print(area)
+# franco.feed(cervo)
+
+# area=fence2.chek_area()
+
+# print(area)
