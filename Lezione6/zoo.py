@@ -52,10 +52,14 @@ class Fence:
         self.temperature : float = temperature
         self.habitat : str = habitat
         self.lista_animali_recinto: list= []
+        self.area_occupata=0
         
 
     def chek_area (self):
-        pass
+        self.area_occupata= 0
+        for animale in self.lista_animali_recinto:
+            self.area_occupata += animale.get_area_animal()
+        return self.area - self.area_occupata 
 
     def __str__(self) -> str:
         return f'area = {self.area} temperature = {self.temperature}, habitat = {self.habitat}'
@@ -72,7 +76,7 @@ class ZooKeeper:
 
     def add_animal(self, animal : Animal, fence: Fence) : 
         if animal.get_area_animal() < fence.area and animal.preferred_habitat == fence.habitat:
-            fence.lista_animali_recinto.append(animal.name)
+            fence.lista_animali_recinto.append(animal)
             self.area_fence_animal_plus = animal.get_area_animal() + fence.area
             print (f"{animal.name} è stato aggiunto alla gabbia")
         elif animal.get_area_animal() > fence.area and animal.preferred_habitat == fence.habitat:
@@ -123,7 +127,7 @@ fence2 = Fence(1000,25,"Foresta")
 franco = ZooKeeper("Franco","Minkia",333333)
 # fine guardini 
 
-print(f'{lupo.__str__()}\n{gatto_pallas.__str__()}\n{fence1}\n{franco.__str__()}')
+print(f'{lupo}\n{gatto_pallas}\n{fence1}\n{franco}')
 # prove argomenti fine 
 
 # prove funzioni 
@@ -136,24 +140,13 @@ franco.add_animal(orso,fence2)
 franco.add_animal(gatto_pallas, fence1)
 franco.add_animal(gatto_pallas, fence2)
 
-print(fence1.lista_animali_recinto)
-print(fence2.lista_animali_recinto)
-
 franco.add_animal(orso,fence2)
-
-print(fence2.lista_animali_recinto)
 
 franco.add_animal(aquila,fence2)
 franco.add_animal(cervo,fence2)
 
 franco.feed(cervo)
-print(cervo)
 
-print(fence2.lista_animali_recinto)
+area=fence2.chek_area()
 
-
-
-
-
-
-
+print(area)
