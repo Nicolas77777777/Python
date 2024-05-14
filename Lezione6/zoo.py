@@ -11,7 +11,11 @@ class Animal:
         self.width: float = width
         self.preferred_habitat = preferred_habitat
         self.health= round( 100 * (1 / age),3)
-        self.animal_area : float = height * width #area animale 
+        self.animal_area : float = height * width
+        self.lista_animali_recinto: list= []
+
+      
+        
 
     def set_width (self, width) -> float:
         self.width = width    
@@ -33,12 +37,7 @@ class Animal:
     
     def get_area_animal (self) -> float:
         return self.get_width() * self.get_height()
-
-    def feed (self) -> float:
-        self.set_health(self.get_health() / 100 * 101) 
-        self.set_width(self.get_width() / 100 * 102)      
-        self.set_height(self.get_height() / 100 * 102)   
-
+    
     
     def __str__(self) -> str:
         return (f'{self.name.capitalize()} (species = {self.species}, age = {self.age} height = {self.height}'
@@ -53,9 +52,14 @@ class Fence:
         self.habitat : str = habitat
         self.lista_animali_recinto: list= []
         
+        
     def get_area_free (self):
         area_occupata = sum(animale.get_area_animal() for animale in self.lista_animali_recinto)
         return self.area - area_occupata
+    
+    def get_area_busy (self):
+        area_occupata = sum(animale.get_area_animal() for animale in self.lista_animali_recinto)
+        return  area_occupata
     
     def get_animal_names(self):
         return [animale.name for animale in self.lista_animali_recinto]
@@ -70,6 +74,7 @@ class ZooKeeper:
         self.nome : float = nome
         self.cognome : float = cognome
         self.id : str = id
+    
 
     def add_animal(self, animal : Animal, fence: Fence) : 
 
@@ -87,7 +92,6 @@ class ZooKeeper:
         
 
     def remove_animal(self, animal: Animal, fence : Fence):
-          
           if animal in fence.lista_animali_recinto:
               fence.lista_animali_recinto.remove(animal)
               print(f"{animal.name} è stato rimosso dalla gabbia !")
@@ -95,16 +99,55 @@ class ZooKeeper:
           else:
               print("L'animale non è presente nel recinto.")
 
-    def feed(self, animal: Animal): 
-        animal.feed()
+    def feed(self, animal: Animal):
+        # if animal in animal.lista_animali_recinto():
+        #     if animal.get_area_animal() < animal.get_area_animal():
+        #         new_health = round(animal.get_health() / 100 * 101, 2)
+        #         new_width = round(animal.get_width() / 100 * 102, 2)
+        #         new_height = round(animal.get_height() / 100 * 102, 2) 
+        pass
+            
 
     def clean(fence: Fence) :
-        for i in Fence:
-        
-            pass
+    #     area_residua = fence.get_area_free()
+    #     area_occupata = fence.get_area_busy()
+    #     if area_residua == 0:
+    #         return area_occupata
+    #     else:
+    #         return area_occupata / area_residua
      
-    def __str__(self) -> str:
-        return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id}  '
+    # def __str__(self) -> str:
+    #     return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id}  '
+        pass
+    
+
+class Zoo:
+    def __init__(self):
+        self.fences = []  
+        self.zoo_keepers = []  
+
+    def add_fence(self, fence):
+        self.fences.append(fence)
+
+    def add_zoo_keeper(self, zoo_keeper):
+
+        self.zoo_keepers.append(zoo_keeper)
+
+    def describe_zoo(self):
+        print("Guardians:")
+        for zoo_keeper in self.zoo_keepers:
+            print(zoo_keeper)
+        print("#" * 30)
+        print("Fences:")
+        for fence in self.fences:
+            print(fence)
+            if fence.lista_animali_recinto:
+                print("with animals:")
+                for animal in fence.lista_animali_recinto:
+                    print(animal)
+            print("#" * 30)
+    
+
 
 # prove argomenti 
 #animali
@@ -153,6 +196,18 @@ franco.remove_animal(aquila,fence2)
 print(fence2.get_animal_names())
 
 
+franco.feed(lupo)
 
 
+print(lupo )
+
+franco.feed(lupo)
+
+
+print(lupo)
+
+
+
+
+Zoo.add_fence(fence1)
 
