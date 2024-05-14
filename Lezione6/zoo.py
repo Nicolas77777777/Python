@@ -89,9 +89,9 @@ class ZooKeeper:
     def remove_animal(self, animal: Animal, fence : Fence):
           
           if animal in fence.lista_animali_recinto:
-              fence.lista_animali_recinto.remove(animal.name)
-        
-              print("L'animale è stato rimosso !")
+              fence.lista_animali_recinto.remove(animal)
+              print(f"{animal.name} è stato rimosso dalla gabbia !")
+
           else:
               print("L'animale non è presente nel recinto.")
 
