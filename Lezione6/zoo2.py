@@ -1,17 +1,13 @@
 class Animal:
-    def __init__(self, name : str, species : str,
-                age : float, height : float,
-                width : float, preferred_habitat: str,
-                ):
-
+    def __init__(self, name: str, species: str, age: float, height: float, width: float, preferred_habitat: str):
         self.name: str = name
         self.species: str = species
         self.age: float = age
         self.height: float = height
         self.width: float = width
         self.preferred_habitat = preferred_habitat
-        self.health= round( 100 * (1 / age),3)
-        self.animal_area : float = height * width #area animale 
+        self.health = round(100 * (1 / age), 3)
+        self.animal_area: float = height * width
 
     def set_width (self, width) -> float:
         self.width = width    
@@ -46,23 +42,22 @@ class Animal:
                 +f' area animale {self.animal_area}')   
        
 class Fence:
-    def __init__(self, area : float, temperature : float, habitat : str):
+    def __init__(self, area: float, temperature: float, habitat: str):
+        self.area: float = area
+        self.temperature: float = temperature
+        self.habitat: str = habitat
+        self.lista_animali_recinto: list = []
 
-        self.area : float = area
-        self.temperature : float = temperature
-        self.habitat : str = habitat
-        self.lista_animali_recinto: list= []
-        #self.area_occupata=0
-        
+    def get_area_free(self):
+        area_occupata = sum(animale.get_area_animal() for animale in self.lista_animali_recinto)
+        return self.area - area_occupata
 
-    def get_area_free (self):
-        self.area_occupata= 0
-        for animale in self.lista_animali_recinto:
-            self.area_occupata += animale.get_area_animal()
-        return self.area - self.area_occupata
+    def get_animal_names(self):
+        return [animale.name for animale in self.lista_animali_recinto]
 
     def __str__(self) -> str:
-        return f'area = {self.area} temperature = {self.temperature}, habitat = {self.habitat}'
+        animal_names = ', '.join(self.get_animal_names())
+        return f'area = {self.area}, temperature = {self.temperature}, habitat = {self.habitat}, animali nel recinto: {animal_names}'
 
 class ZooKeeper:
 
@@ -71,29 +66,19 @@ class ZooKeeper:
         self.nome : float = nome
         self.cognome : float = cognome
         self.id : str = id
-        # self.area_fence_animal_plus= 0
-        # self.area_fence_animal_minus= 0
 
     def add_animal(self, animal : Animal, fence: Fence) : 
-        if animal.get_area_animal() <  fence.get_area_free() and animal.preferred_habitat == fence.habitat:
+        area_libera = fence.get_area_free()
+        if animal.get_area_animal() <= area_libera and animal.preferred_habitat == fence.habitat:
             fence.lista_animali_recinto.append(animal)
-            #self.area_fence_animal_plus = animal.get_area_animal() + fence.area
-            print (f"{animal.name} è stato aggiunto alla gabbia")
+            print(f"{animal.name} è stato aggiunto alla gabbia")
 
-        elif animal.get_area_animal() > fence.area and animal.preferred_habitat != fence.habitat:
-            print (f"{animal.name} l'animale è troppo grande per questa gabbia ed inoltre non è il suo habitat")
-
-        elif animal.get_area_animal() > fence.area and animal.preferred_habitat == fence.habitat:
-            print (f"{animal.name} l'animale è troppo grande per questa gabbia")
-
-        elif animal.get_area_animal() < fence.get_area_free() and animal.preferred_habitat != fence.habitat:
+        elif animal.get_area_animal() > fence.area:
+            print(f"{animal.name} l'animale è troppo grande per questa gabbia")
+        elif animal.preferred_habitat != fence.habitat:
             print(f"{animal.name} l'habitat del animale non è adeguato a questa gabbia")
-        
-        elif animal.get_area_animal() < fence.get_area_free() and animal.get_area_animal() > fence.get_area_free() and animal.preferred_habitat == fence.habitat:
-            print(f"{animal.name} lo spazio della gabbia non è sufficente per il {animal.name} ci sono troppi animali")
-
-        elif animal.get_area_animal() < fence.area and animal.preferred_habitat != fence.habitat:
-            print (f"{animal.name} l'animale è troppo grande per questa gabbia")
+        elif area_libera < 0:
+            print(f"Non c'è abbastanza spazio libero nel recinto per aggiungere {animal.name}")
         
     
     def remove_animal(self, animal: Animal, fence : Fence):
@@ -113,7 +98,7 @@ class ZooKeeper:
             pass
      
     def __str__(self) -> str:
-        return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id} '
+        return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id}  '
 
 # prove argomenti 
 #animali
@@ -138,47 +123,19 @@ print(f'{lupo}\n{gatto_pallas}\n{fence1}\n{franco}')
 
 # prove funzioni 
 
-franco.add_animal(lupo, fence1)
-
-print(fence1.lista_animali_recinto)
-
-
-print(fence1.get_area_free())
-print(fence2.get_area_free())
+# Proviamo il codice
+lupo = Animal("Lupo", "lupus", 7, 30, 20, "Foresta")
+gatto_pallas = Animal("Gatto Pallas", "Felide", 4, 15, 10, "Steppa")
+fence1 = Fence(300, 25, "Steppa")
+franco = ZooKeeper("Franco", "Minkia", 333333)
 
 franco.add_animal(lupo, fence2)
+franco.add_animal(lupo, fence2)
 
-print(fence2.get_area_free())
+print(fence2)
 
-listarecinto=fence2.lista_animali_recinto
-print(listarecinto)
-
-franco.add_animal(aquila,fence2)
-
-print(fence2.get_area_free())
+fence2 = Fence(1000, 25, "Foresta")
+franco.add_animal(gatto_pallas, fence2)
+print(fence2)
 
 print(fence2.lista_animali_recinto)
-
-
-franco.add_animal(orso,fence2)
-
-
-
-
-# franco.add_animal(lupo,fence2)
-# franco.add_animal(aquila,fence2)
-# franco.add_animal(orso,fence2)
-
-# franco.add_animal(gatto_pallas, fence1)
-# franco.add_animal(gatto_pallas, fence2)
-
-# franco.add_animal(orso,fence2)
-
-# franco.add_animal(aquila,fence2)
-# franco.add_animal(cervo,fence2)
-
-# franco.feed(cervo)
-
-# area=fence2.chek_area()
-
-# print(area)
