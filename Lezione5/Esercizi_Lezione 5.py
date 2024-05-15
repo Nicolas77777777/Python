@@ -16,6 +16,13 @@
 
 # Example: add_like(dictionary, “Road Trip”, liked=True)
 
+
+
+def create_playlist():
+    pass
+
+
+
 # 2. Book Collection:
 
 # Write a function called add_book() that accepts an author's name and a variable 
