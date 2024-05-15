@@ -99,25 +99,24 @@ class ZooKeeper:
           else:
               print("L'animale non è presente nel recinto.")
 
-    def feed(self, animal: Animal):
-        # if animal in animal.lista_animali_recinto():
-        #     if animal.get_area_animal() < animal.get_area_animal():
-        #         new_health = round(animal.get_health() / 100 * 101, 2)
-        #         new_width = round(animal.get_width() / 100 * 102, 2)
-        #         new_height = round(animal.get_height() / 100 * 102, 2) 
-        pass
-            
-
+    def feed(self, animal: Animal, Fence : Fence):
+        if animal in animal.lista_animali_recinto():
+            if animal.get_area_animal() < animal.get_area_animal():
+                new_health = round(animal.get_health() / 100 * 101, 2)
+                new_width = round(animal.get_width() / 100 * 102, 2)
+                new_height = round(animal.get_height() / 100 * 102, 2) 
+        
+    
     def clean(fence: Fence) :
-    #     area_residua = fence.get_area_free()
-    #     area_occupata = fence.get_area_busy()
-    #     if area_residua == 0:
-    #         return area_occupata
-    #     else:
-    #         return area_occupata / area_residua
+        area_residua = fence.get_area_free()
+        area_occupata = fence.get_area_busy()
+        if area_residua == 0:
+            return area_occupata
+        else:
+            return area_occupata / area_residua
      
-    # def __str__(self) -> str:
-    #     return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id}  '
+    def __str__(self) -> str:
+        return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id} '
         pass
     
 
@@ -127,3 +126,65 @@ class Zoo:
         self.zoo_keepers = []  
 
 
+# prove argomenti 
+#animali
+lupo = Animal("Lupo","lupus",7,30,20,"Foresta")
+gatto_pallas = Animal("Gatto Pallas","Felide",4,15,10,"Steppa")
+aquila = Animal("Aquila Reale","volatile",2,8,3,"Foresta")
+cervo= Animal("cervo","cervide",4,30,11,"Foresta")
+orso = Animal("orso","orside",4,300,3,"Foresta")
+# fine animali
+
+#fence
+fence1 = Fence(300,25,"Steppa")
+fence2 = Fence(1000,25,"Foresta")
+# fine fence
+
+#guardiani
+franco = ZooKeeper("Franco","Minkia",333333)
+# fine guardini 
+
+print(f'{lupo}\n{gatto_pallas}\n{fence1}\n{franco}')
+# prove argomenti fine 
+
+# prove funzioni 
+
+franco.add_animal(lupo, fence1)
+
+print(fence1.get_animal_names())
+print(fence1.get_area_free())
+
+print(fence2.get_area_free())
+
+franco.add_animal(lupo, fence2)
+
+print(fence2.get_area_free())
+
+franco.add_animal(aquila,fence2)
+
+print(fence2.get_area_free())
+
+franco.add_animal(orso,fence2)
+
+print(fence2.get_animal_names())
+
+franco.remove_animal(aquila,fence2)
+
+print(fence2.get_animal_names())
+
+
+franco.feed(lupo)
+
+
+
+print(lupo )
+
+franco.feed(lupo)
+
+
+print(lupo)
+
+
+
+
+Zoo.add_fence(fence1)

@@ -18,7 +18,7 @@
 
 
 
-def create_playlist():
+def create_playlist(playlist_name, x : int):
     pass
 
 
