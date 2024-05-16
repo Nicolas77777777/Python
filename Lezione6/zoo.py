@@ -105,7 +105,13 @@ class ZooKeeper:
               print("L'animale non è presente nel recinto.")
 
     def feed(self, animal: Animal):
-        if animal in animal.lista_animali_recinto():
+
+        area_occupata_da_animali: float = 0.0
+        for a in animal.fence.lista_animali_recinto:
+
+            area_occupata_da_animali += a.get_area()
+
+        if animal.fence in Animal.lista_animali_recinto:
             if animal.get_area_animal() < animal.get_area_animal():
                 new_health = round(animal.get_health() / 100 * 101, 2)
                 new_width = round(animal.get_width() / 100 * 102, 2)
@@ -184,4 +190,4 @@ print(lupo )
 franco.feed(lupo)
 print(lupo)
 
-Zoo.add_fence(fence1)
+Animal.get_total()
