@@ -12,10 +12,7 @@ class Animal:
         self.preferred_habitat = preferred_habitat
         self.health= round( 100 * (1 / age),3)
         self.animal_area : float = height * width
-        self.lista_animali_recinto: list= []
-
-      
-        
+        self.fence= None
 
     def set_width (self, width) -> float:
         self.width = width    
@@ -82,6 +79,7 @@ class ZooKeeper:
 
         if animal.get_area_animal() <= area_libera and animal.preferred_habitat == fence.habitat:
             fence.lista_animali_recinto.append(animal)
+            animal.fence = fence
             print(f"{animal.name} è stato aggiunto alla gabbia")
 
         elif animal.get_area_animal() > fence.area:
@@ -99,7 +97,7 @@ class ZooKeeper:
           else:
               print("L'animale non è presente nel recinto.")
 
-    def feed(self, animal: Animal, Fence : Fence):
+    def feed(self, animal: Animal):
         if animal in animal.lista_animali_recinto():
             if animal.get_area_animal() < animal.get_area_animal():
                 new_health = round(animal.get_health() / 100 * 101, 2)
