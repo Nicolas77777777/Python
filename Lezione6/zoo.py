@@ -1,4 +1,6 @@
 class Animal:
+
+    total_animal=0
     def __init__(self, name : str, species : str,
                 age : float, height : float,
                 width : float, preferred_habitat: str,
@@ -13,6 +15,7 @@ class Animal:
         self.health= round( 100 * (1 / age),3)
         self.animal_area : float = height * width
         self.fence= None
+        Animal.total_animal += 1
 
     def set_width (self, width) -> float:
         self.width = width    
@@ -34,6 +37,10 @@ class Animal:
     
     def get_area_animal (self) -> float:
         return self.get_width() * self.get_height()
+    
+
+    def get_total(cls):
+        print (f'{cls.total_animal}')
     
     
     def __str__(self) -> str:
@@ -170,19 +177,11 @@ franco.remove_animal(aquila,fence2)
 
 print(fence2.get_animal_names())
 
-
 franco.feed(lupo)
-
-
 
 print(lupo )
 
 franco.feed(lupo)
-
-
 print(lupo)
-
-
-
 
 Zoo.add_fence(fence1)
