@@ -74,6 +74,8 @@ class ZooKeeper:
         self.nome : float = nome
         self.cognome : float = cognome
         self.id : str = id
+        self.new_lista_animali_recinto: list = self.new_lista_animali_recinto
+
     
 
     def add_animal(self, animal : Animal, fence: Fence) : 
@@ -82,6 +84,7 @@ class ZooKeeper:
 
         if animal.get_area_animal() <= area_libera and animal.preferred_habitat == fence.habitat:
             fence.lista_animali_recinto.append(animal)
+            self.new_lista_animali_recinto = fence.lista_animali_recinto
             print(f"{animal.name} è stato aggiunto alla gabbia")
 
         elif animal.get_area_animal() > fence.area:
@@ -92,32 +95,32 @@ class ZooKeeper:
         
 
     def remove_animal(self, animal: Animal, fence : Fence):
-          if animal in fence.lista_animali_recinto:
+          if animal in self.new_lista_animali_recinto :
               fence.lista_animali_recinto.remove(animal)
               print(f"{animal.name} è stato rimosso dalla gabbia !")
 
           else:
               print("L'animale non è presente nel recinto.")
 
-    def feed(self, animal: Animal):
-        # if animal in animal.lista_animali_recinto():
-        #     if animal.get_area_animal() < animal.get_area_animal():
-        #         new_health = round(animal.get_health() / 100 * 101, 2)
-        #         new_width = round(animal.get_width() / 100 * 102, 2)
-        #         new_height = round(animal.get_height() / 100 * 102, 2) 
-        pass
+    # def feed(self, animal: Animal):
+    #     if animal in self.new_lista_animali_recinto:
+    #         if animal.get_area_animal() < animal.get_area_animal():
+    #             new_health = round(animal.get_health() / 100 * 101, 2)
+    #             new_width = round(animal.get_width() / 100 * 102, 2)
+    #             new_height = round(animal.get_height() / 100 * 102, 2) 
+    
             
 
     def clean(fence: Fence) :
-    #     area_residua = fence.get_area_free()
-    #     area_occupata = fence.get_area_busy()
-    #     if area_residua == 0:
-    #         return area_occupata
-    #     else:
-    #         return area_occupata / area_residua
+        area_residua = fence.get_area_free()
+        area_occupata = fence.get_area_busy()
+        if area_residua == 0:
+            return area_occupata
+        else:
+            return area_occupata / area_residua
      
-    # def __str__(self) -> str:
-    #     return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id}  '
+    def __str__(self) -> str:
+        return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id}  '
         pass
     
 
@@ -127,8 +130,6 @@ class Zoo:
         self.zoo_keepers = []  
 
     
-
-
 # prove argomenti 
 #animali
 lupo = Animal("Lupo","lupus",7,30,20,"Foresta")
@@ -185,10 +186,5 @@ franco.feed(lupo)
 
 
 print(lupo)
-
-
-
-
-Zoo.add_fence(fence1)
 
 
