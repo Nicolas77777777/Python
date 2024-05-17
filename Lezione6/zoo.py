@@ -59,6 +59,7 @@ class Fence:
         
     def get_area_free (self):
         area_occupata = sum(animale.get_area_animal() for animale in self.lista_animali_recinto)
+        print ("l'area nel recinto rimannete è " )
         return self.area - area_occupata
     
     def get_area_busy (self):
@@ -95,6 +96,9 @@ class ZooKeeper:
         elif animal.preferred_habitat != fence.habitat:
             print(f"{animal.name} l'habitat del animale non è adeguato a questa gabbia")
         
+        elif animal.get_area_animal() < fence.area and animal.get_area_animal() > area_libera:
+            print(f"ci sono troppi animale per questa gabbia {animal.name}")
+        
 
     def remove_animal(self, animal: Animal, fence : Fence):
           if animal in fence.lista_animali_recinto:
@@ -108,11 +112,8 @@ class ZooKeeper:
 
         area_occupata_da_animali: float = 0.0
         for a in animal.fence.lista_animali_recinto:
-
-            area_occupata_da_animali += a.get_area()
-
-        if animal.fence in Animal.lista_animali_recinto:
-            if animal.get_area_animal() < animal.get_area_animal():
+        
+              if animal.get_area_animal() < animal.get_area_animal():
                 new_health = round(animal.get_health() / 100 * 101, 2)
                 new_width = round(animal.get_width() / 100 * 102, 2)
                 new_height = round(animal.get_height() / 100 * 102, 2) 
@@ -155,7 +156,7 @@ fence2 = Fence(1000,25,"Foresta")
 franco = ZooKeeper("Franco","Minkia",333333)
 # fine guardini 
 
-print(f'{lupo}\n{gatto_pallas}\n{fence1}\n{franco}')
+#print(f'{lupo}\n{gatto_pallas}\n{fence1}\n{franco}')
 # prove argomenti fine 
 
 # prove funzioni 
@@ -163,9 +164,9 @@ print(f'{lupo}\n{gatto_pallas}\n{fence1}\n{franco}')
 franco.add_animal(lupo, fence1)
 
 print(fence1.get_animal_names())
-print(fence1.get_area_free())
+# print(fence1.get_area_free())
 
-print(fence2.get_area_free())
+# print(fence2.get_area_free())
 
 franco.add_animal(lupo, fence2)
 
@@ -185,9 +186,11 @@ print(fence2.get_animal_names())
 
 franco.feed(lupo)
 
-print(lupo )
+# print(lupo )
 
-franco.feed(lupo)
-print(lupo)
+# franco.feed(lupo)
+# print(lupo)
 
-Animal.get_total()
+# Animal.get_total(Animal)
+
+#franco.feed(lupo)
