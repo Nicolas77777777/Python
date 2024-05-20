@@ -1,7 +1,4 @@
 # Assignment Operators
-import random
-
-
 
 x = 10
 x += 5
@@ -121,9 +118,9 @@ print(numbers)
 
 # set 
 
-m : int= random.randint(1,120)
+#m : int= random.randint(1,120)
 
-print(m)
+#print(m)
 
 
 
