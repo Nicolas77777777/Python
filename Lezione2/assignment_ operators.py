@@ -109,7 +109,6 @@ for i in range(1, length *2 ):
 
 print(numbers)
 
-
 #While Loops
 
 x = int(input())
