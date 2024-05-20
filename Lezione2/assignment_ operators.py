@@ -1,5 +1,8 @@
 # Assignment Operators
-re += 3
+import random
+
+
+
 x = 10
 x += 5
 
@@ -104,18 +107,23 @@ print(numbers)
 length = int(input("Enter the length of the list: "))
 numbers = []
 
-for i in range(1, length *2 ):
+for i in range(1, length +4 ):
          numbers.append(i)   
 
 print(numbers)
 
 #While Loops
 
-x = int(input())
-while x <= 5:
-    print(x)
-x += 1
+# x = int(input())
+# while x <= 5:
+#     print(x)
+# x += 1
 
+# set 
+
+m : int= random.randint(1,120)
+
+print(m)
 
 
 
