@@ -14,7 +14,7 @@ class Animal:
         self.preferred_habitat = preferred_habitat
         self.health= round( 100 * (1 / age),3)
         self.animal_area : float = height * width
-        self.fence= None
+        self.fence: Fence= None
         Animal.total_animal += 1
 
     def set_width (self, width) -> float:

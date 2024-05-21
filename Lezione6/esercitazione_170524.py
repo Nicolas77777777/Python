@@ -44,37 +44,52 @@ print(anagram("anagram","nagaram"))
 #account1 = bank.create_account("123")
 #print(account1.get_balance())
 
-class Account:
+# class Account:
     
-    def __init__(self,account_id: str, balance:float=0 ) -> None:
+#     def __init__(self,account_id: str, balance:float=0 ) -> None:
 
-        self.account_id = account_id
-        self.balance: float = balance
+#         self.account_id = account_id
+#         self.balance: float = balance
 
-    def deposit(self,amount: float):  
-        amount +=  self.balance
+#     def deposit(self,amount: float):  
+#         amount +=  self.balance
         
     
-    def get_balance(self):
-        return self.balance
+#     def get_balance(self):
+#         return self.balance
 
-class Bank:
+# class Bank:
 
-    def __init__(self, accounts: dict[str, Account],) -> None:
-            self.accounts= accounts
+#     def __init__(self, accounts: dict[str, Account],) -> None:
+#             self.accounts= accounts
 
-    def create_account(self, account_id:Account ):
-        account_id = account_id
+#     def create_account(self, account_id:Account ):
+#         account_id = account_id
         
 
-    def deposit(self,account_id, amount):
+#     def deposit(self,account_id, amount):
+#         pass
+
+#     def get_balance(self, account_id:Account):
+#         account_id = account_id.get_balance
+
+    
+# bank= Bank()
+# account1= Bank.create_account("123")
+
+# print(())
+
+
+
+
+
+class Member:
+    pass
+
+class Book:
+    def __init__(self, book_id: str) -> None:
         pass
-
-    def get_balance(self, account_id:Account):
-        account_id = account_id.get_balance
-
     
-bank= Bank()
-account1= Bank.create_account("123")
 
-print(())
+class Library:
+    pass
