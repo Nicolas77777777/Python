@@ -18,13 +18,27 @@
 
 
 def create_playlist(playlist_name, *songs) -> dict:
-    playlist: dict ={"playlist_name":playlist_name,
-                     "songs":songs}
-    return playlist
-    
-print(create_playlist("Casa",{"Song1,Song2, Song3"}))
 
-    
+    return   { 'playlist_name':playlist_name,
+              
+              'songs':songs
+             }
+
+print(create_playlist('run','Song1,Song2,Song3'))
+
+def add_like(pl,playlist_name,  like):
+    if playlist_name["name"] == name:
+        playlist_name["like"] = like
+    return playlist_name
+
+pl= create_playlist('run','Song1,Song2,Song3')
+
+print(add_like(pl,"run",False))
+print(add_like("run",True))
+
+
+
+      
 
 
 
