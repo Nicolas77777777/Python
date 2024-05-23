@@ -1,7 +1,7 @@
 # Nicola Oliveri
 #03/05/2024 
 
-# 1. Create a Playlist:
+""" 1. Create a Playlist:
 
 # Write a function called create_playlist() that accepts a playlist name and
 # a variable number of song titles. The function should return a dictionary
@@ -14,12 +14,17 @@
 # and a boolean value indicating whether it is liked (True or False). This function
 # should return an updated dictionary.
 
-# Example: add_like(dictionary, “Road Trip”, liked=True)
+# Example: add_like(dictionary, “Road Trip”, liked=True)"""
 
 
+def create_playlist(playlist_name, *songs) -> dict:
+    playlist: dict ={"playlist_name":playlist_name,
+                     "songs":songs}
+    return playlist
+    
+print(create_playlist("Casa",{"Song1,Song2, Song3"}))
 
-def create_playlist(playlist_name, x : int):
-    pass
+    
 
 
 

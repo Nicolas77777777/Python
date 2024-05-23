@@ -89,11 +89,4 @@ def integerPower(base, esponente):
     return base **esponente
 
 def seconds_since_noon(ore:int ,minuti: int ,secondi: int):
-
-
-
-
-
-
-
-
+    pass
