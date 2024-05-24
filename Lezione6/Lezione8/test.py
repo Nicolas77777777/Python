@@ -70,5 +70,35 @@ def merge(nums1, m, nums2, n):
    fanno distinzione tra maiuscole e minuscole,
  ad esempio "Aa" non è considerato palindromo qui"""
 
+d= 'abccccdd'
+print(len(d),'valore di len')
+#def longest_palindrome(s: str) -> int:
+  #  for i in range(s):
+   #     if i 
+
+    
+    
+#print(longest_palindrome("abccccdd"))
+#print(longest_palindrome("Aa"))
+
+
+""""
+Data una stringa contenente solo i caratteri '(', ')', '{', '}', '[' e ']', 
+scrivere una funzione per determinare se la stringa di input è valida.
+
+Una stringa di input è valida se: 
+
+     Le parentesi aperte devono essere chiuse con parentesi dello stesso tipo.
+     Le parentesi aperte devono essere chiuse nell'ordine corretto.
+     Ad ogni parentesi chiusa corrisponde una 
+     parentesi aperta dello stesso tipo."""
+
+
+
+1
+
+
+
+
 
 
