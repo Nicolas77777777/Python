@@ -36,7 +36,7 @@ class Coccodrillo(AbcAnimal):
         print(f"brrr")
 
 from typing import Any # quando si imposta su typeCheck è utile impostare questa libreria 
-from typing import TypeAlias # rino
+from typing import TypeAlias # rinomina 
 
 tipocomposto : TypeAlias = dict[int, Any]
 
