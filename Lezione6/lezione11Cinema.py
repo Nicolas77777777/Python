@@ -10,7 +10,8 @@ Metodi:
 
 Metodi:
     - aggiungi_sala(sala): Aggiunge una nuova sala al cinema.
-    - prenota_film(titolo_film, num_posti): Trova il film desiderato e tenta di prenotare posti. Restituisce un messaggio di stato.
+    - prenota_film(titolo_film, num_posti): Trova il film desiderato e tenta
+      di prenotare posti. Restituisce un messaggio di stato.
 
 Test case:
 
@@ -25,37 +26,37 @@ class Film:
         self.titolo = titolo
         self.durata = durata
 
-
 class Sala:
 
-    def __init__(self,id_sala:int) -> None:
+    def __init__(self,id_sala : int ) -> None:
 
         self.id_sala = id_sala
         self.tot_posti: int = 100
-        self.pre_posti: int = 0
+    
 
     def prenota_posti(self,num_posti: int):
-        pre_posti: int = 0
+
         if num_posti <= self.tot_posti:
-            pre_posti= self.tot_posti - num_posti
-            return pre_posti
-        
+            return num_posti 
         else:
             return f'non è possibile prenotare un numero di posti maggiori a {self.tot_posti}'
             
 
-        
-    def posti_disponibili():
-        pass
+    def posti_disponibili(self):
+          return self.prenota_posti() - self.tot_posti
+
 
 
 class Cinema:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, sale:list) -> None:
+        self.sale= sale
+        
+    def aggiungi_sala(self, sala: str):
+        self.sale.append(sala)
         
         
-    def aggiungi_sala():
-        pass
+
+        
 
 
 new_film = Film("Balla coi Lupi",90)
@@ -65,4 +66,8 @@ sala_1 = Sala(1)
 print(new_film.titolo, new_film.durata)
 
 print(sala_1.id_sala)
+
+cinema_1= Cinema(sale=[])
+
+print(cinema_1.aggiungi_sala(sala_1.id_sala))
 
