@@ -129,7 +129,7 @@ class ZooKeeper:
      
     def __str__(self) -> str:
         return f'nome = {self.nome} cognome = {self.cognome}, id ={self.id} '
-        pass
+        
     
 
 class Zoo:
