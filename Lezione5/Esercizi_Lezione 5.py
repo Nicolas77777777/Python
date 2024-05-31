@@ -17,24 +17,41 @@
 # Example: add_like(dictionary, “Road Trip”, liked=True)"""
 
 
-def create_playlist(playlist_name, *songs) -> dict:
+def create_playlist(name, *songs) -> dict:
 
-    return   { 'playlist_name':playlist_name,
+    playlsit : dict= { 'name':name,
               
-              'songs':songs
-             }
+                        'songs':songs
+                                         }
+    
+    return playlsit
 
+pl=create_playlist('Road Trip', 'Song1,Song2,Song3')
 print(create_playlist('run','Song1,Song2,Song3'))
+print(pl)
 
-def add_like(pl,playlist_name,  like):
-    if playlist_name["name"] == name:
-        playlist_name["like"] = like
-    return playlist_name
+def add_like(diz:dict, playlist_name, liked):
+    new_dict: dict = diz
+    new_dict
+    # if diz['name']==['name']:
+    #     return True
+    # else:
+    #     return False
+    
 
-pl= create_playlist('run','Song1,Song2,Song3')
+print(add_like(pl, "fff",liked=True))
 
-print(add_like(pl,"run",False))
-print(add_like("run",True))
+
+
+
+
+    
+
+
+
+
+# print(add_like(pl,"run",False))
+# print(add_like("run",True))
 
 
 
