@@ -62,6 +62,9 @@ class Cinema:
 new_film = Film("Balla coi Lupi",90)
 
 sala_1 = Sala(1)  
+sala_2 = Sala(2)  
+
+
 
 print(new_film.titolo, new_film.durata)
 
