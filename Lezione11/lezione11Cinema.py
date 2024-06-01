@@ -44,6 +44,9 @@ class Sala:
 
     def posti_disponibili(self):
           return self.prenota_posti() - self.tot_posti
+    
+    def film_disponibili(self,lista_film:list):
+        lista_film:list=
 
 
 
@@ -53,24 +56,29 @@ class Cinema:
         
     def aggiungi_sala(self, sala: str):
         self.sale.append(sala)
+
+    def prenota_film(self,titolo_film , num_posti):
+        pass
         
         
 
         
 
 
-new_film = Film("Balla coi Lupi",90)
+film_1 = Film("Balla coi Lupi",90)
+film_2 = Film("Senza Esclusioni di Colpi", 120)
+film_3 = Film("Il Gladiatore", 130)
 
 sala_1 = Sala(1)  
 sala_2 = Sala(2)  
-
-
-
-print(new_film.titolo, new_film.durata)
-
-print(sala_1.id_sala)
+sala_3 = Sala(3)  
 
 cinema_1= Cinema(sale=[])
+cinema_1.aggiungi_sala(sala_2.id_sala)
+cinema_1.aggiungi_sala(sala_1.id_sala)
+cinema_1.aggiungi_sala(sala_3.id_sala)
 
-print(cinema_1.aggiungi_sala(sala_1.id_sala))
+cinema_1.sale
+
+
 
