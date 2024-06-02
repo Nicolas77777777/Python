@@ -26,9 +26,9 @@ class Film:
         self.titolo = titolo
         self.durata = durata
 
-    def lista_film (self):
-        film_dispo:list=[]
-        
+    def lista_film (self, film_dispo: list) ->list:
+        film_dispo.append(self.titolo)
+        return film_dispo
 
 class Sala:
 
@@ -37,37 +37,38 @@ class Sala:
         self.id_sala = id_sala
         self.tot_posti: int = 100
         self.posti_prenotati = 0
-        self.film = film.titolo # i film che sono in programmazione
+        self.film = film 
 
     
-    def prenota_posti(self,num_posti: int):
-
-        if num_posti <= self.tot_posti:
-            return num_posti 
+    def prenota_posti(self, num_posti: int) -> str:
+        if self.posti_disponibili() >= num_posti:
+            self.posti_prenotati += num_posti
+            return f"Prenotazione di {num_posti} posti confermata per il film '{self.film.titolo}'."
         else:
-            return f'non è possibile prenotare un numero di posti maggiori a {self.tot_posti}'
-            
+            return f"Non ci sono abbastanza posti disponibili. Posti disponibili: {self.posti_disponibili()}."
 
-    def posti_disponibili(self):
-          return self.prenota_posti() - self.tot_posti
-    
-    def film_disponibili(self,film:Film ) -> None:
-        self.film = film.titolo
+    def posti_disponibili(self) -> int:
+        return self.tot_posti - self.posti_prenotati
 
+    def imposta_film(self, film: Film) -> None:
+        self.film = film
 
 class Cinema:
     def __init__(self, sale:list) -> None:
-        self.sale= sale
+        self.sale = sale
         
-    def aggiungi_sala(self, sala: str):
+    def aggiungi_sala(self, sala:Sala):
         self.sale.append(sala)
 
-    def prenota_film(self,titolo_film , num_posti):
-        pass
-        
-        
+    def prenota_film(self, titolo_film:str , num_posti: int):
+        for sala in self.sale:
+            if sala.film and sala.film.titolo == titolo_film:
+                return sala.prenota_posti(num_posti)
+            else:
+                return "film non presente nelle sale. "
 
         
+                
 
 
 film_1 = Film("Balla coi Lupi",90)
@@ -83,8 +84,19 @@ cinema_1.aggiungi_sala(sala_2.id_sala)
 cinema_1.aggiungi_sala(sala_1.id_sala)
 cinema_1.aggiungi_sala(sala_3.id_sala)
 
-lista_film= Sala(film_dispo=[])
-sala_1.film_disponibili(film_1.titolo)
+film_disponibili: list = []
+film_1.lista_film(film_disponibili)
+film_2.lista_film(film_disponibili)
+film_3.lista_film(film_disponibili)
+print(film_disponibili)
+
+print(cinema_1.prenota_film("Il Gladiatore",30))
+
+
+
+
+
+
 
 
 
