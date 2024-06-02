@@ -26,6 +26,10 @@ class Film:
         self.titolo = titolo
         self.durata = durata
 
+    def lista_film (self):
+        film_dispo:list=[]
+        
+
 class Sala:
 
     def __init__(self,id_sala : int ) -> None:
@@ -45,8 +49,10 @@ class Sala:
     def posti_disponibili(self):
           return self.prenota_posti() - self.tot_posti
     
-    def film_disponibili(self,lista_film:list):
-        lista_film:list=
+    def film_disponibili(self, titolo_film:Film):
+        for i in Film:
+            return i[titolo_film.titolo]
+
 
 
 
@@ -78,6 +84,7 @@ cinema_1.aggiungi_sala(sala_2.id_sala)
 cinema_1.aggiungi_sala(sala_1.id_sala)
 cinema_1.aggiungi_sala(sala_3.id_sala)
 
+lista_film= Sala(film_dispo=[])
 cinema_1.sale
 
 
