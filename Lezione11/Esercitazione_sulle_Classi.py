@@ -32,12 +32,14 @@ class Film:
 
 class Sala:
 
-    def __init__(self,id_sala : int ) -> None:
+    def __init__(self,id_sala : int, film:Film = None) -> None:
 
         self.id_sala = id_sala
         self.tot_posti: int = 100
-    
+        self.posti_prenotati = 0
+        self.film= film # i film che sono in programmazione
 
+    
     def prenota_posti(self,num_posti: int):
 
         if num_posti <= self.tot_posti:
@@ -49,11 +51,8 @@ class Sala:
     def posti_disponibili(self):
           return self.prenota_posti() - self.tot_posti
     
-    def film_disponibili(self, titolo_film:Film):
-        for i in Film:
-            return i[titolo_film.titolo]
-
-
+    def film_disponibili(self,film:Film ) -> None:
+        self.film = film
 
 
 class Cinema:
@@ -85,7 +84,7 @@ cinema_1.aggiungi_sala(sala_1.id_sala)
 cinema_1.aggiungi_sala(sala_3.id_sala)
 
 lista_film= Sala(film_dispo=[])
-cinema_1.sale
+Sala.film_disponibili(sala_1,film_1)
 
 
 
