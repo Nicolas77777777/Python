@@ -37,7 +37,7 @@ class Sala:
         self.id_sala = id_sala
         self.tot_posti: int = 100
         self.posti_prenotati = 0
-        self.film= film # i film che sono in programmazione
+        self.film = film.titolo # i film che sono in programmazione
 
     
     def prenota_posti(self,num_posti: int):
@@ -52,7 +52,7 @@ class Sala:
           return self.prenota_posti() - self.tot_posti
     
     def film_disponibili(self,film:Film ) -> None:
-        self.film = film
+        self.film = film.titolo
 
 
 class Cinema:
@@ -84,7 +84,7 @@ cinema_1.aggiungi_sala(sala_1.id_sala)
 cinema_1.aggiungi_sala(sala_3.id_sala)
 
 lista_film= Sala(film_dispo=[])
-Sala.film_disponibili(sala_1,film_1)
+sala_1.film_disponibili(film_1.titolo)
 
 
 
