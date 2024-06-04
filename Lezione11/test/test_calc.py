@@ -4,7 +4,7 @@ from calc import Calcutations
 
 class TestCalc(unittest.TestCase):
 
-    def test_sum(self):
+    def test_sum(self): # i test devono iniziare per la parola tEST
 
         calc_1= Calcutations (a=2, b=3)
         result= calc_1.get_sum()
