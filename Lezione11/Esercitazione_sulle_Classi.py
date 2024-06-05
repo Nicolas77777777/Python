@@ -93,7 +93,9 @@ print(cinema_1.prenota_film("Il Gladiatore", 80))
 print(cinema_1.prenota_film("Film Non Disponibile", 30))
 
 
-""" Scrivi un programma in Python che gestisca un magazzino. Il programma deve permettere di aggiungere prodotti al magazzino, cercare prodotti per nome e verificare la disponibilità di un prodotto.
+""" Scrivi un programma in Python che gestisca un magazzino. 
+Il programma deve permettere di aggiungere prodotti al magazzino, 
+cercare prodotti per nome e verificare la disponibilità di un prodotto.
 
 Definisci una classe Prodotto con i seguenti attributi:
 - nome (stringa)
@@ -106,13 +108,44 @@ Definisci una classe Magazzino con i seguenti metodi:
  
 Test case:
 
-    Un gestore del magazzino crea un magazzino e diversi prodotti in diverse quantità. Successivamente, aggiunge i prodotti al magazzino.
+    Un gestore del magazzino crea un magazzino e diversi prodotti in diverse quantità. 
+    Successivamente, aggiunge i prodotti al magazzino.
     Il sistema cerca un prodotto per verificare se esiste nell'inventario.
     Il sistema verifica la disponibilità dei prodotti in inventario."""
 
 
+class Prodotto: 
+    def __init__(self, nome : str, quantita : int ) -> None:
+
+        self.nome= nome
+        self.quantita = quantita
+
+    def dizionario (self):
+        prodotto: dict = dict
+        prodotto = {
+                    self.nome : self.quantita
+                        }
+        return prodotto
+        
+
+class Magazzino:
+
+    def aggiungi_prodotto(prodotto: Prodotto):
+        pass
 
 
+    def cerca_prodotto(nome: str):
+        pass
+
+
+    def verifica_disponibilità(nome: str):
+        pass
+
+
+scarpe = Prodotto("scarpe",10)
+camicia = Prodotto("camica",10)
+
+Prodotto.dizionario(self=scarpe)
 
 
 
