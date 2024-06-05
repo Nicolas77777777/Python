@@ -1,8 +1,9 @@
+from abc import ABC
 """" Create an abstract class Shape with an abstract method area 
 and another abstract method perimeter. Then, create two subclasses
  Circle and Rectangle that implement the area and perimeter methods."""
 
-# scrivere la classe 
+class Shape(ABC):
 
 """" Exercise 2: Implementing Static Methods
 

@@ -171,14 +171,3 @@ if magazzino_1.cerca_prodotto("scarpe!"):
     print ("tutto a posto ")
 
 magazzino_1.verifica_disponibilità("scarpe")
-
-
-
-
-
-
-
-
-
-
-
