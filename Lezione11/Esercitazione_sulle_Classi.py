@@ -117,7 +117,7 @@ Test case:
 class Prodotto: 
     def __init__(self, nome : str, quantita : int ) -> None:
 
-        self.nome= nome
+        self.nome = nome
         self.quantita = quantita
 
     def dizionario (self):
@@ -132,38 +132,49 @@ class Magazzino:
 
     def __init__(self, nome_magazzino: str ) -> None:
         self.nome_magazzino= nome_magazzino
-        self.lista_magazzino: list  = [Prodotto]
+        self.lista_magazzino: list  = []
 
-    def aggiungi_prodotto(self, prodotto: Prodotto):
+    def aggiungi_prodotto(self, prodotto: Prodotto) :
         self.lista_magazzino.append(prodotto)
         return self.lista_magazzino
         
         
-    def cerca_prodotto(self, nome: str ):
+    def cerca_prodotto(self, nome: str ) -> Prodotto:
+       
         for i in self.lista_magazzino: 
-            if nome == Prodotto.nome:
-                return f'il prodotto {Prodotto.nome} è presente nel magazzino'
+            if nome == i.nome:
+                return i
             else: 
-                return f'il prodotto non è in magazzino '
+                return False
 
 
+    def verifica_disponibilità(self, nome: str) -> int:
+        prodotto = self.cerca_prodotto(nome)
+        if prodotto:
+            print (prodotto.quantita)
+            
+        
 
-
-    def verifica_disponibilità(nome: str):
-        pass
-
+            
 
 scarpe = Prodotto("scarpe",10)
 camicia = Prodotto("camica",10)
 
 Prodotto.dizionario(self=scarpe)
 
-magazzino_1= Magazzino("magazzino 1")
+magazzino_1= Magazzino("magazzino1")
 
 magazzino_1.aggiungi_prodotto(scarpe)
 magazzino_1.aggiungi_prodotto(camicia)
 
-magazzino_1.cerca_prodotto("scarpe")
+magazzino_1.cerca_prodotto("scarpe!")
+
+if magazzino_1.cerca_prodotto("scarpe!"):
+    print ("tutto a posto ")
+
+magazzino_1.verifica_disponibilità("scarpe")
+
+
 
 
 
