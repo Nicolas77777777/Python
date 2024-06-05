@@ -35,3 +35,4 @@ a = time.time()
 print(f'tempo impiegato {time.time()- a} ')
 
 print(fibonacci4(51))
+print(fibonacci4(2))
