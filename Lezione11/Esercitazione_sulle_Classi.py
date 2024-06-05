@@ -146,6 +146,7 @@ scarpe = Prodotto("scarpe",10)
 camicia = Prodotto("camica",10)
 
 Prodotto.dizionario(self=scarpe)
+divmod
 
 
 
