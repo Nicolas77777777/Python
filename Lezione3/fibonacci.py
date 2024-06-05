@@ -15,3 +15,23 @@ def fibonacci_for(numero: int):
     return memoria[-1]
 
 print(fibonacci_for(60))
+
+
+def fibonacci4 (i:int): 
+    a= 1
+    b=1
+
+    for i in range (i):
+        c = a+b
+        a = b
+        b = c
+
+    return b
+
+import time
+
+a = time.time()
+
+print(f'tempo impiegato {time.time()- a} ')
+
+print(fibonacci4(51))
