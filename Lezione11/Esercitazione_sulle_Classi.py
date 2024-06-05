@@ -139,8 +139,8 @@ class Magazzino:
         return self.lista_magazzino
         
         
-    def cerca_prodotto(self, nome: str ) -> Prodotto:
-       
+    def cerca_prodotto(self, nome: str ) -> Prodotto | bool:
+        i:Prodotto # annotations 
         for i in self.lista_magazzino: 
             if nome == i.nome:
                 return i
