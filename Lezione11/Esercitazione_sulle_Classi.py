@@ -153,9 +153,7 @@ class Magazzino:
         if prodotto:
             print (prodotto.quantita)
             
-        
-
-            
+                    
 
 scarpe = Prodotto("scarpe",10)
 camicia = Prodotto("camica",10)
