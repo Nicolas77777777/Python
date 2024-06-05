@@ -4,6 +4,7 @@ and another abstract method perimeter. Then, create two subclasses
  Circle and Rectangle that implement the area and perimeter methods."""
 
 class Shape(ABC):
+    pass
 
 """" Exercise 2: Implementing Static Methods
 
