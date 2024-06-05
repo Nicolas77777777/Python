@@ -130,12 +130,23 @@ class Prodotto:
 
 class Magazzino:
 
-    def aggiungi_prodotto(prodotto: Prodotto):
-        pass
+    def __init__(self, nome_magazzino: str ) -> None:
+        self.nome_magazzino= nome_magazzino
+        self.lista_magazzino: list  = [Prodotto]
+
+    def aggiungi_prodotto(self, prodotto: Prodotto):
+        self.lista_magazzino.append(prodotto)
+        return self.lista_magazzino
+        
+        
+    def cerca_prodotto(self, nome: str ):
+        for i in self.lista_magazzino: 
+            if nome == Prodotto.nome:
+                return f'il prodotto {Prodotto.nome} è presente nel magazzino'
+            else: 
+                return f'il prodotto non è in magazzino '
 
 
-    def cerca_prodotto(nome: str):
-        pass
 
 
     def verifica_disponibilità(nome: str):
@@ -146,7 +157,16 @@ scarpe = Prodotto("scarpe",10)
 camicia = Prodotto("camica",10)
 
 Prodotto.dizionario(self=scarpe)
-divmod
+
+magazzino_1= Magazzino("magazzino 1")
+
+magazzino_1.aggiungi_prodotto(scarpe)
+magazzino_1.aggiungi_prodotto(camicia)
+
+magazzino_1.cerca_prodotto("scarpe")
+
+
+
 
 
 
