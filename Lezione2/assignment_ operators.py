@@ -19,6 +19,7 @@ print(x)
 x //= 2
 print(x)
 x %= 2
+print(x,"x con la precentuale")
 
 #Alcuni usi comuni dell'operatore %:
 

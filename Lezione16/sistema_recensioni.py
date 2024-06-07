@@ -68,16 +68,41 @@ class Media:
         return sum(self.reviews) // len(self.reviews)
     
 
-    def getRate(self) -> float:
-        
+    def getRate(self) -> str:
+        if self.getMedia() <= 1.5:
+            return "Terribile"
+        elif self.getMedia() > 1.5 and self.getMedia() < 2.5 :
+            return " Brutto"
+        elif self.getMedia() > 2.5 and self.getMedia()< 3.5:
+            return "Normale"
+        elif self.getMedia() > 3.5 and self.getMedia()< 4.5:
+            return  "Bello"
+        elif self.getMedia() > 4.5 and self.getMedia() <= 5:
+            return " Grandioso"
 
-    def ratePercentage(self, voto) :
-        pass
+    def ratePercentage(self, voto)  -> float:
+         
+         conteggio_voti = self.reviews.count(voto)
+         return conteggio_voti
+  
+            return f'scrivi un numero uguale o inferiore a 5 '
     
-
+          
     def recensione(self):
+        pass
 
-    
+
+    def __str__(self) -> str:
+        return f' Titolo Film {self.get_title()} Voto Medio {self.getMedia()}'
+
+
+class Film(Media):
+
+    def __init__(self) -> None:
+        super().__init__()
+
+
+
 
 
     
