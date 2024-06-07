@@ -89,11 +89,11 @@ class Media:
     
           
     def recensione(self):
-        pass
+        
 
 
     def __str__(self) -> str:
-        return f' Titolo Film {self.get_title()} Voto Medio {self.getMedia()} Giudizio {self.getRate}'
+        return f' Titolo Film {self.get_title()} Voto Medio {self.getMedia()} Giudizio {self.getRate})'
 
 
 class Film(Media):
