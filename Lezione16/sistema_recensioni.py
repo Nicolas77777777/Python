@@ -81,11 +81,11 @@ class Media:
             return " Grandioso"
 
     def ratePercentage(self, voto)  -> float:
-         
-         conteggio_voti = self.reviews.count(voto)
-         return conteggio_voti
-  
-            return f'scrivi un numero uguale o inferiore a 5 '
+        media= 0 
+        for n in self.reviews:
+            if n == voto:
+                media = (self.reviews.count(n) / len(self.reviews))*100
+        return f'{media}%' 
     
           
     def recensione(self):
@@ -93,7 +93,7 @@ class Media:
 
 
     def __str__(self) -> str:
-        return f' Titolo Film {self.get_title()} Voto Medio {self.getMedia()}'
+        return f' Titolo Film {self.get_title()} Voto Medio {self.getMedia()} Giudizio {self.getRate}'
 
 
 class Film(Media):
