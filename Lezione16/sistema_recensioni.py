@@ -89,6 +89,7 @@ class Media:
     
           
     def recensione(self):
+        pass
         
 
 
