@@ -58,8 +58,9 @@ class Media:
     
 
     def  aggiungiValutazione(self, voto: int) -> list:
-        if 1 <= voto <= 5 :
-            return self.reviews.append(voto)
+        if voto != 0 and voto <= 5 :
+            self.reviews.append(voto)
+            return self.reviews
         else:
             print (f'aggiungi un valore compreso tra 1 e 5 ')
 
@@ -69,19 +70,20 @@ class Media:
     
 
     def getRate(self) -> str:
-        if self.getMedia() <= 1.5:
+        media = self.getMedia()
+        if media <= 1.5:
             return "Terribile"
-        elif self.getMedia() > 1.5 and self.getMedia() < 2.5 :
+        elif media < 2.5 :
             return " Brutto"
-        elif self.getMedia() > 2.5 and self.getMedia()< 3.5:
+        elif media < 3.5:
             return "Normale"
-        elif self.getMedia() > 3.5 and self.getMedia()< 4.5:
+        elif media < 4.5:
             return  "Bello"
-        elif self.getMedia() > 4.5 and self.getMedia() <= 5:
+        elif media  <= 5:
             return " Grandioso"
 
-    def ratePercentage(self, voto)  -> float:
-        media= 0 
+    def ratePercentage(self, voto : int)  -> float:
+        media = 0 
         for n in self.reviews:
             if n == voto:
                 media = (self.reviews.count(n) / len(self.reviews))*100
@@ -89,12 +91,12 @@ class Media:
     
           
     def recensione(self) -> str :
-        return f'Titolo Film {self.get_title}'
+       print(f'Titolo Film: {self.get_title()}\n Voto Medio: {self.getMedia()}\n Giudizio: {self.getRate}')
         
 
 
     def __str__(self) -> str:
-        return f' Titolo Film {self.get_title()} Voto Medio {self.getMedia()} Giudizio {self.getRate})'
+        return f' Titolo Film {self.get_title()} Voto Medio {self.getMedia()} Giudizio: {self.getRate})'
 
 
 class Film(Media):
@@ -104,16 +106,31 @@ class Film(Media):
 
 
 
-film1: Media = Media
+film1: Film = Film()
 Film.set_title(film1,"Balla coi Lupi")
 Film.get_title(film1)
 
+film1.aggiungiValutazione(5)
+print(film1.reviews)
+film1.aggiungiValutazione(4)
+print(film1.reviews)
+film1.aggiungiValutazione(2)
+print(film1.reviews)
+film1.aggiungiValutazione(1)
+print(film1.reviews)
+film1.aggiungiValutazione(3)
+print(film1.reviews)
 
 
+film1.getRate()
 print(film1)
+print(film1.getRate())
 
 
-film1.aggiungiValutazione(film1,4)
+film1.ratePercentage(5)
+
+print(film1.recensione())
+
 
 
 
