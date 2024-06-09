@@ -44,7 +44,7 @@ dieci valutazioni e richiami il metodo recensione().
 
 
 class Media:
-    def __init__(self) -> None:
+    def __init__(self) :
         self.title = ""
         self.reviews = []
 
@@ -58,10 +58,10 @@ class Media:
     
 
     def  aggiungiValutazione(self, voto: int) -> list:
-        if voto <= 5 :
+        if 1 <= voto <= 5 :
             return self.reviews.append(voto)
         else:
-            return f'aggiungi un valore compreso tra 1 e 5 '
+            print (f'aggiungi un valore compreso tra 1 e 5 ')
 
 
     def getMedia(self) -> float : 
@@ -88,8 +88,8 @@ class Media:
         return f'{media}%' 
     
           
-    def recensione(self):
-        pass
+    def recensione(self) -> str :
+        return f'Titolo Film {self.get_title}'
         
 
 
@@ -101,6 +101,20 @@ class Film(Media):
 
     def __init__(self) -> None:
         super().__init__()
+
+
+
+film1: Media = Media
+Film.set_title(film1,"Balla coi Lupi")
+Film.get_title(film1)
+
+
+
+print(film1)
+
+
+film1.aggiungiValutazione(film1,4)
+
 
 
 
