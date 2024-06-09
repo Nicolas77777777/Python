@@ -41,7 +41,7 @@ Si verifichi il funzionamento scrivendo un codice che crei
 almeno due oggetti di tipo Film, aggiunga a ognuno dei due almeno 
 dieci valutazioni e richiami il metodo recensione().
 """
-
+import random
 
 class Media:
     def __init__(self) :
@@ -85,16 +85,29 @@ class Media:
     def ratePercentage(self, voto : int)  -> float:
         media = 0 
         for n in self.reviews:
-            if n == voto:
+            if n == voto and voto in self.reviews:
                 media = (self.reviews.count(n) / len(self.reviews))*100
         return f'{media}%' 
     
+    def get_name_rate_percentage(self,voto) -> str:
+         if voto == 1:
+            return "Terribile"
+         elif voto == 2:
+            return "Brutto"
+         elif voto == 3:
+            return "Normale"
+         elif voto == 4:
+            return "Bello"
+         elif voto == 5:
+            return "Grandioso"
+
           
     def recensione(self) -> str :
-       print(f'Titolo Film: {self.get_title()}\n Voto Medio: {self.getMedia()}\n Giudizio: {self.getRate}')
+       print(f'Titolo Film: {self.get_title()}\nVoto Medio: {self.getMedia()}\nGiudizio: {self.getRate()}')
+       for i in range (1,6):
+           print(f'{self.get_name_rate_percentage(i)}: {self.ratePercentage(i)}')
         
-
-
+        
     def __str__(self) -> str:
         return f' Titolo Film {self.get_title()} Voto Medio {self.getMedia()} Giudizio: {self.getRate})'
 
@@ -105,31 +118,26 @@ class Film(Media):
         super().__init__()
 
 
-
+# CREAZIONE FILM
 film1: Film = Film()
+film2: Film = Film()
+
+# IMPOSTAZIONE TITOLO 
 Film.set_title(film1,"Balla coi Lupi")
-Film.get_title(film1)
+Film.set_title(film2,"Point Break")
 
-film1.aggiungiValutazione(5)
+
+# itero per 10 cicli la funzione aggiungi valutazione ( con valore randomico da 1 a 5)
+for i in range(10):film1.aggiungiValutazione(random.randint(1,5)) 
+for i in range(10):film2.aggiungiValutazione(random.randint(1,5)) 
+
 print(film1.reviews)
-film1.aggiungiValutazione(4)
-print(film1.reviews)
-film1.aggiungiValutazione(2)
-print(film1.reviews)
-film1.aggiungiValutazione(1)
-print(film1.reviews)
-film1.aggiungiValutazione(3)
-print(film1.reviews)
+print(film2.reviews)
 
-
-film1.getRate()
-print(film1)
-print(film1.getRate())
-
-
-film1.ratePercentage(5)
-
+# stampo la funzione recensione 
 print(film1.recensione())
+print(film2.recensione())
+
 
 
 
