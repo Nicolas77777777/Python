@@ -30,22 +30,15 @@ class Circle(Shape):
 
     def area (self,radius:float):
         area= 3.14 *(radius**2)
-        return area
+        return f'circle area = {area}'
     
     def perimeter (self,radius):
         perimeter= (2*3.14)*radius
-        return perimeter
+        return f'circle perimeter= {perimeter}'
     
-
 ce:Circle= Circle("cerchio")
 
-ce.area(5)
-
-
-
-    
-        
-
+print(ce.area(5))
 
 
 
