@@ -65,7 +65,7 @@ class Media:
 
 
     def getMedia(self) -> float : 
-        return sum(self.reviews) // len(self.reviews)
+        return sum(self.reviews) / len(self.reviews)
     
 
     def getRate(self) -> str:
