@@ -23,3 +23,25 @@ with open("esempio.txt") as reader:
 
 
 # creare un contex manager personalizzato 
+
+class ContexManager:
+    def __enter__(self):
+        print ("Ciao sono nell'enter")
+
+        return self
+    def __exit__(self, exc_type, ):
+        if exc_type is not None:
+            print("Eccezionale")
+
+        return False
+    
+try:
+
+    with ContexManager()  as cm: 
+        print("Ciao")
+        print(cm)
+
+except Exception:
+    print()
+
+    

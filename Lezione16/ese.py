@@ -81,34 +81,7 @@ class Veicolo:
     def descrivi_veicolo(self):
         descrivi = f'Marca: {self.marca}, Modello:{self.modello}, Anno: {self.anno}'
         return descrivi 
-      
 
-
-veicolo = Veicolo("Generic", "Model", 2020)
-print(veicolo.descrivi_veicolo())
-"""auto = Auto("Toyota", "Corolla", 2021, 4)
-moto = Moto("Yamaha", "R1", 2022, "sportiva")
-
- 
-auto.descrivi_veicolo()
-moto.descrivi_veicolo()"""
-
-"""2. Classe Derivata: Auto
-Crea una classe derivata chiamata Auto che eredita dalla
- classe Veicolo e aggiunge i seguenti attributi e metodi:
- 
-Attributi:
-
-    numero_porte (intero)
-
-Metodi:
-
-    __init__(self, marca, modello, anno, numero_porte): 
-    metodo costruttore che inizializza gli attributi della 
-    classe base e numero_porte.
-    descrivi_veicolo(self): metodo che sovrascrive
-    quello della classe base per includere anche il numero di porte nella descrizione,
-    nel formato "Marca: [marca], Modello: [modello], Anno: [anno], Numero di porte: [numero_porte]"."""
 class Auto(Veicolo):
 
     def __init__(self, marca: str, modello: str, anno: int, numero_porte: int):
@@ -118,10 +91,19 @@ class Auto(Veicolo):
 
 
     def descrivi_veicolo(self):
-        descrivi = f'Marca: {self.marca}, Modello:{self.modello}, Anno: {self.anno} Numero di porte: '
+        descrivi = f'Marca: {self.marca}, Modello:{self.modello}, Anno: {self.anno} Numero di porte: {self.numero_porte}'
         return descrivi 
+    
 
 
+
+veicolo = Veicolo("Generic", "Model", 2020)
+print(veicolo.descrivi_veicolo())
+auto = Auto("Toyota", "Corolla", 2021, 4)
+#moto = Moto("Yamaha", "R1", 2022, "sportiva")
+ 
+print(auto.descrivi_veicolo())
+#moto.descrivi_veicolo()"""
 
 
 
@@ -136,6 +118,9 @@ Attributi:
 
 Metodi:
 
-    __init__(self, marca, modello, anno, tipo): metodo costruttore che inizializza gli attributi della classe base e tipo.
-    descrivi_veicolo(self): metodo che sovrascrive quello della classe base per includere anche il tipo di moto nella descrizione, nel formato "Marca: [marca], Modello: [modello], Anno: [anno], Tipo: [tipo]"."""
-
+    __init__(self, marca, modello, anno, tipo): metodo costruttore
+    che inizializza gli attributi della classe base e tipo.
+    descrivi_veicolo(self): metodo che sovrascrive quello della
+    classe base per includere anche il tipo di moto nella descrizione,
+    nel formato "Marca: [marca], Modello:
+    [modello], Anno: [anno], Tipo: [tipo]"."""
