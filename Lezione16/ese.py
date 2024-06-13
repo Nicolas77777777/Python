@@ -52,26 +52,6 @@ contatore.sub1()
 contatore.mostra()  # Output: Il valore corrente del conteggio è: 0
 contatore.sub1()    # Output: Errore: il conteggio è già 0 e non può essere decrementato.
 
-
-
-"""" In questo esercizio, creeremo una gerarchia di classi per rappresentare
- diversi tipi di veicoli.
-1. Classe Base: Veicolo
-Crea una classe base chiamata Veicolo con i seguenti attributi e metodi:
- 
-Attributi:
-
-    marca (stringa)
-    modello (stringa)
-    anno (intero)
-
-Metodi:
-
-    __init__(self, marca, modello, anno): metodo costruttore 
-    che inizializza gli attributi marca, modello e anno.
-    descrivi_veicolo(self): metodo che stampa una descrizione 
-    del veicolo nel formato "Marca: [marca], Modello: [modello], Anno: [anno]"."""
-
 class Veicolo:
     def __init__(self, marca: str, modello: str, anno: int ) :
         self.marca = marca
@@ -79,7 +59,7 @@ class Veicolo:
         self.anno = anno
 
     def descrivi_veicolo(self):
-        descrivi = f'Marca: {self.marca}, Modello:{self.modello}, Anno: {self.anno}'
+        descrivi = f'Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}'
         return descrivi 
 
 class Auto(Veicolo):
@@ -91,36 +71,48 @@ class Auto(Veicolo):
 
 
     def descrivi_veicolo(self):
-        descrivi = f'Marca: {self.marca}, Modello:{self.modello}, Anno: {self.anno} Numero di porte: {self.numero_porte}'
+        descrivi = f'Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}, Numero di porte: {self.numero_porte}'
+        return descrivi 
+    
+class Moto(Veicolo):
+    def __init__(self, marca: str, modello: str, anno: int, tipo: str):
+            super().__init__(marca, modello, anno)
+
+            self.tipo= tipo 
+
+    def descrivi_veicolo(self):
+        descrivi = f'Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}, Tipo: {self.tipo}'
         return descrivi 
     
 
-
-
 veicolo = Veicolo("Generic", "Model", 2020)
-print(veicolo.descrivi_veicolo())
 auto = Auto("Toyota", "Corolla", 2021, 4)
-#moto = Moto("Yamaha", "R1", 2022, "sportiva")
- 
-print(auto.descrivi_veicolo())
-#moto.descrivi_veicolo()"""
+moto = Moto("Yamaha", "R1", 2022, "sportiva")
+
+veicolo.descrivi_veicolo()
+auto.descrivi_veicolo()
+moto.descrivi_veicolo()
 
 
+class RecipeManager:
+    def __init__(self) -> dict:
+        self.recipes: dict = {}
+
+    def create_recipe(self, name: str, ingredients:str) -> dict:
+        self.recipes[name]= ingredients
+        return self.recipes
 
 
-"""3. Classe Derivata: Moto
-Crea una classe derivata chiamata Moto che eredita dalla 
-classe Veicolo e aggiunge i seguenti attributi e metodi:
- 
-Attributi:
+    def add_ingredient(self, recipe_name, ingredient):
+        pass
+     
 
-    tipo (stringa, ad esempio "sportiva", "cruiser", ecc.)
+    def remove_ingredient(self, recipe_name, ingredient):
+        pass
+   
 
-Metodi:
+    def update_ingredient(self, recipe_name, old_ingredient, new_ingredient):
+       pass
 
-    __init__(self, marca, modello, anno, tipo): metodo costruttore
-    che inizializza gli attributi della classe base e tipo.
-    descrivi_veicolo(self): metodo che sovrascrive quello della
-    classe base per includere anche il tipo di moto nella descrizione,
-    nel formato "Marca: [marca], Modello:
-    [modello], Anno: [anno], Tipo: [tipo]"."""
+manager = RecipeManager()
+print(manager.create_recipe("Pizza Margherita", ["Farina", "Acqua", "Lievito", "Pomodoro", "Mozzarella"]))
