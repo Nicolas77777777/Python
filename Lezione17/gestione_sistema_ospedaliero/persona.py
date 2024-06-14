@@ -39,6 +39,21 @@ class Persona:
             print(f'Il nome inserito non è una stringa!')
 
 
+    def getName(self) -> str: 
+       return self.setName()
+    
+    def getLastname(self) -> str:
+        return self.setLastName()
+      
+    def getAge(self) -> str:
+        return self.setAge()
+    
+    def greet():
+        pass
+        
+
+
+
 
             
 
