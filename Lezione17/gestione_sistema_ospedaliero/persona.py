@@ -48,11 +48,17 @@ class Persona:
         return self.setAge()
     
     def greet(self):
-        return f'Ciao sono {self.getName} {self.getLastname}! Ho {self.getAge}'
+        print(f'Ciao sono {self.__first_name} {self.__last_name}! Ho {self.__eta}')
     
-x:Persona = Persona("Franco","Minkia")
+x:Persona = Persona("Franco","Rossi")
 
-print (x)
+y:Persona = Persona(8,"Rossi")
+
+x.setAge(20)
+
+
+x.greet()
+
         
         
 
