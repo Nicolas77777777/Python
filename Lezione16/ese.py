@@ -103,8 +103,11 @@ class RecipeManager:
         return self.recipes
 
 
-    def add_ingredient(self, recipe_name, ingredient):
-        pass
+    def add_ingredient(self, recipe_name: str, ingredient: str):
+        recipe_name:dict = recipe_name
+        if recipe_name == self.recipes.keys():
+            pass
+
      
 
     def remove_ingredient(self, recipe_name, ingredient):
