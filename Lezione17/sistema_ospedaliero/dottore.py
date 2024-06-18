@@ -1,21 +1,16 @@
 from persona import Persona
 
 class Dottore(Persona):
-    def __init__(self, first_name: str, last_name: str) -> bool:
+    def __init__(self, first_name: str, last_name: str, specialization: str, parcel: float) -> bool:
         super().__init__(first_name, last_name)
 
-        
-
-    
-
-    if isinstance(first_name,str):
-            self.__first_name = first_name
+        if isinstance(specialization,str):
+            self.__specialization =  specialization
         else:
-            self.__first_name = None
-            self.__eta = None
+            self.__specialization = None
             print(f'Il nome inserito non è una stringa!')
             
-        if isinstance(last_name,str):
+        if isinstance(parcel,float):
             self.__last_name = last_name
         else: 
             self.__first_name = None
