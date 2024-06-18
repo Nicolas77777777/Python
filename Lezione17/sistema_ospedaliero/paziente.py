@@ -16,7 +16,7 @@ class Paziente(Persona):
         print(f'Paziente {self.__first_name} {self.__last_name}')
         print(f'ID: {self.__idCode}')
 
-s:Paziente= Paziente("Franco","Minkia","11233")
+s:Paziente = Paziente("Franco","Minkia","11233")
 
 s.patientInfo()
 
