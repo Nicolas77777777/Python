@@ -1,30 +1,30 @@
 from persona import Persona
 
 class Dottore(Persona):
-    def __init__(self, first_name: str, last_name: str, specialization: str, parcel: float) -> bool:
-        super().__init__(first_name, last_name)
+    def __init__(self, specialization: str, last_name: str, specialization: str, parcel: float) -> bool:
+        super().__init__(specialization, last_name)
 
         if isinstance(specialization,str):
             self.__specialization =  specialization
         else:
             self.__specialization = None
-            print(f'Il nome inserito non è una stringa!')
+            print(f'La specializzazione inserita non è una stringa!')
             
         if isinstance(parcel,float):
-            self.__last_name = last_name
+            self.__parcel = parcel
         else: 
-            self.__first_name = None
-            self.__eta = None
-            print(f'Il nome inserito non è una stringa!')
+            self.__parcel = None
+            print(f'La parcella inserita non è un float!')
 
-        if isinstance(first_name, str) and (isinstance(last_name, str)):
-            self.__eta = 0
+        if isinstance(specialization, str) and (isinstance(parcel,float)):
+            self.__parcel = parcel
+            self.__specialization =  specialization
 
-    def setName(self, first_name:str):
-        if isinstance(first_name,str):
-            self.__first_name = first_name
+    def setSpecialization(self, specialization:str):
+        if isinstance(specialization,str):
+            self.__specialization = specialization
         else: 
-            print(f'Il nome inserito non è una stringa!')
+            print(f'La specializzazione inserita non è una stringa!')
             
     def setLastName(self, last_name: str ) -> str:
         if isinstance(last_name,str):
