@@ -1,8 +1,9 @@
 from persona import Persona
 
 class Dottore(Persona):
-    def __init__(self, specialization: str, last_name: str, specialization: str, parcel: float) -> bool:
-        super().__init__(specialization, last_name)
+
+    def __init__(self, first_name: str, last_name: str, specialization: str, parcel: float) -> bool:
+        super().__init__(first_name, last_name)
 
         if isinstance(specialization,str):
             self.__specialization =  specialization
@@ -20,32 +21,29 @@ class Dottore(Persona):
             self.__parcel = parcel
             self.__specialization =  specialization
 
-    def setSpecialization(self, specialization:str):
+    def setSpecialization(self,specialization: str):
         if isinstance(specialization,str):
             self.__specialization = specialization
         else: 
             print(f'La specializzazione inserita non è una stringa!')
             
-    def setLastName(self, last_name: str ) -> str:
-        if isinstance(last_name,str):
-            self.__last_name = last_name
+    def setParcel(self,parcel: float):
+        if isinstance(parcel,float):
+            self.__parcel = parcel
         else: 
-            print(f'Il nome inserito non è una stringa!')
+            print(f'La parcella inserita non è un float!')
 
-    def setAge(self, age: int) -> int:
-        if isinstance(age,int):
-            self.__eta = age
-        else: 
-            print(f'Il nome inserito non è una stringa!')
+    def getSpecialization(self) -> str: 
+       return self.__specialization
+    
+    def getParcel(self) -> float:
+        return self.__parcel
+    
+    def isAValidDoctor(self) :
+        if self.__eta > 30:
+            return f'Doctor {self.__first_name} {self.__last_name} is valid'
+        else:
+            return f'Doctor {self.__first_name} {self.__last_name} is not valid'
 
-    def getName(self) -> str: 
-       return self.setName()
-    
-    def getLastname(self) -> str:
-        return self.setLastName()
-      
-    def getAge(self) -> int:
-        return self.setAge()
-    
     def greet(self):
-        print(f'Ciao sono {self.__first_name} {self.__last_name}! Ho {self.__eta}')
+        print(f'Sono un Medico {self.__specialization}')

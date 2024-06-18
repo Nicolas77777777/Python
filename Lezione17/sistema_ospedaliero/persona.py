@@ -35,7 +35,7 @@ class Persona:
         if isinstance(age,int):
             self.__eta = age
         else: 
-            print(f'Il nome inserito non è una stringa!')
+            print(f' L età deve essere un numero intero!')
 
     def getName(self) -> str: 
        return self.__first_name
