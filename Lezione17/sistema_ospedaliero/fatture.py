@@ -35,7 +35,7 @@ class Fattura:
     def getFatture(self)-> int:
         return self.fatture
     
-    def addPatient(self, newPatient:Paziente, doctor):
+    def addPatient(self, newPatient:Paziente, doctor:Dottore):
         i:Paziente
         for i in self.patient:
             if i.getidCode() != newPatient.getidCode():
@@ -47,7 +47,7 @@ class Fattura:
                 print(f'{newPatient.getidCode} è gia presente nella lista')
 
 
-    def removePatient(self, idCode:Paziente, doctor):
+    def removePatient(self, idCode:Paziente, doctor:Dottore):
         i:Paziente
         for i in self.patient:
             if idCode.getidCode() == i.getidCode():
@@ -70,6 +70,8 @@ fattura1:Fattura = Fattura(lista1,d2)
 
 
 fattura1.addPatient(p1,d2)
+
+print(fattura1.patient)
 
 
 
