@@ -40,10 +40,17 @@ class Dottore(Persona):
         return self.__parcel
     
     def isAValidDoctor(self) :
-        if self.__eta > 30:
-            return f'Doctor {self.__first_name} {self.__last_name} is valid'
+        if self.getAge() > 30:
+            return f'Doctor {self.getName()} {self.getLastname()} is valid'
         else:
-            return f'Doctor {self.__first_name} {self.__last_name} is not valid'
+            return f'Doctor {self.getName()} {self.getLastname()} is not valid'
 
     def greet(self):
         print(f'Sono un Medico {self.__specialization}')
+
+
+d1: Dottore = Dottore("Mario","Rossi","Ostretica",30.0)
+
+d1.setAge(31)
+
+print(d1.isAValidDoctor())

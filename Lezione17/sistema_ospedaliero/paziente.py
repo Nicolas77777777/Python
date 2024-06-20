@@ -13,7 +13,7 @@ class Paziente(Persona):
         return self.__idCode
     
     def patientInfo(self):
-        print(f'Paziente {self.__first_name} {self.__last_name}')
+        print(f'Paziente {self.getName()} {self.getLastname()}')
         print(f'ID: {self.__idCode}')
 
 s:Paziente = Paziente("Franco","Minkia","11233")
