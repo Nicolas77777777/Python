@@ -23,22 +23,56 @@ class Fattura:
             patient = None 
             print("Non è possibile creare la classe fattura poichè il dottore non è valido!")
 
-    def getSalary(self, parcel:Dottore) -> int:
-        salary: int = 0
-        salary = parcel.getParcel() * len(self.patient)
-        return salary
+    def setSalary(self): 
+        self.salary = self.doctor.getParcel() * len(self.patient)
+    
+    def getSalary(self) -> int:
+        return self.salary
+
+    def setFatture(self):
+        self.fatture = len(self.patient)
 
     def getFatture(self)-> int:
-        number_pazient: int =0
-        number_pazient= len(self.patient)
-        return number_pazient
+        return self.fatture
     
-    def addPatient(self, newPatient:Paziente, doctor: Dottore):
-       if self.patient.append(newPatient):
-           for i in self.patient:
-               if i.getidCode() == i.getidCode():
-                   self.patient.remove(newPatient)
-        
+    def addPatient(self, newPatient:Paziente, doctor):
+        i:Paziente
+        for i in self.patient:
+            if i.getidCode() != newPatient.getidCode():
+                self.patient.append(newPatient)
+                self.setSalary(self)
+                self.setFatture(self)
+                print (f'Alla lista del Dottor {doctor.getLastname} è stato aggiunto il paziente {newPatient.getidCode}')
+            else: 
+                print(f'{newPatient.getidCode} è gia presente nella lista')
+
+
+    def removePatient(self, idCode:Paziente, doctor):
+        i:Paziente
+        for i in self.patient:
+            if idCode.getidCode() == i.getidCode():
+                self.patient.remove(idCode)
+                self.setSalary(self)
+                self.setFatture(self)
+                print(f'Alla lista del Dottor {doctor.getLastname} è stato rimosso il paziente {idCode.getidCode}')
+
+
+
+p1:Paziente = Paziente("Franco","Minkia","11233")
+d1: Dottore = Dottore("Mario","Rossi","Ostretica",30.0)
+d2:Dottore = Dottore("Sonia","Figliola","Immunologia",350.0)
+d2.setAge(40)
+lista1=[]
+
+fattura1:Fattura = Fattura(lista1,d2)
+
+
+
+
+fattura1.addPatient(p1,d2)
+
+
+
 
                    
                    
