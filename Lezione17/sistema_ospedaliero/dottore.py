@@ -50,7 +50,12 @@ class Dottore(Persona):
 
 
 d1: Dottore = Dottore("Mario","Rossi","Ostretica",30.0)
+d2:Dottore = Dottore("Sonia","Figliola","Immunologia",350.0)
 
 d1.setAge(31)
+d2.setAge(40)
 
+print(d2)
 print(d1.isAValidDoctor())
+
+print(d2.isAValidDoctor())
