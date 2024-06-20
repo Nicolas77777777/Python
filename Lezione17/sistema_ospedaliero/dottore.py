@@ -39,11 +39,13 @@ class Dottore(Persona):
     def getParcel(self) -> float:
         return self.__parcel
     
-    def isAValidDoctor(self) :
+    def isAValidDoctor(self) -> bool :
         if self.getAge() > 30:
-            return f'Doctor {self.getName()} {self.getLastname()} is valid'
+            print(f'Doctor {self.getName()} {self.getLastname()} is valid')
+            return True
         else:
-            return f'Doctor {self.getName()} {self.getLastname()} is not valid'
+            print (f'Doctor {self.getName()} {self.getLastname()} is not valid')
+            return False
 
     def greet(self):
         print(f'Sono un Medico {self.__specialization}')
@@ -56,6 +58,6 @@ d1.setAge(31)
 d2.setAge(40)
 
 print(d2)
-print(d1.isAValidDoctor())
+d1.isAValidDoctor()
 
-print(d2.isAValidDoctor())
+d2.isAValidDoctor()
