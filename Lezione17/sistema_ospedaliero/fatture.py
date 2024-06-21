@@ -35,16 +35,22 @@ class Fattura:
     def getFatture(self)-> int:
         return self.fatture
     
-    def addPatient(self, newPatient:Paziente, doctor:Dottore):
+    def addPatient(self, newPatient:Paziente):
+            # if newPatient is not self.patient:
+            #     self.patient.append(newPatient)
+            #     self.setSalary()
+            #     self.setFatture()
+    
         i:Paziente
         for i in self.patient:
-            if i.getidCode() != newPatient.getidCode():
-                self.patient.append(newPatient)
-                self.setSalary(self)
-                self.setFatture(self)
-                print (f'Alla lista del Dottor {doctor.getLastname} è stato aggiunto il paziente {newPatient.getidCode}')
-            else: 
-                print(f'{newPatient.getidCode} è gia presente nella lista')
+                if i.getidCode() != newPatient.getidCode():
+                    self.patient.append(newPatient)
+                    self.setSalary(self)
+                    self.setFatture(self)
+        
+                    print (f'Alla lista del Dottor {self.doctor.getLastname} è stato aggiunto il paziente {newPatient.getidCode}')
+        else: 
+            print(f'{newPatient.getidCode} è gia presente nella lista')
 
 
     def removePatient(self, idCode:Paziente, doctor:Dottore):
@@ -57,7 +63,7 @@ class Fattura:
                 print(f'Alla lista del Dottor {doctor.getLastname} è stato rimosso il paziente {idCode.getidCode}')
 
 
-
+p2= Paziente("mimmi","me puzza il culo", "2222")
 p1:Paziente = Paziente("Franco","Minkia","11233")
 d1: Dottore = Dottore("Mario","Rossi","Ostretica",30.0)
 d2:Dottore = Dottore("Sonia","Figliola","Immunologia",350.0)
@@ -66,10 +72,10 @@ lista1=[]
 
 fattura1:Fattura = Fattura(lista1,d2)
 
-
-
-
 fattura1.addPatient(p1,d2)
+fattura1.addPatient(p2,d2)
+
+
 
 print(fattura1.patient)
 
