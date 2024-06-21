@@ -36,14 +36,13 @@ class Fattura:
         return self.fatture
     
     def addPatient(self, newPatient:Paziente):
-            # if newPatient is not self.patient:
-            #     self.patient.append(newPatient)
-            #     self.setSalary()
-            #     self.setFatture()
-    
         i:Paziente
+        if len(self.patient) == 0:
+            self.patient.append(newPatient)
+
         for i in self.patient:
-                if i.getidCode() != newPatient.getidCode():
+                if i.getidCode() == newPatient.getidCode():
+
                     self.patient.append(newPatient)
                     self.setSalary(self)
                     self.setFatture(self)
@@ -65,6 +64,8 @@ class Fattura:
 
 p2= Paziente("mimmi","me puzza il culo", "2222")
 p1:Paziente = Paziente("Franco","Minkia","11233")
+p3:Paziente = Paziente("Giovanni","More","1333")
+
 d1: Dottore = Dottore("Mario","Rossi","Ostretica",30.0)
 d2:Dottore = Dottore("Sonia","Figliola","Immunologia",350.0)
 d2.setAge(40)
@@ -72,9 +73,9 @@ lista1=[]
 
 fattura1:Fattura = Fattura(lista1,d2)
 
-fattura1.addPatient(p1,d2)
-fattura1.addPatient(p2,d2)
-
+fattura1.addPatient(p1)
+fattura1.addPatient(p2)
+fattura1.addPatient(p3)
 
 
 print(fattura1.patient)
