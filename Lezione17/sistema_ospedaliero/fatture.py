@@ -36,33 +36,27 @@ class Fattura:
         return self.fatture
     
     def addPatient(self, newPatient:Paziente):
-        i:Paziente
-        if len(self.patient) == 0:
-            self.patient.append(newPatient)
-
-        for i in self.patient:
-                if i.getidCode() == newPatient.getidCode():
-
-                    self.patient.append(newPatient)
-                    self.setSalary(self)
-                    self.setFatture(self)
-        
-                    print (f'Alla lista del Dottor {self.doctor.getLastname} è stato aggiunto il paziente {newPatient.getidCode}')
-        else: 
+        if newPatient in self.patient:
             print(f'{newPatient.getidCode} è gia presente nella lista')
+        else:
+            newPatient is not self.patient
+            self.patient.append(newPatient)
+            self.setSalary()
+            self.setFatture()
+            print (f'Alla lista del Dottor {self.doctor.getLastname()} è stato aggiunto il paziente {newPatient.getidCode()}')
 
 
-    def removePatient(self, idCode:Paziente, doctor:Dottore):
+    def removePatient(self, idCode:Paziente):
         i:Paziente
         for i in self.patient:
             if idCode.getidCode() == i.getidCode():
                 self.patient.remove(idCode)
-                self.setSalary(self)
-                self.setFatture(self)
-                print(f'Alla lista del Dottor {doctor.getLastname} è stato rimosso il paziente {idCode.getidCode}')
+                self.setSalary()
+                self.setFatture()
+                print(f'Alla lista del Dottor {self.doctor.getLastname()} è stato rimosso il paziente {idCode.getidCode()}')
 
 
-p2= Paziente("mimmi","me puzza il culo", "2222")
+p2:Paziente= Paziente("mimmi","me puzza il culo", "2222")
 p1:Paziente = Paziente("Franco","Minkia","11233")
 p3:Paziente = Paziente("Giovanni","More","1333")
 
@@ -76,9 +70,12 @@ fattura1:Fattura = Fattura(lista1,d2)
 fattura1.addPatient(p1)
 fattura1.addPatient(p2)
 fattura1.addPatient(p3)
+fattura1.addPatient(p2)
 
 
+li= fattura1.patient
 print(fattura1.patient)
+print(li)
 
 
 
