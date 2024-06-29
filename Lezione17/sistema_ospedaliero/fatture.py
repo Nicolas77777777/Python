@@ -84,6 +84,11 @@ print(fattura1.patient)
 print(li)
 
 print(fattura1.getFatture())
+print(fattura1.getSalary())
+fattura1.removePatient("1553")
+print(fattura1.getSalary())
+
+
 
 
 
