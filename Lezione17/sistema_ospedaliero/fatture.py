@@ -56,6 +56,7 @@ class Fattura:
         print(f'Alla lista del Dottor {self.doctor.getLastname()} è stato rimosso il paziente {idCode}')
 
 
+
 p2:Paziente= Paziente("mimmi","me puzza il culo", "2222")
 p1:Paziente = Paziente("Franco","Minkia","11233")
 p3:Paziente = Paziente("Giovanni","More","1333")
@@ -84,7 +85,7 @@ print(fattura1.patient)
 print(li)
 
 print(fattura1.getFatture())
-print(fattura1.getSalary())
+print(str(fattura1.getSalary()))
 fattura1.removePatient("1553")
 print(fattura1.getSalary())
 
