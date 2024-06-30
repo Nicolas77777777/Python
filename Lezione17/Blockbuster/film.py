@@ -44,9 +44,12 @@ class Film():
         
 
 film1: Film= Film(222,"ma")
+film2: Film= Film(111,"Balla coi lupi ")
+
 
 film1.setID(111)
 film1.setTitle("l'ultimo dei moicani")
+
 
 print(film1.getTitle())
 
