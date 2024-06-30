@@ -51,7 +51,7 @@ class Drama(Film):
         return penale_ritardo
 
 
-azi1:Azione= Azione(111,"Braveheart")
-print(azi1.getGenere(), azi1.getPenale())
+# azi1:Azione= Azione(111,"Braveheart")
+# print(azi1.getGenere(), azi1.getPenale())
 
-print(azi1.calcolaPenaleRitardo(3))
+# print(azi1.calcolaPenaleRitardo(3))
