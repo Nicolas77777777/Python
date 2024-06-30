@@ -2,7 +2,7 @@ from film import Film
 from movie_genre import Azione,Commedia,Drama
 
 
-class Noleggio():
+class Noleggio:
     def __init__(self,film_list:list) -> None:
         self.film_list=[]
         self.rented_film: dict={}
@@ -32,18 +32,21 @@ class Noleggio():
     def GetIdClient(self) -> int:
         return self.__clientID
     
-    def rentAMovie(self, film: Film, clientID: int )-> dict:
-        cliente: dict = {}
-    
+    def rentAMovie(self, film: Film, clientID: int ):
         if self.isAvaible(film) == True:
             self.RemoveFilm(film)
-            cliente = {"clientID": "film.getTitle()"}
-                    
-            print(cliente)
-        return cliente
+        return print(True)
+            # if clientID in self.rented_film:
+            #     self.rented_film[clientID].append(film)
+            #     return self.rented_film
+                
+            # else :
+            #     self.rented_film[clientID] = [film]
+            #     return self.rented_film
 
 
-
+       
+        
 """ rentAMovie(film, clientID): tale metodo deve gestire il noleggio 
 di un film ed ha come argomenti il film da noleggiare ed il codice 
 id del cliente che lo noleggia. Affinché sia possibile noleggiare un film,
@@ -81,9 +84,9 @@ noleggio1.AddFilm(film1)
 noleggio1.AddFilm(film2)
 noleggio1.AddFilm(film3)
 
-
 noleggio1.isAvaible(film1)
 noleggio1.AddFilm(film1)
+
 
 noleggio1.rentAMovie(film1,111)
 

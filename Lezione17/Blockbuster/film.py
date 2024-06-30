@@ -14,7 +14,7 @@ Entrambi gli attributi sono da considerarsi privati.
     isEqual(otherFilm): che ritorna true se il codice identificativo di due film è uguale."""
 
 
-class Film():
+class Film:
     def __init__(self, id:int, title:str ) :
         self.__id = id 
         self.__title= title
@@ -25,14 +25,15 @@ class Film():
     def setTitle(self,title: str)-> None:
         self.__title =title
 
-    def getID(self) -> int:
+    def getID(self):
         return self.__id
     
-    def getTitle(self) -> str:
+    def getTitle(self) :
         return self.__title
     
-    def isEqual(self ,otherFilm: int) -> bool:
+    def isEqual(self ,otherFilm) -> bool:
         if otherFilm == self.getID():
+        #if self.getID() == otherFilm.getID():
             print(True)
             return True
         else:
