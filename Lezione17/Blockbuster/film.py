@@ -44,19 +44,19 @@ class Film:
         return f'ID = {self.__id} Title = {self.__title}'
         
 
-# film1: Film= Film(222,"ma")
-# film2: Film= Film(111,"Balla coi lupi ")
+film1: Film= Film(222,"ma")
+film2: Film= Film(111,"Balla coi lupi ")
 
 
-# film1.setID(111)
-# film1.setTitle("l'ultimo dei moicani")
+film1.setID(111)
+film1.setTitle("l'ultimo dei moicani")
 
 
-# print(film1.getTitle())
+print(film1.getTitle())
 
-# print(film1)
+print(film1)
 
-# film1.isEqual(111)
-# film1.isEqual(131)
+film1.isEqual(111)
+film1.isEqual(131)
 
 

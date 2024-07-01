@@ -4,7 +4,7 @@ from movie_genre import Azione,Commedia,Drama
 
 class Noleggio:
     def __init__(self,film_list:list) -> None:
-        self.film_list=[]
+        self.film_list = film_list
         self.rented_film: dict={}
         self.__clientID= None
 
@@ -35,14 +35,14 @@ class Noleggio:
     def rentAMovie(self, film: Film, clientID: int ):
         if self.isAvaible(film) == True:
             self.RemoveFilm(film)
-        return print(True)
-            # if clientID in self.rented_film:
-            #     self.rented_film[clientID].append(film)
-            #     return self.rented_film
+            print(True)
+            if clientID in self.rented_film:
+                self.rented_film[clientID].append(film)
+                print (f' questo è quando l id cliente è gia presente{self.rented_film}')
                 
-            # else :
-            #     self.rented_film[clientID] = [film]
-            #     return self.rented_film
+            else :
+                self.rented_film[clientID] = [film]
+                print (self.rented_film)
 
 
        
@@ -77,7 +77,7 @@ film6: Film= Film(6,"L'ultimo dei Moicani")
 film7: Film= Film(7,"Balla coi lupi")
 
 
-lista_noleggio=[]
+lista_noleggio = [film1, film2, film3, film4, film5, film6, film7]
 noleggio1:Noleggio = Noleggio(lista_noleggio)
 
 noleggio1.AddFilm(film1)
@@ -89,4 +89,6 @@ noleggio1.AddFilm(film1)
 
 
 noleggio1.rentAMovie(film1,111)
+
+noleggio1.rentAMovie(film2,111)
 
