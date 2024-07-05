@@ -53,8 +53,10 @@ class Email(Documento):
     
 
     def getText(self):
-        print ( f'Da {self.getMittente} A{self.destinatario}')
+        print ( f'Da {self.getMittente()} A{self.getDestinatario()}')
 
 
 
-email:Email=Email(" porco il clero")
+email:Email=Email("Ciao Bob, possiamo incontrarci domani?","alice@example.com","bob@example.com","Incontro",)
+
+print 
