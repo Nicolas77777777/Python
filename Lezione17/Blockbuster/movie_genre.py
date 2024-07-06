@@ -7,7 +7,7 @@ class Azione(Film):
         self.__genere:str  = "Azione"
         self.__penale: float = 3.00
     
-    def getGenere(self) -> str:
+    def getGenere(self) :
         return self.__genere
     
     def getPenale(self) -> float:
@@ -23,7 +23,7 @@ class Commedia(Film):
         self.__genere:str  = "Commedia"
         self.__penale: float = 2.50
     
-    def getGenere(self) -> str:
+    def getGenere(self):
         return self.__genere
     
     def getPenale(self) -> float:
@@ -40,7 +40,7 @@ class Drama(Film):
         self.__genere:str  = "Drama"
         self.__penale: float = 2.00
     
-    def getGenere(self) -> str:
+    def getGenere(self):
         return self.__genere
     
     def getPenale(self) -> float:

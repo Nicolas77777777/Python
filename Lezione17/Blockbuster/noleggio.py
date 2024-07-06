@@ -32,12 +32,10 @@ class Noleggio:
     def GetIdClient(self) -> int:
         return self.__clientID
     
-    def rentAMovie(self, film: Film, clientID: int ):
+    def rentAMovie(self, film: Film, clientID)-> None:
         if self.isAvaible(film) == True:
             self.RemoveFilm(film)
             print(True)
-        else:
-            print()
             if clientID in self.rented_film:
                 self.rented_film[clientID].append(film)
                 print (f'"Il cliente {clientID} ha noleggiato {film.getTitle()}!"{self.rented_film}')    
@@ -45,42 +43,38 @@ class Noleggio:
                 self.rented_film[clientID] = [film]
                 print (self.rented_film)
                 print (f'"Il cliente {clientID} ha noleggiato {film.getTitle()}! nuovo cliente')    
+        else:
+            print(f'Non è possibile nolegiare il film {film.getTitle()}')
 
+    def giveBack(self, film: Film, clientID : int, days:int)-> None:
+        
+        self.rented_film[clientID].remove(film)
+        self.film_list.append(film)
+        total= film.calcolaPenaleRitardo(days)
+        print(f'{clientID}! La penale da pagare per il film {film.getTitle()} e di {total} euro!"')
 
+    def printMovies(self):
+        movies:Film
+        for movies in self.film_list:
+            print (f'{movies.getTitle()} - {movies.getGenere()}')
+
+    def printRentMovies(self,clientID):
+        movies:Film
+        print(f'lista film del cliente n {clientID} :')
+        for movies in self.rented_film[clientID]:
+            print (f'{movies.getTitle()}')
+
+""""printRentMovies(clientID): questo metodo deve stampare
+ la lista dei film noleggiati dal cliente di cui viene specificato l'id."""
 
     
-
-
-       
-        
-""" rentAMovie(film, clientID): tale metodo deve gestire il noleggio 
-di un film ed ha come argomenti il film da noleggiare ed il codice 
-id del cliente che lo noleggia. Affinché sia possibile noleggiare un film,
- un film deve essere disponibile in negozio. Pertanto, il metodo deve verificare
-   la disponibilità. Nel caso in cui il film richiesto sia disponibile, rimuoverlo
-     dalla lista dei film disponibili in negozio, poi riempire il dizionario rented_film in questo modo:
-
-    la chiave sarà l'id del cliente che noleggia (id_client)
-    il corrispondente valore sarà una lista contenente i film noleggiati da quel cliente.
-
-Pertanto, il film noleggiato, una volta rimosso dalla lista dei 
-film disponibili in negozio deve essere aggiunto alla lista dei film noleggiati
- dal cliente dato.  Se il cliente ha potuto noleggiare il film richiesto, stampare:
-   "Il cliente {clientId} ha noleggiato {titolo_film}!". 
-   Se, invece, il film richiesto non è disponibile pe il noleggio,
-stampare: Non è possibile nolegiare il film {titolo_film}!"."""
-
-
-
-        
-    
-film1 = Film(1, "The Shawshank Redemption")
-film2 = Film(2, "The Godfather")
-film3 = Film(3, "The Dark Knight")
-film4 = Film(4, "Pulp Fiction")
-film5 = Film(5, "Schindler's List")        
-film6: Film= Film(6,"L'ultimo dei Moicani")
-film7: Film= Film(7,"Balla coi lupi")
+film1 = Commedia(1, "The Shawshank Redemption")
+film2 = Drama(2, "The Godfather")
+film3 = Azione(3, "The Dark Knight")
+film4 = Azione(4, "Pulp Fiction")
+film5 = Drama(5, "Schindler's List")        
+film6= Azione(6,"L'ultimo dei Moicani")
+film7=Azione(7,"Balla coi lupi")
 
 
 lista_Blokbuster = [film1, film2, film3, film4, film5, film6, film7]
@@ -98,7 +92,16 @@ noleggio1.rentAMovie(film1,111)
 
 noleggio1.rentAMovie(film2,111)
 
+noleggio1.rentAMovie(film1,112)
 print(len(lista_Blokbuster))
+noleggio1.giveBack(film1,111,4)
+
+print(len(lista_Blokbuster))
+
+print(len(lista_Blokbuster))
+
+noleggio1.printMovies()
+noleggio1.printRentMovies(111)
 
 
 
