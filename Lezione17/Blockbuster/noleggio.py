@@ -36,13 +36,19 @@ class Noleggio:
         if self.isAvaible(film) == True:
             self.RemoveFilm(film)
             print(True)
+        else:
+            print()
             if clientID in self.rented_film:
                 self.rented_film[clientID].append(film)
-                print (f' questo è quando l id cliente è gia presente{self.rented_film}')
-                
+                print (f'"Il cliente {clientID} ha noleggiato {film.getTitle()}!"{self.rented_film}')    
             else :
                 self.rented_film[clientID] = [film]
                 print (self.rented_film)
+                print (f'"Il cliente {clientID} ha noleggiato {film.getTitle()}! nuovo cliente')    
+
+
+
+    
 
 
        
@@ -77,8 +83,8 @@ film6: Film= Film(6,"L'ultimo dei Moicani")
 film7: Film= Film(7,"Balla coi lupi")
 
 
-lista_noleggio = [film1, film2, film3, film4, film5, film6, film7]
-noleggio1:Noleggio = Noleggio(lista_noleggio)
+lista_Blokbuster = [film1, film2, film3, film4, film5, film6, film7]
+noleggio1:Noleggio = Noleggio(lista_Blokbuster)
 
 noleggio1.AddFilm(film1)
 noleggio1.AddFilm(film2)
@@ -91,4 +97,8 @@ noleggio1.AddFilm(film1)
 noleggio1.rentAMovie(film1,111)
 
 noleggio1.rentAMovie(film2,111)
+
+print(len(lista_Blokbuster))
+
+
 
