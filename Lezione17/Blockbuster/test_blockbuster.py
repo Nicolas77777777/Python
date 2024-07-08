@@ -33,8 +33,9 @@ class testFilm (TestCase):
         message: str = f'Error: i film hanno codici differenti'
 
         self.assertTrue(self.blockbuster.isAvaible(self.film1),message)
+        self.assertFalse(self.blockbuster.isAvaible(self.film1),message)
 
-
+        
 
 
 if __name__ == "__main__":
