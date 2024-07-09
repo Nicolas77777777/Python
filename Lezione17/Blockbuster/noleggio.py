@@ -68,40 +68,40 @@ class Noleggio:
  la lista dei film noleggiati dal cliente di cui viene specificato l'id."""
 
     
-film1 = Commedia(1, "The Shawshank Redemption")
-film2 = Drama(2, "The Godfather")
-film3 = Azione(3, "The Dark Knight")
-film4 = Azione(4, "Pulp Fiction")
-film5 = Drama(5, "Schindler's List")        
-film6= Azione(6,"L'ultimo dei Moicani")
-film7=Azione(7,"Balla coi lupi")
+# film1 = Commedia(1, "The Shawshank Redemption")
+# film2 = Drama(2, "The Godfather")
+# film3 = Azione(3, "The Dark Knight")
+# film4 = Azione(4, "Pulp Fiction")
+# film5 = Drama(5, "Schindler's List")        
+# film6= Azione(6,"L'ultimo dei Moicani")
+# film7=Azione(7,"Balla coi lupi")
 
 
-# lista_Blokbuster = [film1, film2, film3, film4, film5, film6, film7]
-# noleggio1:Noleggio = Noleggio(lista_Blokbuster)
+# # lista_Blokbuster = [film1, film2, film3, film4, film5, film6, film7]
+# # noleggio1:Noleggio = Noleggio(lista_Blokbuster)
 
-# noleggio1.AddFilm(film1)
-# noleggio1.AddFilm(film2)
-# noleggio1.AddFilm(film3)
+# # noleggio1.AddFilm(film1)
+# # noleggio1.AddFilm(film2)
+# # noleggio1.AddFilm(film3)
 
-# noleggio1.isAvaible(film1)
-# noleggio1.AddFilm(film1)
+# # noleggio1.isAvaible(film1)
+# # noleggio1.AddFilm(film1)
 
 
-# noleggio1.rentAMovie(film1,111)
+# # noleggio1.rentAMovie(film1,111)
 
-# noleggio1.rentAMovie(film2,111)
+# # noleggio1.rentAMovie(film2,111)
 
-# noleggio1.rentAMovie(film1,112)
-# print(len(lista_Blokbuster))
-# noleggio1.giveBack(film1,111,4)
+# # noleggio1.rentAMovie(film1,112)
+# # print(len(lista_Blokbuster))
+# # noleggio1.giveBack(film1,111,4)
 
-# print(len(lista_Blokbuster))
+# # print(len(lista_Blokbuster))
 
-# print(len(lista_Blokbuster))
+# # print(len(lista_Blokbuster))
 
-# noleggio1.printMovies()
-# noleggio1.printRentMovies(111)
+# # noleggio1.printMovies()
+# # noleggio1.printRentMovies(111)
 
 
 

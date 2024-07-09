@@ -5,7 +5,31 @@ from movie_genre import Azione, Drama, Commedia
 from noleggio import Noleggio
 
 
-class testFilm (TestCase):
+
+""" Testare il Noleggio di un Film (rentAMovie):
+- Scrivere un test per verificare che un film disponibile possa essere noleggiato correttamente.
+- Dopo il noleggio, verificare che il film non sia più disponibile.
+- Verificare che il film noleggiato appaia nella lista dei film noleggiati dal cliente.
+
+
+
+Testare la Restituzione di un Film (giveBack):
+- Noleggiare un film e poi restituirlo.
+- Verificare che il film restituito sia nuovamente disponibile.
+- Verificare che il film restituito non sia più nella lista dei film noleggiati dal cliente.
+
+Testare il Calcolo della Penale di Ritardo (calcolaPenaleRitardo):
+- Scrivere test per verificare il calcolo della penale di ritardo per film di diversi generi (azione, commedia, dramma).
+
+Testare la Stampa dei Film Disponibili (printMovies):
+- Verificare che la lista dei film disponibili contenga i titoli corretti.
+
+Testare la Stampa dei Film Noleggiati da un Cliente (printRentMovies):
+- Noleggiare uno o più film per un cliente.
+- Verificare che la stampa dei film noleggiati contenga i titoli corretti."""
+
+
+class TestFilm (TestCase):
 
     def setUp(self) -> None:
 
@@ -30,13 +54,39 @@ class testFilm (TestCase):
 
     def test_IsAvaible(self):
         #  test per verificare che un film disponibile ritorni True.
-        message: str = f'Error: i film hanno codici differenti'
-
+        message: str = f'Error: i film scelto non è disponibile '
         self.assertTrue(self.blockbuster.isAvaible(self.film1),message)
-        self.assertFalse(self.blockbuster.isAvaible(self.film1),message)
+        self.assertFalse(self.blockbuster.isAvaible(Azione(333,"Rocky")),message)
 
-        
+    def test_rent_a_movie(self):
+        self.blockbuster.rentAMovie(self.film2,44)
+        self.assertFalse(self.blockbuster.isAvaible(self.film2))
+        self.assertIn(self.film2, self.blockbuster.rented_film[44])
 
+
+
+    def test_rent_a_movie_unavailable(self):
+        self.blockbuster.rentAMovie(self.film5,111)
+        self.blockbuster.rentAMovie(self.film5,222)
+        self.assertIn(self.film5, self.blockbuster.rented_film[111])
+        self.assertNotIn(self.film2, self.blockbuster.rented_film.get(222,[]),"errore")
+
+
+    def test_give_back(self):
+        self.blockbuster.rentAMovie(self.film5,111)
+        self.blockbuster.giveBack(self.film5,11,2)
+        self.assertTrue(self.blockbuster.isAvaible(self.film5))
+        self.assertNotIn(self.film5,self.blockbuster.rented_film.get)(111,[])
+
+     
+    def test_calcola_penale_ritardo(self):
+
+        self.assertEqual(self.film2.calcolaPenaleRitardo(4),12.00,"è GIUSTO  ")
+
+    
+
+
+    
 
 if __name__ == "__main__":
 
