@@ -76,13 +76,28 @@ class PagamentoContanti(Pagamento):
         print(f'Pagamento in contanti di {self.getPagamento():.2f} ')
 
     def inPezzida(self,importo):
-        importodaverificare = importo // 500
-        n500 = int(500)
-        if importodaverificare != 0
-        banconote:{ 500.00, 200.00, 100.00, 50.00, 20.00, 10.00, 5.00 }
-        monete : {2.00, 1.00, 0.50, 0.20, 0.10, 0.05, 0.02, 0.01}
-        banconota500: int= 500 
-        banconata = importo -500
+        banconote:list =[500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
+        valore: dict = {}
+
+        for i in banconote:
+            if importo >= banconote[0]:
+                q =int(importo/i)
+            
+                valore[i]=[q]
+                resto = importo % i
+            
+            print (valore,resto)
+        
+    
+        
+
+        """" tagli = [500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
+        values = []
+        valore = self.import
+        for (tagli as taglio)
+        q  = valore / taglio
+        values[taglio] = int(q)
+        valore = valore % taglio"""
         
         pass
 
@@ -93,16 +108,22 @@ pagamento.setPagamento(30)
 
 print(pagamento.getPagamento())
 
-
-
 pagamento.dettagliPagamento()
 
 
-x=500
-y= 300
-z= x % y
-print (z)
+paga_contanti: PagamentoContanti= PagamentoContanti()
 
-print(x)
+paga_contanti.inPezzida(1024)
+#paga_contanti.inPezzida(234)
 
-def
+
+
+# def resto_divisione(x: float, y:float ):
+#     resto= x % y
+#     print(resto)
+#     return resto
+
+# resto_divisione(500,230)
+
+
+    
