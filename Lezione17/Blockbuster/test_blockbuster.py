@@ -60,6 +60,8 @@ class TestFilm (TestCase):
 
         self.assertEqual(self.film2.calcolaPenaleRitardo(4),12.00,"è GIUSTO  ")
 
+        
+
     
 
 

@@ -76,7 +76,11 @@ class PagamentoContanti(Pagamento):
         print(f'Pagamento in contanti di {self.getPagamento():.2f} ')
 
     def inPezzida(self,importo):
+        importodaverificare = importo // 500
+        n500 = int(500)
+        if importodaverificare != 0
         banconote:{ 500.00, 200.00, 100.00, 50.00, 20.00, 10.00, 5.00 }
+        monete : {2.00, 1.00, 0.50, 0.20, 0.10, 0.05, 0.02, 0.01}
         banconota500: int= 500 
         banconata = importo -500
         
@@ -89,4 +93,16 @@ pagamento.setPagamento(30)
 
 print(pagamento.getPagamento())
 
+
+
 pagamento.dettagliPagamento()
+
+
+x=500
+y= 300
+z= x % y
+print (z)
+
+print(x)
+
+def
