@@ -6,29 +6,6 @@ from noleggio import Noleggio
 
 
 
-""" Testare il Noleggio di un Film (rentAMovie):
-- Scrivere un test per verificare che un film disponibile possa essere noleggiato correttamente.
-- Dopo il noleggio, verificare che il film non sia più disponibile.
-- Verificare che il film noleggiato appaia nella lista dei film noleggiati dal cliente.
-
-
-
-Testare la Restituzione di un Film (giveBack):
-- Noleggiare un film e poi restituirlo.
-- Verificare che il film restituito sia nuovamente disponibile.
-- Verificare che il film restituito non sia più nella lista dei film noleggiati dal cliente.
-
-Testare il Calcolo della Penale di Ritardo (calcolaPenaleRitardo):
-- Scrivere test per verificare il calcolo della penale di ritardo per film di diversi generi (azione, commedia, dramma).
-
-Testare la Stampa dei Film Disponibili (printMovies):
-- Verificare che la lista dei film disponibili contenga i titoli corretti.
-
-Testare la Stampa dei Film Noleggiati da un Cliente (printRentMovies):
-- Noleggiare uno o più film per un cliente.
-- Verificare che la stampa dei film noleggiati contenga i titoli corretti."""
-
-
 class TestFilm (TestCase):
 
     def setUp(self) -> None:

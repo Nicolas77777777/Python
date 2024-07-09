@@ -24,7 +24,8 @@ e il numero della carta di credito. Infine, si ridefinisca il metodo
  dettagliPagamento() per includere tutte le informazioni della carta di 
  credito oltre all'importo del pagamento.
 
-Per il test, si creino almeno due oggetti di tipo PagamentoContanti e due di tipo PagamentoCartaDiCredito con valori differenti e si invochi dettagliPagamento() per ognuno di essi.
+Per il test, si creino almeno due oggetti di tipo PagamentoContanti e due di tipo 
+PagamentoCartaDiCredito con valori differenti e si invochi dettagliPagamento() per ognuno di essi.
 
 Esempio di output:
 Pagamento in contanti di: €150.00
@@ -56,7 +57,6 @@ class Pagamento:
 
         self.__importo:float= 0.0
     
-
     def setPagamento(self,importo):
         self.__importo = importo
 
@@ -64,7 +64,7 @@ class Pagamento:
         return self.__importo
 
 
-    def dettagliPagamento(self):
+    def dettagliPagamento(self)-> str:
         print(f'Importo del pagamento è {self.getPagamento():.2f} ')
  
 
@@ -81,4 +81,12 @@ class PagamentoContanti(Pagamento):
         banconata = importo -500
         
         pass
-    
+
+
+pagamento:Pagamento= Pagamento()
+
+pagamento.setPagamento(30)
+
+print(pagamento.getPagamento())
+
+pagamento.dettagliPagamento()
