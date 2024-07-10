@@ -21,10 +21,10 @@ class TestFilm (TestCase):
         self.film9 = Commedia(9,"Pallotola spuntata")
         self.film10 = Commedia(10, "La banda del gobbo")
 
-        self.lista_Blokbuster = [self.film1, self.film2, self.film3,
+        self.lista_Blokbuster = [ self.film1, self.film2, self.film3,
                             self.film4, self.film5, self.film6,
                              self.film7, self.film8, self.film9,
-                             self.film10     ]
+                             self.film10        ]
 
         self.blockbuster:Noleggio= Noleggio(self.lista_Blokbuster)
 
@@ -64,7 +64,6 @@ class TestFilm (TestCase):
 
 
 if __name__ == "__main__":
-
     unittest.main()
 
 
