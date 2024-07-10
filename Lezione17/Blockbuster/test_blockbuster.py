@@ -62,10 +62,6 @@ class TestFilm (TestCase):
 
         
 
-    
-
-
-    
 
 if __name__ == "__main__":
 
