@@ -87,6 +87,9 @@ class PagamentoContanti(Pagamento):
                 resto = importo % i
             
             print (valore,resto)
+
+
+    
         
     
         
