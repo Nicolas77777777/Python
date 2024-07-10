@@ -51,6 +51,7 @@ Nome sulla carta: Luigi Bianchi
 Data di scadenza: 01/25
 Numero della carta: 6543210987654321"""
 
+import math
 
 class Pagamento:
     def __init__(self) :
@@ -104,6 +105,8 @@ class PagamentoContanti(Pagamento):
         
         pass
 
+
+print(math.fmod(10, 3))
 
 pagamento:Pagamento= Pagamento()
 
