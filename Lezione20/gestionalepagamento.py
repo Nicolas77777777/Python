@@ -81,19 +81,18 @@ class PagamentoContanti(Pagamento):
         valore: dict = {}
 
         for i in banconote:
-            if importo >= banconote[0]:
-                q =int(importo/i)
-            
-                valore[i]=[q]
-                resto = importo % i
-            
-            print (valore,resto)
+            q =int(importo/i)
+            resto = math.fmod(importo,i)
 
-
-    
-        
-    
-        
+            
+            print(resto,q)
+            # if importo >= banconote[0]:
+               
+            
+            #     valore[i]=[q]
+            #     resto = importo % i
+            
+            # print (valore,resto)
 
         """" tagli = [500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
         values = []
