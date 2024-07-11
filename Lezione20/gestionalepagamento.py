@@ -78,14 +78,24 @@ class PagamentoContanti(Pagamento):
 
     def inPezzida(self,importo):
         banconote:list =[500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
-        valore: dict = {}
+        how_many_banconote: dict = {}
 
-        for i in banconote:
-            q =int(importo/i)
-            resto = math.fmod(importo,i)
+        for banconota in banconote:
+            how_many_banconote= {}
+            resti = {}
+            how_many_banconote[banconota]=int(importo/banconota)
+            resti[banconota] = math.fmod(importo,banconota)
+            resto= math.fmod(importo,banconota)
+            importo = resto
+        
 
-            
-            print(resto,q)
+
+            print("quante banconote",how_many_banconote)
+            print("resti",resti)
+            print(importo)
+        
+
+        
             # if importo >= banconote[0]:
                
             
@@ -102,7 +112,6 @@ class PagamentoContanti(Pagamento):
         values[taglio] = int(q)
         valore = valore % taglio"""
         
-        pass
 
 
 print(math.fmod(10, 3))
