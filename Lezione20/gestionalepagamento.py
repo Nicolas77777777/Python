@@ -79,20 +79,26 @@ class PagamentoContanti(Pagamento):
     def inPezzida(self,importo):
         banconote:list =[500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
         how_many_banconote: dict = {}
+        resti = {}
 
         for banconota in banconote:
-            how_many_banconote= {}
-            resti = {}
+            
             how_many_banconote[banconota]=int(importo/banconota)
             resti[banconota] = math.fmod(importo,banconota)
             resto= math.fmod(importo,banconota)
             importo = resto
+            
+           
+            
+        
+
+    
         
 
 
             print("quante banconote",how_many_banconote)
             print("resti",resti)
-            print(importo)
+            #print(importo)
         
 
         
@@ -128,6 +134,9 @@ pagamento.dettagliPagamento()
 paga_contanti: PagamentoContanti= PagamentoContanti()
 
 paga_contanti.inPezzida(1024)
+paga_contanti.inPezzida(500)
+
+
 #paga_contanti.inPezzida(234)
 
 
