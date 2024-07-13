@@ -87,18 +87,16 @@ class PagamentoContanti(Pagamento):
             resti[banconota] = math.fmod(importo,banconota)
             resto= math.fmod(importo,banconota)
             importo = resto
-            
-           
-            
-        
-
-    
-        
-
-
             print("quante banconote",how_many_banconote)
-            print("resti",resti)
-            #print(importo)
+        for i in how_many_banconote:
+            if i[how_many_banconote.values()] != 0:
+                print (i) 
+
+            #print("resti",resti)
+            # for i in how_many_banconote:
+            #     print(i[how_many_banconote.values() >0] )
+                
+
         
 
         
@@ -134,7 +132,7 @@ pagamento.dettagliPagamento()
 paga_contanti: PagamentoContanti= PagamentoContanti()
 
 paga_contanti.inPezzida(1024)
-paga_contanti.inPezzida(500)
+#paga_contanti.inPezzida(500)
 
 
 #paga_contanti.inPezzida(234)
