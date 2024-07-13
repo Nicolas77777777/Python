@@ -1,28 +1,50 @@
-"""" . Scrivi una funzione che prenda un dizionario e un valore, 
-e ritorni la prima chiave che corrisponde a quel valore, 
-o None se il valore non è presente."""
+# Scrivi una funzione che prenda un dizionario e un valore, 
+# e ritorni la prima chiave che corrisponde a quel valore, 
+# o None se il valore non è presente.
 
 def cerca_valore_diz (diz: dict, valore):
 
-    for elemento in diz.keys():
-        if valore == elemento[valore]:
-            print (True)
-            return True 
+        for key, value in diz.items():
+            if value == valore:
+                print (key)
+                return key 
         else:
-            print(False)
-            return False
+                print(None)
         
 
-dit: dict = {"500":"4","1":"3"}
-cerca_valore_diz(dit,500)
+dit: dict = {"a":1,"b":2}
+
+cerca_valore_diz(dit,2)
+    
+# 2. Scrivi una funzione che inverte le chiavi e i valori in un dizionario.
+# Se ci sono valori duplicati, scarta i duplicati.
+
+def inverte_valori_dizionario( diz: dict ):
+    diz_inverso: dict = {}
+
+    for key, value in diz.items():
+            diz_inverso[value]= key
+
+            return diz_inverso
     
 
+print (f'{inverte_valori_dizionario(dit)}\n')
+      
+     
+# Scrivi una funzione che riceve una lista di numeri,
+#  filtra i numeri pari, e restituisce una nuova 
+#  lista con i numeri pari moltiplicati per un fattore dato
 
-"""2. Scrivi una funzione che inverte le chiavi e i valori in un dizionario. Se ci sono valori duplicati, scarta i duplicati.
+def lista_numeri_pari_per_fattore (l1: list[int], fattore: int):
+      l2=[]
+      for elemento in l1 : 
+            if elemento % 2== 0:
+                  l2.append(elemento)
+                  
+      
+      pass
  
-3. Scrivi una funzione che riceve una lista di numeri, filtra i numeri pari, e restituisce una nuova lista con i numeri pari moltiplicati per un fattore dato.
- 
-4. Scrivi una funzione che determina se un numero è 'magico'. Un numero è considerato magico se è divisibile per 4 ma non per 6.
+"""4. Scrivi una funzione che determina se un numero è 'magico'. Un numero è considerato magico se è divisibile per 4 ma non per 6.
  
 5. Scrivi una funzione che accetti una lista di numeri e ritorni la somma dei numeri che sono divisibili sia per 2 che per 3.
  
