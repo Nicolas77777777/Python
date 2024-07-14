@@ -1,3 +1,5 @@
+import random
+
 # Scrivi una funzione che prenda un dizionario e un valore, 
 # e ritorni la prima chiave che corrisponde a quel valore, 
 # o None se il valore non è presente.
@@ -27,7 +29,6 @@ def inverte_valori_dizionario( diz: dict ):
 
             return diz_inverso
     
-
 print (f'{inverte_valori_dizionario(dit)}\n')
       
      
@@ -36,13 +37,27 @@ print (f'{inverte_valori_dizionario(dit)}\n')
 #  lista con i numeri pari moltiplicati per un fattore dato
 
 def lista_numeri_pari_per_fattore (l1: list[int], fattore: int):
-      l2=[]
-      for elemento in l1 : 
-            if elemento % 2== 0:
-                  l2.append(elemento)
-                  
-      
-      pass
+    l2=[]
+    l3= []
+    for elemento in l1 : 
+        if elemento % 2 == 0:
+            l2.append(elemento)
+
+            for i in l2:
+                f= i* fattore
+                l3.append(f)
+    
+    return l2,l3
+          
+l1 = []
+for i in range(10):
+    l1.append(random.randint(1, 100))
+
+l5= [7,3,4,5,6,8,10]
+
+
+print(lista_numeri_pari_per_fattore(l5,2))
+
  
 """4. Scrivi una funzione che determina se un numero è 'magico'. Un numero è considerato magico se è divisibile per 4 ma non per 6.
  
