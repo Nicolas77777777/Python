@@ -80,7 +80,7 @@ class PagamentoContanti(Pagamento):
         banconote:list =[500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01] # creo lista 
         how_many_banconote: dict = {} # creo dizionario vuoto per inseire chiave banconote e valore la quantita utilizzata
         resti = {} # dizionario vuoto per il resto della divisione 
-
+        
         for banconota in banconote: # ciclo sulla lista banconote 
             
             how_many_banconote[banconota]=int(importo/banconota)
@@ -90,36 +90,25 @@ class PagamentoContanti(Pagamento):
             print("quante banconote",how_many_banconote)
 
         for banconota, quantita in how_many_banconote.items():
-            if quantita != 0:
-                print (f'{quantita} Banconota da {banconota} euro') 
-
-            #print("resti",resti)
-            # for i in how_many_banconote:
-            #     print(i[how_many_banconote.values() >0] )
-                
-
-        
-
-        
-            # if importo >= banconote[0]:
-               
             
-            #     valore[i]=[q]
-            #     resto = importo % i
-            
-            # print (valore,resto)
+            type : str = "banconota"
+            types : str = "banconote"
 
-        """" tagli = [500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
-        values = []
-        valore = self.import
-        for (tagli as taglio)
-        q  = valore / taglio
-        values[taglio] = int(q)
-        valore = valore % taglio"""
-        
+            if banconota < 5:
+                type : str = "moneta"
+                types : str = "monete"
+ 
+            if quantita  == 1 :
+                print (f'{quantita} {type} da {banconota} euro') 
+            elif quantita > 1:
+                print (f'{quantita} {types} da {banconota} euro') 
+
+class PagamentoCartaDiCredito(Pagamento):
+    def __init__(self):
+        super().__init__()
 
 
-print(math.fmod(10, 3))
+
 
 pagamento:Pagamento= Pagamento()
 
@@ -134,6 +123,8 @@ paga_contanti: PagamentoContanti= PagamentoContanti()
 
 paga_contanti.inPezzida(1024)
 paga_contanti.inPezzida(1025.25)
+paga_contanti.inPezzida(95.25)
+
 #paga_contanti.inPezzida(500)
 
 

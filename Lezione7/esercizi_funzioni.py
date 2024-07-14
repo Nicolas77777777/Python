@@ -104,24 +104,57 @@ print(sum_num(l4))
 # con solo i prodotti che hanno un prezzo superiore a 20, scontati del 10%.
 
 def prodotti_sup_20 (diz: dict):
-     new_dict: dict= diz.copy()
-     for key, value in new_dict.items():
-            sconto =(value * 10 /100)
+    new_dict: dict= {}
+    for key, value in diz.items():
             if value > 20:
-                new_dict[key]= value - sconto 
+                sconto =(value * 10 /100)
+                new_dict[key] = value - sconto 
             
  
-            return sconto,diz,new_dict
+    return sconto,diz,new_dict
  
 
 store: dict = dict(Maglietta= 18, Jeans = 25, calze= 6, Felpa= 30)
 
 print(prodotti_sup_20(store))
-"""7. Scrivi una funzione che prenda in input una lista di dizionari che rappresentano voti di studenti e aggrega i voti per studente in un nuovo dizionario.
+
+# 7. Scrivi una funzione che prenda in input 
+# una lista di dizionari che rappresentano voti 
+# di studenti e aggrega i voti per studente 
+# in un nuovo dizionario.
+
+def aggrega_voti (li:list) -> dict:
+    voti={}
+    for i in li:
+        studente =i['studente']
+        voto = i['voto']
+        if studente in voti:
+            voti[studente].append(voto)
+        else:
+            voti[studente]=[voto]
+    return voti
+
+lista_voti = [
+     {'studente': 'Franca','voto':30},
+     {'studente': 'Gino','voto':30},
+     {'studente': 'Sonia','voto':30},
+     {'studente': 'Dario','voto':18},
+     {'studente': 'Sonia','voto':29},
+     {'studente': 'Simone','voto':27},
+     {'studente': 'Dario','voto':20}   ]
+
+
+print(aggrega_voti(lista_voti))
  
-8. Scrivi una funzione che elimini dalla lista dati certi elementi specificati in un dizionario. Il dizionario contiene elementi da rimuovere come chiavi e il numero di volte che devono essere rimossi come valori.
+"""Scrivi una funzione che elimini dalla lista 
+dati certi elementi specificati in un dizionario. 
+Il dizionario contiene elementi da rimuovere 
+come chiavi e il numero di volte che devono essere rimossi come valori.
  
-9. Scrivi una funzione che converta una lista di tuple (chiave, valore) in un dizionario. Se la chiave è già presente, aggiungi il valore alla lista di valori già associata alla chiave.
+9. Scrivi una funzione che converta una lista di
+tuple (chiave, valore) in un dizionario.
+Se la chiave è già presente, aggiungi 
+il valore alla lista di valori già associata alla chiave.
  
 10. Scrivi una funzione che prende una lista di numeri e ritorna un dizionario che classifica i numeri in liste separate per numeri pari e dispari.
  
