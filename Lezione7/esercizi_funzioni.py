@@ -21,7 +21,7 @@ cerca_valore_diz(dit,2)
 # 2. Scrivi una funzione che inverte le chiavi e i valori in un dizionario.
 # Se ci sono valori duplicati, scarta i duplicati.
 
-def inverte_valori_dizionario( diz: dict ):
+def inverte_valori_dizionario( diz: dict ) -> dict:
     diz_inverso: dict = {}
 
     for key, value in diz.items():
@@ -36,36 +36,88 @@ print (f'{inverte_valori_dizionario(dit)}\n')
 #  filtra i numeri pari, e restituisce una nuova 
 #  lista con i numeri pari moltiplicati per un fattore dato
 
-def lista_numeri_pari_per_fattore (l1: list[int], fattore: int):
-    l2=[]
-    l3= []
-    for elemento in l1 : 
-        if elemento % 2 == 0:
-            l2.append(elemento)
+def lista_numeri_pari_per_fattore (l1: list[int], fattore: int) -> list:
+    l2=[] # liste vuote
+    l3= [] # liste vuote
+    for elemento in l1 : # per ogni elemento in lista 
+        if elemento % 2 == 0: # se l'elemento è divisibile per 2 con resto ugale a 0 PARI
+            l2.append(elemento) # aggiungi alla lista gli elementi 
 
-            for i in l2:
-                f= i* fattore
-                l3.append(f)
+    for i in l2: # cicla eleemnti della lista nuova creata con numeripari 
+        l3.append(i*fattore) # aggiungi alla lista l3 tutti gli elementi della lista e moltiplicali per il fatootre 
     
     return l2,l3
           
-l1 = []
-for i in range(10):
-    l1.append(random.randint(1, 100))
+l1 = [] # creo una lista vuota
+for i in range(10): # con una linghezza massima di 10 elementi 
+    l1.append(random.randint(0,1000)) # aggingi gli elementi random di numeri tra 0 e 1000
 
+print (f'{l1} {len(l1)}\n')
 l5= [7,3,4,5,6,8,10]
 
+print(f'{lista_numeri_pari_per_fattore(l1,2)}\n')
 
-print(lista_numeri_pari_per_fattore(l5,2))
+ 
+# Scrivi una funzione che determina se un numero è 'magico'. 
+# Un numero è considerato magico se è 
+# divisibile per 4 ma non per 6.
 
+def magic_number (num: int ) -> str : 
+    if num % 4 == 0 and  num % 6 != 0 :
+        return f'{num} is a magic number'
+     
+    else:
+        return f'{num} is not a magic number'
+    
+print(f'{magic_number(66)}')
+
+print(f'{magic_number(60)}')
+
+print(f'{magic_number(8)}\n')
+
+
+# Scrivi una funzione che accetti una lista di numeri
+# e ritorni la somma dei numeri che 
+# sono divisibili sia per 2 che per 3.
+
+def sum_num (l1: list) -> int:
+
+    lsum = []
+    for elemento in l1:
+        if elemento % 2 == 0 and elemento % 3 == 0:
+            lsum.append(elemento)
+        
+    return (sum(lsum))
+
+l3=[3,3,4,5,6,7,8,9,10,12,16,18]
+l4=[6,16,18]
+
+print(sum_num(l1))
+
+print(sum_num(l3))
+
+print(sum_num(l4))
+
+
+# Scrivi una funzione che accetti un dizionario
+# di prodotti con i prezzi e restituisca un nuovo dizionario 
+# con solo i prodotti che hanno un prezzo superiore a 20, scontati del 10%.
+
+def prodotti_sup_20 (diz: dict):
+     new_dict: dict= diz.copy()
+     for key, value in new_dict.items():
+            sconto =(value * 10 /100)
+            if value > 20:
+                new_dict[key]= value - sconto 
+            
  
-"""4. Scrivi una funzione che determina se un numero è 'magico'. Un numero è considerato magico se è divisibile per 4 ma non per 6.
+            return sconto,diz,new_dict
  
-5. Scrivi una funzione che accetti una lista di numeri e ritorni la somma dei numeri che sono divisibili sia per 2 che per 3.
- 
-6. Scrivi una funzione che accetti un dizionario di prodotti con i prezzi e restituisca un nuovo dizionario con solo i prodotti che hanno un prezzo superiore a 20, scontati del 10%.
- 
-7. Scrivi una funzione che prenda in input una lista di dizionari che rappresentano voti di studenti e aggrega i voti per studente in un nuovo dizionario.
+
+store: dict = dict(Maglietta= 18, Jeans = 25, calze= 6, Felpa= 30)
+
+print(prodotti_sup_20(store))
+"""7. Scrivi una funzione che prenda in input una lista di dizionari che rappresentano voti di studenti e aggrega i voti per studente in un nuovo dizionario.
  
 8. Scrivi una funzione che elimini dalla lista dati certi elementi specificati in un dizionario. Il dizionario contiene elementi da rimuovere come chiavi e il numero di volte che devono essere rimossi come valori.
  

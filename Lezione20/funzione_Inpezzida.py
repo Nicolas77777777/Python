@@ -17,13 +17,18 @@ def inPezzida(importo):
 
     for banconota, quantita in how_many_banconote.items():
             
-            if quantita != 0 and quantita <= 1 :
-                print (f'{quantita} Banconota da {banconota} euro') 
+            type : str = "banconota"
+            types : str = "banconote"
+
+            if banconota < 5:
+                type : str = "moneta"
+                types : str = "monete"
+ 
+            if quantita  == 1 :
+                print (f'{quantita} {type} da {banconota} euro') 
             elif quantita > 1:
-                print (f'{quantita} Banconote da {banconota} euro') 
-            elif quantita != 0 and quantita <= 1 and  banconota == 2 or  1 or 0.5 or 0.2 or 0.1 or  0.05 or 0.02 or 0.01:
+                print (f'{quantita} {types} da {banconota} euro') 
                 
-                    print (f'{quantita} monete da {banconote} euro')
 
 
 
@@ -32,6 +37,10 @@ def inPezzida(importo):
 
 
 inPezzida(1024)
+inPezzida(1023.88)
+inPezzida(5353.94)
+
+
 
 
 
