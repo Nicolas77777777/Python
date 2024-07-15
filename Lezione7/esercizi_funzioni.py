@@ -1,4 +1,6 @@
 import random
+from collections import defaultdict
+
 
 # Scrivi una funzione che prenda un dizionario e un valore, 
 # e ritorni la prima chiave che corrisponde a quel valore, 
@@ -149,16 +151,72 @@ print(aggrega_voti(lista_voti))
 """Scrivi una funzione che elimini dalla lista 
 dati certi elementi specificati in un dizionario. 
 Il dizionario contiene elementi da rimuovere 
-come chiavi e il numero di volte che devono essere rimossi come valori.
+come chiavi e il numero di volte che devono essere rimossi come valori."""
  
-9. Scrivi una funzione che converta una lista di
+"""9. Scrivi una funzione che converta una lista di
 tuple (chiave, valore) in un dizionario.
 Se la chiave è già presente, aggiungi 
-il valore alla lista di valori già associata alla chiave.
+il valore alla lista di valori già associata alla chiave."""
+
+def roscio (l1:list) -> dict:
+    newdict: dict = {}
+    for elements in l1:
+        if elements[0] in newdict:
+             newdict[elements[0]].append(elements[1])
+        else:
+             newdict[elements[0]]=[elements[1]]
+             
+    return newdict
+####### altro metodo 
+def elimina_duplicati(l1:list)-> dict:
+    newdict: dict = {}
+
+    for elemento in l1: 
+        if elemento[0] not in newdict:
+            newdict[elemento[0]]=[]
+            newdict[elemento[0]].append(elemento[1])
+        else: 
+            newdict[elemento[0]].append(elemento[1])
+
+    return newdict
+
+
+# d = defaultdict(list)
+# for k in t:
+#     d[k[0]].append(k[1])
+     
+thistuplelist = [ ("a", 1), ("b",2), ("c",3), ("a",4), ("b", 6)]
+
+print(roscio(thistuplelist))
+print(elimina_duplicati(thistuplelist))
+
  
-10. Scrivi una funzione che prende una lista di numeri e ritorna un dizionario che classifica i numeri in liste separate per numeri pari e dispari.
- 
-11. Scrivi una funzione che converte una temperatura da gradi Celsius a Fahrenheit e viceversa a seconda del parametro. Utilizza il concetto di parametri opzionali.
+# 10. Scrivi una funzione che prende una lista
+#  di numeri e ritorna un dizionario che classifica 
+#  i numeri in liste separate per numeri pari e dispari.
+
+def dizPariDispari(l1:list) -> dict:
+    diz_num_pari_dispari: dict = {}
+    diz_num_pari_dispari["Pari"] = []
+    diz_num_pari_dispari["Dispari"]= []
+    for i in l1:
+        if i %2== 0:
+            diz_num_pari_dispari['Pari'].append(i)
+        else:    
+            diz_num_pari_dispari['Dispari'].append(i)
+
+    return diz_num_pari_dispari
+
+l7=[]
+for i in range(20):
+    x= random.randint(0,100)
+    l7.append(x)
+
+print(l7)
+
+print(dizPariDispari(l7))
+
+"""11. Scrivi una funzione che converte una temperatura da gradi Celsius a Fahrenheit e viceversa a seconda del parametro. Utilizza il concetto di parametri opzionali.
  
 12. Scrivi una funzione che somma tutti i numeri interi di una lista che sono maggiori di un dato valore intero definito threshold.
  
