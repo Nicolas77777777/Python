@@ -43,4 +43,22 @@ if diz2.values() == 0:
 
 else:
     print (False)
+
+
+f= {'a': [1, 4], 'b': [2, 6], 'c': [3]}
+
+print(f["a"])
+
+f["e"] = f["c"]
+
+print(f)
+
+d = {'k1': 1, 'k2': 2, 'k3': 3}
+
+d['k10'] = d.pop('k1')
+
+print(d)
+# {'k2': 2, 'k3': 3, 'k10': 1}
+
+
     

@@ -2,7 +2,7 @@ import random
 from collections import defaultdict
 
 
-# Scrivi una funzione che prenda un dizionario e un valore, 
+# 1Scrivi una funzione che prenda un dizionario e un valore, 
 # e ritorni la prima chiave che corrisponde a quel valore, 
 # o None se il valore non è presente.
 
@@ -34,7 +34,7 @@ def inverte_valori_dizionario( diz: dict ) -> dict:
 print (f'{inverte_valori_dizionario(dit)}\n')
       
      
-# Scrivi una funzione che riceve una lista di numeri,
+# 3Scrivi una funzione che riceve una lista di numeri,
 #  filtra i numeri pari, e restituisce una nuova 
 #  lista con i numeri pari moltiplicati per un fattore dato
 
@@ -60,7 +60,7 @@ l5= [7,3,4,5,6,8,10]
 print(f'{lista_numeri_pari_per_fattore(l1,2)}\n')
 
  
-# Scrivi una funzione che determina se un numero è 'magico'. 
+# 4Scrivi una funzione che determina se un numero è 'magico'. 
 # Un numero è considerato magico se è 
 # divisibile per 4 ma non per 6.
 
@@ -78,7 +78,7 @@ print(f'{magic_number(60)}')
 print(f'{magic_number(8)}\n')
 
 
-# Scrivi una funzione che accetti una lista di numeri
+# 5Scrivi una funzione che accetti una lista di numeri
 # e ritorni la somma dei numeri che 
 # sono divisibili sia per 2 che per 3.
 
@@ -101,7 +101,7 @@ print(sum_num(l3))
 print(sum_num(l4))
 
 
-# Scrivi una funzione che accetti un dizionario
+#6 Scrivi una funzione che accetti un dizionario
 # di prodotti con i prezzi e restituisca un nuovo dizionario 
 # con solo i prodotti che hanno un prezzo superiore a 20, scontati del 10%.
 
@@ -153,10 +153,10 @@ dati certi elementi specificati in un dizionario.
 Il dizionario contiene elementi da rimuovere 
 come chiavi e il numero di volte che devono essere rimossi come valori."""
  
-"""9. Scrivi una funzione che converta una lista di
-tuple (chiave, valore) in un dizionario.
-Se la chiave è già presente, aggiungi 
-il valore alla lista di valori già associata alla chiave."""
+# 9. Scrivi una funzione che converta una lista di
+# tuple (chiave, valore) in un dizionario.
+# Se la chiave è già presente, aggiungi 
+# il valore alla lista di valori già associata alla chiave."""
 
 def roscio (l1:list) -> dict:
     newdict: dict = {}
@@ -264,26 +264,44 @@ print(threshold(l10, 2))
 # elemento alla sua frequenza nella lista.
 
 def frequency_dict (l1:list) -> dict:
-    diz: dict= {}
-    for i in l1:
-        diz[i]=
+    diz = {}
+    for item in l1:
+        if item in diz:
+            diz[item] += 1
+        else:
+            diz[item] = 1
+    return diz
 
 
-print(frequency_dict(['mela', 'banana', 'mela']))
+print(frequency_dict(['mela', 'banana', 'mela','pera', 'mela', 'banana']))
 # {'mela': 2, 'banana': 1}
 	
 
 
- 
 # """14. Scrivi una funzione che ritorna un
 #  dizionario che unisce due dizionari. 
 #  Se una chiave è presente in entrambi, 
 #  somma i loro valori nel nuovo dizionario."""
 
 def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
+        newdict: dict ={}
+        x=dict2.values
+        for key, value in dict1.items():
+            if key in dict2:
+                newdict[key]= value + dict2[key]
+            else :
+                newdict[key]= value
+        for key, value in dict2.items():
+            if key in dict1:
+                newdict[key]= value + dict1[key]
+            else :
+                newdict[key]= value
+        return newdict
+        
+
     
-    print(merge_dictionaries({'x': 5}, {'x': -5}))
-    pass
+print(merge_dictionaries({'x': 5}, {'x': -5}))
+
  
 # 15. Scrivi una funzione che, dato un insieme
 #  e una lista di numeri interi da rimuovere,
@@ -298,14 +316,35 @@ def remove_elements(original_set: set[int], elements_to_remove: list[int]) -> se
             new_set.remove(elements)
     return new_set
  
-"""16. Scrivi una funzione che ritorna il valore
- massimo, minimo e la media di una lista di numeri interi.
+# 16. Scrivi una funzione che ritorna il valore
+#  massimo, minimo e la media di
+#  una lista di numeri interi.
+
+def min_max_mid(l1:list):
+    mass= max(l1)
+    minim= min(l1)
+    somma = sum(l1)
+    med = sum(l1)/ len(l1)
+
+    return mass,minim, med, somma
+
+
+l11: list =[]
+for i in range(10):
+    z= random.randint(0,10)
+    l11.append(z)
+
+print (l11)
+
+print(min_max_mid(l11))
+
+# 17. Scrivi una funzione che calcola la media 
+# di una lista di numeri e ritorna il valore 
+# arrotondato all'intero più vicino.
+
+
  
-17. Scrivi una funzione che calcola la media 
-di una lista di numeri e ritorna il valore 
-arrotondato all'intero più vicino.
- 
-18. Scrivi una funzione che rimuove tutti 
+"""18. Scrivi una funzione che rimuove tutti 
 i duplicati da una lista, contenente sia numeri che 
 lettere, mantenendo l'ordine originale degli elementi.
  
@@ -324,17 +363,32 @@ sia maggiore della lunghezza della lista.
 solo se il nome utente è "admin", 
 la password corrisponde a "12345" e l'account è attivo.
  
-21. Scrivi una funzione che verifica se una combinazione di condizioni (A, B, e C) è soddisfatta per procedere con un'operazione. L'operazione può procedere solo se la condizione A è vera o se entrambe le condizioni B e C sono vere.
+21. Scrivi una funzione che verifica 
+se una combinazione di condizioni (A, B, e C) 
+è soddisfatta per procedere con un'operazione.
+ L'operazione può procedere solo se la condizione
+A è vera o se entrambe le condizioni B e C sono vere.
  
-22. Scrivi una funzione che riceve un numero e stampa un conto alla rovescia da quel numero a zero.
+22. Scrivi una funzione che riceve un numero
+ e stampa un conto alla rovescia da quel numero a zero.
  
-23. Scrivi una funzione che, dato un numero intero, determina se è un "numero magico". Un numero magico è definito come un numero che contiene il numero 7.
+23. Scrivi una funzione che, dato un numero intero, 
+determina se è un "numero magico". 
+Un numero magico è definito come un 
+numero che contiene il numero 7.
  
-24.  Scrivi una funzione che verifica se in una stringa le parentesi '(' e ')' sono bilanciate, cioè per ogni parentesi che apre c'è la corrispondente parentesi che chiude.
+24.  Scrivi una funzione che verifica
+ se in una stringa le parentesi '(' e ')'
+ sono bilanciate, cioè per ogni parentesi 
+ che apre c'è la corrispondente parentesi che chiude.
  
-25. Scrivi una funzione che conta quante volte un elemento appare isolato in una lista di numeri interi. Un elemento è considerato isolato se non è affiancato da elementi uguali.
+25. Scrivi una funzione che conta quante volte 
+un elemento appare isolato in una lista di numeri interi. 
+Un elemento è considerato isolato 
+se non è affiancato da elementi uguali.
  
-26. Scrivi una funzione chiamata create_contact() che accetta il nome e cognome, e-mail (facoltativo) e numero di telefono (facoltativo). La funzione dovrebbe restituire un dizionario con i dettagli del contatto.
+26. Scrivi una funzione chiamata create_contact() 
+che accetta il nome e cognome, e-mail (facoltativo) e numero di telefono (facoltativo). La funzione dovrebbe restituire un dizionario con i dettagli del contatto.
 
 ESEMPIO: create_contact("Mario Rossi", email="mario.rossi@gmail.com", telefono=69876543)
 
