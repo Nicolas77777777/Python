@@ -238,20 +238,22 @@ print(threshold(l8, 4))
 print(threshold(l10, 2))
 
 
-
 """
 13. Scrivi una funzione che, data una lista, 
 ritorni un dictionary che mappa ogni 
-elemento alla sua frequenza nella lista.
+elemento alla sua frequenza nella lista."""
  
-14. Scrivi una funzione che ritorna un
+"""14. Scrivi una funzione che ritorna un
  dizionario che unisce due dizionari. 
  Se una chiave è presente in entrambi, 
- somma i loro valori nel nuovo dizionario.
+ somma i loro valori nel nuovo dizionario."""
  
-15. Scrivi una funzione che, dato un insieme e una lista di numeri interi da rimuovere, ritorni un nuovo insieme senza i numeri specificati nella lista.
+# 15. Scrivi una funzione che, dato un insieme
+#  e una lista di numeri interi da rimuovere,
+# ritorni un nuovo insieme senza i numeri
+# specificati nella lista.
  
-16. Scrivi una funzione che ritorna il valore massimo, minimo e la media di una lista di numeri interi.
+"""16. Scrivi una funzione che ritorna il valore massimo, minimo e la media di una lista di numeri interi.
  
 17. Scrivi una funzione che calcola la media di una lista di numeri e ritorna il valore arrotondato all'intero più vicino.
  
