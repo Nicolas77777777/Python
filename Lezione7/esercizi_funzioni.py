@@ -342,22 +342,36 @@ print(min_max_mid(l11))
 # di una lista di numeri e ritorna il valore 
 # arrotondato all'intero più vicino.
 
+def mid (l1:list):
+    
+    len1= len(l1)
+    sum1= sum(l1)
+    avg = sum(l1)/ len(l1)
+    roundavg = round(avg)
 
- 
+    return roundavg, avg, sum1, len1
+
+l12=[1,2,3,4,5,6,6,67,7,8,8,9]          
+print(mid(l12))
+
 """18. Scrivi una funzione che rimuove tutti 
 i duplicati da una lista, contenente sia numeri che 
-lettere, mantenendo l'ordine originale degli elementi.
+lettere, mantenendo l'ordine originale degli elementi."""
  
-19. Scrivi una funzione che ruota gli elementi di
- una lista verso sinistra di un numero specificato
-k di posizioni. La rotazione verso sinistra significa
-che ciascun elemento della lista viene spostato a sinistra 
-di una posizione e l'elemento iniziale viene spostato alla
-fine della lista. Per la rotazione utilizzare lo slicing
-e gestire il caso in cui il numero specificato di posizioni 
-sia maggiore della lunghezza della lista.
+# 19. Scrivi una funzione che ruota gli elementi di
+#  una lista verso sinistra di un numero specificato
+# k di posizioni. La rotazione verso sinistra significa
+# che ciascun elemento della lista viene spostato a sinistra 
+# di una posizione e l'elemento iniziale viene spostato alla
+# fine della lista. Per la rotazione utilizzare lo slicing
+# e gestire il caso in cui il numero specificato di posizioni 
+# sia maggiore della lunghezza della lista.
+
+def rotatesx (l1: list):
+
+
  
-20. Scrivi una funzione che accetti tre parametri: username,
+"""20. Scrivi una funzione che accetti tre parametri: username,
  password e status di attivazione dell'account 
  (attivo/non attivo). L'accesso è consentito
 solo se il nome utente è "admin", 
