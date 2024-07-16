@@ -2,8 +2,16 @@
 # e una lista di numeri interi da rimuovere, 
 # ritorni un nuovo insieme senza i numeri specificati nella lista.
 
+def remove_elements(original_set: set[int], elements_to_remove: list[int]) -> set[int]:
+    new_set = original_set.copy()
+    list_set= list(new_set)
+    for elements in elements_to_remove:
+        if elements in new_set:
+            new_set.remove(elements)
+    return new_set
 
 
+print(f'{remove_elements({5, 6, 7}, [7, 8, 9])} \n')
 
 # Scrivi una funzione che elimini dalla lista dati certi elementi
 # specificati in un dizionario. Il dizionario contiene elementi 

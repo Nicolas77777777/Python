@@ -216,10 +216,31 @@ print(l7)
 
 print(dizPariDispari(l7))
 
-"""11. Scrivi una funzione che converte una 
-temperatura da gradi Celsius a Fahrenheit 
-e viceversa a seconda del parametro. 
-Utilizza il concetto di parametri opzionali."""
+# 11. Scrivi una funzione che converte una 
+# temperatura da gradi Celsius a Fahrenheit 
+# e viceversa a seconda del parametro. 
+# Utilizza il concetto di parametri opzionali.
+
+def convert_temperature(temperature: float, to_fahrenheit: bool = True) -> float:
+    """
+    Converte la temperatura tra gradi Celsius e Fahrenheit.
+    
+    :param temperature: La temperatura da convertire.
+    :param to_fahrenheit: Se True, converte da Celsius a Fahrenheit. 
+                          Se False, converte da Fahrenheit a Celsius.
+    :return: La temperatura convertita.
+    """
+    if to_fahrenheit:
+        # Conversione da Celsius a Fahrenheit
+        return (temperature * 9/5) + 32
+    else:
+        # Conversione da Fahrenheit a Celsius
+        return (temperature - 32) * 5/9
+
+# Esempi di utilizzo della funzione
+print(f"25°C -> {convert_temperature(25, to_fahrenheit=True)}°F")
+print(f"77°F -> {convert_temperature(77, to_fahrenheit=False)}°C")
+
  
 """ Scrivi una funzione che somma tutti i numeri
 interi di una lista che sono maggiori di un 
@@ -238,35 +259,70 @@ print(threshold(l8, 4))
 print(threshold(l10, 2))
 
 
-"""
-13. Scrivi una funzione che, data una lista, 
-ritorni un dictionary che mappa ogni 
-elemento alla sua frequenza nella lista."""
+# 13. Scrivi una funzione che, data una lista, 
+# ritorni un dictionary che mappa ogni 
+# elemento alla sua frequenza nella lista.
+
+def frequency_dict (l1:list) -> dict:
+    diz: dict= {}
+    for i in l1:
+        diz[i]=
+
+
+print(frequency_dict(['mela', 'banana', 'mela']))
+# {'mela': 2, 'banana': 1}
+	
+
+
  
-"""14. Scrivi una funzione che ritorna un
- dizionario che unisce due dizionari. 
- Se una chiave è presente in entrambi, 
- somma i loro valori nel nuovo dizionario."""
+# """14. Scrivi una funzione che ritorna un
+#  dizionario che unisce due dizionari. 
+#  Se una chiave è presente in entrambi, 
+#  somma i loro valori nel nuovo dizionario."""
+
+def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
+    
+    print(merge_dictionaries({'x': 5}, {'x': -5}))
+    pass
  
 # 15. Scrivi una funzione che, dato un insieme
 #  e una lista di numeri interi da rimuovere,
 # ritorni un nuovo insieme senza i numeri
 # specificati nella lista.
 
-def rimuovinumeri():
-
-    pass
-
+def remove_elements(original_set: set[int], elements_to_remove: list[int]) -> set[int]:
+    new_set = original_set.copy()
+    list_set= list(new_set)
+    for elements in elements_to_remove:
+        if elements in new_set:
+            new_set.remove(elements)
+    return new_set
  
-"""16. Scrivi una funzione che ritorna il valore massimo, minimo e la media di una lista di numeri interi.
+"""16. Scrivi una funzione che ritorna il valore
+ massimo, minimo e la media di una lista di numeri interi.
  
-17. Scrivi una funzione che calcola la media di una lista di numeri e ritorna il valore arrotondato all'intero più vicino.
+17. Scrivi una funzione che calcola la media 
+di una lista di numeri e ritorna il valore 
+arrotondato all'intero più vicino.
  
-18. Scrivi una funzione che rimuove tutti i duplicati da una lista, contenente sia numeri che lettere, mantenendo l'ordine originale degli elementi.
+18. Scrivi una funzione che rimuove tutti 
+i duplicati da una lista, contenente sia numeri che 
+lettere, mantenendo l'ordine originale degli elementi.
  
-19. Scrivi una funzione che ruota gli elementi di una lista verso sinistra di un numero specificato k di posizioni. La rotazione verso sinistra significa che ciascun elemento della lista viene spostato a sinistra di una posizione e l'elemento iniziale viene spostato alla fine della lista. Per la rotazione utilizzare lo slicing e gestire il caso in cui il numero specificato di posizioni sia maggiore della lunghezza della lista.
+19. Scrivi una funzione che ruota gli elementi di
+ una lista verso sinistra di un numero specificato
+k di posizioni. La rotazione verso sinistra significa
+che ciascun elemento della lista viene spostato a sinistra 
+di una posizione e l'elemento iniziale viene spostato alla
+fine della lista. Per la rotazione utilizzare lo slicing
+e gestire il caso in cui il numero specificato di posizioni 
+sia maggiore della lunghezza della lista.
  
-20. Scrivi una funzione che accetti tre parametri: username, password e status di attivazione dell'account (attivo/non attivo). L'accesso è consentito solo se il nome utente è "admin", la password corrisponde a "12345" e l'account è attivo.
+20. Scrivi una funzione che accetti tre parametri: username,
+ password e status di attivazione dell'account 
+ (attivo/non attivo). L'accesso è consentito
+solo se il nome utente è "admin", 
+la password corrisponde a "12345" e l'account è attivo.
  
 21. Scrivi una funzione che verifica se una combinazione di condizioni (A, B, e C) è soddisfatta per procedere con un'operazione. L'operazione può procedere solo se la condizione A è vera o se entrambe le condizioni B e C sono vere.
  

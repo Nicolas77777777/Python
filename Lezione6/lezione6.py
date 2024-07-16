@@ -68,8 +68,8 @@ class Person2(Person):
     
 
 Eugenia= Person2('lorenzo',45,167,67)
-Eugenia.set_hobby("suchiarecazzi")
-Eugenia.set_hobby("e bocchini")
+Eugenia.set_hobby("pallacanestro")
+Eugenia.set_hobby("karate")
 
 
 
