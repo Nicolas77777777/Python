@@ -173,7 +173,7 @@ def elimina_duplicati(l1:list)-> dict:
 
     for elemento in l1: 
         if elemento[0] not in newdict:
-            newdict[elemento[0]]=[]
+            newdict[elemento[0][0]]=[]
             newdict[elemento[0]].append(elemento[1])
         else: 
             newdict[elemento[0]].append(elemento[1])
@@ -252,6 +252,11 @@ elemento alla sua frequenza nella lista."""
 #  e una lista di numeri interi da rimuovere,
 # ritorni un nuovo insieme senza i numeri
 # specificati nella lista.
+
+def rimuovinumeri():
+
+    pass
+
  
 """16. Scrivi una funzione che ritorna il valore massimo, minimo e la media di una lista di numeri interi.
  
