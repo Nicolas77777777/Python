@@ -216,14 +216,38 @@ print(l7)
 
 print(dizPariDispari(l7))
 
-"""11. Scrivi una funzione che converte una temperatura da gradi Celsius a Fahrenheit e viceversa a seconda del parametro. Utilizza il concetto di parametri opzionali.
+"""11. Scrivi una funzione che converte una 
+temperatura da gradi Celsius a Fahrenheit 
+e viceversa a seconda del parametro. 
+Utilizza il concetto di parametri opzionali."""
  
+""" Scrivi una funzione che somma tutti i numeri
+interi di una lista che sono maggiori di un 
+dato valore intero definito threshold."""
+ 
+def threshold(l1:int, fattore: int):
+    newlist=[]
+    for i in l1:
+        if i > fattore:
+            newlist.append(i)
+    return sum(newlist)
 
-12. Scrivi una funzione che somma tutti i numeri interi di una lista che sono maggiori di un dato valore intero definito threshold.
+l10=[1,1,1,2,3,3,3,]
+l8=[2,3,4,5,6,7,8,9]
+print(threshold(l8, 4))
+print(threshold(l10, 2))
+
+
+
+"""
+13. Scrivi una funzione che, data una lista, 
+ritorni un dictionary che mappa ogni 
+elemento alla sua frequenza nella lista.
  
-13. Scrivi una funzione che, data una lista, ritorni un dictionary che mappa ogni elemento alla sua frequenza nella lista.
- 
-14. Scrivi una funzione che ritorna un dizionario che unisce due dizionari. Se una chiave è presente in entrambi, somma i loro valori nel nuovo dizionario.
+14. Scrivi una funzione che ritorna un
+ dizionario che unisce due dizionari. 
+ Se una chiave è presente in entrambi, 
+ somma i loro valori nel nuovo dizionario.
  
 15. Scrivi una funzione che, dato un insieme e una lista di numeri interi da rimuovere, ritorni un nuovo insieme senza i numeri specificati nella lista.
  
