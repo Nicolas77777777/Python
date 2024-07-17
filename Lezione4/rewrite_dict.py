@@ -22,7 +22,7 @@ def rewrite_dict(d:dict[str,int]) -> dict[dict, float]:
     
 
     print(f'il dizionario di input è {d}')
-    somma: float = sum(list(d.values()))
+    somma= custom_sum(d)
     out: dict[str, float]= change_keys_with_sum(d,somma)
     return out 
 
