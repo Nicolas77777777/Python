@@ -368,7 +368,7 @@ lettere, mantenendo l'ordine originale degli elementi."""
 # sia maggiore della lunghezza della lista.
 
 def rotatesx (l1: list):
-
+    pass
 
  
 """20. Scrivi una funzione che accetti tre parametri: username,
