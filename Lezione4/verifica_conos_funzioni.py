@@ -1,7 +1,8 @@
 #Verifica conoscenze sulle funzioni
 
 # Scrivi una funzione somma_elementi(x: list[int], y: list[int]) -> list[int] 
-# che calcola la somma elemento per elemento di due liste x e y e restituisce il risultato.
+# che calcola la somma elemento 
+# per elemento di due liste x e y e restituisce il risultato.
 
 def somma_elementi(x: list[int], y: list[int]) -> list[int]:
     res: list = []
@@ -25,15 +26,15 @@ print(somma_elementi([1,1,1],[1,1,1]))
 # Scrivi una funzione prime_factors(n: int) -> list[int] che trova 
 # i fattori primi di un numero n dato in input
 
-# def prime_factors(n: int):
-#     numeriprimi=[]
-#     while n > 1 :
-#         if n % 2:
-#             n1= n %2
-#             numeriprimi.append(n1)
-#         pass
+def prime_factors(n: int):
+    numeriprimi=[]
+    while n > 1 :
+        if n % 2:
+            n1= n %2
+            numeriprimi.append(n1)
+        pass
 
-# print(prime_factors(4))
+print(prime_factors(4))
 
 
 # Nel gioco del blackjack, il valore di una mano è determinato dalla somma dei valori delle carte. 
@@ -91,16 +92,16 @@ print(blackjack_hand_total([1, 3, 5,3]))
 #print(const(4))
 
 
-# def even_odd_pattern1(nums: list[int]) -> list[int]:
-#     pari=[]
-#     dispari=[]
-#     for i in nums:
-#         if i % 2==0:
-#             pari.append(i)
-#         elif i % 2 !=0:
-#             dispari.append(i)
+def even_odd_pattern1(nums: list[int]) -> list[int]:
+    pari=[]
+    dispari=[]
+    for i in nums:
+        if i % 2==0:
+            pari.append(i)
+        elif i % 2 !=0:
+            dispari.append(i)
         
-#     return pari + dispari
+    return pari + dispari
 
-# print(even_odd_pattern1([3, 6, 1, 8, 4, 7]))
+print(even_odd_pattern1([3, 6, 1, 8, 4, 7]))
     
