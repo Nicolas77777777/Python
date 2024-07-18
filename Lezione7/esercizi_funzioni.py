@@ -1,5 +1,6 @@
 import random
 from collections import defaultdict
+from driver import create_list
 
 
 # 1Scrivi una funzione che prenda un dizionario e un valore, 
@@ -370,51 +371,115 @@ lettere, mantenendo l'ordine originale degli elementi."""
 # e gestire il caso in cui il numero specificato di posizioni 
 # sia maggiore della lunghezza della lista.
 
-def rotatesx (l1: list, k: int):
+def rotatesx (l1: list, k: int ) -> list:
 
-    if k > len(l1):
+    if k >= len(l1):
         
-        k1 = k - len(l1)
-        for elements in range(len(l1)):
-            return elements
+        k1 = k % len(l1)
 
-        elif: k < len(l1)
+        return l1[k1:] + l1[:k1]
+    
+    else :
 
-        pass
+        return l1[k:] + l1[:k]
         
 
+l12: list =[1,2,3,4,5,6,7,8,9,10]
 
+print(rotatesx(l12,2))
+print(rotatesx(l12,3))
+print(rotatesx(l12,4))
+print(rotatesx(l12,5))
 
 
     
-
- 
 """20. Scrivi una funzione che accetti tre parametri: username,
  password e status di attivazione dell'account 
  (attivo/non attivo). L'accesso è consentito
 solo se il nome utente è "admin", 
 la password corrisponde a "12345" e l'account è attivo."""
- 
+
+def account(username: str, password: float, stato_attivazione= None):
+
+    if username == "admin" and password == "12345":
+        stato_attivazione = True
+        return stato_attivazione
+    else:
+        stato_attivazione = False
+        return stato_attivazione
+
+print(account("admin","12345")) 
+print(account("adin","1234")) 
+
+
 """"21. Scrivi una funzione che verifica 
 se una combinazione di condizioni (A, B, e C) 
 è soddisfatta per procedere con un'operazione.
  L'operazione può procedere solo se la condizione
-A è vera o se entrambe le condizioni B e C sono vere.
+A è vera o se entrambe le condizioni B e C sono vere."""
+
+def check_combination(conditionA: bool, conditionB: bool, conditionC: bool) -> str:
+    if conditionA == True or conditionB and conditionC == True:
+        return "operazione permessa"
+    else:
+        return "operazione non permessa"
  
-22. Scrivi una funzione che riceve un numero
- e stampa un conto alla rovescia da quel numero a zero.
- 
-23. Scrivi una funzione che, dato un numero intero, 
+"""22. Scrivi una funzione che riceve un numero
+ e stampa un conto alla rovescia da quel numero a zero."""
+
+def num_rovescio(num: int ):
+    for i in range(num +1):
+        num-1
+        print (i)
+
+num_rovescio(20)
+
+def conto_alla_rovescia(n:int ):
+    # Controlla se il numero è non negativo
+    if n < 0:
+        print("Per favore, inserisci un numero non negativo.")
+        return
+    
+    # Esegue il conto alla rovescia
+    while n >= 0:
+        print(n)
+        n -= 1
+
+
+numero = 10
+conto_alla_rovescia(numero)
+
+
+"""23. Scrivi una funzione che, dato un numero intero, 
 determina se è un "numero magico". 
 Un numero magico è definito come un 
-numero che contiene il numero 7.
- 
-24.  Scrivi una funzione che verifica
+numero che contiene il numero 7."""
+
+def is_magic_number(num: int) -> bool:
+    num_str= str(num)
+
+    for element in num_str:
+        if "7" in num_str:
+            return True
+        
+        else: 
+            return False
+        
+print(is_magic_number(7))
+
+print(is_magic_number(70))
+print(is_magic_number(123))
+print(is_magic_number(1729))
+print(is_magic_number(250))
+
+"""24.  Scrivi una funzione che verifica
  se in una stringa le parentesi '(' e ')'
  sono bilanciate, cioè per ogni parentesi 
- che apre c'è la corrispondente parentesi che chiude.
+ che apre c'è la corrispondente parentesi che chiude."""
+
+
  
-25. Scrivi una funzione che conta quante volte 
+"""25. Scrivi una funzione che conta quante volte 
 un elemento appare isolato in una lista di numeri interi. 
 Un elemento è considerato isolato 
 se non è affiancato da elementi uguali.

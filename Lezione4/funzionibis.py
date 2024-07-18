@@ -9,15 +9,15 @@ def subtract_all (x : list[float], y: float) -> list[float]:
 
     return res
 
-list=[1.4,2.4,3.5,4.6,5.7]
+l=[1.4,2.4,3.5,4.6,5.7]
 
 
-# y= 5.3
-# out= subtract_all(x,y)
+y= 5.3
+out= subtract_all(l,y)
 
-# print(out)
+print(out)
 
-def subtract_list(x: list [float], y:list = [float]) -> list[float]:
+def subtract_list(x:list[float], y:list[float]) -> list[float]:
     for i in range(len(x)):
 
         newlist: list  =x[i]-y[i]
