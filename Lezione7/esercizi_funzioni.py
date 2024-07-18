@@ -128,7 +128,7 @@ print(prodotti_sup_20(store))
 def aggrega_voti (li:list) -> dict:
     voti={}
     for i in li:
-        studente =i['studente']
+        studente =i['nome']
         voto = i['voto']
         if studente in voti:
             voti[studente].append(voto)
@@ -136,17 +136,20 @@ def aggrega_voti (li:list) -> dict:
             voti[studente]=[voto]
     return voti
 
-lista_voti = [
-     {'studente': 'Franca','voto':30},
-     {'studente': 'Gino','voto':30},
-     {'studente': 'Sonia','voto':30},
-     {'studente': 'Dario','voto':18},
-     {'studente': 'Sonia','voto':29},
-     {'studente': 'Simone','voto':27},
-     {'studente': 'Dario','voto':20}   ]
+# lista_voti = [
+#      {'studente': 'Franca','voto':30},
+#      {'studente': 'Gino','voto':30},
+#      {'studente': 'Sonia','voto':30},
+#      {'studente': 'Dario','voto':18},
+#      {'studente': 'Sonia','voto':29},
+#      {'studente': 'Simone','voto':27},
+#      {'studente': 'Dario','voto':20}   ]
 
 
-print(aggrega_voti(lista_voti))
+print(aggrega_voti([{'nome': 'Alice', 'voto': 90},
+                    {'nome': 'Bob', 'voto': 75},
+                    {'nome': 'Alice', 'voto': 85}]))
+
  
 """Scrivi una funzione che elimini dalla lista 
 dati certi elementi specificati in un dizionario. 
@@ -368,6 +371,7 @@ lettere, mantenendo l'ordine originale degli elementi."""
 # sia maggiore della lunghezza della lista.
 
 def rotatesx (l1: list):
+
     pass
 
  
