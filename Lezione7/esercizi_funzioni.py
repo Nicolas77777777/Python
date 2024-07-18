@@ -370,18 +370,32 @@ lettere, mantenendo l'ordine originale degli elementi."""
 # e gestire il caso in cui il numero specificato di posizioni 
 # sia maggiore della lunghezza della lista.
 
-def rotatesx (l1: list):
+def rotatesx (l1: list, k: int):
 
-    pass
+    if k > len(l1):
+        
+        k1 = k - len(l1)
+        for elements in range(len(l1)):
+            return elements
+
+        elif: k < len(l1)
+
+        pass
+        
+
+
+
+
+    
 
  
 """20. Scrivi una funzione che accetti tre parametri: username,
  password e status di attivazione dell'account 
  (attivo/non attivo). L'accesso è consentito
 solo se il nome utente è "admin", 
-la password corrisponde a "12345" e l'account è attivo.
+la password corrisponde a "12345" e l'account è attivo."""
  
-21. Scrivi una funzione che verifica 
+""""21. Scrivi una funzione che verifica 
 se una combinazione di condizioni (A, B, e C) 
 è soddisfatta per procedere con un'operazione.
  L'operazione può procedere solo se la condizione
