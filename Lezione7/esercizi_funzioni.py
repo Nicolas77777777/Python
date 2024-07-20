@@ -470,21 +470,93 @@ print(is_magic_number(7))
 print(is_magic_number(70))
 print(is_magic_number(123))
 print(is_magic_number(1729))
-print(is_magic_number(250))
+print(f'{is_magic_number(250)}{"#*30"}')
 
 """24.  Scrivi una funzione che verifica
  se in una stringa le parentesi '(' e ')'
  sono bilanciate, cioè per ogni parentesi 
- che apre c'è la corrispondente parentesi che chiude."""    
+ che apre c'è la corrispondente parentesi che chiude.""" 
+
+def check_parentheses(expression: str) -> bool:
+
+    contatore= 0 
+    for char in expression:
+        if char == '(':
+            contatore += 1 
+        elif char == ')' :    
+            contatore -= 1
+        if contatore < 0:
+            return False
+    return contatore == 0
+
+
+def check_parentheses1(expression: str) -> bool:
+
+    contatore= 0 
+    for char in expression:
+        if char == '(':
+            contatore += 1 
+        elif char == ')' :    
+            contatore += 1
+        if contatore %2 == 0 :
+            return True
+        else:
+            return False 
+    
+# def parentesi_bilanciate(s):
+#     count = 0
+#     for char in s:
+#         if char == '(':
+#             count += 1
+#         elif char == ')':
+#             count -= 1
+#         # Se il contatore diventa negativo, le parentesi non sono bilanciate
+#         if count < 0:
+#             return False
+#     # Alla fine, il contatore deve essere zero
+#     return count == 0
+
+# # Test della funzione
+# print(parentesi_bilanciate("((()))"))  # Output: True
+# print(parentesi_bilanciate("(()"))     # Output: False
+# print(parentesi_bilanciate(")("))      # Output: False
+# print(parentesi_bilanciate("(a + b) * (c - d)"))  # Output: True
+# print(parentesi_bilanciate("((a + b)) + (c - d")) # Output: False
+
+
+#Test della funzione
+print(check_parentheses("((()))"))  # Output: True
+print(check_parentheses("(()"))     # Output: False
+print(check_parentheses(")("))      # Output: False
+print(check_parentheses("(a + b) * (c - d)"))  # Output: True
+print(check_parentheses("((a + b)) + (c - d")) # Output: False
 
 
  
 """25. Scrivi una funzione che conta quante volte 
 un elemento appare isolato in una lista di numeri interi. 
 Un elemento è considerato isolato 
-se non è affiancato da elementi uguali.
+se non è affiancato da elementi uguali."""
+
+def iso_number (l: list):
+
+    posizione: int = 0
+    lunghezzalista = len(l)
+    print(lunghezzalista)
+    diz: dict = dict()
+    for i in range(len(l)):
+        print(i)
+    for i in enumerate(l):
+        print (i)  
+        #if i !=  
+        #     diz[i]= 1
+        # return diz
+
+
+l21= [1,1,2,3,4,5,6]
+print(iso_number(l21))
  
-26. Scrivi una funzione chiamata create_contact() 
+"""26. Scrivi una funzione chiamata create_contact() 
 che accetta il nome e cognome, e-mail (facoltativo) e numero di telefono (facoltativo). La funzione dovrebbe restituire un dizionario con i dettagli del contatto.
 
 ESEMPIO: create_contact("Mario Rossi", email="mario.rossi@gmail.com", telefono=69876543)
