@@ -4,6 +4,8 @@
 
 s: str = "Cantami, o Diva, del pelide Achille l'ira funesta. Che infiniti addusse lutti agli Achei, molte anzi tempo all'Orco generose travolse alme d'eroi, e di cani e d'augelli orrido pasto"
 x: str = "Ciao ciao Bello, cosa si dice, si dice tutto bene ciao ciao "
+
+re= " tu dimmi quando quando, le mia mani mani faccia faccia "
 # print(s[0])
 # print(s[1])
 
@@ -52,21 +54,47 @@ x: str = "Ciao ciao Bello, cosa si dice, si dice tutto bene ciao ciao "
 
 
 def word_count (s: str) -> dict:
+    diz: dict = dict()
+    a= s.lower()
+    print(a)
+    b= a.replace(',','')
+    print(b)
+    word = b.split()
+    print(word)
+   
+    for parole in word:
+        if parole  not in diz:
+            diz[parole] = 1
+        else:
+            diz[parole] +=1
 
-    s.lower()
-    print(s)
-    s.strip(',')
-    print(s)
+    filtro: dict [str:int ] = dict()
+
+    for key in diz:
+        if diz[key] > 1:
+            filtro[key]=diz[key]
+
+    return diz, filtro
+
+
+
+    
     # word_wo_duplicate: set =set(s)
     # print (word_wo_duplicate)
 
 
 
 
-#word_count(x)
+print(word_count(x))
+print(word_count(re))
 
 
-lower =x.lower()
-print(lower)
-vir=lower.strip(",")
-print(vir)
+# lower =x.lower()
+# print(lower)
+# vir=lower.replace(",","")
+# print(vir)
+# word = vir.split()
+# print (word)
+
+# senzaduplicati = set(word)
+# print(senzaduplicati)
