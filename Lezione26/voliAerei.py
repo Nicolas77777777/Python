@@ -65,6 +65,8 @@ class VoloCommerciale(AbcVolo):
         diz['posti_business'] = self.posti_business
         diz['posti_prima'] = self.posti_prima
 
+
+        pass
         
     
      """"   che consente di prenotare un certo numero di posti
