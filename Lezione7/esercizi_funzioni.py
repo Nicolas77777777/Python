@@ -538,34 +538,97 @@ un elemento appare isolato in una lista di numeri interi.
 Un elemento è considerato isolato 
 se non è affiancato da elementi uguali."""
 
-def iso_number (l: list):
+def roscio (l: list):
 
     posizione: int = 0
-    lunghezzalista = len(l)
-    print(lunghezzalista)
     diz: dict = dict()
+    # for i in range(1,(len(l)-1)):
+    #     print (i) 
+    #     if i[1]== l[2]:
     for i in range(len(l)):
-        print(i)
-    for i in enumerate(l):
-        print (i)  
+        print (i)
+        if l[0] != l[1] and l[1] != l[2]:
+            pass
+            
         #if i !=  
         #     diz[i]= 1
         # return diz
 
 
 l21= [1,1,2,3,4,5,6]
-print(iso_number(l21))
+print (roscio(l21))
  
+
+
+def roscio1 (l: list):
+
+    diz = defaultdict(int)
+
+    for i in range(0, len(l)): # cicla sugli indici di una lista [1,1,3,4,3,6,7,6,8]
+
+        if i == 0: # se lelemnto i è 0 fai questo :
+            if l[i] != l[i+1]: # se l che è 0 è diverso da l'elemnto sucessivo 
+                diz[l[i]]= diz[l[i]]+1 # crea il dizionario con l'elemnto 0 
+        elif i == (len(l)-1):
+            if l[i] != l[i-1]:
+                diz[l[i]]= diz[l[i]]+1
+        else:
+            if l[i] != l[i-1] and l[i] != l[i+1]:
+                diz[l[i]]= diz[l[i]]+1
+       
+    return diz
+
+lista = [1,1,3,4,3,6,7,6,8]
+isolati = roscio1(lista)
+print(isolati)
+
+
+
+l= [34,5,6,7,10,14,23,47,1,1,1,2,2,2,3,3,3,3]
+z = set(l)
+
+print (z)
 """26. Scrivi una funzione chiamata create_contact() 
-che accetta il nome e cognome, e-mail (facoltativo) e numero di telefono (facoltativo). La funzione dovrebbe restituire un dizionario con i dettagli del contatto.
+che accetta il nome e cognome, e-mail (facoltativo) e numero di telefono (facoltativo). 
+La funzione dovrebbe restituire un dizionario con i dettagli del contatto.
 
 ESEMPIO: create_contact("Mario Rossi", email="mario.rossi@gmail.com", telefono=69876543)
 
 OUTPUT: {'profile': 'Mario Rossi', 'email': 'mario.rossi@gmail.com', 'telefono': 788787}
 
-Scrivi una funzione chiamata update_contact() che accetta il dizionario creato, il nome e cognome del contatto da aggiornare, e il dettaglio facoltativo da aggiornare. Questa funzione dovrebbe aggiornare il dizionario del contatto.
+Scrivi una funzione chiamata update_contact() che accetta il dizionario creato,
+ il nome e cognome del contatto da aggiornare, 
+ e il dettaglio facoltativo da aggiornare. 
+ Questa funzione dovrebbe aggiornare il dizionario del contatto.
 
 ESEMPIO: update_contact(dict, "Mario Rossi", telefono=123456789)
 
 OUTPUT: {'profile': 'Mario Rossi', 'email': 'mario.rossi@gmail.com', 'telefono': 123456789}
-Last modified: Tuesday, 14 May 2024, 4:31 PM"""
+"""
+
+def create_contact(nome: str, 
+                cognome: str,
+                 email: str= None, 
+                 telefono: int = None) :
+    contact: dict= {}
+    contact['profile']= nome +(cognome)
+    contact['email']= email
+    contact['telefono']= str(telefono)
+
+    return contact   
+
+d=create_contact("Andrea ","Rossi")
+print(d)
+
+def update_contact( diz:dict,
+                    set_name: str,
+                    set_telefono: int,
+                    setemail: str):
+    
+    diz["profile"]=set_name
+    diz['email']= setemail
+    diz['telefono']= str(set_telefono)
+
+    return diz
+
+print(update_contact(d,'Simo Cagliu', 2878824, 'fmio@gmail.com'))
