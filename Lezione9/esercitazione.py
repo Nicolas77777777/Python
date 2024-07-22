@@ -1,3 +1,42 @@
+# QUESTION 1
+# QUESTION 2
+"""
+Data una stringa s e una lista di stringhe 
+wordDict, restituisce True se s può essere 
+segmentato in una sequenza separata da spazi
+di una o più parole del dizionario; False altrimenti.
+
+Tieni presente che la stessa parola 
+nel dizionario può essere riutilizzata
+ più volte nella segmentazione.
+"""
+def word_break(s: str, wordDict: list[str]) -> bool:
+
+    for p in wordDict:
+        s= s.replace(p,'')
+    
+    if s =='':
+            return True
+    else: 
+            return False
+        
+    
+        
+
+print(word_break("leetcode",["leet","code"]))
+print(word_break("applepenapple", ["apple","pen"]))
+print(word_break("catsandog",["cats","dog","sand","and","cat"]))
+
+
+# QUESTION 3
+# QUESTION 4
+# QUESTION 5
+# QUESTION 6
+# QUESTION 7
+# QUESTION 8
+# QUESTION 9
+# QUESTION 10
+
 """" 
 Date due stringhe s e t, restituire True
 se t è un anagramma di s, e False altrimenti.
@@ -22,7 +61,7 @@ def anagram(s: str, t: str) -> bool:
 
 print(anagram("anagram","nagaram"))
 
-
+# QUESTION 6
 """" Progettare un semplice sistema bancario con i seguenti requisiti:
 
     Classe del Account:
@@ -40,54 +79,42 @@ print(anagram("anagram","nagaram"))
             deposit(account_id, amount): deposita l'importo specificato sul conto con l'ID fornito.
             get_balance(account_id): restituisce il saldo del conto con l'ID specificato."""
 
-#bank = Bank()
-#account1 = bank.create_account("123")
-#print(account1.get_balance())
 
-# class Account:
+class Account:
     
-#     def __init__(self,account_id: str, balance:float=0 ) -> None:
-
-#         self.account_id = account_id
-#         self.balance: float = balance
-
-#     def deposit(self,amount: float):  
-#         amount +=  self.balance
-        
+    def __init__(self,account_id: str, balance:float=0 ) -> None:
+         
+        self.account_id = account_id
+        self.balance = balance
     
-#     def get_balance(self):
-#         return self.balance
+    def deposit(self,amount: int):
+         self.balance += amount 
 
-# class Bank:
+    def get_balance(self):
+         return self.balance
+         
 
-#     def __init__(self, accounts: dict[str, Account],) -> None:
-#             self.accounts= accounts
+class Bank:
 
-#     def create_account(self, account_id:Account ):
-#         account_id = account_id
-        
+    def __init__(self, accounts: dict[str, Account],) -> None:
+            self.accounts= accounts
 
-#     def deposit(self,account_id, amount):
-#         pass
-
-#     def get_balance(self, account_id:Account):
-#         account_id = account_id.get_balance
-
-    
-# bank= Bank()
-# account1= Bank.create_account("123")
-
-# print(())
+    pass 
 
 
 
-class Member:
-    pass
+bank = Bank()
+account1 = bank.create_account("123")
+print(account1.get_balance())
 
-class Book:
-    def __init__(self, book_id: str) -> None:
-        pass
-    
 
-class Library:
-    pass
+
+bank = Bank()
+account1 = bank.create_account("123")
+bank.deposit("123",100)
+print(bank.get_balance("123"))
+
+bank = Bank()
+account2 = bank.create_account("456")
+bank.deposit("456",200)
+print(bank.get_balance("456"))
