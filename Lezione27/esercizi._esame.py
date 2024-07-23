@@ -1,67 +1,27 @@
-# QUESTION 1
-# QUESTION 2
+def check_combination(conditionA: bool, conditionB: bool, conditionC: bool) -> str:
+    if conditionA == True or conditionB== True or conditionC == True :
+        return "Operazione permessa"
+    else:
+         return "Operazione negata"
+    
+#QUESTION 3
 """
-Data una stringa s e una lista di stringhe 
-wordDict, restituisce True se s può essere 
-segmentato in una sequenza separata da spazi
-di una o più parole del dizionario; False altrimenti.
-
-Tieni presente che la stessa parola 
-nel dizionario può essere riutilizzata
- più volte nella segmentazione.
+Scrivi una funzione che prenda un dizionario e un valore,
+e ritorni la prima chiave che corrisponde a quel valore,
+ o None se il valore non è presente.
 """
-def word_break(s: str, wordDict: list[str]) -> bool:
 
-    for p in wordDict:
-        s= s.replace(p,'')
+def trova_chiave_per_valore(dizionario: dict[str: int], valore: int) -> str:
+    for key, value in dict.items():
+        if value == valore :
+            return dict[key]
+    else:
+        return None
     
-    if s =='':
-            return True
-    else: 
-            return False
-        
-    
-        
-
-print(word_break("leetcode",["leet","code"]))
-print(word_break("applepenapple", ["apple","pen"]))
-print(word_break("catsandog",["cats","dog","sand","and","cat"]))
+print(trova_chiave_per_valore({'a': 100, 'b': 200, 'c': 300}, 200))
 
 
-# QUESTION 3
-# QUESTION 4
-# QUESTION 5
-# QUESTION 6
-# QUESTION 7
-# QUESTION 8
-# QUESTION 9
-# QUESTION 10
-
-"""" 
-Date due stringhe s e t, restituire True
-se t è un anagramma di s, e False altrimenti.
-
-Un anagramma è una parola o una frase formata 
-riorganizzando le lettere di una parola o
- frase diversa, in genere utilizzando tutte
- le lettere originali esattamente una volta"""
-
-def anagram(s: str, t: str) -> bool:
-    s.lower()
-    t.lower()
-
-    if sorted(s) == sorted(t):
-         
-         return True
-    
-    else: 
-         
-         return False
-
-
-print(anagram("anagram","nagaram"))
-
-# QUESTION 6
+#QUESTION 4
 """" Progettare un semplice sistema bancario con i seguenti requisiti:
 
     Classe del Account:
@@ -100,17 +60,22 @@ class Bank:
             self.accounts= accounts
 
     def create_account(self,account_id: str): # crea un nuovo account con l'ID specificato e un saldo pari a 0.
-         account_id = account_id
+        self.accounts[account_id] = Account(account_id, 0) 
 
     def deposit(self,account_id, amount: float): # deposita l'importo specificato sul conto con l'ID fornito.
-          #if account_id :
-               
-            pass
+          if account_id in self.accounts :
+            self.get_balance()
+            
             
     def get_balance(self,account_id): # restituisce il saldo del conto con l'ID specificato."""
-         pass
+        if account_id
 
-account1= 
+account1= Account("123")
+
+bank1: Bank = Bank("123",account1)
+
+
+
 
 bank = Bank()
 account1 = bank.create_account("123")
