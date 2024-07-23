@@ -1,67 +1,3 @@
-# QUESTION 1
-# QUESTION 2
-"""
-Data una stringa s e una lista di stringhe 
-wordDict, restituisce True se s può essere 
-segmentato in una sequenza separata da spazi
-di una o più parole del dizionario; False altrimenti.
-
-Tieni presente che la stessa parola 
-nel dizionario può essere riutilizzata
- più volte nella segmentazione.
-"""
-def word_break(s: str, wordDict: list[str]) -> bool:
-
-    for p in wordDict:
-        s= s.replace(p,'')
-    
-    if s =='':
-            return True
-    else: 
-            return False
-        
-    
-        
-
-print(word_break("leetcode",["leet","code"]))
-print(word_break("applepenapple", ["apple","pen"]))
-print(word_break("catsandog",["cats","dog","sand","and","cat"]))
-
-
-# QUESTION 3
-# QUESTION 4
-# QUESTION 5
-# QUESTION 6
-# QUESTION 7
-# QUESTION 8
-# QUESTION 9
-# QUESTION 10
-
-"""" 
-Date due stringhe s e t, restituire True
-se t è un anagramma di s, e False altrimenti.
-
-Un anagramma è una parola o una frase formata 
-riorganizzando le lettere di una parola o
- frase diversa, in genere utilizzando tutte
- le lettere originali esattamente una volta"""
-
-def anagram(s: str, t: str) -> bool:
-    s.lower()
-    t.lower()
-
-    if sorted(s) == sorted(t):
-         
-         return True
-    
-    else: 
-         
-         return False
-
-
-print(anagram("anagram","nagaram"))
-
-# QUESTION 6
 """" Progettare un semplice sistema bancario con i seguenti requisiti:
 
     Classe del Account:
@@ -104,8 +40,11 @@ class Bank:
 
     def deposit(self,account_id, amount: float): # deposita l'importo specificato sul conto con l'ID fornito.
           if account_id
+          pass
             
     def get_balance(self,account_id): # restituisce il saldo del conto con l'ID specificato."""
+         
+         pass
 
 
 bank = Bank()
