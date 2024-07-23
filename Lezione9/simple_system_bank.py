@@ -24,7 +24,8 @@ class Account:
         self.balance = balance
     
     def deposit(self,amount: int):
-         self.balance += amount 
+         if amount > 0 :
+            self.balance += amount 
 
     def get_balance(self):
          return self.balance
@@ -33,19 +34,26 @@ class Account:
 class Bank:
 
     def __init__(self, accounts: dict[str, Account],) -> None:
-            self.accounts= accounts
+            self.accounts= {}
 
-    def create_account(self,account_id: str): # crea un nuovo account con l'ID specificato e un saldo pari a 0.
-         account_id = account_id
+
+
+    def create_account(self,account_id: str, balance:Account = 0): # crea un nuovo account con l'ID specificato e un saldo pari a 0.
+        if account_id in self.accounts:
+             pass
+             
 
     def deposit(self,account_id, amount: float): # deposita l'importo specificato sul conto con l'ID fornito.
-          if account_id
-          pass
+        if account_id :
+               pass
             
     def get_balance(self,account_id): # restituisce il saldo del conto con l'ID specificato."""
          
          pass
 
+
+
+account1: Account =Account("123")
 
 bank = Bank()
 account1 = bank.create_account("123")
