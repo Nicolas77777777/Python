@@ -111,7 +111,9 @@ def prodotti_sup_20 (diz: dict):
     for key, value in diz.items():
             if value > 20:
                 sconto =(value * 10 /100)
-                new_dict[key] = value - sconto 
+                new_dict[key] = value - sconto
+
+
             
  
     return sconto,diz,new_dict
