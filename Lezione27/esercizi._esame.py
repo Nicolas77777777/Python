@@ -131,7 +131,8 @@ def check_combination(conditionA: bool, conditionB: bool, conditionC: bool) -> s
 """
 Scrivi una funzione che prenda un dizionario e un valore,
 e ritorni la prima chiave che corrisponde a quel valore,
- o None se il valore non è presente.
+o None se il valore non è presente.
+
 """
 
 def trova_chiave_per_valore(dizionario: dict[str: int], valore: int) -> str:
