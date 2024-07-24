@@ -41,62 +41,66 @@ print(trova_chiave_per_valore({'k1': 'v1', 'k2': 'v2'}, 'v3'))
             get_balance(account_id): restituisce il saldo del conto con l'ID specificato."""
 
 
-# class Account:
+class Account:
     
-#     def __init__(self,account_id: str, balance:float=0 ) -> None:
+    def __init__(self,account_id: str, balance:float=0 ) -> None:
          
-#         self.account_id = account_id
-#         self.balance = balance
+        self.account_id = account_id
+        self.balance = balance
     
-#     def deposit(self,amount: int):
-#          self.balance += amount 
+    def deposit(self,amount: int):
+         self.balance += amount 
 
-#     def get_balance(self):
-#          return self.balance
+    def get_balance(self):
+         return self.balance
          
+class Bank:
 
-# class Bank:
+    def __init__(self) -> None:
+        self.accounts:dict = {}
 
-#     def __init__(self, accounts: dict[str, Account]) -> None:
-#             self.accounts= accounts
-
-#     def create_account(self,account_id: str): # crea un nuovo account con l'ID specificato e un saldo pari a 0.
-#         self.accounts[account_id] = Account(account_id, 0) 
-
-#     def deposit(self,account_id, amount: float): # deposita l'importo specificato sul conto con l'ID fornito.
-#           if account_id in self.accounts:
-#                pass
-                     
-            
-                
-#     def get_balance(self,account_id): # restituisce il saldo del conto con l'ID specificato."""
-#         pass
-
-# account= Account("123")
-
-# #bank1: Bank = Bank("123",account)
+    def create_account(self,account_id: str): 
+        self.account = Account(account_id,0)
+        if account_id not in self.accounts:
+            self.accounts[account_id] = self.account
+            return self.account
+        else:
+            raise ValueError("Account with this ID already exists")
 
 
+    def deposit(self,account_id, amount: float): 
+        if account_id in self.accounts:
+            self.account.balance += amount
+        else:
+            raise ValueError(f"Account not found")
 
 
-# bank = Bank()
-# account1 = bank.create_account("123")
-# print(account1.get_balance())
+          
+    def get_balance(self,account_id): 
+        if account_id in self.accounts:
+            return self.account.balance
+        else:
+    
+            raise ValueError(f"Account not found")
 
 
 
-# bank = Bank()
-# account1 = bank.create_account("123")
-# bank.deposit("123",100)
-# print(bank.get_balance("123"))
+bank = Bank()
+account1 = bank.create_account("123")
+print(account1.get_balance())
 
-# bank = Bank()
-# account2 = bank.create_account("456")
-# bank.deposit("456",200)
-# print(bank.get_balance("456"))
+
+bank = Bank()
+account1 = bank.create_account("123")
+bank.deposit("123",100)
+print(bank.get_balance("123"))
+
+bank = Bank()
+account2 = bank.create_account("456")
+bank.deposit("456",200)
+print(bank.get_balance("456"))
 
 # QUESTION 5
-
 
 """
 1. Classe Base: Veicolo
