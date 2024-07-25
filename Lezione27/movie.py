@@ -5,7 +5,7 @@ class Movie:
         self.movie_id= movie_id
         self.title= title
         self.director = director
-        self.is_rented = is_rented
+        self.is_rented = False
     
 
     def rent(self):
@@ -15,14 +15,14 @@ class Movie:
         "Il film {self.title} è già noleggiato."""
         
         if not self.is_rented:
-            self.is_rented == True  
+            self.is_rented = True  
         else:
             return f"Il film {self.title} è già noleggiato."
 
 
     def return_movie(self):
         if self.is_rented :
-            self.is_rented == False
+            self.is_rented = False
         else:
             return f"Il film {self.title} non è attualmente noleggiato"
     
@@ -31,7 +31,7 @@ class Customer:
         
         self.customer_id= customer_id
         self.name= name
-        self.rented_movies = rented_movies
+        self.rented_movies = []
 
 
     def  rent_movie(self,movie: Movie):
@@ -41,7 +41,7 @@ class Customer:
             stampa il messaggio Il film {movie.title}
             è già noleggiato."""
         
-        if movie.is_rented== False:
+        if movie.is_rented == False:
              self.rented_movies.append(movie)
         else:
             return f'Il film {movie.title} è già noleggiato'
@@ -73,14 +73,16 @@ class VideoRentalStore:
     Dizionario che ha per chiave l'id del 
      cliente e per valore l'oggetto Customer. 
     """
-    pass
 
 
-    def add_movie(movie_id: str, title: str, director: str):
+
+    def add_movie(self,movie_id: str, title: str, director: str):
         """ Aggiunge un nuovo film nel videonoleggio se 
         non è già presente, altrimenti stampa il messaggio 
         "Il film con ID {movie_id} esiste già."""
+            
 
+        pass
 
 # Creazione di un nuovo videonoleggio
 videonoleggio = VideoRentalStore()
@@ -89,7 +91,7 @@ videonoleggio = VideoRentalStore()
 videonoleggio.add_movie("1", "Inception", "Christopher Nolan")
 videonoleggio.add_movie("2", "The Matrix", "Wachowski Brothers")
 
-# Registrazione di nuovi clienti
+#Registrazione di nuovi clienti
 videonoleggio.register_customer("101", "Alice")
 videonoleggio.register_customer("102", "Bob")
 
