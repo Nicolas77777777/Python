@@ -34,16 +34,14 @@ class Member:
         non è già stato preso in prestito."""
 
         if not book.is_borrowed:
-         
             self.borrowed_books.append(book)
-
         return self.borrowed_books
-             
-             
-             
-    def return_book(self,book):
+                   
+    def return_book(self,book:Book):
         """ rimuove il libro dalla lista borrowed_books."""
-        pass
+        if book.is_borrowed:
+            if book in self.borrowed_books:
+                self.borrowed_books.remove(book)
 
 class Library:
 
@@ -52,12 +50,18 @@ class Library:
         self.books: dict[str, Book] = {}# dizionario che ha per chiave l'id del libro e per valore l'oggetto Book
         self.members: dict[str, Member]= {} #dizionario che ha per chiave l'id del membro e per valore l'oggetto Membro
    
-    def add_book(book_id: str, title: str, author: str): #Aggiunge un nuovo libro nella biblioteca.
-        pass
-    def register_member(member_id:str, name: str): #Iscrive un nuovo membro nella biblioteca.
-        pass
-    def borrow_book(member_id: str, book_id: str): #Permette al membro di prendere in prestito il libro.
-        pass
+    def add_book(self,book_id: str, title: str, author: str): #Aggiunge un nuovo libro nella biblioteca.
+        if book_id not in self.books:
+            self.books[book_id] = Book(book_id, title, author)
+            
+    def register_member(self,member_id:str, name: str): #Iscrive un nuovo membro nella biblioteca.
+        if member_id not in self.members:
+            self.members[member_id]= Member(member_id,name)
+
+    def borrow_book(self,member_id: str, book_id: str): #Permette al membro di prendere in prestito il libro.
+        if member_id in self.members and book_id in self.books:
+            self.books[book_id]
+
     def return_book(member_id: str, book_id: str):#Permette al membro di restituire il libro.
         pass
     def get_borrowed_books(member_id): 
@@ -80,3 +84,20 @@ print(membro1.borrow_book(book1))
 
 
 
+library = Library()
+
+library.add_book("B001", "The Great Gatsby", "F. Scott Fitzgerald")
+library.add_book("B002", "1984", "George Orwell")
+library.add_book("B003", "To Kill a Mockingbird", "Harper Lee")
+
+# Register members
+library.register_member("M001", "Alice")
+library.register_member("M002", "Bob")
+library.register_member("M003", "Charlie")
+
+# Borrow books
+library.borrow_book("M001", "B001")
+library.borrow_book("M002", "B002")
+
+print(library.get_borrowed_books("M001"))  # Expected output: ['The Great Gatsby']
+print(library.get_borrowed_books("M002"))  # Expected output: ['1984']
