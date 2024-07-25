@@ -1,48 +1,8 @@
 # QUESTION 1 
 
-"""
-
-2. Classe Customer:
-
-Attributi:
-
-    customer_id: str - Identificativo del cliente.
-    name: str - Nome del cliente.
-    rented_movies: list[Movie] - Lista dei film noleggiati.
-
-Metodi:
-
-    rent_movie(movie: Movie): Aggiunge il film nella lista rented_movies 
-    se non è già stato noleggiato, altrimenti stampa il messaggio 
-    "Il film {movie.title} è già noleggiato."
-    return_movie(movie: Movie): Rimuove il film dalla
-      lista rented_movies se già presente, altrimenti
-        stampa il messaggio "Il film {movie.title} non è
-          stato noleggiato da questo cliente."
-
-3. Classe VideoRentalStore:
-
-Attributi:
-
-    movies: dict[str, Movie] - Dizionario che ha per chiave l'id del film e per valore l'oggetto Movie.
-    customers: dict[str, Customer] - Dizionario che ha per chiave l'id del cliente e per valore l'oggetto Customer.
-
-Metodi:
-
-    add_movie(movie_id: str, title: str, director: str): Aggiunge un nuovo film nel videonoleggio se non è già presente, altrimenti stampa il messaggio "Il film con ID {movie_id} esiste già."
-    register_customer(customer_id: str, name: str): Iscrive un nuovo cliente nel videonoleggio se non è già presente, altrimenti stampa il messaggio "Il cliente con ID {customer_id} è già registrato."
-    rent_movie(customer_id: str, movie_id: str): Permette al cliente di noleggiare un film se entrambi esistono nel videonoleggio, altrimenti stampa il messaggio "Cliente o film non trovato."
-    return_movie(customer_id: str, movie_id: str): Permette al cliente di restituire un film se entrambi esistono nel videonoleggio, altrimenti stampa il messaggio "Cliente o film non trovato."
-    get_rented_movies(customer_id: str): list[Movie] - Restituisce la lista dei film noleggiati dal client (customer.rented_movies) se il cliente esiste nel videonoleggio, altrimenti stampa il messaggio "Cliente non trovato." e ritorna una lista vuota.
-
-"""
-
 class Movie:
 
-    def __init__(self, movie_id: str,
-                        title: str,
-                        director: str,
-                        is_rented: bool) -> None:
+    def __init__(self, movie_id: str, title: str, director: str, is_rented: bool) -> None:
         
         self.movie_id= movie_id
         self.title= title
@@ -51,25 +11,29 @@ class Movie:
     
 
     def rent(self):
-        if self.is_rented ==False:
-            self.is_rented == True
+        """ Contrassegna il film come noleggiato se non è già noleggiato. Se il film non è già noleggiato
+        imposta is_rented a True, 
+        altrimenti stampa il messaggio
+        "Il film {self.title} è già noleggiato."""
+        
+        if not self.is_rented:
+            self.is_rented == True  
+        else:
             return f"Il film {self.title} è già noleggiato."
 
 
     def return_movie(self):
-        if self.is_rented ==False:
-            self.is_rented == True
+        if self.is_rented :
+            self.is_rented == False
+        else:
             return f"Il film {self.title} non è attualmente noleggiato"
     
 class Customer:
-    def __init__(self, 
-    customer_id: str,
-    name: str,
-    rented_movies: list[Movie]) -> None:
+    def __init__(self, customer_id: str, name: str, rented_movies: list[Movie]) -> None:
         
         self.customer_id= customer_id
         self.name= name
-        self.rented_movies = list[Movie]
+        self.rented_movies = rented_movies
 
 
     def  rent_movie(self,movie: Movie):
@@ -85,8 +49,39 @@ class Customer:
             return f'Il film {movie.title} è già noleggiato'
 
 
+    def return_movie(self,movie: Movie):
+        """
+        Rimuove il film
+        dalla lista rented_movies se già presente,
+        altrimenti stampa il messaggio "Il film {movie.title} 
+        non è stato noleggiato da questo cliente."
+        """
+        if movie not in self.rented_movies:
+            return f'Il film {movie.title} non è stato noleggiato da questo cliente."'
+        else:
+            self.rented_movies.remove(movie)
+
+
 class VideoRentalStore:
+    def __init__(self) -> None:
+        self.movies: dict[str, Movie]= {}
+        self.customers: dict[str, Customer]={}
+
+    """
+      Attributi:
+    movies: dict[str, Movie] - Dizionario 
+     che ha per chiave l'id del film e per valore l'oggetto Movie.
+     customers: dict[str, Customer]
+    Dizionario che ha per chiave l'id del 
+     cliente e per valore l'oggetto Customer. 
+    """
     pass
+
+
+    def add_movie(movie_id: str, title: str, director: str):
+        """ Aggiunge un nuovo film nel videonoleggio se 
+        non è già presente, altrimenti stampa il messaggio 
+        "Il film con ID {movie_id} esiste già."""
 
 
 # Creazione di un nuovo videonoleggio
@@ -147,22 +142,6 @@ print(trova_chiave_per_valore({'k1': 'v1', 'k2': 'v2'}, 'v3'))
 
 
 #QUESTION 4
-"""" Progettare un semplice sistema bancario con i seguenti requisiti:
-
-    Classe del Account:
-        Attributi:
-            account_id: str - identificatore univoco per l'account.
-            balance: float - il saldo attuale del conto.
-        Metodi:
-            deposit(amount: float) - aggiunge l'importo specificato al saldo del conto.
-            get_balance(): restituisce il saldo corrente del conto.
-    Classe Bank:
-        Attributi:
-            accounts: dict[str, Account] - un dizionario per memorizzare gli account in base ai loro ID.
-        Metodi:
-            create_account(account_id): crea un nuovo account con l'ID specificato e un saldo pari a 0.
-            deposit(account_id, amount): deposita l'importo specificato sul conto con l'ID fornito.
-            get_balance(account_id): restituisce il saldo del conto con l'ID specificato."""
 
 
 class Account:
