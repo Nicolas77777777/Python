@@ -20,7 +20,7 @@ class RecipeManager:
             
     def add_ingredient(self,recipe_name: str, ingredient: str):
 
-        """ Aggiunge un ingrediente alla ricetta specificata. 
+        """ Aggiunge un ingrediente alla ricettaå specificata. 
         Restituisce la ricetta aggiornata o un messaggio di errore 
         se l'ingrediente esiste già o la ricetta non esiste."""
 
@@ -51,15 +51,15 @@ class RecipeManager:
             non è presente o la ricetta non esiste."""
         
         if recipe_name in self.recipes:
-            self.remove_ingredient()
-            self.add_ingredient()
+            self.remove_ingredient(recipe_name,old_ingredient)
+            self.add_ingredient(recipe_name,new_ingredient)
             return self.recipes
         else:
             raise ValueError("la ricetta non esiste")
     pass
 
     def list_recipes(self,): #Elenca tutte le ricette esistenti.
-        pass
+        return list(self.recipes.keys())
 
     def list_ingredients(self,recipe_name): 
         
@@ -81,4 +81,4 @@ class RecipeManager:
 manager = RecipeManager()
 print(manager.create_recipe("Pizza Margherita", ["Farina", "Acqua", "Lievito", "Pomodoro", "Mozzarella"]))
 print(manager.add_ingredient("Pizza Margherita", "Basilico"))
-#print(manager.update_ingredient("Pizza Margherita", "Mozzarella", "Mozzarella di Bufala"))
+print(manager.update_ingredient("Pizza Margherita", "Mozzarella", "Mozzarella di Bufala"))
