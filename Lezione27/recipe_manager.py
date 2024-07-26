@@ -66,7 +66,11 @@ class RecipeManager:
         """Mostra gli ingredienti di una specifica 
         ricetta. Restituisce un elenco di ingredienti
         o un messaggio di errore se la ricetta non esiste."""
-        pass
+        if recipe_name in self.recipes:
+            return self.recipes[recipe_name]
+        else:
+            raise ValueError(f"La ricetta '{recipe_name}' non esiste")
+
 
     def search_recipe_by_ingredient(self,ingredient):
         
@@ -74,7 +78,12 @@ class RecipeManager:
         che contengono un determinato ingrediente. 
         Restituisce un elenco di ricette o un messaggio 
         di errore se nessuna ricetta contiene l'ingrediente."""
-        pass
+        found_recipes = [name for name, ingredients in self.recipes.items() if ingredient in ingredients]
+        if found_recipes:
+            return found_recipes
+        else:
+            raise ValueError(f"Nessuna ricetta contiene l'ingrediente '{ingredient}'")
+
 
 
 
@@ -82,3 +91,6 @@ manager = RecipeManager()
 print(manager.create_recipe("Pizza Margherita", ["Farina", "Acqua", "Lievito", "Pomodoro", "Mozzarella"]))
 print(manager.add_ingredient("Pizza Margherita", "Basilico"))
 print(manager.update_ingredient("Pizza Margherita", "Mozzarella", "Mozzarella di Bufala"))
+
+print(manager.remove_ingredient("Pizza Margherita", "Acqua"))
+print(manager.list_ingredients("Pizza Margherita"))
