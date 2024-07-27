@@ -5,8 +5,10 @@ numeri interi di una lista che sono
 minori di un dato valore intero definito threshold.
 """
 def moltiplica_numeri(numbers: list[int], threshold: int) -> int:
-   pass
-
+   z: int = 1
+   for numero in numbers:
+       if numero < threshold:
+           return z* numero
 
 print(moltiplica_numeri([1, 10, 20, 30], 30))  # 200
 print(moltiplica_numeri([15, 5, 25], 20)) # 75
