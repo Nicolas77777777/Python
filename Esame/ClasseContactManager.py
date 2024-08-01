@@ -31,10 +31,11 @@ class ContactManager:
         contatto esiste già." se il contatto esiste già."""
 
         if name not in self.contacts:
-            self.contacts[name]=phone_numbers
-            return self.contacts
+            self.contacts[name]= phone_numbers
+            return {name:phone_numbers}
+            
         else:
-            raise ValueError (f'Errore: il contatto esiste già')
+            return f'Errore: il contatto esiste già'
 
     def add_phone_number(self,contact_name: str, phone_number: str):
         """Aggiunge un numero di telefono al contatto specificato. 
@@ -44,27 +45,47 @@ class ContactManager:
         se il numero di telefono è già presente per il contatto specificato."""
 
         for key, value in self.contacts.items():
-            if contact_name in self.contacts and phone_number not in self.contacts[key]:    
-                self.contacts[contact_name] += phone_number
-                return self.contacts
-            else: 
-                raise ValueError (f'Errore: il numero di telefono esiste già.')
+            if contact_name in self.contacts and phone_number not in self.contacts[contact_name]:    
+                self.contacts[contact_name].append(phone_number)
+                return {key:value}
+            
+            elif contact_name in self.contacts and phone_number in self.contacts[contact_name]:
+                return f'Errore: il numero di telefono esiste già.'
+            
+            elif contact_name  not in self.contacts:
+                return f'Errore: il contatto non esiste.'
+                
 
-
-    def remove_phone_number(contact_name: str, phone_number: str): 
-        
+    def remove_phone_number(self,contact_name: str, phone_number: str): 
         """Rimuove un numero di telefono dal contatto specificato.
           Restituisce un nuovo dizionario con il solo contatto aggiornato
             o i messaggi di errore "Errore: il contatto non esiste.
             " se il contatto non esiste oppure "Errore:
               il numero di telefono non è presente." 
               se il numero di telefono non esiste per il contatto specificato."""
-    def update_phone_number(contact_name: str, old_phone_number: str, new_phone_number: str): 
+        
+        for key, value in self.contacts.items():
+            if contact_name in self.contacts and phone_number in self.contacts[contact_name]:    
+                self.contacts[contact_name].remove(phone_number)
+                return {key:value}
+            
+            elif contact_name in self.contacts and phone_number  not in self.contacts[contact_name]:
+                return f'Errore: il numero di telefono non è presente.'
+            
+            elif contact_name  not in self.contacts:
+                return f'Errore: il contatto non esiste.'
+        
+    def update_phone_number(self,contact_name: str, old_phone_number: str, new_phone_number: str): 
         """Sostituisce un numero di telefono con un altro nel contatto specificato.
           Restituisce un nuovo dizionario con il solo contatto aggiornato
             o i messaggi di errore "Errore: il contatto non esiste." 
             se il contatto non esiste oppure "Errore: il numero di telefono 
             non è presente." se il numero di telefono non esiste per il contatto specificato."""
+        self.remove_phone_number(contact_name,old_phone_number)
+        self.update_phone_number(contact_name, new_phone_number)
+        
+
+
     def list_contacts():
         pass     
     """ Ritorna una lista di tutte le chiavi all'interno del dizionario contacts."""
@@ -73,6 +94,7 @@ class ContactManager:
         """ Mostra i numeri di telefono di un contatto specifico.
           Restituisce la lista dei numeri di telefono o 
           il messaggio di errore "Errore: il contatto non esiste." se il contatto non esiste."""
+        
     def search_contact_by_phone_number(phone_number: str): 
         
         """Trova e restituisce tutti i contatti che contengono
@@ -91,12 +113,18 @@ class ContactManager:
 manager = ContactManager()
 
 # Creazione di nuovi contatti
-print(manager.create_contact("Alice", ["123456789"]))
+print(manager.create_contact("Alice", ["123456789"])) # {'Alice': ['123456789']}
 print(manager.create_contact("Bob", ["987654321"]))
 print(manager.create_contact("Alice", ["111222333"]))
 
 
 # Aggiunta di numeri di telefono
-print(manager.add_phone_number("Alice", "111222333"))
+print(manager.add_phone_number("Alice", "111222333")) 
 print(manager.add_phone_number("Charlie", "444555666"))
 print(manager.add_phone_number("Alice", "123456789"))
+
+
+# Rimozione di numeri di telefono
+print(manager.remove_phone_number("Alice", "111222333"))
+print(manager.remove_phone_number("Charlie", "444555666"))
+print(manager.remove_phone_number("Alice", "999999999"))
