@@ -21,6 +21,8 @@ class School:
         self.students:dict[str,Student]= {}
 
     def create_student(self,student_id:str):
+        self.students[student_id]=Student(student_id)
+
         
 
 
