@@ -48,7 +48,7 @@ class School:
     def search_by_courses(self, courses):
         for key, value in self.students.items():
             print(key,value)
-            if courses == value:
+            if courses in value:
                 return True
             else:
                 return False
