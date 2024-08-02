@@ -46,6 +46,12 @@ class School:
     
 
     def search_by_courses(self, courses):
+        for key, value in self.students.items():
+            print(key,value)
+            if courses == value:
+                return True
+            else:
+                return False
 
 
 
@@ -67,6 +73,8 @@ print (scuola.enroll_student("1002","Filosofia"))
 print (scuola.get_student_courses("1001"))
 
 print (scuola.get_student_list())
+
+print(scuola.search_by_courses('Filosofia'))
 
 
 
