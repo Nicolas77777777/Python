@@ -21,7 +21,66 @@ class School:
         self.students:dict[str,Student]= {}
 
     def create_student(self,student_id:str):
-        self.students[student_id]=Student(student_id)
+        if student_id not in self.students:
+            self.students[student_id]=Student(student_id)
+            return {student_id: []}
+        else:
+            return f'lo studente con ID {student_id} esiste già'
+        
+    def enroll_student(self,student_id:str, course: str ) -> str:
+        if student_id in self.students:
+            self.students[student_id]=[course]
+        else: 
+            return f'Studente non trovato '
+    
+    def get_student_courses(self, student_id:str) -> list:
+
+        if student_id in self.students:
+            return self.students[student_id]
+        else:
+            return f'Studente non trovato '
+        
+    def get_student_list (self) -> list:
+
+        return list(self.students.keys())
+    
+
+    def search_by_courses(self, courses):
+
+
+
+
+        
+        
+
+scuola = School()
+
+print (scuola.create_student("1001"))
+print (scuola.create_student("1001"))
+print (scuola.create_student("1002"))
+print (scuola.create_student("1003"))
+
+
+
+print (scuola.enroll_student("1001","Filosofia"))
+print (scuola.enroll_student("1002","Filosofia"))
+print (scuola.get_student_courses("1001"))
+
+print (scuola.get_student_list())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         
 
