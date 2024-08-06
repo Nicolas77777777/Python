@@ -20,23 +20,25 @@ class School:
 
         self.students:dict[str,Student]= {}
 
-    def create_student(self,student_id:str):
+    def create_student(self,student_id:str) -> None:
         if student_id not in self.students:
             self.students[student_id]=Student(student_id)
-            return {student_id: []}
         else:
             return f'lo studente con ID {student_id} esiste già'
         
     def enroll_student(self,student_id:str, course: str ) -> str:
         if student_id in self.students:
-            self.students[student_id]=[course]
+            student =  self.students[student_id]
+            student.enroll(course)
         else: 
             return f'Studente non trovato '
     
     def get_student_courses(self, student_id:str) -> list:
 
         if student_id in self.students:
-            return self.students[student_id]
+            student =  self.students[student_id]
+            return student.get_courses()
+          
         else:
             return f'Studente non trovato '
         
@@ -46,12 +48,15 @@ class School:
     
 
     def search_by_courses(self, courses):
+        l:list[str]= []
         for key, value in self.students.items():
-            print(key,value)
-            if courses in value:
-                return True
-            else:
-                return False
+            if courses in value.get_courses():
+                l.append(key)
+
+        if not l: 
+            return f"Nessuno studente è iscritto al corso {courses}."
+        
+        return l
 
 
 
