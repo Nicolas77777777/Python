@@ -12,6 +12,7 @@ print(mappa_parole_a_lunghezza(["apple", "banana", "cherry"]))
 def trova_tutte_chiavi(dizionario: dict[str: int], valore: int) -> str:
     """"""
     pass
+ggg
 
 #QUESTION 3
 #QUESTION 4 
