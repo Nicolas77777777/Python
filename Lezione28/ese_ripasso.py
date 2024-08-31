@@ -7,12 +7,31 @@ def mappa_parole_a_lunghezza(words: list) -> dict:
     return newdict
     
 print(mappa_parole_a_lunghezza(["apple", "banana", "cherry"]))
-#QUESTION 2
 
+#QUESTION 2
 def trova_tutte_chiavi(dizionario: dict[str: int], valore: int) -> str:
-    """"""
-    pass
-ggg
+    """
+    Scrivi una funzione che prenda un dizionario e un valore, 
+    e ritorni una lista con tutte le chiavi che corrispondono
+    a quel valore, o una lista vuota se il valore non è presente.
+    """
+    for key, value in dizionario.items():
+        if key == valore:
+
+            x= list(key)
+    return x
+        
+    
+
+
+        
+
+print(trova_tutte_chiavi({'a': 1, 'b': 2, 'c': 1}, 1))
+print(trova_tutte_chiavi({}, 1))
+
+	
+
+
 
 #QUESTION 3
 #QUESTION 4 
