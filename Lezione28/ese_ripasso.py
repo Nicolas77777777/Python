@@ -73,6 +73,26 @@ def calcola_stipendio(ore_lavorate: int) -> float:
 print(calcola_stipendio(40))
 print(calcola_stipendio(0))
 #QUESTION 6
+def filtra_e_mappa(prodotti: dict[str:float]) -> dict[str:float]:
+    """Scrivi una funzione che accetti un dizionario di prodotti 
+    con i relativi prezzi e restituisca un nuovo dizionario con 
+    solo i prodotti che hanno un prezzo inferiore a 50, 
+    ma con i prezzi aumentati del 10% e 
+    arrotondati a due cifre decimali."""
+
+    newdiz:dict= {}
+    for key,value in prodotti.items():
+        if  value < 50.0:
+            new_price =  round(value* 1.10,2)
+            newdiz[key] = new_price
+    return newdiz
+
+print(filtra_e_mappa({"prodotto1": 30.0, "prodotto2": 60.0, "prodotto3": 45.0})) #{'prodotto1': 33.0, 'prodotto3': 49.5}
+print(filtra_e_mappa({"prodotto1": 55.0, "prodotto2": 70.0, "prodotto3": 80.0}))
+
+	
+
+
 #QUESTION 7
 #QUESTION 8
 def moltiplica_numeri(numbers: list[int], threshold: int) -> int:
@@ -124,4 +144,41 @@ def hypotenuse (x:float, y:float):
     return math.sqrt(x**2 + y**2)
 
 #QUESTION 17
+def lista_a_dizionario(tuples: list[tuple]) -> dict[str:list[int]]:
+    """Scrivi una funzione che converta una lista 
+    di tuple (chiave, valore) in un dizionario. 
+    Se la chiave è già presente, somma il valore
+    al valore già associato alla chiave."""
 
+    dict1 = {}
+    for chiave, valore in tuples:
+        if chiave not in dict1:
+            dict1[chiave] = valore
+        else:
+            dict1[chiave] += valore
+    return dict1
+
+
+print(lista_a_dizionario([("a", 1), ("b", 2), ("c", 3)])) # risultato{'a': 1, 'b': 2, 'c': 3}
+print(lista_a_dizionario([("a", 1), ("a", 2), ("a", 3)]))
+
+	
+
+#QUESTION 18
+def classifica_numeri(lista: int) -> dict[str:list[int]]:
+    """Scrivi una funzione che prenda una lista
+    di numeri e ritorni un dizionario che classifichi
+    i numeri in liste separate per numeri positivi e negativi."""
+
+    diz: dict={}
+    diz["positivi"]=[]
+    diz["negativi"]=[]
+
+    for ele in lista:
+        if ele < 0:
+            diz["negativi"].append(ele)
+        else:
+            diz["positivi"].append(ele)
+    return diz
+
+print(classifica_numeri([1, -2, 3, -4, 5, -6, 7, -8, 9, -10]))
