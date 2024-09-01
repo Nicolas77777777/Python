@@ -88,9 +88,16 @@ print(moltiplica_numeri([15, 5, 25], 20))
 #QUESTION 11
 #QUESTION 12
 #QUESTION 13
+
 def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
-    # cancella pass e scrivi il tuo codice
+    """Scrivi una funzione che unisce due dizionari. 
+    Se una chiave è presente in entrambi, 
+    moltiplica i loro valori."""
+    dict3 ={}
+    for i 
     pass
+
+print(merge_dictionaries({'a': 1, 'b': 2}, {'b': 3, 'c': 4}))
 #QUESTION 14
 #QUESTION 15
 #QUESTION 16
