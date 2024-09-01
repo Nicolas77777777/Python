@@ -94,8 +94,19 @@ def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
     Se una chiave è presente in entrambi, 
     moltiplica i loro valori."""
     dict3 ={}
-    for i 
-    pass
+    for key, value in dict1.items():
+        if key in dict2:
+            dict3[key] = value * dict2[key]
+        else:
+            dict3[key] = value
+    for key, value in dict2.items():
+        if key in dict1:
+            dict3[key] = value * dict1[key]
+        else:
+            dict3[key] = value
+    return dict3
+
+        
 
 print(merge_dictionaries({'a': 1, 'b': 2}, {'b': 3, 'c': 4}))
 #QUESTION 14
