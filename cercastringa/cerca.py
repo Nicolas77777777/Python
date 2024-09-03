@@ -52,3 +52,9 @@ for root, ListDir, ListFiles in os.walk(sRoot):
         bRet = CercaParolaInContenutoFile(sFilePathCompleto,sParola)
         if (bRet==True):
             print(f"trovata parola in file {file}")
+
+
+
+CercaParolaInContenutoFile(sRoot,sParola)
+
+
