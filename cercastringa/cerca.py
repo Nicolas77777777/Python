@@ -6,6 +6,7 @@ def CercaParolaInFilePdf(sFile,sString):
     object = PyPDF2.PdfReader(sFile)
     numPages = len(object.pages)
     print (f'il file {sFile} contine{numPages} pagine')
+    
     for i in range(0,numPages):
         pageObj= object.pages[i]
         text = pageObj.extract_text()
