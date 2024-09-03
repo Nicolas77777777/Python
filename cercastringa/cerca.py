@@ -1,10 +1,17 @@
 import os
 import PyPDF2
 
-def CercaParolaInFilePdf(sFile,sParola):
+def CercaParolaInFilePdf(sFile,sString):
+    iRet= 0
     object = PyPDF2.PdfReader(sFile)
     numPages = len(object.pages)
-    print (f'il file {sFile} contine{numPages}')
+    print (f'il file {sFile} contine{numPages} pagine')
+    for i in range(0,numPages):
+        pageObj= object.pages[i]
+        text = pageObj.extract_text()
+        iRet= text.lower().find(sString.lower())
+        if iRet >= 0:
+            return False   
     return False
 
 def CercaParolaInNomeFile(sFile,sParola):
