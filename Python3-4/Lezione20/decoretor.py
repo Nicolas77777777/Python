@@ -43,7 +43,7 @@ def get_time(func):
         elapsed_time = end - start
         print(f'{elapsed_time=}')
 
-    return wrapper
+    return wrapper 
 
 
 @get_time
