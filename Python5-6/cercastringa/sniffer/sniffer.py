@@ -7,8 +7,5 @@ def process_packet(packet):
 	iPkt += 1
 	print("Letto PKT " + str(iPkt))
 	
-    
-	
-
 	
 sniff(iface="eth0",filter="tcp", prn=process_packet)
