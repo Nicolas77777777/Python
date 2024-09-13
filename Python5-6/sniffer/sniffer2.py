@@ -1,27 +1,17 @@
+from scapy.all import *
+from scapy.layers.http import HTTPRequest 
+from scapy.layers.http import HTTPResponse
 import csv
+from datetime import datetime
 
-# Inizializza il contatore di pacchetti
-iPkt = 0
-
-def process_packet(packet):
+iPkt=0
+def process_pkt(pkt):
     global iPkt
-    iPkt += 1
-    
-    # Estrai informazioni dal pacchetto (ad esempio, l'indirizzo sorgente e destinazione)
-    src_ip = packet[0].src
-    dst_ip = packet[0].dst
-    protocol = packet[0].proto
-    
-    # Crea o apri il file CSV in modalità append
-    with open('pacchetti_sniffati.csv', mode='a', newline='') as file_csv:
-        writer = csv.writer(file_csv)
-        
-        # Se è il primo pacchetto, scrivi l'intestazione
-        if iPkt == 1:
-            writer.writerow(['Numero Pacchetto', 'Indirizzo Sorgente', 'Indirizzo Destinazione', 'Protocollo'])
-        
-        # Scrivi i dettagli del pacchetto nel file CSV
-        writer.writerow([iPkt, src_ip, dst_ip, protocol])
-    
-    # Stampa il contenuto su output
-    print(f"Letto PKT {iPkt}: Sorgente={src_ip}, Destinazione={dst_ip}, Protocollo={protocol}")
+    with open('packets.csv', mode='a', newline='') as file:
+        writer = csv.writer(file)
+        iPkt += 1
+        data = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        writer.writerow([data, "Ricevuto pkt",])
+
+
+sniff(iface="eth0",filter="tcp", prn=process_pkt)
