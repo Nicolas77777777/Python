@@ -7,6 +7,10 @@ api = Flask("__name__")
 def index():
     return render_template('index.html')
 
+@api.route('/', methods=['GET'])
+def index():
+    return render_template('index.html')
+
 
 
 api.run(host="0.0.0.0", port=8085)
