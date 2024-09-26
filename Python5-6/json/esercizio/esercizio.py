@@ -18,12 +18,11 @@ def Deserialize(file_path) -> dict:
         print(f" errore : {errore}")
         return None
 
-
 dData= Deserialize("quiz.json")
 
 def AnalisiDomande(dData:dict):
     totaleDomande: int = 0 # 
-    mediaRisposte: float = 0 
+    totaleRisposte: float = 0 
     totaleDomandeMatematica: int = 0
     for categoria, q in dData["quiz"].items():
         #print(categoria)
@@ -31,13 +30,14 @@ def AnalisiDomande(dData:dict):
             # print(question)
             # print(values)
             totaleDomande += 1
-            if values == ["options"]:
-                print (True)
-
-            for question, options in values.items():
-                print(question)
-                print(options)
-                mediaRisposte =len(options["options"])
+            totaleRisposte += len(values["options"])
+            
+    mediaRisposte =totaleRisposte/totaleDomande
+        
+            # for question, options in values.items():
+            #     print(question)
+            #     print(options)
+            #     mediaRisposte =len(options["options"])
 
 
     for qMath, values in dData["quiz"]["maths"].items():
@@ -50,7 +50,6 @@ def AnalisiDomande(dData:dict):
 
    
 
-        
 AnalisiDomande(dData)
 
 
