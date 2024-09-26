@@ -5,7 +5,6 @@ import json
 #     quante sono, in media, il numero di risposte possibili?
 #     quante domande ci sono di matematica?
 
-
 def Deserialize(file_path) -> dict:
     try:
         
@@ -20,31 +19,38 @@ def Deserialize(file_path) -> dict:
         return None
 
 
-
 dData= Deserialize("quiz.json")
 
 def AnalisiDomande(dData:dict):
-    totale_domande: int = 0 # 
-    media_risposte: float = 0 
-    for categoria, domande in dData["quiz"].items():
-        for question, options in  domande.items():
-            totale_domande += 1
-            media_risposte = 
-    print(f"quante domande ci sono nel questionario? {totale_domande}")
+    totaleDomande: int = 0 # 
+    mediaRisposte: float = 0 
+    totaleDomandeMatematica: int = 0
+    for categoria, q in dData["quiz"].items():
+        #print(categoria)
+        for question, values in  q.items():
+            # print(question)
+            # print(values)
+            totaleDomande += 1
+            if values == ["options"]:
+                print (True)
 
-     
+            for question, options in values.items():
+                print(question)
+                print(options)
+                mediaRisposte =len(options["options"])
 
+
+    for qMath, values in dData["quiz"]["maths"].items():
+        print(qMath)
+        totaleDomandeMatematica += 1
+
+    print(f"quante domande ci sono nel questionario? {totaleDomande}")
+    print(f"quante sono, in media, il numero di risposte possibili? {mediaRisposte}")
+    print(f"quante domande ci sono di matematica? {totaleDomandeMatematica}")
+
+   
+
+        
 AnalisiDomande(dData)
 
-# def printDeserialize(dData):
-#     for key,values in dData.items():
-#         print(key)
-#         print (values)
-#         print(len(key))
-#         print(len(values))
-
-#printDeserialize(Deserialize("quiz.json"))
-
-
-# print()
 
