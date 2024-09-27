@@ -8,16 +8,14 @@ def GetDatiCittadino():
     cognome = input("Qual'è il cognome")
     dataN = input("Qual'è la data di nascita?")
     codF = input("Qual'è il codice fiscale?")
-    """
-    {
-        "nome": "Mario",
-        "cognome":"Retti",
-        "data nascita": "22/05/2010",
-        "codice fiscale": "dfrcde23t44h501u"
-    }
-    """
+  
     datiCittadino = {"nome":nome, "cognome": cognome, "data nascita":dataN, "codice fiscale":codF}
     return datiCittadino
+
+def ReadCittadino():
+    codF = input("Inserisci il codice fiscale")
+
+
 
 
 print("Operazioni disponibili:")
@@ -41,7 +39,7 @@ while(True):
             data1 = response.json()
             print(data1)
         except:
-            print("Problemi di comunicazione con il server, riprovapiù tardi")
+            print("Problemi di comunicazione con il server, riprova più tardi")
     if sOper=="5":
         print("Buona giornata!")
         sys.exit()
@@ -51,4 +49,10 @@ while(True):
     print("3. Modifica cittadino (es. cambio residenza)")
     print("4. Elimina cittadino (es. trasferim altro comune)")
     print("5. Esci")
-    sOper = input("Cosa vuoi fare?")    
+    sOper = input("Cosa vuoi fare?")
+
+    if sOper == "2":
+        print("qesto è il secondo ")
+        print("Richiesto atto di nascita")
+        api_url = base_url + "'/read_cittadino'"
+        jsonDataRequest = GetDatiCittadino()

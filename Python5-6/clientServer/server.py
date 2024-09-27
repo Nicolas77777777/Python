@@ -32,6 +32,10 @@ def GestisciAddCittadino():
             return json.dumps(jsonResp),200
     else:
         return 'Content-Type not supported!',401
+    
+@api.route('/read_cittadino', methods=['POST'])
+def ddd():
+    pass
 
 
 api.run(host="127.0.0.1", port=8080)

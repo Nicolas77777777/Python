@@ -28,5 +28,11 @@
         "cognome": "ciao",
         "data nascita": "23/09/1990",
         "codice fiscale": "aaaaaaaaaaaaaaa"
+    },
+    "d": {
+        "nome": "gino",
+        "cognome": "d",
+        "data nascita": "d",
+        "codice fiscale": "d"
     }
 }
