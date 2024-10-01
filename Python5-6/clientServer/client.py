@@ -19,6 +19,15 @@ def ReadCittadino():
 
 def ModificaCittadino():
     codF = input("Inserisci il codice fiscale")
+    print("Quale dato voui modificare?:")
+
+    datiCittadino = {"codice fiscale":codF}
+    return datiCittadino
+
+def EliminaCittadino():
+    
+    codF = input("Inserisci il codice fiscale")
+
     datiCittadino = {"codice fiscale":codF}
     return datiCittadino
 
@@ -56,6 +65,18 @@ while(True):
         print("modifica dati cittadino")
         api_url = base_url + "'/modifica_cittadino'"
         jsonDataRequest = ModificaCittadino()
+
+    if sOper == "4":
+        print("questo è quarto ")
+        print("elimina dati cittadino")
+        api_url = base_url + "/elimina_cittadino"
+        jsonDataRequest = EliminaCittadino()
+        try:
+            response = requests.post(api_url, json=jsonDataRequest)
+            print(f"Status Code: {response.status_code}")
+            print(f"Risposta del server: {response.json()}")
+        except:
+            print("Problemi di comunicazione con il server, riprova più tardi.")
 
 
     if sOper=="5":
