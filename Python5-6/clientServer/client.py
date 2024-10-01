@@ -18,11 +18,17 @@ def ReadCittadino():
     return datiCittadino
 
 def ModificaCittadino():
-    codF = input("Inserisci il codice fiscale")
-    print("Quale dato voui modificare?:")
 
-    datiCittadino = {"codice fiscale":codF}
+    codF = input("Inserisci il codice fiscale: ")
+    campo_da_modificare = input("Quale dato vuoi modificare? (nome/cognome/data_nascita/codice_fiscale) ")
+    nuovo_valore = input(f"Inserisci il nuovo valore per {campo_da_modificare}: ")
+
+    datiCittadino = {
+        "codice_fiscale": codF, 
+        campo_da_modificare: nuovo_valore
+    }
     return datiCittadino
+
 
 def EliminaCittadino():
     
@@ -57,7 +63,7 @@ while(True):
     if sOper == "2":
         print("questo è il secondo ")
         print("Richiesto atto di nascita")
-        api_url = base_url + "'/read_cittadino'"
+        api_url = base_url + "/read_cittadino"
         jsonDataRequest = ReadCittadino()
     
     if sOper == "3":
