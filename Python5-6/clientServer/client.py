@@ -3,6 +3,7 @@ import sys
 
 base_url = "http://127.0.0.1:8080"
 
+
 def GetDatiCittadino():
     nome = input("Qual'è il nome?")
     cognome = input("Qual'è il cognome")
@@ -65,12 +66,24 @@ while(True):
         print("Richiesto atto di nascita")
         api_url = base_url + "/read_cittadino"
         jsonDataRequest = ReadCittadino()
+        try:
+            response = requests.post(api_url, json=jsonDataRequest)
+            print(f"Status Code: {response.status_code}")
+            print(f"Risposta del server: {response.json()}")
+        except:
+            print("Problemi di comunicazione con il server, riprova più tardi.")
     
     if sOper == "3":
         print("questo è il terzo ")
         print("modifica dati cittadino")
         api_url = base_url + "'/modifica_cittadino'"
         jsonDataRequest = ModificaCittadino()
+        try:
+            response = requests.post(api_url, json=jsonDataRequest)
+            print(f"Status Code: {response.status_code}")
+            print(f"Risposta del server: {response.json()}")
+        except:
+            print("Problemi di comunicazione con il server, riprova più tardi.")
 
     if sOper == "4":
         print("questo è quarto ")
