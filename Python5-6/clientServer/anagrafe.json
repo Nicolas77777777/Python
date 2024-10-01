@@ -34,5 +34,11 @@
         "cognome": "d",
         "data nascita": "d",
         "codice fiscale": "d"
+    },
+    "ljljl\u00f2": {
+        "nome": "franco",
+        "cognome": "oliveri",
+        "data nascita": "090",
+        "codice fiscale": "ljljl\u00f2"
     }
 }

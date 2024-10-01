@@ -13,9 +13,9 @@ api = Flask(__name__)
 #delete cittadino
 
 
-@api.route('/add_cittadino', methods=['POST'])
+@api.route('/add_cittadino', methods=['GET'])
 def GestisciAddCittadino():
-    content_type = request.headers.get('Content-Type')
+    content_type = request.headers.get('Content-Type')# 
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
         jsonReq = request.json
@@ -49,9 +49,9 @@ def GestisciRichiestaCittadino():
             return json.dumps(jsonResp),200
     else:
         return 'Content-Type not supported!',401
-
-@api.route('/modifica_cittadino', methods=['POST'])
-def GestisciModificaCittadino():
+# API ROOT DEFINISCE DELLE ROOT CHE A CUI SI PUO CONNETERE / methods chiamata Get prende i dati # POST ottiene i dati
+@api.route('/modifica_cittadino', methods=['POST'])# root # potrebbe essere una URL
+def GestisciModificaCittadino(): # 
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
