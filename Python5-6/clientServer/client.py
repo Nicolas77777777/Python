@@ -17,6 +17,11 @@ def ReadCittadino():
     datiCittadino = {"codice fiscale":codF}
     return datiCittadino
 
+def ModificaCittadino():
+    codF = input("Inserisci il codice fiscale")
+    datiCittadino = {"codice fiscale":codF}
+    return datiCittadino
+
 print("Operazioni disponibili:")
 print("1. Inserisci cittadino (es. atto di nascita)")
 print("2. Richiedi cittadino (es. cert. residenza)")
@@ -41,10 +46,16 @@ while(True):
             print("Problemi di comunicazione con il server, riprova più tardi")
 
     if sOper == "2":
-        print("qesto è il secondo ")
+        print("questo è il secondo ")
         print("Richiesto atto di nascita")
         api_url = base_url + "'/read_cittadino'"
         jsonDataRequest = ReadCittadino()
+    
+    if sOper == "3":
+        print("questo è il terzo ")
+        print("modifica dati cittadino")
+        api_url = base_url + "'/modifica_cittadino'"
+        jsonDataRequest = ModificaCittadino()
 
 
     if sOper=="5":
