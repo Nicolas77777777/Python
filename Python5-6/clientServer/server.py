@@ -34,8 +34,21 @@ def GestisciAddCittadino():
         return 'Content-Type not supported!',401
     
 @api.route('/read_cittadino', methods=['POST'])
-def ddd():
-    pass
+def GestisciRichiestaCittadino():
+    content_type = request.headers.get('Content-Type')
+    print("Ricevuta chiamata " + content_type)
+    if (content_type == 'application/json'):
+        jsonReq = request.json
+        sCodiceFiscale = jsonReq["codice fiscale"]
+        anagrafe = JsonDeserialize(sAnagrafe)
+        if sCodiceFiscale in anagrafe:
+            jsonResp = {"Esito":"000", "Msg":anagrafe[sCodiceFiscale]}
+            return json.dumps(jsonResp),200
+        else:
+            jsonResp = {"Esito":"001", "Msg":"Cittadino non presente"}
+            return json.dumps(jsonResp),200
+    else:
+        return 'Content-Type not supported!',401
 
 
 api.run(host="127.0.0.1", port=8080)
