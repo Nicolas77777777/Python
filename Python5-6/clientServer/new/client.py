@@ -67,10 +67,6 @@ def EliminaCittadino():
 
 #interface
 
-# Richiesta user name pass 
-
-
-
 print("Operazioni disponibili:")
 print("1. Inserisci cittadino (es. atto di nascita)")
 print("2. Richiedi cittadino (es. cert. residenza)")
