@@ -28,7 +28,7 @@ def print_list(lData,sRoot):
 
 
 
-def print_dictionary(dData, sRoot):
+def print_dictionary(dData: dict, sRoot):
     for keys, values in dData.items():
         if sRoot != "":
             print("Trovata chiave " + sRoot + "." + keys)
