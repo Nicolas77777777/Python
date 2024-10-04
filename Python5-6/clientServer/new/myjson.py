@@ -47,6 +47,3 @@ def print_dictionary(dData: dict, sRoot):
             else:
                 print_list(dData[keys],keys)
     
-
-
-

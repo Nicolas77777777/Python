@@ -1,3 +1,5 @@
+
+
 def print_list(lData,sRoot):
     for element in lData:
         if type(element) is str:
