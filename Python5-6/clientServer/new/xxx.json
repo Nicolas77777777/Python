@@ -1,0 +1,13 @@
+
+{
+    "AdminRoot": {
+        "user": "userRoot",
+        "password": "pass" 
+    },
+    "AdminGuest": {
+        "user": "userRead",
+        "password": "Retti"
+     
+    }
+    "mariorossi@gmail.com":"mario323"
+} 
