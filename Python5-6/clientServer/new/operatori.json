@@ -1,5 +1,15 @@
 
 {
-    "mariorossi@gmail.com":"mario323",
-    "jhonnyblack@gmail.com":"1111"
-} 
+    "operatori":[
+        {
+        "mario":"mario123",
+        "privilegi":"w"
+        },
+
+        {
+        "franco":"franco123",
+        "privilegi":"r"
+        }
+
+    ]
+}

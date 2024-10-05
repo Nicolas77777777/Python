@@ -26,9 +26,9 @@ def Gestisci_Credenziali():
         username = jsonReq.get("username")
         password = jsonReq.get("password")
 
-        utenti =  JsonDeserialize(privilegi)
+        operatori =  JsonDeserialize(privilegi)
         # Controlla se l'username esiste e se la password corrisponde
-        if username in utenti and password == utenti[username]:
+        if username in operatori and password == operatori[username]:
             print(True)
             jsonResp = {"Esito": "000", "Msg": "Cittadino eliminato con successo"}
             return json.dumps(jsonResp), 200
