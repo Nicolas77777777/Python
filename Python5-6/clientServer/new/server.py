@@ -2,7 +2,7 @@ from flask import Flask, json, request
 from myjson import JsonSerialize,JsonDeserialize
 
 sAnagrafe = "./anagrafe.json"
-privilegi = "./xxx.json"
+privilegi = "./operatori.json"
 
 api = Flask(__name__)
 
