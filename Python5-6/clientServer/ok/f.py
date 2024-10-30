@@ -1,1 +1,2 @@
-FileNotFoundError
+def somma():
+    pass
