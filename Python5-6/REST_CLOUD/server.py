@@ -142,22 +142,23 @@ def login():
        
         iStato = -1
         for key, value in request.json.items():
-            sQuery = f"select stato from utenti where username = '{key}' and password = '{value[0]}'"
+            sQuery = f"select privilegi from utenti where nomeutente = '{key}' and password = '{value[0]}'"
             iNumRecord = db.read_in_db(mydb,sQuery)
             if iNumRecord == 1:
                 print("Login terminato correttamente")
                 lRecord = db.read_next_row(mydb)
                 iStato = lRecord[1][0]
-                return f"{'Esito':'ok','Stato':{iStato}}"
+                return '{"Esito":"ok","Stato" : '+ str(iStato)+'}'
             elif iNumRecord == 0:
                 print("Credenziali errate")
-                return f"{'Esito':'ko','Stato':{iStato}}"
-            elif iNumRecord == -1:
+                return '{"Esito":"ko","Stato": -1}'
+            elif iNumRecord <= -1:
                 print("Dati Errati")
-                return f"{'Esito':'ok','Stato':{iStato}}"
+                sContent = "{'Esito':'ok','Stato':-1}"
+                return sContent
             else:
                 print("Attenzione: attacco in corso")
-                return f"{'Esito':'ok','Stato':{iStato}}"
+                return "{'Esito':'ko','Stato':-1}"
     else:
         return 'Content-Type not supported!'
     
