@@ -139,32 +139,25 @@ def login():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
-        '''
-        with open('utenti.json') as json_file:
-            user = json.load(json_file)
-        for key, value in request.json.items():
-            if key in user:
-                if user[key][0] == value[0]:
-                    return "True"
-        return "Nome utente o password non trovati"
-        '''
+       
         iStato = -1
         for key, value in request.json.items():
             sQuery = f"select stato from utenti where username = '{key}' and password = '{value[0]}'"
             iNumRecord = db.read_in_db(mydb,sQuery)
             if iNumRecord == 1:
                 print("Login terminato correttamente")
-                
-                return "True"
+                lRecord = db.read_next_row(mydb)
+                iStato = lRecord[1][0]
+                return f"{'Esito':'ok','Stato':{iStato}}"
             elif iNumRecord == 0:
                 print("Credenziali errate")
-                return "False"
+                return f"{'Esito':'ko','Stato':{iStato}}"
             elif iNumRecord == -1:
                 print("Dati Errati")
-                return "False"
+                return f"{'Esito':'ok','Stato':{iStato}}"
             else:
                 print("Attenzione: attacco in corso")
-                return "False"
+                return f"{'Esito':'ok','Stato':{iStato}}"
     else:
         return 'Content-Type not supported!'
     

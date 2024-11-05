@@ -37,6 +37,7 @@ def Login():
     password = input("Inserisci la password ")
     return {username: [password]}
 
+stato = -1
 while True:
     if not auth:
         print("Operazioni disponibili:")
@@ -50,9 +51,12 @@ while True:
             try:
                 response = requests.post(api_url,json=accesso, verify=False)
                 print(response.content)
-                if str(response.content) == "b'True'":
+                jResponse = response.json()
+
+                if jResponse['Esito'] == "ok":
                     auth = True
-                print(auth)
+                    stato = jResponse['Stato']
+                print ( auth)
             except:
                 print("Problemi di comunicazione con il server, riprova più tardi")
         elif login == '2':
