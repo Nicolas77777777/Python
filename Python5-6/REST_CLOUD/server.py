@@ -1,15 +1,16 @@
 from flask import Flask, json, request, render_template
 import random
 import os
-import dbclient as db
+import dbclient as db 
 import sys
 
 api = Flask(__name__)
 mydb = db.connect()
 if mydb is None:
-    print("errore connesione al DB")
-    sys.exit 
+    print("Errore connessione al DB")
+    sys.exit
     
+
 if not os.path.isfile('utenti.json'):
     with open("utenti.json", "w") as json_file:
         json.dump({}, json_file)
@@ -138,42 +139,74 @@ def login():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
+        '''
         with open('utenti.json') as json_file:
             user = json.load(json_file)
-        """
         for key, value in request.json.items():
             if key in user:
                 if user[key][0] == value[0]:
                     return "True"
         return "Nome utente o password non trovati"
-        """
+        '''
         for key, value in request.json.items():
-            sQuery = f"select*from utenti where nomeutente = '{key}'and password = '{} values ('{key}','{value[0]}',{random.randint(0,1)})"
-        
+            sQuery = f"select * from utenti where nomeutente = '{key}' and password = '{value[0]}'"
+            iNumRecord = db.read_in_db(mydb,sQuery)
+            if iNumRecord == 1:
+                print("Login terminato correttamente")
+                return "True"
+            elif iNumRecord == 0:
+                print("Credenziali errate")
+                return "False"
+            elif iNumRecord == -1:
+                print("Dati Errati")
+                return "False"
+            else:
+                print("Attenzione: attacco in corso")
+                return "False"
     else:
         return 'Content-Type not supported!'
+    
 
 @api.route('/registrazione', methods=['POST'])
 def Registrazione():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
-        # dobbiamo intervenire qui
-        # dobbiamo verifficare se lo user name è gia presente nella tabbella utenti altrimenti facciamo la insert
-        for key, value in request.json.items():
-            sQuery = f"insert into utenti(nomeutente,password,privilegi) values ('{key}','{value[0]}',{random.randint(0,1)})"
+        #Dobbiamo intervenire qui
+        #dobbiamo verificare se lo username è già presente nella tabella
+        #altrimenti facciamo la insert
+        for key , value in request.json.items():
+            sQuery = f"insert into utenti(nomeutente,password,privilegi) values ('{key}', '{value[0]}', {random.randint(0,1)})"
             print(sQuery)
             iRetValue = db.write_in_db(mydb,sQuery)
             if iRetValue == -2:
-                return "Nome gia in uso"
+                return "Nome utente già in uso"    
             elif iRetValue == 0:
-                return " Registarzione avvenita con succeso "
+              return "Registrazione avvenuta con successo"
             else:
-                return " Errore non gestito nella registrazionne"
-        return " Errore richiesta non conforme "
+                return "Errore non gestito nella registrazione"
+        return "Richiesta non conforme"
     else:
         return "Content-Type not supported!"
 
-        
+
+
+        '''
+        with open('utenti.json') as json_file:
+            user = json.load(json_file)        
+        for key, value in request.json.items():
+            if key not in user:
+                request.json[key].append(random.randint(0,1))
+                user |= request.json
+                with open('utenti.json', 'w') as json_file:
+                    json.dump(user, json_file)
+            else:
+                return "Nome utente già in uso"
+                '''
+
+
+    #     return "Registrazione avvenuta con successo"
+    # else:
+    #     return 'Content-Type not supported!'
 
 api.run(host="127.0.0.1", port=8080, ssl_context='adhoc')
