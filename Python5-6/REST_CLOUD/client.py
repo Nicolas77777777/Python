@@ -33,7 +33,7 @@ def DeleteCittadino():
     return input("Inserisci il codice fiscale della persona da eliminare ")
 
 def Login():
-    username = input("Inserisci l'username ")
+    username = input("Inserisci nomeutente ")
     password = input("Inserisci la password ")
     return {username: [password]}
 

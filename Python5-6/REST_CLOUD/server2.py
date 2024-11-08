@@ -13,17 +13,17 @@ if mydb is None:
 
         
 def login_interno(user: dict):
-
-    #sQuery = f"select privilegi from utenti where nomeutente = '{key}' and password = '{value[0]}'"
-
-    """"
-    with open('utenti.json') as json_file:
-        users = json.load(json_file)
+    # usa il dizionario creato dal client.py
     for key, value in user.items():
-        if key in users:
-            if users[key][0] == value[0]:
-                return True """
-    return False
+        # usa una query
+        sQuery = f"select privilegi from utenti where nomeutente = '{key}' and password = '{value}'"
+        # richiamo la funzione scirtta in dbclient dove db e query
+        NumeroRecords = db.read_in_db(mydb,sQuery)
+        # se la query interrogta sul db è vera 
+        if NumeroRecords == 1:
+            return True
+    return False 
+        
 
 def controllo_privilegi_admin(user: dict):
     with open('utenti.json') as json_file:
