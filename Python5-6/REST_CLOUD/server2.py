@@ -9,9 +9,7 @@ mydb = db.connect()
 if mydb is None:
     print("Errore connessione al DB")
     sys.exit
-    
-
-        
+            
 def login_interno(user: dict):
     # usa il dizionario creato dal client.py
     for key, value in user.items():
@@ -21,19 +19,27 @@ def login_interno(user: dict):
         NumeroRecords = db.read_in_db(mydb,sQuery)
         # se la query interrogta sul db è vera 
         if NumeroRecords == 1:
+            print ("Login interno OK !")
             return True
+    print("login interno KO")
     return False 
         
 
 def controllo_privilegi_admin(user: dict):
-    with open('utenti.json') as json_file:
-        users = json.load(json_file)    
-    for key, value in user.items():
-        if key in users:
-            if value[0] == users[key][0]:
-                if users[key][1] == 1:
-                    return True
-    return False
+   for key, value in user.items():
+            sQuery = f"select privilegi from utenti where nomeutente = '{key}' and password = '{value[0]}'"
+            #iNumRecord = db.read_in_db(mydb,sQuery)
+            lRecord = db.read_next_row(mydb)
+            iStato = lRecord[1][0]
+            #print("Stampo lo stato")
+            #print(iStato)
+            if iStato == '1':
+                #print("controllo ok")
+                return True
+            else:
+                #print("controllo ko")
+                
+                return False
 
 @api.route('/add_cittadino', methods=['POST'])
 def GestisciAddCittadino():
@@ -42,21 +48,28 @@ def GestisciAddCittadino():
     if (content_type == 'application/json'):
         accesso = request.json[1]
         dati = request.json[0]
+        print(dati)
+
         if login_interno(accesso) and controllo_privilegi_admin(accesso):
-            with open("anagrafe.json") as json_file:
-                cittadini = json.load(json_file)
-            for key, vale in dati.items():
-                if key in cittadini:
-                    print("Errore codice fiscale già esistente")
-                    return "True"
-            with open("anagrafe.json", "w") as json_file:
-                cittadini |= dati
-                json.dump(cittadini, json_file)
-            return "True"
-        else:
-            return "Dati errati"
+
+            for key , value in dati.items():
+                codiceFiscale = key
+                nome = value['nome']
+                cognome = value['cognome']
+                dataNascita = value['dataNascita']
+                sQuery = f"insert into cittadini(nome, cognome, data_nascita, codice_fiscale) values ('{nome}', '{cognome}', '{dataNascita}', '{key}')"
+                print(sQuery)
+                iRetValue = db.write_in_db(mydb,sQuery)
+                if iRetValue == -2:
+                    return "Nome utente già in uso"
+                elif iRetValue == 0:
+                    return "Inserimento avvenuto con successo"
+                else:
+                    return "Errore non gestito nella registrazione"
+        return "Richiesta non conforme"
     else:
-        return 'Content-Type not supported!'
+        return "Content-Type not supported!"
+
     
     
 @api.route('/read_cittadino', methods=['POST'])
