@@ -193,7 +193,7 @@ def Registrazione():
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
         for key, value in request.json.items():
-            sQuery = f"insert into utente(username,password,stato) values ('{key}', '{value[0]}',{random.randint(0,1)})"
+            sQuery = f"insert into utente(username,password,privilegi) values ('{key}', '{value[0]}',{random.randint(0,1)})"
             print(sQuery)
             iRetValue = db.write_in_db(mydb, sQuery) #restituisce 0 se è andato tutto bene, -1 errore, -2 duplicate key
             print(iRetValue)
