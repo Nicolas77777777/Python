@@ -12,7 +12,7 @@ if mydb is None:
     
 def controllo_privilegi_admin(user: dict):
     for key, value in user.items():
-        sQuery = f"select stato from utenti where username = '{key}' and pass = '{value[0]}';"
+        sQuery = f"select privilegi from utente where username = '{key}' and password = '{value[0]}';"
         print(sQuery)
         iNumRecord = db.read_in_db(mydb, sQuery)
         if iNumRecord == 1:
@@ -21,8 +21,8 @@ def controllo_privilegi_admin(user: dict):
             return iStato
         return False
 
-@api.route('/add_cittadino', methods=['POST'])
-def GestisciAddCittadino():
+@api.route('/add_automobile', methods=['POST'])
+def GestisciAddAutomobile():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
@@ -30,10 +30,10 @@ def GestisciAddCittadino():
         dati = request.json[0]
         if controllo_privilegi_admin(accesso) == 1:
             for key, value in dati.items():
-                sQuery = f"insert into cittadini(codFisc,nome,cognome,dataN) values ('{key}', '{value['nome']}', '{value['cognome']}', '{value['dataNascita']}')"
+                sQuery = f"insert into automobile(marca, modello, colore, posizione, filiale_id, condizione) values ('{dati['marca']}', '{dati['modello']}', '{dati['colore']}', '{dati['posizione']}', '{dati['filiale_id']}', '{dati['condizione']}')"
                 iRetValue = db.write_in_db(mydb,sQuery)
                 if iRetValue == -2:
-                    return "Codice fiscale già esistente"
+                    return "Automobile già esistente"
                 elif iRetValue == 0:
                     return "Registrazione avvenuta con successo"
                 else:
@@ -45,8 +45,8 @@ def GestisciAddCittadino():
         return 'Content-Type not supported!'
     
     
-@api.route('/read_cittadino', methods=['POST'])
-def GestisciReadCittadino():
+@api.route('/read_automobile', methods=['POST'])
+def GestisciReadAutomobile():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
@@ -59,59 +59,96 @@ def GestisciReadCittadino():
                 if dati == key:
                     return cittadini[key]
             return "Cittadino non trovato"""
-            sQuery = f"select * from cittadini where codFisc = '{dati}'"
+            sQuery = f"select * from automobile where marca = '{dati['marca']}' and modello = '{dati['modello']}' and colore = '{dati['colore']}' and condizione = '{dati['condizione']}'"
             iRetValue = db.read_in_db(mydb,sQuery)
             if iRetValue == 1:
                 sValue = db.read_next_row(mydb)
-                return sValue
-            return "Cittadino non trovato"
+                return f'{sValue}'
+            return "Automobile non trovata"
         else:
             return "Dati errati"
     else:
         return 'Content-Type not supported!'
     
-@api.route('/update_cittadino', methods=['POST'])
-def GestisciUpdateCittadino():
+# @api.route('/update_cittadino', methods=['POST'])
+# def GestisciUpdateCittadino():
+#     content_type = request.headers.get('Content-Type')
+#     print("Ricevuta chiamata " + content_type)
+#     if (content_type == 'application/json'):
+#         accesso = request.json[1]
+#         dati = request.json[0]
+#         if controllo_privilegi_admin(accesso) == 1:
+#             sQuery = f"select * from cittadini where codFisc = '{dati[0]}'"
+#             iRetValue = db.read_in_db(mydb,sQuery)
+#             if iRetValue != 1:
+#                 return "Cittadino non trovato"
+
+#             for i in range(len(dati) - 1):
+#                 if dati[i+1]:
+#                     if i + 1 == 1:
+#                         sQuery = f"update cittadini set cognome = '{dati[i+1]}' where codFisc = '{dati[0]}'"
+#                         db.write_in_db(mydb,sQuery)
+#                     elif i + 1 == 2:
+#                         sQuery = f"update cittadini set dataN = '{dati[i+1]}' where codFisc = '{dati[0]}'"
+#                         db.write_in_db(mydb,sQuery)
+#                     elif i + 1 == 3:
+#                         sQuery = f"update cittadini set nome = '{dati[i+1]}' where codFisc = '{dati[0]}'"
+#                         db.write_in_db(mydb,sQuery)
+#             return "Modifica avvenuta con successo"   
+#         else:
+#             return "Dati errati"     
+#     else:
+#         return 'Content-Type not supported!'
+
+@api.route('/vendita_automobile', methods=['POST'])
+def GestisciVendita():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
         accesso = request.json[1]
         dati = request.json[0]
         if controllo_privilegi_admin(accesso) == 1:
-            sQuery = f"select * from cittadini where codFisc = '{dati[0]}'"
-            iRetValue = db.read_in_db(mydb,sQuery)
-            if iRetValue != 1:
-                return "Cittadino non trovato"
 
-            for i in range(len(dati) - 1):
-                if dati[i+1]:
-                    if i + 1 == 1:
-                        sQuery = f"update cittadini set cognome = '{dati[i+1]}' where codFisc = '{dati[0]}'"
-                        db.write_in_db(mydb,sQuery)
-                    elif i + 1 == 2:
-                        sQuery = f"update cittadini set dataN = '{dati[i+1]}' where codFisc = '{dati[0]}'"
-                        db.write_in_db(mydb,sQuery)
-                    elif i + 1 == 3:
-                        sQuery = f"update cittadini set nome = '{dati[i+1]}' where codFisc = '{dati[0]}'"
-                        db.write_in_db(mydb,sQuery)
-            return "Modifica avvenuta con successo"   
+            with open("auto_vendute.json", "w") as file:
+                json.dump([dati], file, indent=4)
+
+            print("File creato con la prima auto venduta!")
+
+            try:
+                with open("auto_vendute.json", "r") as file:
+                    auto_vendute = json.load(file)
+            except FileNotFoundError:
+                
+        # Se il file non esiste, inizializza una lista vuota
+                auto_vendute = []
+
+        # Aggiungi la nuova auto alla lista
+            auto_vendute.append(dati)
+
+        # Salva di nuovo i dati aggiornati nel file JSON
+            with open("auto_vendute.json", "w") as file:
+                json.dump(auto_vendute, file, indent=4)
+
+            print("Nuova auto aggiunta con successo!")
+            return "Registrazione avvenuta con successo"
         else:
-            return "Dati errati"     
+            return "Dati errati"
     else:
         return 'Content-Type not supported!'
 
-@api.route('/delete_cittadino', methods=['POST'])
-def GestisciDeleteCittadino():
+
+@api.route('/delete_automobile', methods=['POST'])
+def GestisciDeleteAutomobile():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
         accesso = request.json[1]
         dati = request.json[0]
         if controllo_privilegi_admin(accesso) == 1:
-            sQuery = f"delete from cittadini where codFisc = '{dati}'"
+            sQuery = f"delete from automobile where id = '{dati}'"
             iRetValue = db.write_in_db(mydb,sQuery)
             if iRetValue == -2:
-                return "Nome utente non esistente"
+                return "Automobile non esistente"
             elif iRetValue == 0:
                 return "Eliminazione avvenuta con successo"
             else:
@@ -120,6 +157,8 @@ def GestisciDeleteCittadino():
             return "Dati errati"
     else:
         return 'Content-Type not supported!'
+            
+
     
 @api.route('/login', methods=['POST'])
 def login():
@@ -128,7 +167,7 @@ def login():
     if (content_type == 'application/json'):
         iStato = -1
         for key, value in request.json.items():
-            sQuery = f"select stato from utenti where username = '{key}' and pass = '{value[0]}';"
+            sQuery = f"select privilegi from utente where username = '{key}' and password = '{value[0]}';"
             print(sQuery)
             iNumRecord = db.read_in_db(mydb, sQuery)
             if iNumRecord == 1:
@@ -154,7 +193,7 @@ def Registrazione():
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
         for key, value in request.json.items():
-            sQuery = f"insert into utenti(username,pass,stato) values ('{key}', '{value[0]}',{random.randint(0,1)})"
+            sQuery = f"insert into utente(username,password,stato) values ('{key}', '{value[0]}',{random.randint(0,1)})"
             print(sQuery)
             iRetValue = db.write_in_db(mydb, sQuery) #restituisce 0 se è andato tutto bene, -1 errore, -2 duplicate key
             print(iRetValue)
@@ -168,5 +207,4 @@ def Registrazione():
     else:
         return 'Content-Type not supported!'
 
-api.run(host="127.0.0.1", port=8080)
-        #, ssl_context='adhoc')   
+api.run(host="127.0.0.1", port=8080, ssl_context='adhoc')   
