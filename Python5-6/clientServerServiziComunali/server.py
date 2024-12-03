@@ -168,5 +168,4 @@ def Registrazione():
     else:
         return 'Content-Type not supported!'
 
-api.run(host="127.0.0.1", port=8080)
-        #, ssl_context='adhoc')   
+api.run(host="127.0.0.1", port=8080, ssl_context='adhoc')   
