@@ -23,20 +23,6 @@ def GetAutomobile():
     return datiAutomobile
     
 
-# def UpdateCittadino():
-#     dati_da_modifcare = [None for _ in range(4)]
-#     dati_da_modifcare[0] = input("Inserisci il codice fiscale della persona a cui vuoi modificarei i dati: ")
-#     nome = input("Inserisci il nome modificato (Lascia vuoto per non cambiare): ")
-#     cognome = input("Inserisci il cognome modificato (Lascia vuoto per non cambiare): ")
-#     dataN = input("Inserisci la data di nascita modificata (Lascia vuoto per non cambiare): ")
-#     if cognome:
-#         dati_da_modifcare[1] = cognome
-#     if dataN:
-#         dati_da_modifcare[2] = dataN
-#     if nome:
-#         dati_da_modifcare[3] = nome
-#     return dati_da_modifcare
-
 def DeleteAutomobile():
     return input("Inserisci l'id della vettura venduta: ")
 
@@ -80,7 +66,7 @@ while True:
                     stato = jResponse['Stato']
                 print(auth)
             except:
-                print("Problemi di comunicazione con il server, riprova più tardi")
+                print("Problemi  di comunicaz ione con il server, riprova più tardi")
         elif login == '2':
             api_url = base_url + '/registrazione'
             jsonDataRequest = Login()
@@ -127,7 +113,7 @@ while True:
                 
 
             elif sOper == "3":
-                print("Registra automobile venduta")
+                print("Registra una  automobile venduta")
                 api_url = base_url + "/vendita_automobile"
                 jsonDataRequest = AutoVenduta()
                 try:
