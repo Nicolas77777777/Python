@@ -5,7 +5,7 @@ base_url = "https://127.0.0.1:8080"
 auth = False
 
 def AggiungiAutomobile():
-    marca = input("Quale marca vuoi aggiungere? ")
+    marca = input("Quale è  marca vuoi aggiungere? ")
     modello = input("Quale modello vuoi aggiungere? ")
     colore = input("In che colore? ")
     posizione = input("Dove vuoi locarla? ")
