@@ -66,13 +66,7 @@ def GestisciReadCittadino():
         accesso = request.json[1]
         dati = request.json[0]
         if controllo_privilegi_admin(accesso) == 1 or controllo_privilegi_admin(accesso) == 0:
-            """with open("anagrafe.json") as json_file:
-                cittadini = json.load(json_file)
-            for key, value in cittadini.items():
-                if dati == key:
-                    return cittadini[key]
-            return "Cittadino non trovato"""
-            sQuery = f"select * from cittadini where codice_fiscale = '{dati}'"
+            sQuery = f"select * from cittadini where codice_iscale = '{dati}'"
             iRetValue = db.read_in_db(mydb,sQuery)
             if iRetValue == 1:
                 sValue = db.read_next_row(mydb)
@@ -91,7 +85,7 @@ def GestisciUpdateCittadino():
         accesso = request.json[1]
         dati = request.json[0]
         if controllo_privilegi_admin(accesso) == 1:
-            sQuery = f"select * from cittadini where codFisc = '{dati[0]}'"
+            sQuery = f"select * from cittadini where codice_fiscale = '{dati[0]}'"
             iRetValue = db.read_in_db(mydb,sQuery)
             if iRetValue != 1:
                 return "Cittadino non trovato"
@@ -99,13 +93,13 @@ def GestisciUpdateCittadino():
             for i in range(len(dati) - 1):
                 if dati[i+1]:
                     if i + 1 == 1:
-                        sQuery = f"update cittadini set cognome = '{dati[i+1]}' where codFisc = '{dati[0]}'"
+                        sQuery = f"update cittadini set cognome = '{dati[i+1]}' where codice_fiscale= '{dati[0]}'"
                         db.write_in_db(mydb,sQuery)
                     elif i + 1 == 2:
-                        sQuery = f"update cittadini set dataN = '{dati[i+1]}' where codFisc = '{dati[0]}'"
+                        sQuery = f"update cittadini set dataN = '{dati[i+1]}' where codice_fiscale = '{dati[0]}'"
                         db.write_in_db(mydb,sQuery)
                     elif i + 1 == 3:
-                        sQuery = f"update cittadini set nome = '{dati[i+1]}' where codFisc = '{dati[0]}'"
+                        sQuery = f"update cittadini set nome = '{dati[i+1]}' where codice_fiscale = '{dati[0]}'"
                         db.write_in_db(mydb,sQuery)
             return "Modifica avvenuta con successo"   
         else:
@@ -121,7 +115,7 @@ def GestisciDeleteCittadino():
         accesso = request.json[1]
         dati = request.json[0]
         if controllo_privilegi_admin(accesso) == 1:
-            sQuery = f"delete from cittadini where codFisc = '{dati}'"
+            sQuery = f"delete from cittadini where codice_fiscale = '{dati}'"
             iRetValue = db.write_in_db(mydb,sQuery)
             if iRetValue == -2:
                 return "Nome utente non esistente"
