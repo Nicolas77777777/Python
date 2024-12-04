@@ -10,6 +10,47 @@ if mydb is None:
     print("Errore connessione al DB")
     sys.exit()
     
+@api.route('/')
+def home():
+    return render_template('home.html')
+
+@api.route('/login-page', methods=['GET'])
+def loginPage():
+    return render_template('login.html')
+
+@api.route('/new-automobile', methods=['GET'])
+def newAutomobile():
+    return render_template('new-automobile.html')
+
+@api.route('/login-action', methods=['POST'])
+def loginAction():
+    content_type = request.headers.get('Content-Type')
+    print("Ricevuta chiamata " + content_type)
+    if (content_type == 'application/json'):
+        iStato = -1
+        for key, value in request.json.items():
+            sQuery = f"select privilegi from utente where username = '{key}' and password = '{value[0]}';"
+            print(sQuery)
+            iNumRecord = db.read_in_db(mydb, sQuery)
+            if iNumRecord == 1:
+                print("Login terminato correttamente")
+                lRecord = db.read_next_row(mydb)
+                iStato = lRecord[1][0]
+                return '{"Esito":"ok", "Stato": ' + str(iStato) + '}'
+            elif iNumRecord == 0:
+                print("Credenziali errate")
+                return '{"Esito":"ko", "Stato": ' + str(iStato) + '}'
+            elif iNumRecord <= -1:
+                print("Dati errati")
+                return '{"Esito":"ko", "Stato": ' + str(iStato) + '}'
+            else:
+                print("Attenzione: attacco in corso")
+                return '{"Esito":"ko", "Stato": ' + str(iStato) + '}'
+    else:
+        message = "Content Type not supported"
+        #return 'Content-Type not supported!'
+        return api.redirect("/login-page",message)
+
 def controllo_privilegi_admin(user: dict):
     for key, value in user.items():
         sQuery = f"select privilegi from utente where username = '{key}' and password = '{value[0]}';"
@@ -53,12 +94,7 @@ def GestisciReadAutomobile():
         accesso = request.json[1]
         dati = request.json[0]
         if controllo_privilegi_admin(accesso) == 1 or controllo_privilegi_admin(accesso) == 0:
-            """with open("anagrafe.json") as json_file:
-                cittadini = json.load(json_file)
-            for key, value in cittadini.items():
-                if dati == key:
-                    return cittadini[key]
-            return "Cittadino non trovato"""
+        
             sQuery = f"select * from automobile where marca = '{dati['marca']}' and modello = '{dati['modello']}' and colore = '{dati['colore']}' and condizione = '{dati['condizione']}'"
             iRetValue = db.read_in_db(mydb,sQuery)
             if iRetValue == 1:
@@ -70,36 +106,6 @@ def GestisciReadAutomobile():
     else:
         return 'Content-Type not supported!'
     
-# @api.route('/update_cittadino', methods=['POST'])
-# def GestisciUpdateCittadino():
-#     content_type = request.headers.get('Content-Type')
-#     print("Ricevuta chiamata " + content_type)
-#     if (content_type == 'application/json'):
-#         accesso = request.json[1]
-#         dati = request.json[0]
-#         if controllo_privilegi_admin(accesso) == 1:
-#             sQuery = f"select * from cittadini where codFisc = '{dati[0]}'"
-#             iRetValue = db.read_in_db(mydb,sQuery)
-#             if iRetValue != 1:
-#                 return "Cittadino non trovato"
-
-#             for i in range(len(dati) - 1):
-#                 if dati[i+1]:
-#                     if i + 1 == 1:
-#                         sQuery = f"update cittadini set cognome = '{dati[i+1]}' where codFisc = '{dati[0]}'"
-#                         db.write_in_db(mydb,sQuery)
-#                     elif i + 1 == 2:
-#                         sQuery = f"update cittadini set dataN = '{dati[i+1]}' where codFisc = '{dati[0]}'"
-#                         db.write_in_db(mydb,sQuery)
-#                     elif i + 1 == 3:
-#                         sQuery = f"update cittadini set nome = '{dati[i+1]}' where codFisc = '{dati[0]}'"
-#                         db.write_in_db(mydb,sQuery)
-#             return "Modifica avvenuta con successo"   
-#         else:
-#             return "Dati errati"     
-#     else:
-#         return 'Content-Type not supported!'
-
 @api.route('/vendita_automobile', methods=['POST'])
 def GestisciVendita():
     content_type = request.headers.get('Content-Type')
@@ -160,6 +166,7 @@ def GestisciDeleteAutomobile():
             
 
     
+
 @api.route('/login', methods=['POST'])
 def login():
     content_type = request.headers.get('Content-Type')
@@ -207,4 +214,5 @@ def Registrazione():
     else:
         return 'Content-Type not supported!'
 
-api.run(host="127.0.0.1", port=8080, ssl_context='adhoc')   
+#api.run(host="127.0.0.1", port=8080, ssl_context='adhoc')   
+api.run(host="127.0.0.1", port=8080)  

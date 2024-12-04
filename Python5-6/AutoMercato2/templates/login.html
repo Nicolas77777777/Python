@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AutoMercato</title>
+</head>
+<body>
+    <h1>Welcome to AutoMercato</h1>
+    <h2>Effettua il login</h2>
+    
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/new-automobile">Inserisci nuova automobile</a></li>
+    </ul>
+    
+    <div>
+        <form action="/login-action" method="POST">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" >
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" >
+            <button name="login-submit" value="submit">Invia</button>
+        </form>
+    </div>
+
+</body>
+</html>
