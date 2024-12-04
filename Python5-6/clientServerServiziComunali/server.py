@@ -12,26 +12,38 @@ if mydb is None:
     
 def controllo_privilegi_admin(user: dict):
     for key, value in user.items():
-        sQuery = f"select stato from utenti where username = '{key}' and pass = '{value[0]}';"
-        print(sQuery)
+        sQuery = f"SELECT stato FROM utenti WHERE username = '{key}' AND pass = '{value[0]}';"
+        print(f"Query eseguita: {sQuery}")
         iNumRecord = db.read_in_db(mydb, sQuery)
+        print(f"Numero di record trovati: {iNumRecord}")
         if iNumRecord == 1:
             lRecord = db.read_next_row(mydb)
-            iStato = lRecord[1][0]
+            print(f"Record letto: {lRecord}")
+            iStato = int(lRecord[1][0])  # Convertiamo il valore in intero
+            print(f"Valore di stato: {iStato}")
             return iStato
         return False
+
+
 
 @api.route('/add_cittadino', methods=['POST'])
 def GestisciAddCittadino():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
-    if (content_type == 'application/json'):
+    if content_type == 'application/json':
         accesso = request.json[1]
         dati = request.json[0]
+        print(f"Dati accesso: {accesso}")
+        print(f"Dati cittadino: {dati}")
         if controllo_privilegi_admin(accesso) == 1:
+            print("Privilegi amministrativi confermati.")
             for key, value in dati.items():
-                sQuery = f"insert into cittadini(codFisc,nome,cognome,dataN) values ('{key}', '{value['nome']}', '{value['cognome']}', '{value['dataNascita']}')"
-                iRetValue = db.write_in_db(mydb,sQuery)
+                sQuery = f"""
+                INSERT INTO cittadini (codice_fiscale, nome, cognome, data_nascita, comune_residenza)
+                VALUES ('{key}', '{value['nome']}', '{value['cognome']}', '{value['dataNascita']}', '{value['comuneResidenza']}')
+                """
+                print(f"Esecuzione query: {sQuery}")
+                iRetValue = db.write_in_db(mydb, sQuery)
                 if iRetValue == -2:
                     return "Codice fiscale già esistente"
                 elif iRetValue == 0:
@@ -40,10 +52,11 @@ def GestisciAddCittadino():
                     return "Errore non gestito nella registrazione"
             return "Errore richiesta non conforme"
         else:
+            print("Privilegi amministrativi non confermati.")
             return "Dati errati"
     else:
         return 'Content-Type not supported!'
-    
+
     
 @api.route('/read_cittadino', methods=['POST'])
 def GestisciReadCittadino():
@@ -59,7 +72,7 @@ def GestisciReadCittadino():
                 if dati == key:
                     return cittadini[key]
             return "Cittadino non trovato"""
-            sQuery = f"select * from cittadini where codFisc = '{dati}'"
+            sQuery = f"select * from cittadini where codice_fiscale = '{dati}'"
             iRetValue = db.read_in_db(mydb,sQuery)
             if iRetValue == 1:
                 sValue = db.read_next_row(mydb)
@@ -154,7 +167,9 @@ def Registrazione():
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
         for key, value in request.json.items():
-            sQuery = f"insert into utenti(username,pass,stato) values ('{key}', '{value[0]}',{random.randint(0,1)})"
+            #sQuery = f"insert into utenti(username,pass,stato) values ('{key}', '{value[0]}',{random.randint(0,1)})"
+            sQuery = f"INSERT INTO utenti(username, pass, stato, ruolo) VALUES ('{key}', '{value[0]}', {random.randint(0,1)}, 'user')"
+
             print(sQuery)
             iRetValue = db.write_in_db(mydb, sQuery) #restituisce 0 se è andato tutto bene, -1 errore, -2 duplicate key
             print(iRetValue)

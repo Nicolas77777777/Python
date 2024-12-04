@@ -7,9 +7,10 @@ auth = False
 def GetDatiCittadino():
     nome = input("Qual'è il nome? ")
     cognome = input("Qual'è il cognome? ")
-    dataN = input("Qual'è la data di nascita? ")
+    dataN = input("Qual'è la data di nascita? (Formato: YYYY-MM-DD) ")
     codF = input("Qual'è il codice fiscale? ")
-    datiCittadino = {codF:{"nome":nome, "cognome": cognome, "dataNascita":dataN}}
+    comune = input("Qual'è il comune di residenza? ")
+    datiCittadino = {codF: {"nome": nome, "cognome": cognome, "dataNascita": dataN, "comuneResidenza": comune}}
     return datiCittadino
 
 def GetCittadino():
@@ -83,10 +84,15 @@ while True:
             print("6. Esci")
             sOper = input("Cosa vuoi fare? ")
             if sOper == "1":
+             
                 print("Richiesto atto di nascita")
                 api_url = base_url + "/add_cittadino"
                 jsonDataRequest = GetDatiCittadino()
+
                 try:
+                     # Debug: Stampare i dati inviati
+                    print(f"Dati inviati: {jsonDataRequest}")
+                    
                     response = requests.post(api_url,json=[jsonDataRequest,accesso], verify=False)
                     print(response.content)
                 
