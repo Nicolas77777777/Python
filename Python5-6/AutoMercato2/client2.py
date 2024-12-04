@@ -122,16 +122,7 @@ while True:
                 except:
                     print("Problemi di comunicazione con il server, riprova più tardi")
 
-            # elif sOper == "3":
-            #     print("Richiesto cittadino")
-            #     api_url = base_url + "/update_cittadino"
-            #     jsonDataRequest = UpdateCittadino()
-            #     try:
-            #         response = requests.post(api_url,json=[jsonDataRequest,accesso], verify=False)
-            #         print(response.content)
-                    
-            #    except:
-            #        print("Problemi di comunicazione con il server, riprova più tardi")
+           
             elif sOper == "4":
                 print("Cancella automobile")
                 api_url = base_url + "/delete_automobile"

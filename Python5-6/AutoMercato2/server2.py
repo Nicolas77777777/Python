@@ -22,34 +22,49 @@ def loginPage():
 def newAutomobile():
     return render_template('new-automobile.html')
 
+
 @api.route('/login-action', methods=['POST'])
 def loginAction():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
-    if (content_type == 'application/json'):
-        iStato = -1
-        for key, value in request.json.items():
-            sQuery = f"select privilegi from utente where username = '{key}' and password = '{value[0]}';"
-            print(sQuery)
-            iNumRecord = db.read_in_db(mydb, sQuery)
-            if iNumRecord == 1:
-                print("Login terminato correttamente")
-                lRecord = db.read_next_row(mydb)
-                iStato = lRecord[1][0]
-                return '{"Esito":"ok", "Stato": ' + str(iStato) + '}'
-            elif iNumRecord == 0:
-                print("Credenziali errate")
-                return '{"Esito":"ko", "Stato": ' + str(iStato) + '}'
-            elif iNumRecord <= -1:
-                print("Dati errati")
-                return '{"Esito":"ko", "Stato": ' + str(iStato) + '}'
-            else:
-                print("Attenzione: attacco in corso")
-                return '{"Esito":"ko", "Stato": ' + str(iStato) + '}'
-    else:
-        message = "Content Type not supported"
-        #return 'Content-Type not supported!'
-        return api.redirect("/login-page",message)
+    #if (content_type == 'application/json'):
+    sUsername = request.form.get("username")
+    sPassword = request.form.get("password")
+    sRisposta = "Ciao mi hai mandato " + sUsername + " insieme a " + sPassword
+    #return "<html><body>" + sRisposta + "</body></html>"
+
+    sQuery = f"select from utenti where username = {sUsername} and password = '{sPassword}';"
+    return sQuery
+
+
+# @api.route('/login-action123', methods=['POST'])
+# def loginAction123():
+#     content_type = request.headers.get('Content-Type')
+#     print("Ricevuta chiamata " + content_type)
+#     if (content_type == 'application/json'):
+#         iStato = -1
+#         for key, value in request.json.items():
+#             sQuery = f"select privilegi from utente where username = '{key}' and password = '{value[0]}';"
+#             print(sQuery)
+#             iNumRecord = db.read_in_db(mydb, sQuery)
+#             if iNumRecord == 1:
+#                 print("Login terminato correttamente")
+#                 lRecord = db.read_next_row(mydb)
+#                 iStato = lRecord[1][0]
+#                 return '{"Esito":"ok", "Stato": ' + str(iStato) + '}'
+#             elif iNumRecord == 0:
+#                 print("Credenziali errate")
+#                 return '{"Esito":"ko", "Stato": ' + str(iStato) + '}'
+#             elif iNumRecord <= -1:
+#                 print("Dati errati")
+#                 return '{"Esito":"ko", "Stato": ' + str(iStato) + '}'
+#             else:
+#                 print("Attenzione: attacco in corso")
+#                 return '{"Esito":"ko", "Stato": ' + str(iStato) + '}'
+#     else:
+#         message = "Content Type not supported"
+#         #return 'Content-Type not supported!'
+#         return api.redirect("/login-page",message)
 
 def controllo_privilegi_admin(user: dict):
     for key, value in user.items():
@@ -168,7 +183,7 @@ def GestisciDeleteAutomobile():
     
 
 @api.route('/login', methods=['POST'])
-def login():
+def login1():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
