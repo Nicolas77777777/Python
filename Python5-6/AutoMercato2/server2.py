@@ -33,8 +33,23 @@ def loginAction():
     sRisposta = "Ciao mi hai mandato " + sUsername + " insieme a " + sPassword
     #return "<html><body>" + sRisposta + "</body></html>"
 
-    sQuery = f"select from utenti where username = {sUsername} and password = '{sPassword}';"
-    return sQuery
+    sQuery = f"select * from utenti where username = {sUsername} and password = '{sPassword}';"
+    iNumRecord = db.read_in_db(mydb, sQuery)
+    if iNumRecord == 1:
+        print("Login terminato correttamente")
+        lRecord = db.read_next_row(mydb)
+        iStato = lRecord[1][0]
+        return '{"Esito":"ok", "Stato": ' + str(iStato) + '}'
+    elif iNumRecord == 0:
+        print("Credenziali errate")
+        return '{"Esito":"ko", "Stato": ' + str(iStato) + '}'
+    elif iNumRecord <= -1:
+        print("Dati errati")
+        return '{"Esito":"ko", "Stato": ' + str(iStato) + '}'
+    else:
+        print("Attenzione: attacco in corso")
+        return '{"Esito":"ko", "Stato": ' + str(iStato) + '}'
+    
 
 
 # @api.route('/login-action123', methods=['POST'])
