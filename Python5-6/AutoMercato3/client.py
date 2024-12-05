@@ -4,14 +4,36 @@ import sys
 base_url = "https://127.0.0.1:8080"
 auth = False
 
-def GetDatiCittadino():
-    nome = input("Qual'è il nome? ")
-    cognome = input("Qual'è il cognome? ")
-    dataN = input("Qual'è la data di nascita? (Formato: YYYY-MM-DD) ")
-    codF = input("Qual'è il codice fiscale? ")
-    comune = input("Qual'è il comune di residenza? ")
-    datiCittadino = {codF: {"nome": nome, "cognome": cognome, "dataNascita": dataN, "comuneResidenza": comune}}
-    return datiCittadino
+def GetDatiAutomobile():
+    # Richiesta dei dati per l'automobile
+    marca = input("Qual è la marca dell'automobile? ") 
+    modello = input("Qual è il modello dell'automobile? ")
+    colore = input("Qual è il colore dell'automobile? ")
+    targa = input("Qual è la targa dell'automobile? ")
+    magazzino_id = input("Qual è l'ID del magazzino? ")
+    condizione = input("Qual è la condizione dell'automobile (nuovo/usato)? ").lower()
+    
+    # Validazione del valore per la condizione
+    if condizione not in ['nuovo', 'usato']:
+        print("Errore: la condizione deve essere 'nuovo' o 'usato'. Impostazione predefinita su 'nuovo'.")
+        condizione = 'nuovo'
+
+    # Disponibilità predefinita a True
+    disponibilita = True
+
+    # Creazione del dizionario con i dati dell'automobile
+    datiAutomobile = {
+        "marca": marca,
+        "modello": modello,
+        "colore": colore,
+        "targa": targa,
+        "magazzino_id": int(magazzino_id),
+        "condizione": condizione,
+        "disponibilita": disponibilita
+    }
+    
+    return datiAutomobile
+
 
 def GetCittadino():
     return input("Inserisci il codice fiscale della persona richiesta: ")
@@ -76,7 +98,7 @@ while True:
     else:        
         while(True):
             print("Operazioni disponibili:")
-            print("1. Inserisci cittadino (es. atto di nascita)")
+            print("1. Inserisci Automobile")
             print("2. Richiedi cittadino (es. cert. residenza)")
             print("3. Modifica cittadino (es. cambio residenza)")
             print("4. Elimina cittadino (es. trasferim altro comune)")
@@ -85,9 +107,11 @@ while True:
             sOper = input("Cosa vuoi fare? ")
             if sOper == "1":
              
-                print("Richiesto atto di nascita")
-                api_url = base_url + "/add_cittadino"
-                jsonDataRequest = GetDatiCittadino()
+                print("Inserisci Automobile")
+                #api_url = base_url + "/add_cittadino"
+                api_url = base_url + "/add_automobile"
+
+                jsonDataRequest = GetDatiAutomobile()
 
                 try:
                      # Debug: Stampare i dati inviati

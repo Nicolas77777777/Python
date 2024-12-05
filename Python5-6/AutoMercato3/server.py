@@ -2,6 +2,8 @@ from flask import Flask, json, request, render_template
 import random
 import os
 import dbclient as db
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 import sys
 
 api = Flask(__name__)
@@ -26,26 +28,34 @@ def controllo_privilegi_admin(user: dict):
 
 
 
-@api.route('/add_cittadino', methods=['POST'])
-def GestisciAddCittadino():
+@api.route('/add_automobile', methods=['POST'])
+def GestisciAutomobile():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
     if content_type == 'application/json':
         accesso = request.json[1]
         dati = request.json[0]
         print(f"Dati accesso: {accesso}")
-        print(f"Dati cittadino: {dati}")
+        print(f"Dati automobile: {dati}")
         if controllo_privilegi_admin(accesso) == 1:
             print("Privilegi amministrativi confermati.")
             for key, value in dati.items():
                 sQuery = f"""
-                INSERT INTO cittadini (codice_fiscale, nome, cognome, data_nascita, comune_residenza)
-                VALUES ('{key}', '{value['nome']}', '{value['cognome']}', '{value['dataNascita']}', '{value['comuneResidenza']}')
+                INSERT INTO automobili (marca, modello, colore, targa, magazzino_id, condizione, disponibilita)
+                VALUES (
+                    '{value['marca']}', 
+                    '{value['modello']}', 
+                    '{value['colore']}', 
+                    '{value['targa']}', 
+                    {value['magazzino_id']}, 
+                    '{value['condizione']}', 
+                    {value['disponibilita']}
+                )
                 """
                 print(f"Esecuzione query: {sQuery}")
                 iRetValue = db.write_in_db(mydb, sQuery)
                 if iRetValue == -2:
-                    return "Codice fiscale già esistente"
+                    return "Targa già esistente"
                 elif iRetValue == 0:
                     return "Registrazione avvenuta con successo"
                 else:
@@ -57,6 +67,7 @@ def GestisciAddCittadino():
     else:
         return 'Content-Type not supported!'
 
+
     
 @api.route('/read_cittadino', methods=['POST'])
 def GestisciReadCittadino():
@@ -66,7 +77,7 @@ def GestisciReadCittadino():
         accesso = request.json[1]
         dati = request.json[0]
         if controllo_privilegi_admin(accesso) == 1 or controllo_privilegi_admin(accesso) == 0:
-            sQuery = f"select * from cittadini where codice_iscale = '{dati}'"
+            sQuery = f"select * from cittadini where codice_fiscale = '{dati}'"
             iRetValue = db.read_in_db(mydb,sQuery)
             if iRetValue == 1:
                 sValue = db.read_next_row(mydb)
