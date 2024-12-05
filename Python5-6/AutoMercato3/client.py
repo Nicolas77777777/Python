@@ -22,7 +22,7 @@ def GetDatiAutomobile():
     disponibilita = True
 
     # Creazione del dizionario con i dati dell'automobile
-    datiAutomobile = {
+    datiFindAutomobile = {
         "marca": marca,
         "modello": modello,
         "colore": colore,
@@ -32,12 +32,36 @@ def GetDatiAutomobile():
         "disponibilita": disponibilita
     }
     
-    return datiAutomobile
+    return datiFindAutomobile
 
 
-def GetCittadino():
-    return input("Inserisci il codice fiscale della persona richiesta: ")
+def CercaAutomobile():
+    # Richiesta dei dati per l'automobile
+    marca = input("Qual è la marca dell'automobile? ") 
+    modello = input("Qual è il modello dell'automobile? ")
+    colore = input("Qual è il colore dell'automobile? ")
+    condizione = input("Qual è la condizione dell'automobile (nuovo/usato)? ").lower()
+    
+    # Validazione del valore per la condizione
+    if condizione not in ['nuovo', 'usato']:
+        print("Errore: la condizione deve essere 'nuovo' o 'usato'. Impostazione predefinita su 'nuovo'.")
+        condizione = 'nuovo'
 
+    # Disponibilità predefinita a True
+    disponibilita = True
+
+    # Creazione del dizionario con i dati dell'automobile
+    datiFindAutomobile = {
+        "marca": marca,
+        "modello": modello,
+        "colore": colore,
+        "condizione": condizione,
+        "disponibilita": disponibilita
+    }
+    
+    return datiFindAutomobile
+    #return input("Inserisci il codice fiscale della persona richiesta: ")
+    pass
 def UpdateCittadino():
     dati_da_modifcare = [None for _ in range(4)]
     dati_da_modifcare[0] = input("Inserisci il codice fiscale della persona a cui vuoi modificarei i dati: ")
@@ -99,7 +123,7 @@ while True:
         while(True):
             print("Operazioni disponibili:")
             print("1. Inserisci Automobile")
-            print("2. Richiedi cittadino (es. cert. residenza)")
+            print("2. Cerca Automobile ")
             print("3. Modifica cittadino (es. cambio residenza)")
             print("4. Elimina cittadino (es. trasferim altro comune)")
             print("5. Logout")
@@ -123,9 +147,9 @@ while True:
                 except:
                     print("Problemi di comunicazione con il server, riprova più tardi")
             elif sOper == "2":
-                print("Richiesto cittadino")
-                api_url = base_url + "/read_cittadino"
-                jsonDataRequest = GetCittadino()
+                print("Cerca Automobile")
+                api_url = base_url + "/cerca_automobile"
+                jsonDataRequest = CercaAutomobile()
                 try:
                     response = requests.post(api_url,json=[jsonDataRequest,accesso], verify=False)
                     print(response.content)

@@ -27,50 +27,59 @@ def controllo_privilegi_admin(user: dict):
         return False
 
 
-
 @api.route('/add_automobile', methods=['POST'])
 def GestisciAutomobile():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
+    
     if content_type == 'application/json':
         accesso = request.json[1]
         dati = request.json[0]
+        
         print(f"Dati accesso: {accesso}")
         print(f"Dati automobile: {dati}")
+        
         if controllo_privilegi_admin(accesso) == 1:
             print("Privilegi amministrativi confermati.")
-            for key, value in dati.items():
-                sQuery = f"""
-                INSERT INTO automobili (marca, modello, colore, targa, magazzino_id, condizione, disponibilita)
-                VALUES (
-                    '{value['marca']}', 
-                    '{value['modello']}', 
-                    '{value['colore']}', 
-                    '{value['targa']}', 
-                    {value['magazzino_id']}, 
-                    '{value['condizione']}', 
-                    {value['disponibilita']}
-                )
-                """
-                print(f"Esecuzione query: {sQuery}")
-                iRetValue = db.write_in_db(mydb, sQuery)
-                if iRetValue == -2:
-                    return "Targa già esistente"
-                elif iRetValue == 0:
-                    return "Registrazione avvenuta con successo"
-                else:
-                    return "Errore non gestito nella registrazione"
-            return "Errore richiesta non conforme"
+            
+            if isinstance(dati, dict):
+                try:
+                    sQuery = f"""
+                    INSERT INTO automobili (marca, modello, colore, targa, magazzino_id, condizione, disponibilita)
+                    VALUES (
+                        '{dati['marca']}', 
+                        '{dati['modello']}', 
+                        '{dati['colore']}', 
+                        '{dati['targa']}', 
+                        {dati['magazzino_id']}, 
+                        '{dati['condizione']}', 
+                        {dati['disponibilita']}
+                    )
+                    """
+                    print(f"Esecuzione query: {sQuery}")
+                    iRetValue = db.write_in_db(mydb, sQuery)
+                    
+                    if iRetValue == -2:
+                        return "Targa già esistente"
+                    elif iRetValue == 0:
+                        return "Registrazione avvenuta con successo"
+                    else:
+                        return "Errore non gestito nella registrazione"
+                except Exception as e:
+                    print(f"Errore durante l'inserimento nel database: {e}")
+                    return "Errore interno del server"
+            else:
+                print("Formato non valido per 'dati'")
+                return "Errore: formato dati non valido"
         else:
             print("Privilegi amministrativi non confermati.")
             return "Dati errati"
     else:
         return 'Content-Type not supported!'
 
-
     
-@api.route('/read_cittadino', methods=['POST'])
-def GestisciReadCittadino():
+@api.route('/cerca_automobile', methods=['POST'])
+def GestisciFindAutomobile():
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
     if (content_type == 'application/json'):
