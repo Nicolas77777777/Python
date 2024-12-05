@@ -85,7 +85,6 @@ while True:
             print("Operazioni disponibili:")
             print("1. Inserisci automobile ")
             print("2. Richiedi automobile ")
-            #print("3. Modifica cittadino (es. cambio residenza)")
             print("3. Registra automobile venduta")
             print("4. Elimina automobile (es. venduta)")
             print("5. Logout")
