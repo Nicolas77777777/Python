@@ -34,6 +34,35 @@ def GetDatiAutomobile():
     
     return datiFindAutomobile
 
+def GetDatiMotocicletta():
+    # Richiesta dei dati per l'automobile
+    marca = input("Qual è la marca della Motocicletta? ") 
+    modello = input("Qual è il modello della Motocicletta? ")
+    colore = input("Qual è il colore della Motocicletta? ")
+    targa = input("Qual è la targa della Motocicletta? ")
+    magazzino_id = input("Qual è l'ID del magazzino? ")
+    condizione = input("Qual è la condizione della Motocicletta (nuovo/usato)? ").lower()
+    
+    # Validazione del valore per la condizione
+    if condizione not in ['nuovo', 'usato']:
+        print("Errore: la condizione deve essere 'nuovo' o 'usato'. Impostazione predefinita su 'nuovo'.")
+        condizione = 'nuovo'
+
+    # Disponibilità predefinita a True
+    disponibilita = True
+
+    # Creazione del dizionario con i dati dell'automobile
+    datiFindMotocicletta = {
+        "marca": marca,
+        "modello": modello,
+        "colore": colore,
+        "targa": targa,
+        "magazzino_id": int(magazzino_id),
+        "condizione": condizione,
+        "disponibilita": disponibilita
+    }
+    
+    return datiFindMotocicletta
 
 def CercaAutomobile():
     # Richiesta dei dati per l'automobile
@@ -91,8 +120,10 @@ while True:
         print("Operazioni disponibili:")
         print("1. Login")
         print("2. Registrazione")
-        print("3. Esci")
+        print("3. Cerca Automobile")
+        print("4. Esci")
         login = input("Cosa vuoi fare? ")
+
         if login == '1':
             api_url = base_url + '/login'
             accesso = Login()
@@ -115,7 +146,19 @@ while True:
                 print(response.content)
             except:
                 print("Problemi di comunicazione con il server, riprova più tardi")
-        elif login == '3':
+
+        elif login =='3':
+            print("Cerca Automobile")
+            api_url = base_url + "/cerca_automobile"
+            jsonDataRequest = CercaAutomobile()
+            try:
+                response = requests.post(api_url,json=[jsonDataRequest,accesso], verify=False)
+                print(response.content)
+                    
+            except:
+                print("Problemi di comunicazione con il server, riprova più tardi")
+    
+        elif login == '4':
             sys.exit()
         else:
             print("Errore operazione non esistente")
@@ -123,11 +166,10 @@ while True:
         while(True):
             print("Operazioni disponibili:")
             print("1. Inserisci Automobile")
-            print("2. Cerca Automobile ")
-            print("3. Modifica cittadino (es. cambio residenza)")
-            print("4. Elimina cittadino (es. trasferim altro comune)")
-            print("5. Logout")
-            print("6. Esci")
+            print("2. Inserisci Motocicletta ")
+            print("3. Elimina cittadino (es. trasferim altro comune)")
+            print("4. Logout")
+            print("5. Esci")
             sOper = input("Cosa vuoi fare? ")
             if sOper == "1":
              
@@ -146,40 +188,34 @@ while True:
                 
                 except:
                     print("Problemi di comunicazione con il server, riprova più tardi")
+
             elif sOper == "2":
-                print("Cerca Automobile")
-                api_url = base_url + "/cerca_automobile"
-                jsonDataRequest = CercaAutomobile()
+                api_url = base_url + "/add_motocicletta"
+
+                jsonDataRequest = GetDatiMotocicletta()
+
                 try:
+                     # Debug: Stampare i dati inviati
+                    print(f"Dati inviati: {jsonDataRequest}")
+                    
                     response = requests.post(api_url,json=[jsonDataRequest,accesso], verify=False)
                     print(response.content)
-                    
+                
                 except:
                     print("Problemi di comunicazione con il server, riprova più tardi")
             elif sOper == "3":
-                print("Richiesto cittadino")
-                api_url = base_url + "/update_cittadino"
-                jsonDataRequest = UpdateCittadino()
-                try:
-                    response = requests.post(api_url,json=[jsonDataRequest,accesso], verify=False)
-                    print(response.content)
-                    
-                except:
-                    print("Problemi di comunicazione con il server, riprova più tardi")
-            elif sOper == "4":
                 print("Richiesto cittadino")
                 api_url = base_url + "/delete_cittadino"
                 jsonDataRequest = DeleteCittadino()
                 try:
                     response = requests.post(api_url,json=[jsonDataRequest,accesso], verify=False)
-                    print(response.content)
-                    
+                    print(response.content)    
                 except:
                     print("Problemi di comunicazione con il server, riprova più tardi")
-            elif sOper == "5":
+            elif sOper == "4":
                 auth = False
                 print("Logout effetuato con successo")
                 break
-            elif sOper=="6":
+            elif sOper=="5":
                 print("Buona giornata!")
                 sys.exit()  
