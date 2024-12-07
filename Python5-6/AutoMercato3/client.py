@@ -65,32 +65,45 @@ def GetDatiMotocicletta():
     return datiFindMotocicletta
 
 def CercaAutomobile():
-    # Richiesta dei dati per l'automobile
-    marca = input("Qual è la marca dell'automobile? ") 
-    modello = input("Qual è il modello dell'automobile? ")
-    colore = input("Qual è il colore dell'automobile? ")
-    condizione = input("Qual è la condizione dell'automobile (nuovo/usato)? ").lower()
-    
-    # Validazione del valore per la condizione
-    if condizione not in ['nuovo', 'usato']:
-        print("Errore: la condizione deve essere 'nuovo' o 'usato'. Impostazione predefinita su 'nuovo'.")
-        condizione = 'nuovo'
 
-    # Disponibilità predefinita a True
-    disponibilita = True
+    # Chiedi all'utente i criteri di ricerca
+    marca = input("Inserisci la marca dell'automobile (opzionale): ")
+    modello = input("Inserisci il modello dell'automobile (opzionale): ")
+    colore = input("Inserisci il colore dell'automobile (opzionale): ")
+    condizione = input("Inserisci la condizione (nuovo/usato, opzionale): ")
 
-    # Creazione del dizionario con i dati dell'automobile
-    datiFindAutomobile = {
-        "marca": marca,
-        "modello": modello,
-        "colore": colore,
-        "condizione": condizione,
-        "disponibilita": disponibilita
-    }
-    
-    return datiFindAutomobile
-    #return input("Inserisci il codice fiscale della persona richiesta: ")
-    pass
+    # Creazione del dizionario dei criteri
+    criteri = {}
+    if marca:
+        criteri['marca'] = marca
+    if modello:
+        criteri['modello'] = modello
+    if colore:
+        criteri['colore'] = colore
+    if condizione:
+        criteri['condizione'] = condizione
+
+    data = {"criteri": criteri}
+
+    try:
+        response = requests.post(f"{base_url}/cerca_automobile", json=data, verify=False)
+        if response.status_code == 200:
+            data = response.json()['data']
+            print("Automobili trovate:")
+            for auto in data:
+                print(
+                    f"ID: {auto['id']}, Marca: {auto['marca']}, Modello: {auto['modello']}, "
+                    f"Colore: {auto['colore']}, Condizione: {auto['condizione']}, Disponibilità: {auto['disponibilita']}, "
+                    f"Filiale: {auto['filiale_nome']} ({auto['filiale_indirizzo']})"
+                )
+        elif response.status_code == 404:
+            print(response.json().get('message', 'Nessuna automobile trovata'))
+        else:
+            print(f"Errore: {response.json().get('message', 'Errore nella ricerca')}")
+    except Exception as e:
+        print(f"Errore di connessione: {e}")
+
+
 def UpdateCittadino():
     dati_da_modifcare = [None for _ in range(4)]
     dati_da_modifcare[0] = input("Inserisci il codice fiscale della persona a cui vuoi modificarei i dati: ")

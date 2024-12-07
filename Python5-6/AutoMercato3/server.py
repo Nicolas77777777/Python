@@ -132,22 +132,63 @@ def GestisciMotocicletta():
     
 @api.route('/cerca_automobile', methods=['POST'])
 def GestisciCercaAutomobile():
-    content_type = request.headers.get('Content-Type')
-    print("Ricevuta chiamata " + content_type)
-    if (content_type == 'application/json'):
-        accesso = request.json[1]
-        dati = request.json[0]
-        if controllo_privilegi_admin(accesso) == 1 or controllo_privilegi_admin(accesso) == 0:
-            sQuery = f"select * from cittadini where codice_fiscale = '{dati}'"
-            iRetValue = db.read_in_db(mydb,sQuery)
-            if iRetValue == 1:
-                sValue = db.read_next_row(mydb)
-                return sValue
-            return "Cittadino non trovato"
-        else:
-            return "Dati errati"
-    else:
-        return 'Content-Type not supported!'
+
+    if request.headers.get('Content-Type') == 'application/json':
+        dati = request.json
+        criteri = dati.get('criteri', {})
+
+        # Costruzione della query con join sulla tabella filiali
+        query = """
+            SELECT a.*, f.nome AS filiale_nome, f.indirizzo AS filiale_indirizzo
+            FROM automobili a
+            JOIN filiali f ON a.magazzino_id = f.id
+        """
+        conditions = []
+
+        # Aggiunta dei criteri
+        if "marca" in criteri:
+            conditions.append(f"a.marca = '{criteri['marca']}'")
+        if "modello" in criteri:
+            conditions.append(f"a.modello = '{criteri['modello']}'")
+        if "colore" in criteri:
+            conditions.append(f"a.colore = '{criteri['colore']}'")
+        if "condizione" in criteri:
+            conditions.append(f"a.condizione = '{criteri['condizione']}'")
+
+        # Aggiunta delle condizioni alla query
+        if conditions:
+            query += " WHERE " + " AND ".join(conditions)
+
+        try:
+            num_record = db.read_in_db(, query)
+
+
+            # Creazione del risultato in formato JSON
+            data = [
+                {
+                    "id": auto[0],
+                    "marca": auto[1],
+                    "modello": auto[2],
+                    "colore": auto[3],
+                    "targa": auto[4],
+                    "magazzino_id": auto[5],
+                    "condizione": auto[6],
+                    "disponibilita": auto[7],
+                    "filiale_nome": auto[8],
+                    "filiale_indirizzo": auto[9]
+                }
+                for auto in results
+            ]
+
+            if data:
+                return {"status": "success", "data": data}, 200
+            else:
+                return {"status": "success", "message": "Nessuna automobile trovata per i criteri specificati"}, 404
+
+        except Exception as e:
+            return {"status": "error", "message": str(e)}, 500
+
+    return {"status": "error", "message": "Content-Type non supportato!"}, 400
     
 @api.route('/update_cittadino', methods=['POST'])
 def GestisciUpdateCittadino():
