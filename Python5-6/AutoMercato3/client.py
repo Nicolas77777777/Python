@@ -65,7 +65,6 @@ def GetDatiMotocicletta():
     return datiFindMotocicletta
 
 def CercaAutomobile():
-
     # Chiedi all'utente i criteri di ricerca
     marca = input("Inserisci la marca dell'automobile (opzionale): ")
     modello = input("Inserisci il modello dell'automobile (opzionale): ")
@@ -187,7 +186,6 @@ while True:
             if sOper == "1":
              
                 print("Inserisci Automobile")
-                #api_url = base_url + "/add_cittadino"
                 api_url = base_url + "/add_automobile"
 
                 jsonDataRequest = GetDatiAutomobile()

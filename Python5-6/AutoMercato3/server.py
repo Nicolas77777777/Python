@@ -129,39 +129,51 @@ def GestisciMotocicletta():
     else:
         return 'Content-Type not supported!'
 
-    
 @api.route('/cerca_automobile', methods=['POST'])
 def GestisciCercaAutomobile():
-
     if request.headers.get('Content-Type') == 'application/json':
-        dati = request.json
-        criteri = dati.get('criteri', {})
-
-        # Costruzione della query con join sulla tabella filiali
-        query = """
-            SELECT a.*, f.nome AS filiale_nome, f.indirizzo AS filiale_indirizzo
-            FROM automobili a
-            JOIN filiali f ON a.magazzino_id = f.id
-        """
-        conditions = []
-
-        # Aggiunta dei criteri
-        if "marca" in criteri:
-            conditions.append(f"a.marca = '{criteri['marca']}'")
-        if "modello" in criteri:
-            conditions.append(f"a.modello = '{criteri['modello']}'")
-        if "colore" in criteri:
-            conditions.append(f"a.colore = '{criteri['colore']}'")
-        if "condizione" in criteri:
-            conditions.append(f"a.condizione = '{criteri['condizione']}'")
-
-        # Aggiunta delle condizioni alla query
-        if conditions:
-            query += " WHERE " + " AND ".join(conditions)
-
         try:
-            num_record = db.read_in_db(, query)
+            dati = request.json
+            criteri = dati.get('criteri', {})
+            
+            # Costruzione della query di base
+            query = """
+                SELECT a.*, f.nome AS filiale_nome, f.indirizzo AS filiale_indirizzo
+                FROM automobili a
+                JOIN filiali f ON a.magazzino_id = f.id
+            """
+            conditions = []
 
+            # Aggiunta dinamica dei criteri
+            if "marca" in criteri:
+                conditions.append(f"a.marca = %s")
+            if "modello" in criteri:
+                conditions.append(f"a.modello = %s")
+            if "colore" in criteri:
+                conditions.append(f"a.colore = %s")
+            if "condizione" in criteri:
+                conditions.append(f"a.condizione = %s")
+
+            if conditions:
+                query += " WHERE " + " AND ".join(conditions)
+
+            # Creazione dei parametri per la query
+            parameters = [
+                criteri.get("marca"),
+                criteri.get("modello"),
+                criteri.get("colore"),
+                criteri.get("condizione"),
+            ]
+            parameters = [p for p in parameters if p is not None]
+
+            # Connessione al database
+            cur = db.connect()
+            if cur is None:
+                return {"status": "error", "message": "Errore di connessione al database"}, 500
+
+            # Esecuzione della query
+            cur.execute(query, tuple(parameters))
+            results = cur.fetchall()
 
             # Creazione del risultato in formato JSON
             data = [
@@ -175,7 +187,7 @@ def GestisciCercaAutomobile():
                     "condizione": auto[6],
                     "disponibilita": auto[7],
                     "filiale_nome": auto[8],
-                    "filiale_indirizzo": auto[9]
+                    "filiale_indirizzo": auto[9],
                 }
                 for auto in results
             ]
@@ -189,6 +201,8 @@ def GestisciCercaAutomobile():
             return {"status": "error", "message": str(e)}, 500
 
     return {"status": "error", "message": "Content-Type non supportato!"}, 400
+
+
     
 @api.route('/update_cittadino', methods=['POST'])
 def GestisciUpdateCittadino():
