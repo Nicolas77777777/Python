@@ -1,5 +1,8 @@
 import requests,json
 import sys
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 base_url = "https://127.0.0.1:8080"
 auth = False
@@ -132,9 +135,8 @@ while True:
     if not auth:
         print("Operazioni disponibili:")
         print("1. Login")
-        print("2. Registrazione")
-        print("3. Cerca Automobile")
-        print("4. Esci")
+        print("2. Cerca Automobile")
+        print("3. Esci")
         login = input("Cosa vuoi fare? ")
 
         if login == '1':
@@ -150,31 +152,21 @@ while True:
                 print(auth)
             except:
                 print("Impossibile ")
-        elif login == '2':
-            api_url = base_url + '/registrazione'
-            jsonDataRequest = Login()
-            try:
-                response = requests.post(api_url,json=jsonDataRequest, verify=False)
-                print(response)
-               
-            except:
-                print("Problemi di comunicazione con il server, riprova più tardi")
+    
 
-        elif login =='3':
+        elif login =='2':
             print("Cerca Automobile")
             api_url = base_url + "/cerca_automobile"
             jsonDataRequest = CercaAutomobile()
 
             try:
-                #response = requests.post(api_url,json=[jsonDataRequest,accesso], verify=False)
-                #print(response.content)
                 response = requests.post(api_url,json=jsonDataRequest, verify=False)
                 print("auto trovata con sucesso")
                     
             except:
                 print("Impossibile trovare l'auto")
     
-        elif login == '4':
+        elif login == '3':
             sys.exit()
         else:
             print("Errore operazione non esistente")
@@ -183,9 +175,10 @@ while True:
             print("Operazioni disponibili:")
             print("1. Inserisci Automobile")
             print("2. Inserisci Motocicletta ")
-            print("3. Elimina cittadino (es. trasferim altro comune)")
-            print("4. Logout")
-            print("5. Esci")
+            print("3. Registra nuovo admin")
+            print("4. Vendite Giornaliere")
+            print("5. Logout")
+            print("6. Esci")
             sOper = input("Cosa vuoi fare? ")
             if sOper == "1":
              
@@ -220,18 +213,23 @@ while True:
                     print("Problemi di comunicazione con il server, riprova più tardi")
 
             elif sOper == "3":
-                print("Richiesto cittadino")
-                api_url = base_url + "/delete_cittadino"
-                jsonDataRequest = DeleteCittadino()
+                api_url = base_url + '/registrazione'
+                jsonDataRequest = Login()
+                
                 try:
-                    response = requests.post(api_url,json=[jsonDataRequest,accesso], verify=False)
-                    print(response.content)    
+                    response = requests.post(api_url,json=jsonDataRequest, verify=False)
+                    print(response)
+               
                 except:
                     print("Problemi di comunicazione con il server, riprova più tardi")
-            elif sOper == "4":
+
+            elif sOper == "3":
+                pass
+                    
+            elif sOper == "5":
                 auth = False
                 print("Logout effetuato con successo")
                 break
-            elif sOper=="5":
+            elif sOper=="6":
                 print("Buona giornata!")
                 sys.exit()  

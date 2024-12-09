@@ -3,11 +3,13 @@ import random
 import os
 import dbclient as db
 import urllib3
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 import sys
+
 
 api = Flask(__name__)
 mydb = db.connect()
+
 if mydb is None:
     print("Errore connessione al DB")
     sys.exit()
@@ -131,8 +133,10 @@ def GestisciMotocicletta():
 
 @api.route('/cerca_automobile', methods=['POST'])
 def GestisciCercaAutomobile():
+    # request richiesta è globale, headres intestazione.get 
     if request.headers.get('Content-Type') == 'application/json':
         try:
+
             dati = request.json
             criteri = dati.get('criteri', {})
             
@@ -146,16 +150,17 @@ def GestisciCercaAutomobile():
 
             # Aggiunta dinamica dei criteri
             if "marca" in criteri:
-                conditions.append(f"a.marca = %s")
+                conditions.append(f"a.marca = %s")#(f"a.marca = criteri.get("marca")) #%s per evitare sql injection 
             if "modello" in criteri:
-                conditions.append(f"a.modello = %s")
+                conditions.append(f"a.modello = %s") 
             if "colore" in criteri:
                 conditions.append(f"a.colore = %s")
             if "condizione" in criteri:
                 conditions.append(f"a.condizione = %s")
-
-            if conditions:
-                query += " WHERE " + " AND ".join(conditions)
+            # se l'utente  scirve alemno un valore 
+            if conditions: # se è vera se la lista è vuota è false , è popolato 
+                query += " WHERE "
+                query += " AND ".join(conditions) # metodo  join prende un array lista , prende tutti i valori e li sostituisce con il valore tra "" in questo caso " and "
 
             # Creazione dei parametri per la query
             parameters = [
@@ -164,16 +169,26 @@ def GestisciCercaAutomobile():
                 criteri.get("colore"),
                 criteri.get("condizione"),
             ]
-            parameters = [p for p in parameters if p is not None]
+
+            # filtro i parametri 
+            filtered_parameters = []
+            for p in parameters:
+                if p is not None:
+                    filtered_parameters.append(p)
+            parameters = filtered_parameters
+
+            # qui potrei controllare l'sql injection 
             
-            # Connessione al database
+            # Connessione al database ho letto 
             cur = db.connect()
+            # se la connesione non è andata a buon fine 
             if cur is None:
-                return {"status": "error", "message": "Errore di connessione al database"}, 500
+                return {"status": "error", "message": "Errore di connessione al database"}, 500 
 
             # Esecuzione della query
             cur.execute(query, tuple(parameters))
-            results = cur.fetchall()
+            # results è una lista di liste
+            results = cur.fetchall() # fetchall prendere e raccogliere li prende e li tiene in canna 
 
             # Creazione del risultato in formato JSON
             data = [
@@ -188,6 +203,16 @@ def GestisciCercaAutomobile():
                     "disponibilita": auto[7],
                     "filiale_nome": auto[8],
                     "filiale_indirizzo": auto[9],
+                    
+                    # "marca": auto[0],
+                    # "modello": auto[1],
+                    # "colore": auto[2],
+                    # "targa": auto[3],
+                    # "magazzino_id": auto[4],
+                    # "condizione": auto[5],
+                    # "disponibilita": auto[6],
+                    # "filiale_nome": auto[7],
+                    # "filiale_indirizzo": auto[8],
                 }
                 for auto in results
             ]
