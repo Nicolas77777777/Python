@@ -166,6 +166,8 @@ while True:
             try:
                 response = requests.post(api_url,json=[jsonDataRequest,accesso], verify=False)
                 print(response.content)
+
+                print("auto trovate con sucesso")
                     
             except:
                 print("Problemi di comunicazione con il server, riprova più tardi")
