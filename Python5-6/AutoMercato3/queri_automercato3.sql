@@ -17,3 +17,22 @@ SELECT f.*, a.*
 FROM filiali f
 JOIN automobili a ON f.id = a.magazzino_id
 WHERE LOWER(a.colore) = 'bianco';
+
+-- inser into 
+
+INSERT INTO filiali (nome, indirizzo, partita_iva)
+VALUES 
+('Filiale Milano', 'Via Roma 10, Milano', '12345678901'),
+('Filiale Torino', 'Corso Francia 20, Torino', '98765432109');
+
+INSERT INTO magazzini (id_filiale, nome_magazzino)
+VALUES 
+(1, 'Magazzino Milano Centro'),
+(2, 'Magazzino Torino Sud');
+
+
+INSERT INTO automobili (marca, modello, colore, targa, magazzino_id, condizione, disponibilita)
+VALUES 
+('Fiat', 'Panda', 'Bianco', 'ER44ML', 1, 'nuovo', TRUE),
+('Volkswagen', 'Golf', 'Nero', 'VW123XY', 2, 'usato', TRUE);
+
