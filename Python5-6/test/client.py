@@ -7,65 +7,81 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 base_url = "https://127.0.0.1:8080"
 auth = False
 
-def GetDatiAutomobile():
-    # Richiesta dei dati per l'automobile
-    marca = input("Qual è la marca dell'automobile? ") 
-    modello = input("Qual è il modello dell'automobile? ")
-    colore = input("Qual è il colore dell'automobile? ")
-    targa = input("Qual è la targa dell'automobile? ")
-    magazzino_id = input("Qual è l'ID del magazzino? ")
-    condizione = input("Qual è la condizione dell'automobile (nuovo/usato)? ").lower()
-    
-    # Validazione del valore per la condizione
-    if condizione not in ['nuovo', 'usato']:
-        print("Errore: la condizione deve essere 'nuovo' o 'usato'. Impostazione predefinita su 'nuovo'.")
-        condizione = 'nuovo'
+def GetDatiImmobileAffitto():
+   
+    try:
+        # Richiesta dei dati per immobile
+        catastale = input("Inserisci il codice catastale dell'immobile: ")
+        indirizzo = input("Qual è l'indirizzo dell'immobile? ")
+        numero_civico = int(input("Qual è il numero civico dell'immobile? "))
+        tipo_affitto = input("Qual è il tipo di affitto (PARZIALE/TOTALE): ").strip().upper()
+        bagno_personale = input("L'immobile ha un bagno personale? (Sì/No): ").strip().lower() == 'sì'
+        prezzo_mensile = int(input("Qual è il prezzo mensile dell'immobile? "))
+        filiale_proponente = input("Qual è la partita IVA della filiale proponente? ")
 
-    # Disponibilità predefinita a True
-    disponibilita = True
+        # Validazione del tipo di affitto
+        if tipo_affitto not in ["PARZIALE", "TOTALE"]:
+            print("Tipo di affitto non valido. Impostato a 'PARZIALE'.")
+            tipo_affitto = "PARZIALE"
+
+        # Creazione del dizionario con i dati dell'immobile
+        immobile = {
+            "catastale": catastale,
+            "indirizzo": indirizzo,
+            "civico": numero_civico,
+            "tipo_affitto": tipo_affitto,
+            "bagno_personale": bagno_personale,
+            "prezzo_mensile": prezzo_mensile,
+            "filiale_proponente": filiale_proponente,
+        }
+
+        print("Dati raccolti con successo.")
+        return immobile
+
+    except ValueError as ve:
+        print(f"Errore nei dati numerici: {ve}. Riprova.")
+        return None
+    except Exception as e:
+        print(f"Errore inaspettato: {e}.")
+        return None
+
+    
+
+def GetDatiImmobileVendita():
+    # Richiesta dei dati per immobile
+    # Raccolta dati dall'utente
+        catastale = input("Inserisci il codice catastale dell'immobile: ")
+        indirizzo = input("Qual è l'indirizzo dell'immobile? ")
+        numero_civico = int(input("Qual è il numero civico dell'immobile? "))
+        piano = input("Qual è il piano dell'immobile? (Lascia vuoto se non applicabile): ")
+        metri = int(input("Quanti metri quadrati ha l'immobile? "))
+        vani = int(input("Quanti vani ha l'immobile? "))
+        prezzo = int(input("Qual è il prezzo di vendita dell'immobile? "))
+        stato = input("Qual è lo stato dell'immobile (LIBERO/OCCUPATO)? ").strip().upper()
+        filiale_proponente = input("Qual è la partita IVA della filiale proponente? ")
+
+     # Validazione dello stato
+        if stato not in ["LIBERO", "OCCUPATO"]:
+            print("Stato non valido. Impostato a 'LIBERO'.")
+            stato = "LIBERO"
+
+    
 
     # Creazione del dizionario con i dati dell'automobile
-    datiFindAutomobile = {
-        "marca": marca,
-        "modello": modello,
-        "colore": colore,
-        "targa": targa,
-        "magazzino_id": int(magazzino_id),
-        "condizione": condizione,
-        "disponibilita": disponibilita
-    }
-    
-    return datiFindAutomobile
+        immobile = {
+            "catastale": catastale,
+            "indirizzo": indirizzo,
+            "numero_civico": numero_civico,
+            "piano": int(piano) if piano else None,
+            "metri": metri,
+            "vani": vani,
+            "prezzo": prezzo,
+            "stato": stato,
+            "filiale_proponente": filiale_proponente,
+        }
 
-def GetDatiMotocicletta():
-    # Richiesta dei dati per l'automobile
-    marca = input("Qual è la marca della Motocicletta? ") 
-    modello = input("Qual è il modello della Motocicletta? ")
-    colore = input("Qual è il colore della Motocicletta? ")
-    targa = input("Qual è la targa della Motocicletta? ")
-    magazzino_id = input("Qual è l'ID del magazzino? ")
-    condizione = input("Qual è la condizione della Motocicletta (nuovo/usato)? ").lower()
-    
-    # Validazione del valore per la condizione
-    if condizione not in ['nuovo', 'usato']:
-        print("Errore: la condizione deve essere 'nuovo' o 'usato'. Impostazione predefinita su 'nuovo'.")
-        condizione = 'nuovo'
-
-    # Disponibilità predefinita a True
-    disponibilita = True
-
-    # Creazione del dizionario con i dati dell'automobile
-    datiFindMotocicletta = {
-        "marca": marca,
-        "modello": modello,
-        "colore": colore,
-        "targa": targa,
-        "magazzino_id": int(magazzino_id),
-        "condizione": condizione,
-        "disponibilita": disponibilita
-    }
-    
-    return datiFindMotocicletta
+        print("Dati raccolti con successo.")
+        return immobile
 
 def CercaAutomobile():
     # Chiedi all'utente i criteri di ricerca
@@ -106,20 +122,6 @@ def CercaAutomobile():
     except Exception as e:
         print(f"Errore di connessione: {e}")
 
-
-def UpdateCittadino():
-    dati_da_modifcare = [None for _ in range(4)]
-    dati_da_modifcare[0] = input("Inserisci il codice fiscale della persona a cui vuoi modificarei i dati: ")
-    nome = input("Inserisci il nome modificato (Lascia vuoto per non cambiare): ")
-    cognome = input("Inserisci il cognome modificato (Lascia vuoto per non cambiare): ")
-    dataN = input("Inserisci la data di nascita modificata (Lascia vuoto per non cambiare): ")
-    if cognome:
-        dati_da_modifcare[1] = cognome
-    if dataN:
-        dati_da_modifcare[2] = dataN
-    if nome:
-        dati_da_modifcare[3] = nome
-    return dati_da_modifcare
 
 def DeleteCittadino():
     return input("Inserisci il codice fiscale della persona da eliminare: ")
@@ -173,19 +175,20 @@ while True:
     else:        
         while(True):
             print("Operazioni disponibili:")
-            print("1. Inserisci Automobile")
-            print("2. Inserisci Motocicletta ")
+            print("1. Aggingi Immobile per L'affitto")
+            print("2. Aggiungi immobile per la vendita ")
             print("3. Registra nuovo admin")
             print("4. Vendite Giornaliere")
             print("5. Logout")
             print("6. Esci")
             sOper = input("Cosa vuoi fare? ")
+
             if sOper == "1":
              
-                print("Inserisci Automobile")
-                api_url = base_url + "/add_automobile"
+                print("Inserisci Immobile per l'affitto")
+                api_url = base_url + "/add_immobile_affitto"
 
-                jsonDataRequest = GetDatiAutomobile()
+                jsonDataRequest = GetDatiImmobileAffitto()
 
                 try:
                      # Debug: Stampare i dati inviati
@@ -198,9 +201,9 @@ while True:
                     print("Problemi di comunicazione con il server, riprova più tardi")
 
             elif sOper == "2":
-                api_url = base_url + "/add_motocicletta"
+                api_url = base_url + "/add_immobile_vendita"
 
-                jsonDataRequest = GetDatiMotocicletta()
+                jsonDataRequest = GetDatiImmobileVendita()
 
                 try:
                      # Debug: Stampare i dati inviati
@@ -223,7 +226,7 @@ while True:
                 except:
                     print("Problemi di comunicazione con il server, riprova più tardi")
 
-            elif sOper == "3":
+            elif sOper == "4":
                 pass
                     
             elif sOper == "5":

@@ -29,59 +29,60 @@ def controllo_privilegi_admin(user: dict):
         return False
 
 
-@api.route('/add_automobile', methods=['POST'])
-def GestisciAutomobile():
-
+@api.route('//add_immobile_affitto', methods=['POST'])
+def GestisciAddImmobileAffitto():
+   
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
     
     if content_type == 'application/json':
-        accesso = request.json[1]
-        dati = request.json[0]
-        
-        print(f"Dati accesso: {accesso}")
-        print(f"Dati automobile: {dati}")
-        
-        if controllo_privilegi_admin(accesso) == 1:
-            print("Privilegi amministrativi confermati.")
+        try:
+            accesso = request.json[1]
+            dati = request.json[0]
             
-            if isinstance(dati, dict):
-                try:
+            print(f"Dati accesso: {accesso}")
+            print(f"Dati Immobile: {dati}")
+            
+            if controllo_privilegi_admin(accesso) == 1:
+                print("Privilegi amministrativi confermati.")
+                
+                if isinstance(dati, dict):
+                    # Creazione della query SQL
                     sQuery = f"""
-                    INSERT INTO automobili (marca, modello, colore, targa, magazzino_id, condizione, disponibilita)
+                    INSERT INTO case_in_affitto (catastale, indirizzo, civico, tipo_affitto, bagno_personale, prezzo_mensile, filiale_proponente)
                     VALUES (
-                        '{dati['marca']}', 
-                        '{dati['modello']}', 
-                        '{dati['colore']}', 
-                        '{dati['targa']}', 
-                        {dati['magazzino_id']}, 
-                        '{dati['condizione']}', 
-                        {dati['disponibilita']}
-                    )
+                        '{dati['catastale']}',
+                        '{dati['indirizzo']}',
+                        {dati['civico']},
+                        '{dati['tipo_affitto']}',
+                        {'TRUE' if dati['bagno_personale'] else 'FALSE'},
+                        {dati['prezzo_mensile']},
+                        '{dati['filiale_proponente']}'
+                    );
                     """
                     print(f"Esecuzione query: {sQuery}")
                     iRetValue = db.write_in_db(mydb, sQuery)
                     
                     if iRetValue == -2:
-                        return "Targa già esistente"
+                        return "Codice catastale già esistente", 409
                     elif iRetValue == 0:
-                        return "Registrazione avvenuta con successo"
+                        return "Immobile in affitto aggiunto con successo", 200
                     else:
-                        return "Errore non gestito nella registrazione"
-                except Exception as e:
-                    print(f"Errore durante l'inserimento nel database: {e}")
-                    return "Errore interno del server"
+                        return "Errore non gestito nella registrazione", 500
+                else:
+                    print("Formato non valido per 'dati'")
+                    return "Errore: formato dati non valido", 400
             else:
-                print("Formato non valido per 'dati'")
-                return "Errore: formato dati non valido"
-        else:
-            print("Privilegi amministrativi non confermati.")
-            return "Dati errati"
+                print("Privilegi amministrativi non confermati.")
+                return "Dati errati", 403
+        except Exception as e:
+            print(f"Errore durante l'inserimento nel database: {e}")
+            return f"Errore interno del server: {e}", 500
     else:
-        return 'Content-Type not supported!'
+        return 'Content-Type not supported!', 415
 
-@api.route('/add_motocicletta', methods=['POST'])
-def GestisciMotocicletta():
+@api.route('/add_immobile_vendita', methods=['POST'])
+def GestisciAddImmobileVendita():
 
     content_type = request.headers.get('Content-Type')
     print("Ricevuta chiamata " + content_type)
@@ -99,17 +100,19 @@ def GestisciMotocicletta():
             if isinstance(dati, dict):
                 try:
                     sQuery = f"""
-                    INSERT INTO motociclette (marca, modello, colore, targa, magazzino_id, condizione, disponibilita)
-                    VALUES (
-                        '{dati['marca']}', 
-                        '{dati['modello']}', 
-                        '{dati['colore']}', 
-                        '{dati['targa']}', 
-                        {dati['magazzino_id']}, 
-                        '{dati['condizione']}', 
-                        {dati['disponibilita']}
-                    )
-                    """
+        INSERT INTO case_in_vendita (catastale, indirizzo, numero_civico, piano, metri, vani, prezzo, stato, filiale_proponente)
+        VALUES (
+            '{dati['catastale']}',
+            '{dati['indirizzo']}',
+            {dati['numero_civico']},
+            {dati['piano'] if dati['piano'] is not None else 'NULL'},
+            {dati['metri']},
+            {dati['vani']},
+            {dati['prezzo']},
+            '{dati['stato']}',
+            '{dati['filiale_proponente']}'
+        );
+        """
                     print(f"Esecuzione query: {sQuery}")
                     iRetValue = db.write_in_db(mydb, sQuery)
                     
