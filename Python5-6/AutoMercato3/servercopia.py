@@ -204,15 +204,7 @@ def GestisciCercaAutomobile():
                     "filiale_nome": auto[8],
                     "filiale_indirizzo": auto[9],
                     
-                    # "marca": auto[0],
-                    # "modello": auto[1],
-                    # "colore": auto[2],
-                    # "targa": auto[3],
-                    # "magazzino_id": auto[4],
-                    # "condizione": auto[5],
-                    # "disponibilita": auto[6],
-                    # "filiale_nome": auto[7],
-                    # "filiale_indirizzo": auto[8],
+                  
                 }
                 for auto in results
             ]
