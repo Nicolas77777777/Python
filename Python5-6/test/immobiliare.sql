@@ -1,3 +1,5 @@
+ --mario pass  è l'utente admin
+
 -- Creazione del tipo ENUM per stato delle case in vendita
 CREATE TYPE stato_vendita AS ENUM ('LIBERO', 'OCCUPATO');
 

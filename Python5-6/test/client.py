@@ -44,9 +44,7 @@ def GetDatiImmobileAffitto():
     except Exception as e:
         print(f"Errore inaspettato: {e}.")
         return None
-
     
-
 def GetDatiImmobileVendita():
     # Richiesta dei dati per immobile
     # Raccolta dati dall'utente
@@ -83,48 +81,62 @@ def GetDatiImmobileVendita():
         print("Dati raccolti con successo.")
         return immobile
 
-def CercaAutomobile():
-    # Chiedi all'utente i criteri di ricerca
-    marca = input("Inserisci la marca dell'automobile (opzionale): ")
-    modello = input("Inserisci il modello dell'automobile (opzionale): ")
-    colore = input("Inserisci il colore dell'automobile (opzionale): ")
-    condizione = input("Inserisci la condizione (nuovo/usato, opzionale): ")
-
-    # Creazione del dizionario dei criteri
-    criteri = {}
-    if marca:
-        criteri['marca'] = marca
-    if modello:
-        criteri['modello'] = modello
-    if colore:
-        criteri['colore'] = colore
-    if condizione:
-        criteri['condizione'] = condizione
-
-    data = {"criteri": criteri}
-
+def CercaImmobileVendita():
     try:
-        # risposta = richiesta
-        response = requests.post(f"{base_url}/cerca_automobile", json=data, verify=False)
+        # Chiedi all'utente i criteri di ricerca
+        piano = input("Qual è il piano dell'immobile? (Lascia vuoto se non applicabile): ")
+        metri = input("Quanti metri quadrati ha l'immobile? (Lascia vuoto per non specificare): ")
+        vani = input("Quanti vani ha l'immobile? (Lascia vuoto per non specificare): ")
+        prezzo = input("Qual è il prezzo massimo dell'immobile? (Lascia vuoto per non specificare): ")
+        stato = input("Qual è lo stato dell'immobile (LIBERO/OCCUPATO)? (Lascia vuoto per non specificare): ").strip().upper()
+
+        # Creazione del dizionario dei criteri
+        criteri = {}
+        if piano:
+            criteri['piano'] = int(piano)
+        if metri:
+            criteri['metri'] = int(metri)
+        if vani:
+            criteri['vani'] = int(vani)
+        if prezzo:
+            criteri['prezzo'] = int(prezzo)
+        if stato:
+            if stato not in ["LIBERO", "OCCUPATO"]:
+                print("Stato non valido. Ignorato.")
+            else:
+                criteri['stato'] = stato
+
+        # Creazione del payload per la richiesta
+        data = {"criteri": criteri}
+
+        # Invio della richiesta al server
+        response = requests.post(f"{base_url}/cerca_immobile_vendita", json=data, verify=False)
+
+        # Gestione della risposta
         if response.status_code == 200:
-            data = response.json()['data']
-            print("Automobili trovate:")
-            for auto in data:
-                print(
-                    f"ID: {auto['id']}, Marca: {auto['marca']}, Modello: {auto['modello']}, "
-                    f"Colore: {auto['colore']}, Condizione: {auto['condizione']}, Disponibilità: {auto['disponibilita']}, "
-                    f"Filiale: {auto['filiale_nome']} ({auto['filiale_indirizzo']})"
-                )
+            risultati = response.json().get('data', [])
+            if risultati:
+                print("Immobili trovati:")
+                for immobile in risultati:
+                    print(
+                        f"Codice catastale: {immobile['catastale']}, Indirizzo: {immobile['indirizzo']}, "
+                        f"Numero Civico: {immobile['numero_civico']}, Piano: {immobile.get('piano', 'N/A')}, "
+                        f"Metri: {immobile['metri']}, Vani: {immobile['vani']}, "
+                        f"Prezzo: {immobile['prezzo']}, Stato: {immobile['stato']}, "
+                        f"Filiale proponente: {immobile['filiale_proponente']}"
+                    )
+            else:
+                print("Nessun immobile trovato con i criteri specificati.")
         elif response.status_code == 404:
-            print(response.json().get('message', 'Nessuna automobile trovata'))
+            print(response.json().get('message', 'Nessun immobile trovato'))
         else:
             print(f"Errore: {response.json().get('message', 'Errore nella ricerca')}")
+
+    except ValueError:
+        print("Errore nei dati inseriti: assicurati di inserire numeri validi per i campi numerici.")
     except Exception as e:
         print(f"Errore di connessione: {e}")
 
-
-def DeleteCittadino():
-    return input("Inserisci il codice fiscale della persona da eliminare: ")
 
 def Login():
     username = input("Inserisci l'username: ")
@@ -137,7 +149,7 @@ while True:
     if not auth:
         print("Operazioni disponibili:")
         print("1. Login")
-        print("2. Cerca Automobile")
+        print("2. Cerca Immobile in Vendita")
         print("3. Esci")
         login = input("Cosa vuoi fare? ")
 
@@ -157,16 +169,16 @@ while True:
     
 
         elif login =='2':
-            print("Cerca Automobile")
-            api_url = base_url + "/cerca_automobile"
-            jsonDataRequest = CercaAutomobile()
+            print("Cerca Immobile in Vendita")
+            api_url = base_url + "/cerca_immobile_vendita"
+            jsonDataRequest = CercaImmobileVendita()
 
             try:
                 response = requests.post(api_url,json=jsonDataRequest, verify=False)
-                print("auto trovata con sucesso")
+                print("Immobile  trovato con sucesso")
                     
             except:
-                print("Impossibile trovare l'auto")
+                print("Impossibile trovare l'immobile")
     
         elif login == '3':
             sys.exit()

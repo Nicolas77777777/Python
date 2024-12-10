@@ -134,88 +134,81 @@ def GestisciAddImmobileVendita():
     else:
         return 'Content-Type not supported!'
 
-@api.route('/cerca_automobile', methods=['POST'])
-def GestisciCercaAutomobile():
-    # request richiesta è globale, headres intestazione.get 
+@api.route('/cerca_immobile_vendita', methods=['POST'])
+def CercaImmobileVendita():
+    """
+    Gestisce la ricerca degli immobili in vendita basandosi sui criteri forniti dal client.
+    """
     if request.headers.get('Content-Type') == 'application/json':
         try:
-
             dati = request.json
             criteri = dati.get('criteri', {})
-            
+
             # Costruzione della query di base
             query = """
-                SELECT a.*, f.nome AS filiale_nome, f.indirizzo AS filiale_indirizzo
-                FROM automobili a
-                JOIN filiali f ON a.magazzino_id = f.id
+                SELECT 
+                    catastale, indirizzo, numero_civico, piano, metri, vani, prezzo, stato, filiale_proponente
+                FROM 
+                    case_in_vendita
             """
             conditions = []
 
             # Aggiunta dinamica dei criteri
-            if "marca" in criteri:
-                conditions.append(f"a.marca = %s")#(f"a.marca = criteri.get("marca")) #%s per evitare sql injection 
-            if "modello" in criteri:
-                conditions.append(f"a.modello = %s") 
-            if "colore" in criteri:
-                conditions.append(f"a.colore = %s")
-            if "condizione" in criteri:
-                conditions.append(f"a.condizione = %s")
-            # se l'utente  scirve alemno un valore 
-            if conditions: # se è vera se la lista è vuota è false , è popolato 
-                query += " WHERE "
-                query += " AND ".join(conditions) # metodo  join prende un array lista , prende tutti i valori e li sostituisce con il valore tra "" in questo caso " and "
+            if "piano" in criteri:
+                conditions.append("piano = %s")
+            if "metri" in criteri:
+                conditions.append("metri = %s")
+            if "vani" in criteri:
+                conditions.append("vani = %s")
+            if "prezzo" in criteri:
+                conditions.append("prezzo <= %s")
+            if "stato" in criteri:
+                conditions.append("stato = %s")
+
+            # Aggiungi condizioni alla query se ci sono criteri
+            if conditions:
+                query += " WHERE " + " AND ".join(conditions)
 
             # Creazione dei parametri per la query
             parameters = [
-                criteri.get("marca"),
-                criteri.get("modello"),
-                criteri.get("colore"),
-                criteri.get("condizione"),
+                criteri.get("piano"),
+                criteri.get("metri"),
+                criteri.get("vani"),
+                criteri.get("prezzo"),
+                criteri.get("stato"),
             ]
+            # Rimuovi i valori None dai parametri
+            parameters = [p for p in parameters if p is not None]
 
-            # filtro i parametri 
-            filtered_parameters = []
-            for p in parameters:
-                if p is not None:
-                    filtered_parameters.append(p)
-            parameters = filtered_parameters
-
-            # qui potrei controllare l'sql injection 
-            
-            # Connessione al database ho letto 
+            # Connessione al database
             cur = db.connect()
-            # se la connesione non è andata a buon fine 
             if cur is None:
-                return {"status": "error", "message": "Errore di connessione al database"}, 500 
+                return {"status": "error", "message": "Errore di connessione al database"}, 500
 
             # Esecuzione della query
             cur.execute(query, tuple(parameters))
-            # results è una lista di liste
-            results = cur.fetchall() # fetchall prendere e raccogliere li prende e li tiene in canna 
+            results = cur.fetchall()
 
             # Creazione del risultato in formato JSON
             data = [
                 {
-                    "id": auto[0],
-                    "marca": auto[1],
-                    "modello": auto[2],
-                    "colore": auto[3],
-                    "targa": auto[4],
-                    "magazzino_id": auto[5],
-                    "condizione": auto[6],
-                    "disponibilita": auto[7],
-                    "filiale_nome": auto[8],
-                    "filiale_indirizzo": auto[9],
-                    
-                  
+                    "catastale": immobile[0],
+                    "indirizzo": immobile[1],
+                    "numero_civico": immobile[2],
+                    "piano": immobile[3],
+                    "metri": immobile[4],
+                    "vani": immobile[5],
+                    "prezzo": immobile[6],
+                    "stato": immobile[7],
+                    "filiale_proponente": immobile[8],
                 }
-                for auto in results
+                for immobile in results
             ]
 
             if data:
                 return {"status": "success", "data": data}, 200
             else:
-                return {"status": "success", "message": "Nessuna automobile trovata per i criteri specificati"}, 404
+                return {"status": "success", "message": "Nessun immobile trovato per i criteri specificati"}, 404
 
         except Exception as e:
             return {"status": "error", "message": str(e)}, 500
@@ -223,57 +216,6 @@ def GestisciCercaAutomobile():
     return {"status": "error", "message": "Content-Type non supportato!"}, 400
 
 
-    
-@api.route('/update_cittadino', methods=['POST'])
-def GestisciUpdateCittadino():
-    content_type = request.headers.get('Content-Type')
-    print("Ricevuta chiamata " + content_type)
-    if (content_type == 'application/json'):
-        accesso = request.json[1]
-        dati = request.json[0]
-        if controllo_privilegi_admin(accesso) == 1:
-            sQuery = f"select * from cittadini where codice_fiscale = '{dati[0]}'"
-            iRetValue = db.read_in_db(mydb,sQuery)
-            if iRetValue != 1:
-                return "Cittadino non trovato"
-
-            for i in range(len(dati) - 1):
-                if dati[i+1]:
-                    if i + 1 == 1:
-                        sQuery = f"update cittadini set cognome = '{dati[i+1]}' where codice_fiscale= '{dati[0]}'"
-                        db.write_in_db(mydb,sQuery)
-                    elif i + 1 == 2:
-                        sQuery = f"update cittadini set dataN = '{dati[i+1]}' where codice_fiscale = '{dati[0]}'"
-                        db.write_in_db(mydb,sQuery)
-                    elif i + 1 == 3:
-                        sQuery = f"update cittadini set nome = '{dati[i+1]}' where codice_fiscale = '{dati[0]}'"
-                        db.write_in_db(mydb,sQuery)
-            return "Modifica avvenuta con successo"   
-        else:
-            return "Dati errati"     
-    else:
-        return 'Content-Type not supported!'
-
-@api.route('/delete_cittadino', methods=['POST'])
-def GestisciDeleteCittadino():
-    content_type = request.headers.get('Content-Type')
-    print("Ricevuta chiamata " + content_type)
-    if (content_type == 'application/json'):
-        accesso = request.json[1]
-        dati = request.json[0]
-        if controllo_privilegi_admin(accesso) == 1:
-            sQuery = f"delete from cittadini where codice_fiscale = '{dati}'"
-            iRetValue = db.write_in_db(mydb,sQuery)
-            if iRetValue == -2:
-                return "Nome utente non esistente"
-            elif iRetValue == 0:
-                return "Eliminazione avvenuta con successo"
-            else:
-                return "Errore non gestito nella registrazione"                
-        else:
-            return "Dati errati"
-    else:
-        return 'Content-Type not supported!'
     
 @api.route('/login', methods=['POST'])
 def login():
